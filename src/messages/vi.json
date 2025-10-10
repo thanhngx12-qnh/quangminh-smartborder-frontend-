@@ -12,5 +12,19 @@
   },
   "CtaButton": {
     "quote": "Yêu Cầu Báo Giá"
+  },
+  "Footer": {
+    "companyName": "CÔNG TY CỔ PHẦN QUANG MINH",
+    "address": "Cửa khẩu Tà Lùng, huyện Phục Hòa, tỉnh Cao Bằng, Việt Nam",
+    "sitemap": "Sitemap",
+    "legal": "Pháp lý",
+    "terms": "Điều khoản sử dụng",
+    "privacy": "Chính sách bảo mật",
+    "quickContact": "Liên hệ nhanh",
+    "formName": "Họ và tên",
+    "formEmail": "Email của bạn",
+    "formMessage": "Nội dung yêu cầu...",
+    "formSend": "Gửi Yêu Cầu",
+    "copyright": "© 2025 Công ty Cổ phần Quang Minh. Đã đăng ký bản quyền."
   }
 }

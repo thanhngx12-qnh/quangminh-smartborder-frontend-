@@ -4,19 +4,17 @@ import { Inter } from "next/font/google";
 import StyledComponentsRegistry from "@/lib/registry";
 import { Providers } from "@/app/providers";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer"; // <-- Import Footer
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Quang Minh Smart Border",
-  description: "Modern Logistics Solutions at Ta Lung Border Gate",
-};
+export const metadata = { /*...*/ };
 
 export default async function LocaleLayout({
   children,
   params
 }: {
-  children: React.ReactNode; // <-- SỬA LỖI Ở ĐÂY: React.ReactNode (không có dấu gạch nối)
+  children: React.ReactNode;
   params: { locale: string };
 }) {
   const locale = params.locale;
@@ -36,7 +34,7 @@ export default async function LocaleLayout({
           <Providers locale={locale} messages={messages} timeZone={timeZone}>
             <Header />
             <main>{children}</main>
-            {/* <Footer /> */}
+            <Footer /> {/* <-- Thêm Footer vào đây */}
           </Providers>
         </StyledComponentsRegistry>
       </body>
