@@ -26,5 +26,12 @@
     "formMessage": "Nội dung yêu cầu...",
     "formSend": "Gửi Yêu Cầu",
     "copyright": "© 2025 Công ty Cổ phần Quang Minh. Đã đăng ký bản quyền."
+  },
+  "Hero": {
+    "title": "QUANG MINH",
+    "subtitle": "Smart Border Logistics.",
+    "ctaQuote": "Tra Cước Đặt Bãi",
+    "ctaTrack": "Tra Vận Đơn",
+    "trackingPlaceholder": "Nhập mã vận đơn (AWB)"
   }
 }
