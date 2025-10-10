@@ -1,0 +1,11 @@
+{
+  "Navigation": {
+    "services": "Dịch Vụ",
+    "about": "Giới Thiệu",
+    "news": "Tin Tức",
+    "contact": "Liên Hệ"
+  },
+  "CtaButton": {
+    "quote": "Yêu Cầu Báo Giá"
+  }
+}

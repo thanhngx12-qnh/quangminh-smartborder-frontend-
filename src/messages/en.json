@@ -1,0 +1,11 @@
+{
+  "Navigation": {
+    "services": "Services",
+    "about": "About Us",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "CtaButton": {
+    "quote": "Request a Quote"
+  }
+}

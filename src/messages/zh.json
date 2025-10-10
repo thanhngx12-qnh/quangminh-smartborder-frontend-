@@ -1,0 +1,11 @@
+{
+  "Navigation": {
+    "services": "服务",
+    "about": "关于我们",
+    "news": "消息",
+    "contact": "联系"
+  },
+  "CtaButton": {
+    "quote": "要求报价"
+  }
+}
