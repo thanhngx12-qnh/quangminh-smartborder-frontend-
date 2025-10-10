@@ -33,5 +33,16 @@
     "ctaQuote": "Tra Cước Đặt Bãi",
     "ctaTrack": "Tra Vận Đơn",
     "trackingPlaceholder": "Nhập mã vận đơn (AWB)"
+  },
+  "Kpi": {
+    "storageTitle": "Kho Bãi",
+    "storageValue": "50,000 m²",
+    "storageDesc": "Đạt chuẩn quốc tế",
+    "containerTitle": "Container / Ngày",
+    "containerValue": "500+",
+    "containerDesc": "Năng lực thông quan",
+    "customsTitle": "Hải Quan",
+    "customsValue": "<2 Giờ",
+    "customsDesc": "Thời gian xử lý trung bình"
   }
 }
