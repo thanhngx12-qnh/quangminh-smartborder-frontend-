@@ -1,30 +1,31 @@
 // dir: ~/quangminh-smart-border/frontend/src/app/[locale]/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// Chúng ta sẽ không dùng bất kỳ hàm server nào của next-intl ở đây nữa
 import StyledComponentsRegistry from "@/lib/registry";
 import { Providers } from "@/app/providers";
+import Header from "@/components/layout/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = { /*...*/ };
+export const metadata: Metadata = {
+  title: "Quang Minh Smart Border",
+  description: "Modern Logistics Solutions at Ta Lung Border Gate",
+};
 
-// Chúng ta vẫn cần async để có thể await import
 export default async function LocaleLayout({
   children,
-  params: { locale }
+  params
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode; // <-- SỬA LỖI Ở ĐÂY: React.ReactNode (không có dấu gạch nối)
   params: { locale: string };
 }) {
+  const locale = params.locale;
+  const timeZone = 'Asia/Ho_Chi_Minh';
+  
   let messages;
   try {
-    // TỰ MÌNH IMPORT FILE MESSAGE DỰA TRÊN LOCALE TỪ PARAMS
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
-    console.error(`Could not load messages for locale: ${locale}`, error);
-    // Nếu không tìm thấy file message, chúng ta có thể dùng một file mặc định hoặc báo lỗi
-    // Ở đây, ta sẽ load file 'vi' làm fallback
     messages = (await import(`../../messages/vi.json`)).default;
   }
 
@@ -32,8 +33,10 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <StyledComponentsRegistry>
-          <Providers locale={locale} messages={messages}>
-            {children}
+          <Providers locale={locale} messages={messages} timeZone={timeZone}>
+            <Header />
+            <main>{children}</main>
+            {/* <Footer /> */}
           </Providers>
         </StyledComponentsRegistry>
       </body>

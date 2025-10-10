@@ -1,9 +1,14 @@
 {
   "Navigation": {
     "services": "Dịch Vụ",
+    "manifesto": "Biểu thiệu",
     "about": "Giới Thiệu",
     "news": "Tin Tức",
     "contact": "Liên Hệ"
+  },
+  "HeaderActions": {
+    "tracking": "Tracking",
+    "quote": "Quote"
   },
   "CtaButton": {
     "quote": "Yêu Cầu Báo Giá"
