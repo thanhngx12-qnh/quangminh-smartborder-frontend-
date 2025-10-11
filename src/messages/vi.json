@@ -48,5 +48,9 @@
   "FeaturedServices": {
     "title": "Dịch Vụ Nổi Bật",
     "description": "Chúng tôi cung cấp các giải pháp logistics toàn diện, được thiết kế để tối ưu hóa chuỗi cung ứng của bạn."
+  },
+  "LatestNews": {
+    "title": "Tin Tức & Sự Kiện",
+    "viewAll": "Xem tất cả tin tức"
   }
 }

@@ -1,6 +1,6 @@
 // dir: ~/quangminh-smart-border/frontend/src/lib/mock-data.ts
 
-import { Service } from '@/types';
+import { Service, News } from '@/types';
 
 export const mockFeaturedServices: Service[] = [
   {
@@ -68,4 +68,46 @@ export const mockFeaturedServices: Service[] = [
       }
     ]
   },
+];
+
+export const mockLatestNews: News[] = [
+  {
+    id: 1,
+    coverImage: '/news/news-1.jpg',
+    publishedAt: '2025-10-08T10:00:00Z',
+    translations: [
+      {
+        locale: 'vi',
+        title: 'Chính sách mới về thông quan hàng hóa tại cửa khẩu Tà Lùng',
+        slug: 'chinh-sach-moi-thong-quan-ta-lung',
+        excerpt: 'Cập nhật các quy định mới nhất có hiệu lực từ Quý 4, 2025, giúp doanh nghiệp tối ưu hóa quy trình xuất nhập khẩu...'
+      }
+    ]
+  },
+  {
+    id: 2,
+    coverImage: '/news/news-2.jpg',
+    publishedAt: '2025-09-25T14:30:00Z',
+    translations: [
+      {
+        locale: 'vi',
+        title: 'Quang Minh Logistics mở rộng hệ thống kho bãi thông minh',
+        slug: 'quang-minh-mo-rong-kho-bai-thong-minh',
+        excerpt: 'Với việc áp dụng công nghệ IoT và tự động hóa, hệ thống kho bãi mới hứa hẹn giảm 30% thời gian xử lý hàng hóa...'
+      }
+    ]
+  },
+  {
+    id: 3,
+    coverImage: '/news/news-3.jpg',
+    publishedAt: '2025-09-15T09:00:00Z',
+    translations: [
+      {
+        locale: 'vi',
+        title: 'Hội thảo Hợp tác Logistics Việt - Trung 2025 thành công tốt đẹp',
+        slug: 'hoi-thao-hop-tac-logistics-viet-trung-2025',
+        excerpt: 'Sự kiện quy tụ hơn 200 doanh nghiệp, mở ra nhiều cơ hội hợp tác và phát triển cho ngành logistics hai nước...'
+      }
+    ]
+  }
 ];

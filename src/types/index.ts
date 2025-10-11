@@ -14,3 +14,17 @@ export interface Service {
   coverImage?: string;
   translations: ServiceTranslation[];
 }
+
+export interface NewsTranslation {
+  locale: 'vi' | 'en' | 'zh';
+  title: string;
+  slug: string;
+  excerpt: string; // Tóm tắt
+}
+
+export interface News {
+  id: number;
+  coverImage?: string;
+  publishedAt?: string; // Dạng chuỗi ISO date
+  translations: NewsTranslation[];
+}
