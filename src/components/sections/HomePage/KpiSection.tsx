@@ -4,6 +4,7 @@
 import { useTranslations } from 'next-intl';
 import styled from 'styled-components';
 import { RiBuilding2Line, RiTruckLine, RiFileList3Line } from 'react-icons/ri';
+import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 
 // --- Styled Components ---
 const KpiWrapper = styled.section`
@@ -94,18 +95,21 @@ export default function KpiSection() {
     },
   ];
 
-  return (
+    return (
     <KpiWrapper>
       <KpiGrid>
         {kpiItems.map((item, index) => (
-          <KpiCard key={index}>
-            <IconWrapper>{item.icon}</IconWrapper>
-            <TextContent>
-              <h3>{item.value}</h3>
-              <p>{item.title}</p>
-              <span>{item.description}</span>
-            </TextContent>
-          </KpiCard>
+          // Áp dụng animation cho từng thẻ với một độ trễ nhỏ tăng dần
+          <FadeInWhenVisible key={index} transition={{ duration: 0.5, delay: index * 0.2 }}>
+            <KpiCard>
+              <IconWrapper>{item.icon}</IconWrapper>
+              <TextContent>
+                <h3>{item.value}</h3>
+                <p>{item.title}</p>
+                <span>{item.description}</span>
+              </TextContent>
+            </KpiCard>
+          </FadeInWhenVisible>
         ))}
       </KpiGrid>
     </KpiWrapper>
