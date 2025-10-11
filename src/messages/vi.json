@@ -44,5 +44,9 @@
     "customsTitle": "Hải Quan",
     "customsValue": "<2 Giờ",
     "customsDesc": "Thời gian xử lý trung bình"
+  },
+  "FeaturedServices": {
+    "title": "Dịch Vụ Nổi Bật",
+    "description": "Chúng tôi cung cấp các giải pháp logistics toàn diện, được thiết kế để tối ưu hóa chuỗi cung ứng của bạn."
   }
 }
