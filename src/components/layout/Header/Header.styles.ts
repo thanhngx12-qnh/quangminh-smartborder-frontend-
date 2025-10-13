@@ -148,3 +148,13 @@ export const HeaderIcons = styled.div`
     display: none; // Ẩn các icon và nút CTA trên mobile, có thể đưa chúng vào menu sau
   }
 `;
+
+export const TopBarLink = styled(Link)`
+  color: inherit; // Thừa hưởng màu từ cha
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
+  }
+`;

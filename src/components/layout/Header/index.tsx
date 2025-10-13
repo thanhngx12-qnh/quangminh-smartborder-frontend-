@@ -3,11 +3,12 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link, usePathname } from '@/navigation';
+// Import Link gốc để có thể sử dụng prop 'as'
+import { usePathname } from '@/navigation'; 
 import { RiSearchLine, RiSettings3Line, RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import Button from '@/components/ui/Button';
 
-// Import các styled components từ file riêng
+// Import các styled components
 import {
   HeaderWrapper,
   TopBar,
@@ -20,10 +21,11 @@ import {
   NavLinks,
   NavLink,
   HeaderIcons,
+  TopBarLink
 } from './Header.styles';
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false); // State để quản lý menu mobile
+  const [isOpen, setIsOpen] = useState(false);
 
   const tNav = useTranslations('Navigation');
   const tActions = useTranslations('HeaderActions');
@@ -38,22 +40,11 @@ export default function Header() {
     { href: '/contact', label: tNav('contact') },
   ];
 
-  // Logic để đóng menu khi chuyển trang
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  useEffect(() => { setIsOpen(false); }, [pathname]);
   
-  // Logic để ngăn scroll khi menu mở
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    // Cleanup function
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
   return (
@@ -69,12 +60,13 @@ export default function Header() {
             <span>🇬🇧</span>
             <span>🇨🇳</span>
           </LanguageSwitcher>
-          <Link href="/tracking">{tActions('tracking')}</Link>
-          <Link href="/quote">{tActions('quote')}</Link>
+          {/* SỬA LỖI Ở ĐÂY: Dùng `as="a"` */}
+          <TopBarLink as="a" href="/tracking">{tActions('tracking')}</TopBarLink>
+          <TopBarLink as="a" href="/quote">{tActions('quote')}</TopBarLink>
         </Actions>
       </TopBar>
       <MainNav>
-        <Logo href="/">
+        <Logo as="a" href="/">
           QUANG MINH
           <br />
           Smart Border
@@ -82,15 +74,17 @@ export default function Header() {
 
         <NavLinks $isOpen={isOpen}>
           {navItems.map((item) => (
-            <NavLink 
-              key={item.href} 
+             // SỬA LỖI Ở ĐÂY: Vẫn sử dụng NavLink (styled(Link)) như bình thường
+             // Vì NavLink là một styled-component, nó xử lý prop tốt hơn
+            <NavLink
+              key={item.href}
+              as="a"
               href={item.href}
               $isActive={pathname === item.href}
             >
               {item.label}
             </NavLink>
           ))}
-          {/* Có thể thêm các nút CTA vào đây để hiển thị trong menu mobile */}
         </NavLinks>
 
         <HeaderIcons>

@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { News } from '@/types';
 import Button from '@/components/ui/Button';
 
-// --- Styled Components ---
+// --- Styled Components (Không thay đổi) ---
 const SectionWrapper = styled.section`
   padding: 80px 20px;
   background-color: ${({ theme }) => theme.colors.surface};
@@ -43,7 +43,7 @@ const NewsCard = styled(Link)`
 
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px F30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -69,7 +69,6 @@ const CardContent = styled.div`
     font-weight: 600;
     color: ${({ theme }) => theme.colors.primary};
     margin-bottom: 12px;
-    // Giới hạn 2 dòng
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -80,7 +79,6 @@ const CardContent = styled.div`
     font-size: 16px;
     color: #666;
     line-height: 1.6;
-    // Giới hạn 3 dòng
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -99,7 +97,6 @@ interface LatestNewsSectionProps {
   news: News[];
 }
 
-// Helper để format ngày tháng
 const formatDate = (dateString: string, locale: string) => {
   return new Intl.DateTimeFormat(locale, {
     year: 'numeric',
@@ -121,7 +118,8 @@ export default function LatestNewsSection({ news }: LatestNewsSectionProps) {
         {news.map((article) => {
           const translation = article.translations.find(t => t.locale === locale) || article.translations[0];
           return (
-            <NewsCard key={article.id} href={`/news/${translation.slug}`}>
+            // SỬA LỖI Ở ĐÂY: Thêm as="a"
+            <NewsCard key={article.id} href={`/news/${translation.slug}`} as="a">
               <ImageWrapper>
                 <Image src={article.coverImage || '/placeholder.jpg'} alt={translation.title} fill />
               </ImageWrapper>
@@ -135,10 +133,10 @@ export default function LatestNewsSection({ news }: LatestNewsSectionProps) {
         })}
       </NewsGrid>
       <ViewAllButtonWrapper>
-        <Button as={Link} href="/news" variant="secondary">
+        <Button as="a" href="/news" variant="secondary">
           {t('viewAll')}
         </Button>
-      </ViewAllButtonWrapper>
+    </ViewAllButtonWrapper>
     </SectionWrapper>
   );
 }

@@ -9,6 +9,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  output: 'standalone',
 };
  
 export default withNextIntl(nextConfig);

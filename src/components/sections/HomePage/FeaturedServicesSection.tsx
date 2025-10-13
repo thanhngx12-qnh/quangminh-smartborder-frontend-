@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import styled from 'styled-components';
 import { Link } from '@/navigation';
 import Image from 'next/image';
-import { Service } from '@/types'; // Import "hợp đồng"
+import { Service } from '@/types';
 
 // --- Styled Components ---
 
@@ -41,6 +41,7 @@ const ServicesGrid = styled.div`
   margin: 0 auto;
 `;
 
+// Định nghĩa ServiceCard vẫn là styled(Link)
 const ServiceCard = styled(Link)`
   display: block;
   border-radius: 12px;
@@ -61,7 +62,7 @@ const ImageWrapper = styled.div`
   height: 200px;
   
   img {
-    object-fit: cover; // Đảm bảo ảnh luôn vừa vặn
+    object-fit: cover;
   }
 `;
 
@@ -84,7 +85,6 @@ const CardContent = styled.div`
 
 // --- Main Component ---
 
-// Component này nhận một mảng các dịch vụ làm prop
 interface FeaturedServicesSectionProps {
   services: Service[];
 }
@@ -101,16 +101,16 @@ export default function FeaturedServicesSection({ services }: FeaturedServicesSe
       </SectionHeader>
       <ServicesGrid>
         {services.map((service) => {
-          // Tìm bản dịch phù hợp với ngôn ngữ hiện tại
           const translation = service.translations.find(t => t.locale === locale) || service.translations[0];
           
           return (
-            <ServiceCard key={service.id} href={`/services/${translation.slug}`}>
+            // SỬA LỖI Ở ĐÂY: Thêm prop as="a"
+            <ServiceCard key={service.id} href={`/services/${translation.slug}`} as="a">
               <ImageWrapper>
                 <Image 
                   src={service.coverImage || '/placeholder.jpg'} 
                   alt={translation.title} 
-                  fill // Thuộc tính 'fill' giúp ảnh tự lấp đầy container
+                  fill
                 />
               </ImageWrapper>
               <CardContent>

@@ -1,0 +1,10 @@
+# dir: ~/quangminh-smart-border/frontend/.dockerignore
+
+# Các dependencies, sẽ được cài đặt trong container
+node_modules
+
+# Các file build, sẽ được tạo ra trong container
+.next
+
+# File môi trường local
+.env.local

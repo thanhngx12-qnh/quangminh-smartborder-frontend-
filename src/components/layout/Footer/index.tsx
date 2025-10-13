@@ -54,7 +54,9 @@ export default function Footer() {
           <h3>{t('sitemap')}</h3>
           <LinkList>
             {navLinks.map(link => (
-              <li key={link.href}><FooterLink href={link.href}>{link.label}</FooterLink></li>
+              <li key={link.href}>
+                <FooterLink as="a" href={link.href}>{link.label}</FooterLink>
+              </li>
             ))}
           </LinkList>
         </FooterColumn>
@@ -63,7 +65,7 @@ export default function Footer() {
           <h3>{t('legal')}</h3>
           <LinkList>
             {legalLinks.map(link => (
-              <li key={link.href}><FooterLink href={link.href}>{link.label}</FooterLink></li>
+              <li key={link.href}><FooterLink as="a" href={link.href}>{link.label}</FooterLink></li>
             ))}
           </LinkList>
         </FooterColumn>
