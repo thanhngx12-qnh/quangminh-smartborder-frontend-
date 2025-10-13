@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
   /* Định nghĩa font face cho Inter */
   @font-face {
     font-family: 'Inter';
-    src: url('/assets/fonts/Inter-Regular.ttf') format('truetype');
+    src: url('/fonts/Inter-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -13,7 +13,7 @@ export const GlobalStyles = createGlobalStyle`
 
   @font-face {
     font-family: 'Inter';
-    src: url('/assets/fonts/Inter-SemiBold.ttf') format('truetype');
+    src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -21,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
   
   @font-face {
     font-family: 'Inter';
-    src: url('/assets/fonts/Inter-Bold.ttf') format('truetype');
+    src: url('/fonts/Inter-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
