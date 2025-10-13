@@ -1,11 +1,56 @@
 {
   "Navigation": {
     "services": "Services",
+    "manifesto": "Manifesto",
     "about": "About Us",
     "news": "News",
     "contact": "Contact"
   },
+  "HeaderActions": {
+    "tracking": "Tracking",
+    "quote": "Quote"
+  },
   "CtaButton": {
     "quote": "Request a Quote"
+  },
+  "Footer": {
+    "companyName": "QUANG MINH JOINT STOCK COMPANY",
+    "address": "Ta Lung Border Gate, Phuc Hoa District, Cao Bang Province, Vietnam",
+    "sitemap": "Sitemap",
+    "legal": "Legal",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "quickContact": "Quick Contact",
+    "formName": "Full Name",
+    "formEmail": "Your Email",
+    "formMessage": "Your Message...",
+    "formSend": "Send Request",
+    "copyright": "© 2025 Quang Minh Joint Stock Company. All rights reserved."
+  },
+  "Hero": {
+    "title": "QUANG MINH",
+    "subtitle": "Smart Border Logistics.",
+    "ctaQuote": "Request a Quote",
+    "ctaTrack": "Track Shipment",
+    "trackingPlaceholder": "Enter AWB number"
+  },
+  "Kpi": {
+    "storageTitle": "Warehousing",
+    "storageValue": "50,000 m²",
+    "storageDesc": "International standard",
+    "containerTitle": "Containers / Day",
+    "containerValue": "500+",
+    "containerDesc": "Customs clearance capacity",
+    "customsTitle": "Customs",
+    "customsValue": "<2 Hours",
+    "customsDesc": "Average processing time"
+  },
+  "FeaturedServices": {
+    "title": "Featured Services",
+    "description": "We provide comprehensive logistics solutions designed to optimize your supply chain."
+  },
+  "LatestNews": {
+    "title": "News & Events",
+    "viewAll": "View All News"
   }
 }

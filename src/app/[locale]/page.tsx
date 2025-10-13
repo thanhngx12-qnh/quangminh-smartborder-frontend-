@@ -1,31 +1,39 @@
 // dir: ~/quangminh-smart-border/frontend/src/app/[locale]/page.tsx
 'use client';
 
-// Bỏ import useLocale và useFeaturedServices vì không dùng đến nữa
-// import { useLocale } from 'next-intl';
-// import { useFeaturedServices } from '@/hooks/useServices';
-
+import { useLocale } from 'next-intl';
 import HeroSection from '@/components/sections/HomePage/HeroSection';
 import KpiSection from '@/components/sections/HomePage/KpiSection';
 import FeaturedServicesSection from '@/components/sections/HomePage/FeaturedServicesSection';
 import LatestNewsSection from '@/components/sections/HomePage/LatestNewsSection';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
+import { useFeaturedServices } from '@/hooks/useServices';
+import { useLatestNews } from '@/hooks/useNews'; // <-- Import hook mới
 
-// Import cả hai bộ dữ liệu mock
-import { mockFeaturedServices, mockLatestNews } from '@/lib/mock-data';
+// Component Skeleton để hiển thị khi đang tải dữ liệu
+const SkeletonLoader = () => (
+  <div style={{ textAlign: 'center', padding: '80px' }}>Loading content...</div>
+);
 
 export default function Home() {
-  // Bỏ toàn bộ logic gọi hook SWR
-  // const locale = useLocale();
-  // const { services, isLoading, isError } = useFeaturedServices(locale);
+  const locale = useLocale();
   
-  // Sử dụng trực tiếp dữ liệu mock
-  const featuredServices = mockFeaturedServices;
-  const latestNews = mockLatestNews;
+  // Gọi cả hai hook để fetch dữ liệu song song
+  const { services, isLoading: isLoadingServices, isError: isErrorServices } = useFeaturedServices(locale);
+  const { news, isLoading: isLoadingNews, isError: isErrorNews } = useLatestNews(locale);
 
-  // Bỏ các đoạn kiểm tra isLoading và isError
-  // if (isLoading) { ... }
-  // if (isError) { ... }
+  // Hiển thị trạng thái loading nếu một trong hai đang tải
+  if (isLoadingServices || isLoadingNews) {
+    return <SkeletonLoader />;
+  }
+
+  // Hiển thị lỗi nếu một trong hai gặp lỗi
+  if (isErrorServices) {
+    return <div>Failed to load services.</div>;
+  }
+  if (isErrorNews) {
+    return <div>Failed to load news.</div>;
+  }
 
   return (
     <>
@@ -35,20 +43,19 @@ export default function Home() {
         <KpiSection />
       </FadeInWhenVisible>
       
-      {/* 
-        Bây giờ `featuredServices` luôn tồn tại (vì nó là mock data),
-        nên chúng ta có thể bỏ điều kiện `services &&` nếu muốn,
-        nhưng giữ lại cũng không sao.
-      */}
-      {featuredServices && (
+      {/* Render section services nếu có dữ liệu */}
+      {services && services.length > 0 && (
         <FadeInWhenVisible>
-          <FeaturedServicesSection services={featuredServices} />
+          <FeaturedServicesSection services={services} />
         </FadeInWhenVisible>
       )}
 
-      <FadeInWhenVisible>
-        <LatestNewsSection news={latestNews} />
-      </FadeInWhenVisible>
+      {/* Render section news nếu có dữ liệu */}
+      {news && news.length > 0 && (
+        <FadeInWhenVisible>
+          <LatestNewsSection news={news} />
+        </FadeInWhenVisible>
+      )}
     </>
   );
 }

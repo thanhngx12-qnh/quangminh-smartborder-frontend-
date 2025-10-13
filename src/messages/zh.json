@@ -1,11 +1,56 @@
 {
   "Navigation": {
     "services": "服务",
+    "manifesto": "宣言",
     "about": "关于我们",
-    "news": "消息",
-    "contact": "联系"
+    "news": "新闻",
+    "contact": "联系我们"
+  },
+  "HeaderActions": {
+    "tracking": "追踪",
+    "quote": "报价"
   },
   "CtaButton": {
-    "quote": "要求报价"
+    "quote": "请求报价"
+  },
+  "Footer": {
+    "companyName": "光明股份有限公司",
+    "address": "越南高平省复和县塔隆口岸",
+    "sitemap": "网站地图",
+    "legal": "法律信息",
+    "terms": "使用条款",
+    "privacy": "隐私政策",
+    "quickContact": "快速联系",
+    "formName": "姓名",
+    "formEmail": "您的邮箱",
+    "formMessage": "您的留言...",
+    "formSend": "发送请求",
+    "copyright": "© 2025 光明股份有限公司。版权所有。"
+  },
+  "Hero": {
+    "title": "光明",
+    "subtitle": "智慧边境物流。",
+    "ctaQuote": "请求报价",
+    "ctaTrack": "追踪货物",
+    "trackingPlaceholder": "输入运单号 (AWB)"
+  },
+  "Kpi": {
+    "storageTitle": "仓储面积",
+    "storageValue": "50,000 平方米",
+    "storageDesc": "国际标准",
+    "containerTitle": "集装箱 / 天",
+    "containerValue": "500+",
+    "containerDesc": "通关能力",
+    "customsTitle": "海关",
+    "customsValue": "<2 小时",
+    "customsDesc": "平均处理时间"
+  },
+  "FeaturedServices": {
+    "title": "特色服务",
+    "description": "我们提供全面的物流解决方案，旨在优化您的供应链。"
+  },
+  "LatestNews": {
+    "title": "新闻与活动",
+    "viewAll": "查看所有新闻"
   }
 }

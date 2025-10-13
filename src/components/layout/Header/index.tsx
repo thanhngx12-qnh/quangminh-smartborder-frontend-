@@ -88,7 +88,7 @@ export default function Header() {
         </NavLinks>
 
         <HeaderIcons>
-          <Button>{tCta('quote')}</Button>
+          <Button variant="primary">{tCta('quote')}</Button>
           <RiSearchLine />
           <RiSettings3Line />
         </HeaderIcons>
