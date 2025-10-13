@@ -19,8 +19,8 @@ COPY . .
 
 # Khai báo biến môi trường build-time
 # Biến này sẽ được nhận từ docker-compose.yml
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+# ARG NEXT_PUBLIC_API_URL
+# ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
 # Chạy lệnh build của Next.js
 RUN npm run build

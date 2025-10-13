@@ -1,14 +1,8 @@
 // dir: ~/quangminh-smart-border/frontend/src/app/[locale]/layout.tsx
 import StyledComponentsRegistry from "@/lib/registry";
 import { Providers } from "@/app/providers";
-
-// BỎ TẤT CẢ CÁC IMPORT KHÔNG DÙNG ĐẾN
-// import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
-
-// Bỏ metadata và Inter đi vì chúng ta đã xóa chúng ở bước trước
-// export const metadata = { ... };
-// const inter = ...;
+import Header from "@/components/layout/Header"; // <-- THÊM LẠI IMPORT
+import Footer from "@/components/layout/Footer"; // <-- THÊM LẠI IMPORT
 
 // Props bây giờ phải nhận một Promise
 type LocaleLayoutProps = {
@@ -31,18 +25,19 @@ export default async function LocaleLayout({
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch {
-    // Bỏ biến 'error' đi để tránh warning
     console.error(`Could not load messages for locale: ${locale}. Falling back to 'vi'.`);
     messages = (await import(`../../messages/vi.json`)).default;
   }
 
   return (
     <html lang={locale}>
-      {/* Bỏ className đi vì không còn 'inter' nữa */}
       <body>
         <StyledComponentsRegistry>
           <Providers locale={locale} messages={messages} timeZone={timeZone}>
-            {children}
+            {/* THÊM HEADER VÀ FOOTER VÀO ĐÂY */}
+            <Header />
+            <main>{children}</main>
+            <Footer />
           </Providers>
         </StyledComponentsRegistry>
       </body>

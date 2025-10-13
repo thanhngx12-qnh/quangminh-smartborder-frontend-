@@ -1,11 +1,11 @@
 // dir: ~/quangminh-smart-border/frontend/src/hooks/useServices.ts
 import useSWR from 'swr';
-import { Service } from '@/types'; // Import kiểu dữ liệu
+import { Service } from '@/types';
 
 export function useFeaturedServices(locale: string) {
-  // Key của SWR: endpoint API
-  // SWR sẽ tự động gọi fetcher với key này
-  const { data, error, isLoading } = useSWR<Service[]>(`/services?featured=true&locale=${locale}`);
+  // Key của SWR giờ là một mảng: [endpoint, params object]
+  // Điều này đảm bảo URL gọi đi luôn là /services
+  const { data, error, isLoading } = useSWR<Service[]>(['/services', { featured: true, locale }]);
 
   return {
     services: data,
@@ -13,7 +13,3 @@ export function useFeaturedServices(locale: string) {
     isError: error,
   };
 }
-
-// Có thể tạo thêm các hook khác ở đây
-// export function useAllServices(locale: string) { ... }
-// export function useServiceBySlug(slug: string, locale: string) { ... }

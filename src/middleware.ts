@@ -1,12 +1,15 @@
 // dir: ~/quangminh-smart-border/frontend/middleware.ts
 import createMiddleware from 'next-intl/middleware';
  
+const locales = ['vi', 'en', 'zh'];
+ 
 export default createMiddleware({
-  locales: ['vi', 'en', 'zh'],
+  locales: locales,
   defaultLocale: 'vi',
-  localePrefix: 'always' // <-- THÊM DÒNG NÀY
+  localePrefix: 'always'
 });
  
 export const config = {
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  // Skip all paths that should not be internationalized
+  matcher: ['/((?!api|_next|.*\\..*).*)']
 };
