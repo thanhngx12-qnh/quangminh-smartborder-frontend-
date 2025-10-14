@@ -66,5 +66,26 @@
     "title": "404 - Không Tìm Thấy Trang",
     "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
     "goHome": "Quay về Trang Chủ"
-  }}
+  }},
+  "AboutPage": {
+    "heroTitle": "Về Quang Minh",
+    "heroSubtitle": "Tiên phong giải pháp logistics thông minh tại biên giới.",
+    "missionTitle": "Sứ Mệnh & Tầm Nhìn",
+    "missionText": "Sứ mệnh của chúng tôi là cung cấp các giải pháp logistics minh bạch, hiệu quả và bền vững, phá vỡ các rào cản thương mại và kết nối doanh nghiệp Việt Nam với thế giới. Tầm nhìn của chúng tôi là trở thành nhà cung cấp dịch vụ 'Smart Border Logistics' hàng đầu khu vực.",
+    "timelineTitle": "Hành Trình Phát Triển",
+    "leadershipTitle": "Đội Ngũ Lãnh Đạo",
+    "timeline": {
+      "y2025": "Thành lập Công ty Cổ phần Quang Minh. Khởi công xây dựng trung tâm logistics tại cửa khẩu Tà Lùng.",
+      "y2026": "Chính thức đi vào hoạt động. Triển khai thành công hệ thống tracking vận đơn thông minh.",
+      "y2027": "Mở rộng chi nhánh tại cửa khẩu Trà Lĩnh, nâng tổng diện tích kho bãi lên 100,000 m²."
+    },
+    "leadership": {
+      "person1Name": "Nguyễn Văn An",
+      "person1Title": "Tổng Giám Đốc",
+      "person2Name": "Trần Thị Bình",
+      "person2Title": "Phó Giám Đốc Vận hành",
+      "person3Name": "Lê Minh Cường",
+      "person3Title": "Giám Đốc Kinh Doanh"
+    }
+  }
 }
