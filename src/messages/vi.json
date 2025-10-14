@@ -53,6 +53,10 @@
     "title": "Tin Tức & Sự Kiện",
     "viewAll": "Xem tất cả tin tức"
   },
+  "ServicesPage": {
+    "title": "Tất Cả Dịch Vụ",
+    "description": "Khám phá đầy đủ các giải pháp logistics chuyên nghiệp mà Quang Minh cung cấp, được thiết kế để đáp ứng mọi nhu cầu của bạn."
+  },
   "ServiceDetail": {
     "ctaTitle": "Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?",
     "ctaButton": "Yêu Cầu Báo Giá Ngay",

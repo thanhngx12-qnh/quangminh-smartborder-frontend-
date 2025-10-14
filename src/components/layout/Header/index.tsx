@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from '@/navigation';
 import { 
   RiSearchLine, 
-  RiSettings3Line, 
   RiMenu3Line, 
   RiCloseLine, 
   RiSunLine, 

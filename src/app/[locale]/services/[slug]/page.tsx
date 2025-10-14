@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown'; // <-- Import
 import Button from '@/components/ui/Button';
-import { Link } from '@/navigation';
 import OtherServicesSection from '@/components/sections/ServiceDetailPage/OtherServicesSection';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 
