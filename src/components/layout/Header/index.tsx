@@ -3,29 +3,39 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-// Import Link gốc để có thể sử dụng prop 'as'
-import { usePathname } from '@/navigation'; 
-import { RiSearchLine, RiSettings3Line, RiMenu3Line, RiCloseLine } from 'react-icons/ri';
+import { usePathname } from '@/navigation';
+import { 
+  RiSearchLine, 
+  RiSettings3Line, 
+  RiMenu3Line, 
+  RiCloseLine, 
+  RiSunLine, 
+  RiMoonLine 
+} from 'react-icons/ri';
 import Button from '@/components/ui/Button';
+import { useUIStore } from '@/hooks/useUIStore'; // Import store quản lý UI
+import LanguageSwitcher from './LanguageSwitcher'; // Import component đổi ngôn ngữ
+import SearchModal from './SearchModal';
 
-// Import các styled components
+// Import các styled components từ file riêng
 import {
   HeaderWrapper,
   TopBar,
   ContactInfo,
   Actions,
-  LanguageSwitcher,
   MainNav,
   Logo,
   MenuIcon,
   NavLinks,
   NavLink,
   HeaderIcons,
-  TopBarLink
+  TopBarLink,
 } from './Header.styles';
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // State cho menu mobile
+  const { theme, toggleTheme } = useUIStore(); // Lấy state và action từ store
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const tNav = useTranslations('Navigation');
   const tActions = useTranslations('HeaderActions');
@@ -40,14 +50,21 @@ export default function Header() {
     { href: '/contact', label: tNav('contact') },
   ];
 
-  useEffect(() => { setIsOpen(false); }, [pathname]);
+  // Tự động đóng menu khi chuyển trang
+  useEffect(() => { 
+    setIsOpen(false); 
+  }, [pathname]);
   
+  // Khóa cuộn trang khi menu mobile mở
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
-    return () => { document.body.style.overflow = 'unset'; };
+    return () => { 
+      document.body.style.overflow = 'unset'; 
+    };
   }, [isOpen]);
 
   return (
+    <>
     <HeaderWrapper>
       <TopBar>
         <ContactInfo>
@@ -55,12 +72,8 @@ export default function Header() {
           <span>Email: info@quangminh.vn</span>
         </ContactInfo>
         <Actions>
-          <LanguageSwitcher>
-            <span>🇻🇳</span>
-            <span>🇬🇧</span>
-            <span>🇨🇳</span>
-          </LanguageSwitcher>
-          {/* SỬA LỖI Ở ĐÂY: Dùng `as="a"` */}
+          {/* Component đổi ngôn ngữ đã được tách riêng */}
+          <LanguageSwitcher />
           <TopBarLink as="a" href="/tracking">{tActions('tracking')}</TopBarLink>
           <TopBarLink as="a" href="/quote">{tActions('quote')}</TopBarLink>
         </Actions>
@@ -74,8 +87,6 @@ export default function Header() {
 
         <NavLinks $isOpen={isOpen}>
           {navItems.map((item) => (
-             // SỬA LỖI Ở ĐÂY: Vẫn sử dụng NavLink (styled(Link)) như bình thường
-             // Vì NavLink là một styled-component, nó xử lý prop tốt hơn
             <NavLink
               key={item.href}
               as="a"
@@ -89,8 +100,23 @@ export default function Header() {
 
         <HeaderIcons>
           <Button variant="primary">{tCta('quote')}</Button>
-          <RiSearchLine />
-          <RiSettings3Line />
+           <RiSearchLine onClick={() => setIsSearchOpen(true)} /> 
+          {/* Nút chuyển đổi theme với logic và icon thay đổi */}
+          <button 
+            onClick={toggleTheme} 
+            aria-label="Toggle theme" 
+            style={{ 
+              background: 'none', 
+              border: 'none', 
+              color: 'inherit', 
+              fontSize: '22px', 
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
+          </button>
         </HeaderIcons>
         
         <MenuIcon onClick={() => setIsOpen(!isOpen)}>
@@ -98,5 +124,7 @@ export default function Header() {
         </MenuIcon>
       </MainNav>
     </HeaderWrapper>
+    <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+    </>
   );
 }

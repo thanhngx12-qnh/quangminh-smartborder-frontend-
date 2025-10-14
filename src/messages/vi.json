@@ -36,7 +36,7 @@
   },
   "Kpi": {
     "storageTitle": "Kho Bãi",
-    "storageValue": "50,000 m²",
+    "storageValue": "5,000 m²",
     "storageDesc": "Đạt chuẩn quốc tế",
     "containerTitle": "Container / Ngày",
     "containerValue": "500+",
@@ -52,5 +52,10 @@
   "LatestNews": {
     "title": "Tin Tức & Sự Kiện",
     "viewAll": "Xem tất cả tin tức"
+  },
+  "ServiceDetail": {
+    "ctaTitle": "Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?",
+    "ctaButton": "Yêu Cầu Báo Giá Ngay",
+    "otherServicesTitle": "Khám Phá Các Dịch Vụ Khác"
   }
 }

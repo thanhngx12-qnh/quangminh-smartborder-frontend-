@@ -14,7 +14,7 @@ const CardWrapper = styled(Link)`
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: ${({ theme }) => theme.colors.surface};
+  background-color: ${({ theme }) => theme.colors.surface};     
 
   &:hover {
     transform: translateY(-10px);
@@ -44,7 +44,7 @@ const CardContent = styled.div`
 
   p {
     font-size: 16px;
-    color: #666;
+    color: ${({ theme }) => theme.colors.textSecondary}; 
     line-height: 1.6;
   }
 `;

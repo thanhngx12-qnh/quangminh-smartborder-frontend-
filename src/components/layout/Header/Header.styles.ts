@@ -7,10 +7,10 @@ export const HeaderWrapper = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.header.bg};
+  color: ${({ theme }) => theme.colors.header.text};
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 `;
 
 export const TopBar = styled.div`
@@ -18,11 +18,11 @@ export const TopBar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 8px 60px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderLight};
   font-size: 14px;
 
   @media (max-width: 992px) {
-    display: none; // Ẩn top bar trên mobile cho gọn
+    display: none;
   }
 `;
 
@@ -41,6 +41,7 @@ export const LanguageSwitcher = styled.div`
   display: flex;
   gap: 8px;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 export const MainNav = styled.div`
@@ -48,7 +49,7 @@ export const MainNav = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px 60px;
-  position: relative; // Cần cho menu mobile
+  position: relative;
 
   @media (max-width: 992px) {
     padding: 16px 20px;
@@ -59,45 +60,42 @@ export const Logo = styled(Link)`
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
-  z-index: 10; // Đảm bảo logo luôn ở trên
+  z-index: 10;
+  color: ${({ theme }) => theme.colors.header.text};
 `;
 
-// Menu Icon (Hamburger)
 export const MenuIcon = styled.div`
-  display: none; // Mặc định ẩn trên desktop
+  display: none;
   font-size: 28px;
   cursor: pointer;
   z-index: 10;
+  color: ${({ theme }) => theme.colors.header.text};
 
   @media (max-width: 992px) {
-    display: block; // Hiển thị trên mobile
+    display: block;
   }
 `;
 
-// NavLinks Wrapper
 export const NavLinks = styled.nav<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
   gap: 40px;
 
   @media (max-width: 992px) {
-    /* Style cho menu mobile */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.background};
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 32px;
     
-    /* Hiệu ứng trượt vào từ bên phải */
     transform: ${({ $isOpen }) => $isOpen ? 'translateX(0)' : 'translateX(100%)'};
     transition: transform 0.3s ease-in-out;
     
-    /* Ẩn đi khi không mở */
     opacity: ${({ $isOpen }) => $isOpen ? 1 : 0};
     pointer-events: ${({ $isOpen }) => $isOpen ? 'auto' : 'none'};
   }
@@ -107,7 +105,9 @@ export const NavLink = styled(Link)<{ $isActive: boolean }>`
   font-size: 16px;
   font-weight: 500;
   position: relative;
-  color: ${({ theme, $isActive }) => ($isActive ? theme.colors.accent : theme.colors.white)};
+  color: ${({ theme, $isActive }) => 
+    $isActive ? theme.colors.accent : theme.colors.header.text
+  };
   
   &::after {
     content: '';
@@ -126,7 +126,12 @@ export const NavLink = styled(Link)<{ $isActive: boolean }>`
   }
 
   @media (max-width: 992px) {
-    font-size: 24px; // Chữ to hơn trong menu mobile
+    font-size: 24px;
+    color: ${({ theme }) => theme.colors.text};
+    
+    &:hover {
+      color: ${({ theme }) => theme.colors.accent};
+    }
   }
 `;
 
@@ -139,18 +144,20 @@ export const HeaderIcons = styled.div`
   & > * {
     cursor: pointer;
     transition: color 0.2s ease;
+    color: ${({ theme }) => theme.colors.header.text};
+    
     &:hover {
       color: ${({ theme }) => theme.colors.accent};
     }
   }
 
   @media (max-width: 992px) {
-    display: none; // Ẩn các icon và nút CTA trên mobile, có thể đưa chúng vào menu sau
+    display: none;
   }
 `;
 
 export const TopBarLink = styled(Link)`
-  color: inherit; // Thừa hưởng màu từ cha
+  color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
 

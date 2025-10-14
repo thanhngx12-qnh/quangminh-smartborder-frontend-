@@ -39,3 +39,16 @@ export function useAllServices(locale: string) {
     isError: error,
   };
 }
+
+export function useServiceBySlug(slug: string, locale: string) {
+  // SỬA LẠI KEY Ở ĐÂY
+  // Truyền một object params rỗng để khớp với fetcher
+  const key = slug && locale ? [`/services/slug/${locale}/${slug}`, {}] : null;
+  const { data, error, isLoading } = useSWR<Service>(key);
+
+  return {
+    service: data,
+    isLoading,
+    isError: error,
+  };
+} 

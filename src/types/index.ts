@@ -1,4 +1,3 @@
-// Chúng ta sẽ tạo một file để định nghĩa các kiểu dữ liệu dùng chung
 // dir: ~/quangminh-smart-border/frontend/src/types/index.ts
 
 export interface ServiceTranslation {
@@ -6,6 +5,7 @@ export interface ServiceTranslation {
   title: string;
   slug: string;
   shortDesc: string;
+  content?: string; // <-- SỬA LỖI Ở ĐÂY: Thêm 'content' (có thể là optional)
 }
 
 export interface Service {
@@ -19,12 +19,13 @@ export interface NewsTranslation {
   locale: 'vi' | 'en' | 'zh';
   title: string;
   slug: string;
-  excerpt: string; // Tóm tắt
+  excerpt: string;
+  content?: string; // <-- Thêm 'content' cho News luôn cho nhất quán
 }
 
 export interface News {
   id: number;
   coverImage?: string;
-  publishedAt?: string; // Dạng chuỗi ISO date
+  publishedAt?: string;
   translations: NewsTranslation[];
 }

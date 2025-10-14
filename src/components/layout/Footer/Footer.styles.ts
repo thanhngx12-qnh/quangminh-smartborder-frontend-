@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Link } from '@/navigation';
 
 export const FooterWrapper = styled.footer`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: rgba(255, 255, 255, 0.7);
+  background-color: ${({ theme }) => theme.colors.footer.bg};
+  color: ${({ theme }) => theme.colors.footer.text};
   padding-top: 60px;
 `;
 
@@ -31,7 +31,7 @@ export const FooterColumn = styled.div`
   h3 {
     font-size: 18px;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.footer.text};
     margin-bottom: 8px;
   }
 
@@ -39,6 +39,7 @@ export const FooterColumn = styled.div`
     font-style: normal;
     font-size: 14px;
     line-height: 1.6;
+    color: ${({ theme }) => theme.colors.footer.textSecondary};
   }
 `;
 
@@ -46,7 +47,7 @@ export const Logo = styled.h2`
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.footer.text};
   margin-bottom: 8px;
 `;
 
@@ -61,7 +62,9 @@ export const SocialLinks = styled.div`
   }
   
   a {
+    color: ${({ theme }) => theme.colors.footer.textSecondary};
     transition: color 0.2s ease;
+    
     &:hover {
       color: ${({ theme }) => theme.colors.accent};
     }
@@ -77,7 +80,9 @@ export const LinkList = styled.ul`
 
 export const FooterLink = styled(Link)`
   font-size: 14px;
+  color: ${({ theme }) => theme.colors.footer.textSecondary};
   transition: color 0.2s ease;
+  
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
   }
@@ -91,20 +96,21 @@ export const ContactForm = styled.form`
   input, textarea {
     width: 100%;
     padding: 12px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.05);
-    color: ${({ theme }) => theme.colors.white};
+    border-radius: 6px;
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    background-color: ${({ theme }) => theme.colors.surface};
+    color: ${({ theme }) => theme.colors.text};
     font-family: inherit;
     font-size: 14px;
     
     &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+      color: ${({ theme }) => theme.colors.textSecondary};
     }
 
     &:focus {
       outline: none;
       border-color: ${({ theme }) => theme.colors.accent};
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
     }
   }
 
@@ -115,7 +121,7 @@ export const ContactForm = styled.form`
 `;
 
 export const MapWrapper = styled.div`
-  grid-column: span 2; // Chiếm 2 cột
+  grid-column: span 2;
   
   iframe {
     width: 100%;
@@ -130,12 +136,12 @@ export const MapWrapper = styled.div`
   }
 `;
 
-
 export const CopyrightBar = styled.div`
-  background-color: #000;
-  color: rgba(255, 255, 255, 0.5);
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.textSecondary};
   text-align: center;
   padding: 16px 20px;
   margin-top: 60px;
   font-size: 12px;
+  border-top: 1px solid ${({ theme }) => theme.colors.divider};
 `;

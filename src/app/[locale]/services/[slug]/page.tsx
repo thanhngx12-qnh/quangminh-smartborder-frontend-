@@ -1,0 +1,175 @@
+// dir: ~/quangminh-smart-border/frontend/src/app/[locale]/services/[slug]/page.tsx
+'use client';
+
+import { useLocale, useTranslations } from 'next-intl';
+import { useServiceBySlug, useAllServices } from '@/hooks/useServices';
+import styled from 'styled-components';
+import Image from 'next/image';
+import ReactMarkdown from 'react-markdown'; // <-- Import
+import Button from '@/components/ui/Button';
+import { Link } from '@/navigation';
+import OtherServicesSection from '@/components/sections/ServiceDetailPage/OtherServicesSection';
+import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
+
+// --- Styled Components ---
+const PageWrapper = styled.div`
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+const HeroWrapper = styled.section`
+  position: relative;
+  height: 400px;
+  color: ${({ theme }) => theme.colors.white};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6));
+    z-index: 1;
+  }
+`;
+
+const HeroImage = styled(Image)`
+  object-fit: cover;
+`;
+
+const HeroContent = styled.div`
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+`;
+
+const ContentWrapper = styled.main`
+  max-width: 800px;
+  margin: -80px auto 0 auto;
+  position: relative;
+  z-index: 3;
+  background-color: ${({ theme }) => theme.colors.background};
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+// Component để style nội dung Markdown
+const MarkdownContent = styled.div`
+  font-size: 18px;
+  line-height: 1.8;
+  color: ${({ theme }) => theme.colors.textSecondary};
+
+  h2, h3 {
+    color: ${({ theme }) => theme.colors.text};
+    margin-top: 40px;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  
+  p {
+    margin-bottom: 16px;
+  }
+
+  ul, ol {
+    margin-left: 24px;
+    margin-bottom: 16px;
+    li {
+      margin-bottom: 8px;
+    }
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.accent};
+    text-decoration: underline;
+  }
+`;
+
+const CtaSection = styled.section`
+  text-align: center;
+  padding: 60px 20px;
+  background-color: ${({ theme }) => theme.colors.background};
+  
+  h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.text};
+    margin-bottom: 24px;
+  }
+`;
+
+const LoadingState = styled.div` /* ... */ `;
+const ErrorState = styled.div` /* ... */ `;
+
+// --- Main Component ---
+interface ServiceDetailPageProps {
+  params: { slug: string };
+}
+
+export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
+  const { slug } = params;
+  const locale = useLocale();
+  const t = useTranslations('ServiceDetail');
+
+  // Fetch dữ liệu cho dịch vụ hiện tại
+  const { service, isLoading: isLoadingDetail, isError: isErrorDetail } = useServiceBySlug(slug, locale);
+  
+  // Fetch tất cả dịch vụ để hiển thị "Các dịch vụ khác"
+  const { services: allServices, isLoading: isLoadingList } = useAllServices(locale);
+
+  if (isLoadingDetail || isLoadingList) return <LoadingState>Loading service details...</LoadingState>;
+  if (isErrorDetail) return <ErrorState>Could not find the requested service.</ErrorState>;
+  if (!service) return null;
+
+  // Lọc ra các dịch vụ khác (không bao gồm dịch vụ hiện tại), chỉ lấy tối đa 3
+  const otherServices = allServices
+    ?.filter(s => s.id !== service.id)
+    .slice(0, 3) || [];
+
+  const translation = service.translations.find(t => t.locale === locale) || service.translations[0];
+
+  return (
+    <PageWrapper>
+      <HeroWrapper>
+        <HeroImage src={service.coverImage || '/placeholder.jpg'} alt={translation.title} fill priority />
+        <HeroContent>
+          <h1>{translation.title}</h1>
+        </HeroContent>
+      </HeroWrapper>
+
+      <FadeInWhenVisible>
+        <ContentWrapper>
+          <MarkdownContent>
+            <ReactMarkdown>
+              {translation.content || 'No content available.'}
+            </ReactMarkdown>
+          </MarkdownContent>
+        </ContentWrapper>
+      </FadeInWhenVisible>
+
+      <FadeInWhenVisible>
+        <CtaSection>
+          <h2>{t('ctaTitle')}</h2>
+          <Button as="a" href="/quote">{t('ctaButton')}</Button>
+        </CtaSection>
+      </FadeInWhenVisible>
+
+      {otherServices.length > 0 && (
+        <FadeInWhenVisible>
+          <OtherServicesSection services={otherServices} />
+        </FadeInWhenVisible>
+      )}
+    </PageWrapper>
+  );
+}

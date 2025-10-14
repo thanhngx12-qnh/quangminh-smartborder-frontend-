@@ -9,7 +9,7 @@ import ServiceCard from '@/components/shared/ServiceCard'; // <-- Import compone
 // --- Styled Components ---
 const SectionWrapper = styled.section`
   padding: 80px 20px;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.background}; 
 `;
 
 const SectionHeader = styled.div`
@@ -26,7 +26,7 @@ const SectionHeader = styled.div`
 
   p {
     font-size: 18px;
-    color: #666;
+    color: ${({ theme }) => theme.colors.textSecondary}; 
     line-height: 1.6;
   }
 `;

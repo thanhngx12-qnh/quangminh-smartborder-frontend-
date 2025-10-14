@@ -35,7 +35,7 @@ const KpiCard = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${({ theme }) => theme.colors.border};
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
@@ -60,7 +60,7 @@ const TextContent = styled.div`
 
   p {
     font-size: 16px;
-    color: #666;
+    color: ${({ theme }) => theme.colors.textSecondary};
   }
   
   span {
