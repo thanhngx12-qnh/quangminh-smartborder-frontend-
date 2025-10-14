@@ -8,53 +8,55 @@ import FeaturedServicesSection from '@/components/sections/HomePage/FeaturedServ
 import LatestNewsSection from '@/components/sections/HomePage/LatestNewsSection';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import { useFeaturedServices } from '@/hooks/useServices';
-import { useLatestNews } from '@/hooks/useNews'; // <-- Import hook mới
-
-// Component Skeleton để hiển thị khi đang tải dữ liệu
-const SkeletonLoader = () => (
-  <div style={{ textAlign: 'center', padding: '80px' }}>Loading content...</div>
-);
+import { useLatestNews } from '@/hooks/useNews';
+import HomePageSkeleton from '@/components/skeletons/HomePageSkeleton'; // <-- Import
 
 export default function Home() {
   const locale = useLocale();
   
-  // Gọi cả hai hook để fetch dữ liệu song song
   const { services, isLoading: isLoadingServices, isError: isErrorServices } = useFeaturedServices(locale);
   const { news, isLoading: isLoadingNews, isError: isErrorNews } = useLatestNews(locale);
 
-  // Hiển thị trạng thái loading nếu một trong hai đang tải
-  if (isLoadingServices || isLoadingNews) {
-    return <SkeletonLoader />;
-  }
-
-  // Hiển thị lỗi nếu một trong hai gặp lỗi
-  if (isErrorServices) {
-    return <div>Failed to load services.</div>;
-  }
-  if (isErrorNews) {
-    return <div>Failed to load news.</div>;
-  }
+  // Kết hợp trạng thái loading
+  const isLoading = isLoadingServices || isLoadingNews;
 
   return (
     <>
+      {/* HeroSection luôn được hiển thị */}
       <HeroSection />
       
-      <FadeInWhenVisible>
-        <KpiSection />
-      </FadeInWhenVisible>
-      
-      {/* Render section services nếu có dữ liệu */}
-      {services && services.length > 0 && (
-        <FadeInWhenVisible>
-          <FeaturedServicesSection services={services} />
-        </FadeInWhenVisible>
-      )}
+      {/* 
+        Nếu đang tải, hiển thị skeleton.
+        Nếu không, hiển thị nội dung thật.
+      */}
+      {isLoading ? (
+        <HomePageSkeleton />
+      ) : (
+        <>
+          <FadeInWhenVisible>
+            <KpiSection />
+          </FadeInWhenVisible>
+          
+          {isErrorServices ? (
+            <div>Failed to load services.</div>
+          ) : (
+            services && services.length > 0 && (
+              <FadeInWhenVisible>
+                <FeaturedServicesSection services={services} />
+              </FadeInWhenVisible>
+            )
+          )}
 
-      {/* Render section news nếu có dữ liệu */}
-      {news && news.length > 0 && (
-        <FadeInWhenVisible>
-          <LatestNewsSection news={news} />
-        </FadeInWhenVisible>
+          {isErrorNews ? (
+            <div>Failed to load news.</div>
+          ) : (
+            news && news.length > 0 && (
+              <FadeInWhenVisible>
+                <LatestNewsSection news={news} />
+              </FadeInWhenVisible>
+            )
+          )}
+        </>
       )}
     </>
   );

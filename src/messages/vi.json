@@ -61,5 +61,10 @@
     "ctaTitle": "Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?",
     "ctaButton": "Yêu Cầu Báo Giá Ngay",
     "otherServicesTitle": "Khám Phá Các Dịch Vụ Khác"
-  }
+  ,
+"NotFound": {
+    "title": "404 - Không Tìm Thấy Trang",
+    "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
+    "goHome": "Quay về Trang Chủ"
+  }}
 }

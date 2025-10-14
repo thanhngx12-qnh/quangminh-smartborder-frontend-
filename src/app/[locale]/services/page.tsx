@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { useAllServices } from '@/hooks/useServices';
 import ServiceCard from '@/components/shared/ServiceCard';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
+import CardSkeleton from '@/components/ui/CardSkeleton';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -51,7 +52,15 @@ export default function ServicesPage() {
   const { services, isLoading, isError } = useAllServices(locale);
 
   const renderContent = () => {
-    if (isLoading) return <LoadingState>Loading services...</LoadingState>;
+    if (isLoading) {
+          return (
+            <ServicesGrid>
+              {Array.from({ length: 6 }).map((_, index) => (
+                <CardSkeleton key={index} />
+              ))}
+            </ServicesGrid>
+          );
+        } 
     if (isError) return <ErrorState>Failed to load services.</ErrorState>;
     if (!services || services.length === 0) return <p>No services available.</p>;
 

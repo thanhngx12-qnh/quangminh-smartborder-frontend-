@@ -1,5 +1,6 @@
 // dir: ~/quangminh-smart-border/frontend/src/lib/api.ts
 import axios from 'axios';
+import { ContactFormValues } from './schemas'; 
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -16,5 +17,18 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+export const postQuoteRequest = async (data: ContactFormValues) => {
+  // API backend mong đợi các trường: customerName, email, details
+  const payload = {
+    customerName: data.name,
+    email: data.email,
+    details: data.message,
+  };
+  
+  // Dùng instance `api` để gọi POST /quotes
+  const response = await api.post('/quotes', payload);
+  return response.data;
+};
 
 export default api;

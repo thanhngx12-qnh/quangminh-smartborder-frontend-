@@ -9,6 +9,7 @@ import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import Pagination from '@/components/ui/Pagination';
 import { Link } from '@/navigation';
 import Image from 'next/image';
+import CardSkeleton from '@/components/ui/CardSkeleton';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -120,7 +121,15 @@ export default function NewsPage() {
   const { result, isLoading, isError } = usePaginatedNews(locale, currentPage);
 
   const renderContent = () => {
-    if (isLoading) return <LoadingState>Loading news...</LoadingState>;
+    if (isLoading) {
+      return (
+        <NewsGrid>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <CardSkeleton key={index} />
+          ))}
+        </NewsGrid>
+      );
+    } 
     if (isError) return <ErrorState>Failed to load news.</ErrorState>;
     if (!result || result.data.length === 0) return <p style={{textAlign: 'center'}}>No news articles found.</p>;
 

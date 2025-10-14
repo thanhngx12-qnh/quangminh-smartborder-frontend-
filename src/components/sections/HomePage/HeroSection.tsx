@@ -4,7 +4,9 @@
 import { useTranslations } from 'next-intl';
 import styled from 'styled-components';
 import { RiSearchLine } from 'react-icons/ri';
-import Button from '@/components/ui/Button';
+import Button, { ButtonLink } from '@/components/ui/Button'; // <-- Import cả Button và ButtonLink
+import { useRouter } from '@/navigation';
+import { useForm } from 'react-hook-form';
 
 // --- Styled Components ---
 const HeroWrapper = styled.section`
@@ -13,7 +15,7 @@ const HeroWrapper = styled.section`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start; // Căn nội dung sang trái
+  justify-content: flex-start;
   color: ${({ theme }) => theme.colors.white};
   padding: 0 100px;
 
@@ -35,12 +37,11 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/hero-background.webp'); // Thay bằng ảnh thật của bạn
+  background-image: url('/hero-background.webp');
   background-size: cover;
   background-position: center;
   z-index: -2;
   
-  // Lớp phủ tối để làm nổi bật chữ
   &::after {
     content: '';
     position: absolute;
@@ -48,7 +49,7 @@ const BackgroundImage = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(11, 46, 74, 0.6); // Màu Navy với độ mờ
+    background-color: rgba(11, 46, 74, 0.6);
     z-index: -1;
   }
 `;
@@ -64,7 +65,7 @@ const Title = styled.h1`
   font-size: 64px;
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: -16px; // Giảm khoảng cách với subtitle
+  margin-bottom: -16px;
 
   @media (max-width: 768px) {
     font-size: 48px;
@@ -91,7 +92,7 @@ const CtaGroup = styled.div`
   }
 `;
 
-const TrackingWidget = styled.div`
+const TrackingWidget = styled.form`
   display: flex;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.9);
@@ -136,10 +137,21 @@ const TrackingWidget = styled.div`
   }
 `;
 
+type FormData = {
+  awb: string;
+};
 
 // --- Main Component ---
 export default function HeroSection() {
   const t = useTranslations('Hero');
+  const router = useRouter();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+
+  const onSubmit = (data: FormData) => {
+    if (data.awb) {
+      router.push(`/tracking/${data.awb}` as never);
+    }
+  };
 
   return (
     <HeroWrapper>
@@ -148,15 +160,21 @@ export default function HeroSection() {
         <Title>{t('title')}</Title>
         <Subtitle>{t('subtitle')}</Subtitle>
         <CtaGroup>
-          <Button variant="primary">{t('ctaQuote')}</Button>
-          <Button variant="secondary">{t('ctaTrack')}</Button>
+          <ButtonLink href="/quote" variant="primary" as="a">{t('ctaQuote')}</ButtonLink>
+          <ButtonLink href="/tracking" variant="secondary" as="a">{t('ctaTrack')}</ButtonLink>
         </CtaGroup>
-        <TrackingWidget>
-          <input type="text" placeholder={t('trackingPlaceholder')} />
-          <button aria-label="Track Shipment">
+        
+        <TrackingWidget onSubmit={handleSubmit(onSubmit)}>
+          <input 
+            type="text" 
+            placeholder={t('trackingPlaceholder')}
+            {...register('awb', { required: 'Mã vận đơn là bắt buộc' })}
+          />
+          <button type="submit" aria-label="Track Shipment">
             <RiSearchLine />
           </button>
         </TrackingWidget>
+        {errors.awb && <p style={{ color: 'white', marginTop: '8px', fontSize: '14px' }}>{errors.awb.message}</p>}
       </HeroContent>
     </HeroWrapper>
   );

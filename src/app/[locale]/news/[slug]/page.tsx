@@ -8,6 +8,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import { RiCalendar2Line, RiUserLine } from 'react-icons/ri';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
+import CardSkeleton from '@/components/ui/CardSkeleton';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -144,7 +145,15 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
   const locale = useLocale();
   const { news, isLoading, isError } = useNewsBySlug(slug, locale);
 
-  if (isLoading) return <LoadingState>Loading article...</LoadingState>;
+  if (isLoading) {
+      return (
+        <PageWrapper>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <CardSkeleton key={index} />
+          ))}
+        </PageWrapper>
+      );
+    } 
   if (isError) return <ErrorState>Could not find the requested article.</ErrorState>;
   if (!news) return null;
 

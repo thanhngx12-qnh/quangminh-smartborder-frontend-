@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown'; // <-- Import
 import Button from '@/components/ui/Button';
 import OtherServicesSection from '@/components/sections/ServiceDetailPage/OtherServicesSection';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
+import CardSkeleton from '@/components/ui/CardSkeleton';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -127,7 +128,12 @@ export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   // Fetch tất cả dịch vụ để hiển thị "Các dịch vụ khác"
   const { services: allServices, isLoading: isLoadingList } = useAllServices(locale);
 
-  if (isLoadingDetail || isLoadingList) return <LoadingState>Loading service details...</LoadingState>;
+  if (isLoadingDetail || isLoadingList) return(
+        <PageWrapper>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <CardSkeleton key={index} />
+          ))}
+        </PageWrapper>);
   if (isErrorDetail) return <ErrorState>Could not find the requested service.</ErrorState>;
   if (!service) return null;
 

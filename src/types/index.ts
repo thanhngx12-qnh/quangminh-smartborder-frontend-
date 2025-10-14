@@ -29,3 +29,22 @@ export interface News {
   publishedAt?: string;
   translations: NewsTranslation[];
 }
+
+export interface TrackingEvent {
+  id: number;
+  eventCode: string;
+  description: string;
+  eventTime: string;
+  location?: string;
+}
+
+export interface Consignment {
+  id: number;
+  awb: string;
+  origin: string;
+  destination: string;
+  status: string;
+  estimatedDeliveryDate?: string;
+  aiPredictedEta?: number;
+  events: TrackingEvent[];
+}

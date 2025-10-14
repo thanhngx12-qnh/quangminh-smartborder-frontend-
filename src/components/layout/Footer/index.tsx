@@ -1,9 +1,15 @@
 // dir: ~/quangminh-smart-border/frontend/src/components/layout/Footer/index.tsx
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { RiWechatLine, RiMessage2Line } from 'react-icons/ri'; // Giả sử dùng Zalo và WeChat
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { contactFormSchema, ContactFormValues } from '@/lib/schemas';
+import { postQuoteRequest } from '@/lib/api';
+import { RiWechatLine, RiMessage2Line } from 'react-icons/ri';
 import Button from '@/components/ui/Button';
+
 import {
   FooterWrapper,
   FooterContent,
@@ -16,10 +22,49 @@ import {
   CopyrightBar,
   MapWrapper,
 } from './Footer.styles';
+import styled from 'styled-components';
+
+const FormError = styled.p`
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.error};
+  margin-top: -8px;
+`;
+
+const FormSuccess = styled.p`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.success};
+  background-color: rgba(16, 185, 129, 0.1);
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+`;
 
 export default function Footer() {
   const t = useTranslations('Footer');
   const tNav = useTranslations('Navigation');
+
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const { 
+    register, 
+    handleSubmit, 
+    formState: { errors },
+    reset,
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+  });
+
+  const onSubmit = async (data: ContactFormValues) => {
+    setFormStatus('submitting');
+    try {
+      await postQuoteRequest(data);
+      setFormStatus('success');
+      reset(); // Xóa các trường trong form sau khi gửi thành công
+    } catch (error) {
+      console.error("Failed to submit quote request:", error);
+      setFormStatus('error');
+    }
+  };
 
   const navLinks = [
     { href: '/services', label: tNav('services') },
@@ -72,12 +117,43 @@ export default function Footer() {
 
         <FooterColumn>
           <h3>{t('quickContact')}</h3>
-          <ContactForm>
-            <input type="text" placeholder={t('formName')} required />
-            <input type="email" placeholder={t('formEmail')} required />
-            <textarea placeholder={t('formMessage')} required />
-            <Button type="submit" variant="primary">{t('formSend')}</Button>
-          </ContactForm>
+          
+          {formStatus === 'success' ? (
+            <FormSuccess>Cảm ơn bạn! Chúng tôi đã nhận được yêu cầu và sẽ liên hệ lại sớm nhất.</FormSuccess>
+          ) : (
+            <ContactForm onSubmit={handleSubmit(onSubmit)}>
+              <div>
+                <input 
+                  type="text" 
+                  placeholder={t('formName')} 
+                  {...register('name')}
+                />
+                {errors.name && <FormError>{errors.name.message}</FormError>}
+              </div>
+              
+              <div>
+                <input 
+                  type="email" 
+                  placeholder={t('formEmail')} 
+                  {...register('email')}
+                />
+                {errors.email && <FormError>{errors.email.message}</FormError>}
+              </div>
+
+              <div>
+                <textarea 
+                  placeholder={t('formMessage')} 
+                  {...register('message')}
+                />
+                {errors.message && <FormError>{errors.message.message}</FormError>}
+              </div>
+
+              <Button type="submit" variant="primary" disabled={formStatus === 'submitting'}>
+                {formStatus === 'submitting' ? 'Đang gửi...' : t('formSend')}
+              </Button>
+              {formStatus === 'error' && <FormError>Đã có lỗi xảy ra. Vui lòng thử lại.</FormError>}
+            </ContactForm>
+          )}
         </FooterColumn>
 
         <MapWrapper>
