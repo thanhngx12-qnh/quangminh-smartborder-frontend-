@@ -34,3 +34,14 @@ export function usePaginatedNews(locale: string, page: number) {
     isError: error,
   };
 }
+
+export function useNewsBySlug(slug: string, locale: string) {
+  const key = slug && locale ? [`/news/slug/${locale}/${slug}`, {}] : null;
+  const { data, error, isLoading } = useSWR<News>(key);
+
+  return {
+    news: data,
+    isLoading,
+    isError: error,
+  };
+}
