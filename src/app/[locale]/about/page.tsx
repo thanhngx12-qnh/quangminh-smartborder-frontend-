@@ -35,10 +35,20 @@ const HeroSection = styled.section`
 // --- Mission Section ---
 const MissionSection = styled.section`
   padding: 80px 20px;
-  max-width: 800px;
+  max-width: 1200px; // Mở rộng max-width
   margin: 0 auto;
-  text-align: center;
+  display: grid; // Chuyển sang grid layout
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
 
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+`;
+
+const MissionText = styled.div`
   h2 {
     font-size: 36px;
     font-weight: 700;
@@ -53,10 +63,39 @@ const MissionSection = styled.section`
   }
 `;
 
+const MissionImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  img {
+    object-fit: cover;
+  }
+`;
+
 // --- Timeline Section ---
 const TimelineSectionWrapper = styled.section`
   padding: 80px 20px;
-  background-color: ${({ theme }) => theme.colors.surface};
+  position: relative; // Cần cho ảnh nền
+  
+  // Thêm ảnh nền mờ
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/about/timeline-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; // Hiệu ứng Parallax
+    opacity: 0.05;
+    z-index: 0;
+  }
 `;
 
 const TimelineHeader = styled.h2`
@@ -71,6 +110,7 @@ const TimelineContainer = styled.div`
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  z-index: 1;
 
   &::after {
     content: '';
@@ -227,12 +267,19 @@ export default function AboutPage() {
         </HeroSection>
       </FadeInWhenVisible>
 
-      <FadeInWhenVisible>
-        <MissionSection>
-          <h2>{t('missionTitle')}</h2>
-          <p>{t('missionText')}</p>
-        </MissionSection>
-      </FadeInWhenVisible>
+      <MissionSection>
+        <FadeInWhenVisible>
+          <MissionText>
+            <h2>{t('missionTitle')}</h2>
+            <p>{t('missionText')}</p>
+          </MissionText>
+        </FadeInWhenVisible>
+        <FadeInWhenVisible>
+          <MissionImageWrapper>
+            <Image src="/about/mission-vision.jpg" alt={t('missionTitle')} fill sizes="(max-width: 992px) 100vw, 50vw" />
+          </MissionImageWrapper>
+        </FadeInWhenVisible>
+      </MissionSection>
 
       <TimelineSectionWrapper>
         <FadeInWhenVisible>
