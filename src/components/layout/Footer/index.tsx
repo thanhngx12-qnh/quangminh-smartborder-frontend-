@@ -9,7 +9,9 @@ import { contactFormSchema, ContactFormValues } from '@/lib/schemas';
 import { postQuoteRequest } from '@/lib/api';
 import { RiWechatLine, RiMessage2Line } from 'react-icons/ri';
 import Button from '@/components/ui/Button';
+import styled from 'styled-components';
 
+// Import các styled components từ file style riêng
 import {
   FooterWrapper,
   FooterContent,
@@ -22,29 +24,32 @@ import {
   CopyrightBar,
   MapWrapper,
 } from './Footer.styles';
-import styled from 'styled-components';
 
+// --- Styled Components cho trạng thái Form ---
 const FormError = styled.p`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.error};
-  margin-top: -8px;
+  margin-top: 4px; // Điều chỉnh khoảng cách
 `;
 
-const FormSuccess = styled.p`
+const FormSuccess = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.success};
   background-color: rgba(16, 185, 129, 0.1);
-  padding: 12px;
-  border-radius: 6px;
+  padding: 16px;
+  border-radius: 8px;
   text-align: center;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 `;
 
 export default function Footer() {
   const t = useTranslations('Footer');
   const tNav = useTranslations('Navigation');
 
+  // State để quản lý trạng thái của form
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
+  // Thiết lập React Hook Form với Zod
   const { 
     register, 
     handleSubmit, 
@@ -54,6 +59,7 @@ export default function Footer() {
     resolver: zodResolver(contactFormSchema),
   });
 
+  // Hàm xử lý khi submit form
   const onSubmit = async (data: ContactFormValues) => {
     setFormStatus('submitting');
     try {
@@ -119,9 +125,9 @@ export default function Footer() {
           <h3>{t('quickContact')}</h3>
           
           {formStatus === 'success' ? (
-            <FormSuccess>Cảm ơn bạn! Chúng tôi đã nhận được yêu cầu và sẽ liên hệ lại sớm nhất.</FormSuccess>
+            <FormSuccess>Cảm ơn bạn! Chúng tôi đã nhận được yêu cầu...</FormSuccess>
           ) : (
-            <ContactForm onSubmit={handleSubmit(onSubmit)}>
+            <ContactForm onSubmit={handleSubmit(onSubmit)} noValidate>
               <div>
                 <input 
                   type="text" 
@@ -130,7 +136,7 @@ export default function Footer() {
                 />
                 {errors.name && <FormError>{errors.name.message}</FormError>}
               </div>
-              
+
               <div>
                 <input 
                   type="email" 
@@ -138,6 +144,16 @@ export default function Footer() {
                   {...register('email')}
                 />
                 {errors.email && <FormError>{errors.email.message}</FormError>}
+              </div>
+
+              {/* THÊM TRƯỜNG PHONE VÀO ĐÂY */}
+              <div>
+                <input 
+                  type="tel" // Sử dụng type="tel" cho sematic HTML
+                  placeholder="Số điện thoại của bạn" // Nên thêm chuỗi này vào file message
+                  {...register('phone')}
+                />
+                {errors.phone && <FormError>{errors.phone.message}</FormError>}
               </div>
 
               <div>
@@ -151,7 +167,7 @@ export default function Footer() {
               <Button type="submit" variant="primary" disabled={formStatus === 'submitting'}>
                 {formStatus === 'submitting' ? 'Đang gửi...' : t('formSend')}
               </Button>
-              {formStatus === 'error' && <FormError>Đã có lỗi xảy ra. Vui lòng thử lại.</FormError>}
+              {formStatus === 'error' && <FormError>...</FormError>}
             </ContactForm>
           )}
         </FooterColumn>

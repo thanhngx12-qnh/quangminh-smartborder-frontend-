@@ -87,5 +87,26 @@
       "person3Name": "Lê Minh Cường",
       "person3Title": "Giám Đốc Kinh Doanh"
     }
+  },
+  "ContactPage": {
+    "title": "Liên Hệ Với Chúng Tôi",
+    "description": "Chúng tôi luôn sẵn sàng lắng nghe. Hãy kết nối với Quang Minh qua thông tin dưới đây hoặc gửi yêu cầu của bạn qua form liên hệ.",
+    "infoTitle": "Thông Tin Liên Lạc",
+    "address": "Địa chỉ",
+    "phone": "Điện thoại",
+    "email": "Email",
+    "salesDept": "Phòng Kinh Doanh",
+    "opsDept": "Phòng Vận Hành",
+    "hrDept": "Phòng Nhân Sự",
+    "formTitle": "Gửi Yêu Cầu Trực Tuyến",
+    "faqTitle": "Câu Hỏi Thường Gặp",
+    "faq": {
+      "q1": "Thời gian làm việc của công ty?",
+      "a1": "Văn phòng của chúng tôi làm việc từ 8:00 - 17:00, Thứ Hai đến Thứ Sáu. Tuy nhiên, đội ngũ vận hành tại cửa khẩu hoạt động 24/7 để đảm bảo hàng hóa được thông quan liên tục.",
+      "q2": "Làm thế nào để tôi tra cứu vận đơn?",
+      "a2": "Bạn có thể sử dụng mã vận đơn (AWB) được cung cấp để tra cứu trực tiếp trên website của chúng tôi thông qua ô 'Tra Vận Đơn' ở trang chủ hoặc truy cập trang Tracking.",
+      "q3": "Quang Minh có cung cấp dịch vụ cho hàng lẻ (LCL) không?",
+      "a3": "Có, chúng tôi cung cấp đầy đủ các dịch vụ cho cả hàng nguyên container (FCL) và hàng lẻ (LCL) qua biên giới."
+    }
   }
 }
