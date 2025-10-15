@@ -48,3 +48,11 @@ export interface Consignment {
   aiPredictedEta?: number;
   events: TrackingEvent[];
 }
+
+export interface PaginatedResult<T> {
+  data: T[];
+  total: number;
+  page: number;
+  limit: number;
+  lastPage: number;
+}

@@ -7,6 +7,8 @@ import { useAllServices } from '@/hooks/useServices';
 import ServiceCard from '@/components/shared/ServiceCard';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import CardSkeleton from '@/components/ui/CardSkeleton';
+import { useSearchParams } from 'next/navigation'; 
+import Pagination from '@/components/ui/Pagination'; // <-- Import
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -49,29 +51,43 @@ const ErrorState = styled.p` /* ... */ `;
 export default function ServicesPage() {
   const locale = useLocale();
   const t = useTranslations('ServicesPage');
-  const { services, isLoading, isError } = useAllServices(locale);
+  const searchParams = useSearchParams();
+  const currentPage = parseInt(searchParams.get('page') || '1', 10);
+
+  const { result, isLoading, isError } = useAllServices(locale, currentPage);
 
   const renderContent = () => {
+    // Cập nhật lại logic loading để hiển thị skeleton
     if (isLoading) {
-          return (
-            <ServicesGrid>
-              {Array.from({ length: 6 }).map((_, index) => (
-                <CardSkeleton key={index} />
-              ))}
-            </ServicesGrid>
-          );
-        } 
+      return (
+        <ServicesGrid>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <CardSkeleton key={index} />
+          ))}
+        </ServicesGrid>
+      );
+    }
+    
     if (isError) return <ErrorState>Failed to load services.</ErrorState>;
-    if (!services || services.length === 0) return <p>No services available.</p>;
+    if (!result || result.data.length === 0) return <p style={{textAlign: 'center'}}>No services available.</p>;
 
     return (
-      <ServicesGrid>
-        {services.map((service, index) => (
-          <FadeInWhenVisible key={service.id} transition={{ delay: index * 0.1 }}>
-            <ServiceCard service={service} />
-          </FadeInWhenVisible>
-        ))}
-      </ServicesGrid>
+      <>
+        <ServicesGrid>
+          {result.data.map((service, index) => (
+            <FadeInWhenVisible key={service.id} transition={{ delay: index * 0.1 }}>
+              <ServiceCard service={service} />
+            </FadeInWhenVisible>
+          ))}
+        </ServicesGrid>
+        
+        {/* THÊM COMPONENT PAGINATION */}
+        <Pagination 
+          currentPage={result.page} 
+          totalPages={result.lastPage}
+          basePath="/services"
+        />
+      </>
     );
   };
 

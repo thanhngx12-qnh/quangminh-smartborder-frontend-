@@ -126,7 +126,7 @@ export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   const { service, isLoading: isLoadingDetail, isError: isErrorDetail } = useServiceBySlug(slug, locale);
   
   // Fetch tất cả dịch vụ để hiển thị "Các dịch vụ khác"
-  const { services: allServices, isLoading: isLoadingList } = useAllServices(locale);
+  const { result, isLoading: isLoadingList } = useAllServices(locale, 1); 
 
   if (isLoadingDetail || isLoadingList) return(
         <PageWrapper>
@@ -138,7 +138,7 @@ export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   if (!service) return null;
 
   // Lọc ra các dịch vụ khác (không bao gồm dịch vụ hiện tại), chỉ lấy tối đa 3
-  const otherServices = allServices
+  const otherServices = result?.data
     ?.filter(s => s.id !== service.id)
     .slice(0, 3) || [];
 

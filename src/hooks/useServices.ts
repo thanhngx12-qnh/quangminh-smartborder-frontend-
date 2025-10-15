@@ -1,48 +1,37 @@
-// // dir: ~/quangminh-smart-border/frontend/src/hooks/useServices.ts
-// import useSWR from 'swr';
-// import { Service } from '@/types';
-
-// export function useFeaturedServices(locale: string) {
-//   // Key của SWR giờ là một mảng: [endpoint, params object]
-//   // Điều này đảm bảo URL gọi đi luôn là /services
-//   const { data, error, isLoading } = useSWR<Service[]>(['/services', { featured: true, locale }]);
-
-//   return {
-//     services: data,
-//     isLoading,
-//     isError: error,
-//   };
-// }
-
-// dir: ~/quangminh-smart-border/frontend/src/hooks/useServices.ts
 import useSWR from 'swr';
 import { Service } from '@/types';
+import { PaginatedResult } from '@/types';
+
+export type PaginatedServiceResult = PaginatedResult<Service>;
 
 export function useFeaturedServices(locale: string) {
-  const { data, error, isLoading } = useSWR<Service[]>(['/services', { featured: true, locale }]);
+  const { data, error, isLoading } = useSWR<PaginatedServiceResult>([
+    '/services', 
+    { featured: true, locale, limit: 6 } // Chỉ lấy tối đa 6 dịch vụ nổi bật
+  ]);
 
   return {
-    services: data,
+    services: data?.data, 
     isLoading,
     isError: error,
   };
 }
 
-// THÊM HOOK MỚI Ở ĐÂY
-export function useAllServices(locale: string) {
-  // Key của SWR chỉ cần endpoint và locale
-  const { data, error, isLoading } = useSWR<Service[]>(['/services', { locale }]);
+
+export function useAllServices(locale: string, page: number) {
+  const { data, error, isLoading } = useSWR<PaginatedServiceResult>([
+    '/services', 
+    { locale, page, limit: 9 } // Lấy 9 dịch vụ mỗi trang
+  ]);
 
   return {
-    services: data,
+    result: data, // Trả về toàn bộ object kết quả
     isLoading,
     isError: error,
   };
 }
 
 export function useServiceBySlug(slug: string, locale: string) {
-  // SỬA LẠI KEY Ở ĐÂY
-  // Truyền một object params rỗng để khớp với fetcher
   const key = slug && locale ? [`/services/slug/${locale}/${slug}`, {}] : null;
   const { data, error, isLoading } = useSWR<Service>(key);
 
