@@ -28,7 +28,7 @@ const Overlay = styled(motion.div)`
 
 const SearchBox = styled(motion.div)`
   width: 100%;
-  max-width: 600px;
+  max-width: 550px;
   position: relative;
 `;
 
@@ -134,7 +134,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     if (!isOpen) setSearchTerm('');
   }, [isOpen]);
   
-  // SỬA LỖI Ở ĐÂY: Thêm optional chaining `?.`
   const hasResults = results && (results.services?.length > 0 || results.news?.length > 0);
   const showNoResults = !isLoading && debouncedSearchTerm.length >= 2 && !hasResults;
 
@@ -157,10 +156,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               </InputIconWrapper>
             </SearchInputWrapper>
             
-            {/* 
-              Kiểm tra `results` tồn tại trước khi render khu vực kết quả.
-              Điều này đảm bảo không có lỗi `undefined`.
-            */}
             {(hasResults || showNoResults) && results && (
               <SearchResults
                 initial={{ opacity: 0, y: 10 }}

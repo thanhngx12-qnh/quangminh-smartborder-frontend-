@@ -10,6 +10,16 @@ const nextConfig = {
     styledComponents: true,
   },
   output: 'standalone',
+
+  async redirects() {
+    return [
+      {
+        source: '/quote',
+        destination: '/contact',
+        permanent: true,
+      },
+    ]
+  },
 };
  
 export default withNextIntl(nextConfig);
