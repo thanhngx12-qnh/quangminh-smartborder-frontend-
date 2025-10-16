@@ -17,15 +17,15 @@ export function useFeaturedServices(locale: string) {
   };
 }
 
-
-export function useAllServices(locale: string, page: number) {
+export function useAllServices(locale: string, page: number, limit: number = 9) { // Thêm 'limit' với giá trị mặc định là 9
   const { data, error, isLoading } = useSWR<PaginatedServiceResult>([
     '/services', 
-    { locale, page, limit: 9 } // Lấy 9 dịch vụ mỗi trang
+    // Sử dụng biến 'limit' được truyền vào
+    { locale, page, limit } 
   ]);
 
   return {
-    result: data, // Trả về toàn bộ object kết quả
+    result: data,
     isLoading,
     isError: error,
   };

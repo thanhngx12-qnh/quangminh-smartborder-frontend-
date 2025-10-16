@@ -10,6 +10,7 @@ export const contactFormSchema = z.object({
   phone: z.string().min(9, { message: "Số điện thoại phải có ít nhất 9 chữ số." }),
 
   message: z.string().min(10, { message: "Nội dung phải có ít nhất 10 ký tự." }),
+   serviceId: z.string().optional(),
 });
 
 // Suy ra kiểu dữ liệu TypeScript từ schema

@@ -19,14 +19,13 @@ const api = axios.create({
 });
 
 export const postQuoteRequest = async (data: ContactFormValues) => {
-  // API backend mong đợi các trường: customerName, email, details
   const payload = {
     customerName: data.name,
     email: data.email,
+    phone: data.phone,
     details: data.message,
+    serviceId: data.serviceId ? parseInt(data.serviceId, 10) : undefined,
   };
-  
-  // Dùng instance `api` để gọi POST /quotes
   const response = await api.post('/quotes', payload);
   return response.data;
 };

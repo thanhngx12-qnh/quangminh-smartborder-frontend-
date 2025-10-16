@@ -6,7 +6,7 @@ import { useServiceBySlug, useAllServices } from '@/hooks/useServices';
 import styled from 'styled-components';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown'; // <-- Import
-import Button from '@/components/ui/Button';
+import { ButtonLink } from '@/components/ui/Button'; 
 import OtherServicesSection from '@/components/sections/ServiceDetailPage/OtherServicesSection';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import CardSkeleton from '@/components/ui/CardSkeleton';
@@ -109,7 +109,6 @@ const CtaSection = styled.section`
   }
 `;
 
-const LoadingState = styled.div` /* ... */ `;
 const ErrorState = styled.div` /* ... */ `;
 
 // --- Main Component ---
@@ -144,6 +143,8 @@ export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
 
   const translation = service.translations.find(t => t.locale === locale) || service.translations[0];
 
+  const contactHref = `/contact?serviceId=${service.id}&serviceName=${encodeURIComponent(translation.title)}`;
+
   return (
     <PageWrapper>
       <HeroWrapper>
@@ -166,7 +167,14 @@ export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
       <FadeInWhenVisible>
         <CtaSection>
           <h2>{t('ctaTitle')}</h2>
-          <Button as="a" href="/quote">{t('ctaButton')}</Button>
+          
+          <ButtonLink 
+            href={contactHref} // Truyền chuỗi URL vào
+            as="a" 
+          >
+            {t('ctaButton')}
+          </ButtonLink>
+
         </CtaSection>
       </FadeInWhenVisible>
 
