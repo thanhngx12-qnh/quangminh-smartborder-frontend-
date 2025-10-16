@@ -1,9 +1,16 @@
 // dir: ~/quangminh-smart-border/frontend/src/components/layout/Header/SearchModal.tsx
 'use client';
 
-import { RiSearchLine, RiCloseLine } from 'react-icons/ri';
-import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { useDebounce } from '@/hooks/useDebounce';
+import { useSearch } from '@/hooks/useSearch';
+import { RiCloseLine, RiLoader4Line, RiArticleLine, RiBriefcaseLine } from 'react-icons/ri';
+import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from '@/navigation';
+
+// --- Styled Components ---
 
 const Overlay = styled(motion.div)`
   position: fixed;
@@ -25,6 +32,10 @@ const SearchBox = styled(motion.div)`
   position: relative;
 `;
 
+const SearchInputWrapper = styled.div`
+  position: relative;
+`;
+
 const SearchInput = styled.input`
   width: 100%;
   padding: 20px 60px 20px 20px;
@@ -39,42 +50,160 @@ const SearchInput = styled.input`
   }
 `;
 
-const CloseButton = styled.button`
+const InputIconWrapper = styled.div`
   position: absolute;
   top: 50%;
   right: 16px;
   transform: translateY(-50%);
-  background: none;
-  border: none;
   font-size: 28px;
-  cursor: pointer;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  display: flex;
+  align-items: center;
+`;
+
+const spin = keyframes` to { transform: rotate(360deg); } `;
+const Spinner = styled(RiLoader4Line)`
+  animation: ${spin} 1s linear infinite;
+`;
+
+const SearchResults = styled(motion.div)`
+  margin-top: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background-color: ${({ theme }) => theme.colors.background};
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const ResultGroup = styled.div`
+  padding: 8px 0;
+  &:not(:last-child) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.divider};
+  }
+  h3 {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.textMuted};
+    text-transform: uppercase;
+  }
+`;
+
+const ResultItem = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  color: ${({ theme }) => theme.colors.text};
+  transition: background-color 0.2s ease;
+  
+  svg {
+    font-size: 20px;
+    color: ${({ theme }) => theme.colors.textSecondary};
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.surface};
+    color: ${({ theme }) => theme.colors.accent};
+  }
+`;
+
+const NoResults = styled.div`
+  padding: 40px;
+  text-align: center;
   color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
+// --- MAIN COMPONENT ---
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 400);
+  const locale = useLocale();
+  const t = useTranslations('Search');
+  
+  const { results, isLoading } = useSearch(debouncedSearchTerm, locale);
+  
+  useEffect(() => {
+    if (!isOpen) setSearchTerm('');
+  }, [isOpen]);
+  
+  // SỬA LỖI Ở ĐÂY: Thêm optional chaining `?.`
+  const hasResults = results && (results.services?.length > 0 || results.news?.length > 0);
+  const showNoResults = !isLoading && debouncedSearchTerm.length >= 2 && !hasResults;
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <Overlay
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose} // Đóng khi click ra ngoài
-        >
+        <Overlay initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
           <SearchBox 
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -50, opacity: 0 }}
+            initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -50, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            onClick={(e) => e.stopPropagation()} // Ngăn việc đóng khi click vào search box
+            onClick={(e) => e.stopPropagation()}
           >
-            <SearchInput type="text" placeholder="Tìm kiếm dịch vụ, tin tức..." autoFocus />
-            <CloseButton onClick={onClose}><RiCloseLine /></CloseButton>
+            <SearchInputWrapper>
+              <SearchInput 
+                type="text" placeholder={t('placeholder')} autoFocus 
+                value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <InputIconWrapper>
+                {isLoading ? <Spinner /> : <RiCloseLine onClick={onClose} style={{cursor: 'pointer'}} />}
+              </InputIconWrapper>
+            </SearchInputWrapper>
+            
+            {/* 
+              Kiểm tra `results` tồn tại trước khi render khu vực kết quả.
+              Điều này đảm bảo không có lỗi `undefined`.
+            */}
+            {(hasResults || showNoResults) && results && (
+              <SearchResults
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                {showNoResults && <NoResults>{t('noResults')}</NoResults>}
+                
+                {results.services?.length > 0 && (
+                  <ResultGroup>
+                    <h3>{t('services')}</h3>
+                    {results.services.map(service => {
+                      // Dữ liệu API trả về translations là một mảng
+                      const translation = service.translations[0]; // <-- SỬA Ở ĐÂY: Lấy phần tử đầu tiên
+                      // Kiểm tra xem translation có tồn tại không để tránh lỗi
+                      if (!translation) return null;
+                      
+                      return (
+                        <ResultItem key={`s-${service.id}`} href={`/services/${translation.slug}`} as="a" onClick={onClose}>
+                            <RiBriefcaseLine /> {translation.title}
+                        </ResultItem>
+                      );
+                    })}
+                  </ResultGroup>
+                )}
+                
+                {results.news?.length > 0 && (
+                  <ResultGroup>
+                    <h3>{t('news')}</h3>
+                    {results.news.map(newsItem => {
+                      // Dữ liệu API trả về translations là một mảng
+                      const translation = newsItem.translations[0]; // <-- SỬA Ở ĐÂY: Lấy phần tử đầu tiên
+                      if (!translation) return null;
+
+                      return (
+                        <ResultItem key={`n-${newsItem.id}`} href={`/news/${translation.slug}`} as="a" onClick={onClose}>
+                            <RiArticleLine /> {translation.title}
+                        </ResultItem>
+                      );
+                    })}
+                  </ResultGroup>
+                )}
+              </SearchResults>
+            )}
           </SearchBox>
         </Overlay>
       )}

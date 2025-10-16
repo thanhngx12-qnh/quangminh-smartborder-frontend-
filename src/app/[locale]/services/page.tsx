@@ -2,16 +2,17 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation'; 
 import styled from 'styled-components';
 import { useAllServices } from '@/hooks/useServices';
 import ServiceCard from '@/components/shared/ServiceCard';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import CardSkeleton from '@/components/ui/CardSkeleton';
-import { useSearchParams } from 'next/navigation'; 
-import Pagination from '@/components/ui/Pagination'; // <-- Import
+import Pagination from '@/components/ui/Pagination';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
+  width: 100%; // Ngăn tràn màn hình
   padding: 80px 20px;
   background-color: ${({ theme }) => theme.colors.surface};
   min-height: 80vh;
@@ -25,13 +26,13 @@ const PageHeader = styled.div`
   h1 {
     font-size: 48px;
     font-weight: 700;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.text}; // Sử dụng màu text từ theme
     margin-bottom: 16px;
   }
 
   p {
     font-size: 18px;
-    color: #666;
+    color: ${({ theme }) => theme.colors.textSecondary}; // Sử dụng màu textSecondary từ theme
     line-height: 1.6;
   }
 `;
@@ -44,8 +45,18 @@ const ServicesGrid = styled.div`
   margin: 0 auto;
 `;
 
-const LoadingState = styled.p` /* ... */ `;
-const ErrorState = styled.p` /* ... */ `;
+const ErrorState = styled.p`
+  text-align: center;
+  font-size: 18px;
+  color: ${({ theme }) => theme.colors.error};
+`;
+
+const NoDataState = styled.p`
+  text-align: center;
+  font-size: 18px;
+  color: ${({ theme }) => theme.colors.textSecondary};
+`;
+
 
 // --- Main Component ---
 export default function ServicesPage() {
@@ -57,7 +68,6 @@ export default function ServicesPage() {
   const { result, isLoading, isError } = useAllServices(locale, currentPage);
 
   const renderContent = () => {
-    // Cập nhật lại logic loading để hiển thị skeleton
     if (isLoading) {
       return (
         <ServicesGrid>
@@ -69,7 +79,7 @@ export default function ServicesPage() {
     }
     
     if (isError) return <ErrorState>Failed to load services.</ErrorState>;
-    if (!result || result.data.length === 0) return <p style={{textAlign: 'center'}}>No services available.</p>;
+    if (!result || result.data.length === 0) return <NoDataState>No services available.</NoDataState>;
 
     return (
       <>
@@ -81,7 +91,6 @@ export default function ServicesPage() {
           ))}
         </ServicesGrid>
         
-        {/* THÊM COMPONENT PAGINATION */}
         <Pagination 
           currentPage={result.page} 
           totalPages={result.lastPage}

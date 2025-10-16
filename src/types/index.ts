@@ -56,3 +56,15 @@ export interface PaginatedResult<T> {
   limit: number;
   lastPage: number;
 }
+
+export type JobStatus = 'OPEN' | 'CLOSED';
+
+export interface JobPosting {
+  id: number;
+  title: string;
+  location: string;
+  description: string;
+  requirements: string;
+  status: JobStatus;
+  createdAt: string;
+}

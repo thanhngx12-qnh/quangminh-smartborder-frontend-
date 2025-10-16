@@ -56,7 +56,21 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service }: ServiceCardProps) {
   const locale = useLocale();
-  const translation = service.translations.find(t => t.locale === locale) || service.translations[0];
+  
+  // SỬA LỖI Ở ĐÂY: Thêm bước kiểm tra an toàn
+  const translation = service.translations?.find(t => t.locale === locale) || service.translations?.[0];
+
+  // Nếu không có bản dịch nào, render một card trống hoặc thông báo lỗi
+  if (!translation) {
+    return (
+      <CardWrapper href="#" as="a" style={{ pointerEvents: 'none' }}>
+        <CardContent>
+          <h3>Service data missing</h3>
+          <p>This service does not have translation data available.</p>
+        </CardContent>
+      </CardWrapper>
+    );
+  }
 
   return (
     <CardWrapper href={`/services/${translation.slug}`} as="a">

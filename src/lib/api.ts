@@ -31,4 +31,15 @@ export const postQuoteRequest = async (data: ContactFormValues) => {
   return response.data;
 };
 
+export const postJobApplication = async (jobId: number, data: FormData) => {
+  // Khi gửi FormData, header Content-Type sẽ tự động được set
+  const response = await api.post(`/careers/postings/${jobId}/apply`, data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return response.data;
+};
+
 export default api;
+

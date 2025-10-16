@@ -2,7 +2,8 @@
   "Navigation": {
     "services": "Services",
     "manifesto": "Manifesto",
-    "about": "About Us",
+    "careers": "Careers",
+    "about": "About",
     "news": "News",
     "contact": "Contact"
   },
@@ -15,7 +16,7 @@
   },
   "Footer": {
     "companyName": "QUANG MINH JOINT STOCK COMPANY",
-    "address": "Ta Lung Border Gate, Phuc Hoa District, Cao Bang Province, Vietnam",
+    "address": "Tà Lùng Border Gate, Phục Hòa District, Cao Bằng Province, Vietnam",
     "sitemap": "Sitemap",
     "legal": "Legal",
     "terms": "Terms of Use",
@@ -23,27 +24,27 @@
     "quickContact": "Quick Contact",
     "formName": "Full Name",
     "formEmail": "Your Email",
-    "formMessage": "Your Message...",
+    "formMessage": "Your Request...",
     "formSend": "Send Request",
     "copyright": "© 2025 Quang Minh Joint Stock Company. All rights reserved."
   },
   "Hero": {
     "title": "QUANG MINH",
     "subtitle": "Smart Border Logistics.",
-    "ctaQuote": "Request a Quote",
+    "ctaQuote": "Check Rates & Book Space",
     "ctaTrack": "Track Shipment",
-    "trackingPlaceholder": "Enter AWB number"
+    "trackingPlaceholder": "Enter Air Waybill (AWB) Number"
   },
   "Kpi": {
-    "storageTitle": "Warehousing",
-    "storageValue": "50,000 m²",
-    "storageDesc": "International standard",
+    "storageTitle": "Warehouse",
+    "storageValue": "5,000 m²",
+    "storageDesc": "International Standard",
     "containerTitle": "Containers / Day",
     "containerValue": "500+",
-    "containerDesc": "Customs clearance capacity",
+    "containerDesc": "Clearance Capacity",
     "customsTitle": "Customs",
     "customsValue": "<2 Hours",
-    "customsDesc": "Average processing time"
+    "customsDesc": "Average Processing Time"
   },
   "FeaturedServices": {
     "title": "Featured Services",
@@ -52,5 +53,94 @@
   "LatestNews": {
     "title": "News & Events",
     "viewAll": "View All News"
+  },
+  "ServicesPage": {
+    "title": "All Services",
+    "description": "Explore the full range of professional logistics solutions provided by Quang Minh, tailored to meet all your needs."
+  },
+  "ServiceDetail": {
+    "ctaTitle": "Ready to optimize your supply chain?",
+    "ctaButton": "Request a Quote Now",
+    "otherServicesTitle": "Explore Other Services"
+  },
+  "NotFound": {
+    "title": "404 - Page Not Found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "goHome": "Return to Homepage"
+  },
+  "AboutPage": {
+    "heroTitle": "About Quang Minh",
+    "heroSubtitle": "Pioneering smart logistics solutions at the border.",
+    "missionTitle": "Mission & Vision",
+    "missionText": "Our mission is to provide transparent, efficient, and sustainable logistics solutions, breaking down trade barriers and connecting Vietnamese businesses with the world. Our vision is to become the leading provider of 'Smart Border Logistics' in the region.",
+    "timelineTitle": "Our Journey",
+    "leadershipTitle": "Leadership Team",
+    "timeline": {
+      "y2025": "Established Quang Minh Joint Stock Company. Began construction of the logistics center at Tà Lùng Border Gate.",
+      "y2026": "Officially commenced operations. Successfully implemented a smart shipment tracking system.",
+      "y2027": "Expanded to Trà Lĩnh Border Gate, increasing total warehouse space to 100,000 m²."
+    },
+    "leadership": {
+      "person1Name": "Nguyễn Văn An",
+      "person1Title": "Chief Executive Officer",
+      "person2Name": "Trần Thị Bình",
+      "person2Title": "Deputy Director of Operations",
+      "person3Name": "Lê Minh Cường",
+      "person3Title": "Director of Sales"
+    }
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "description": "We are always ready to listen. Connect with Quang Minh through the details below or send us your request via the contact form.",
+    "infoTitle": "Contact Information",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "salesDept": "Sales Department",
+    "opsDept": "Operations Department",
+    "hrDept": "Human Resources Department",
+    "formTitle": "Send an Online Request",
+    "faqTitle": "Frequently Asked Questions",
+    "faq": {
+      "q1": "What are the company's working hours?",
+      "a1": "Our office operates from 8:00 AM to 5:00 PM, Monday to Friday. However, our border gate operations team works 24/7 to ensure continuous cargo clearance.",
+      "q2": "How can I track my shipment?",
+      "a2": "You can use the Air Waybill (AWB) number provided to track your shipment directly on our website via the 'Track Shipment' section on the homepage or by visiting the Tracking page.",
+      "q3": "Does Quang Minh provide services for Less than Container Load (LCL)?",
+      "a3": "Yes, we offer comprehensive services for both Full Container Load (FCL) and Less than Container Load (LCL) across borders."
+    }
+  },
+  "CareersPage": {
+    "title": "Career Opportunities",
+    "noOpenings": "We currently have no open positions. Please check back later."
+  },
+  "CareerDetailPage": {
+    "jobDescription": "Job Description",
+    "requirements": "Candidate Requirements",
+    "applyTitle": "Apply for This Position",
+    "applySuccess": "Thank you for applying! We will review your application and contact you if suitable.",
+    "applyError": "Application submission failed, please try again.",
+    "form": {
+      "nameLabel": "Full Name",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone Number",
+      "cvLabel": "Upload CV (.pdf, .doc, .docx - Max 5MB)",
+      "submitButton": "Submit Application",
+      "submittingButton": "Submitting..."
+    },
+    "validation": {
+      "nameRequired": "Full name is required",
+      "emailInvalid": "Invalid email address",
+      "phoneInvalid": "Invalid phone number",
+      "cvRequired": "Please upload your CV",
+      "cvMaxSize": "File size must not exceed 5MB",
+      "cvFormat": "Only .pdf, .doc, .docx files are accepted"
+    },
+    "notFound": "Job position not found."
+  },
+  "Errors": {
+    "goBackTo": "Go back to {pageName}",
+    "retry": "Try Again",
+    "failedToLoad": "Failed to load data."
   }
 }

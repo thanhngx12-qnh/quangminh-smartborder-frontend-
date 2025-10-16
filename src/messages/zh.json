@@ -2,12 +2,13 @@
   "Navigation": {
     "services": "服务",
     "manifesto": "宣言",
+    "careers": "职业机会",
     "about": "关于我们",
     "news": "新闻",
     "contact": "联系我们"
   },
   "HeaderActions": {
-    "tracking": "追踪",
+    "tracking": "跟踪",
     "quote": "报价"
   },
   "CtaButton": {
@@ -17,30 +18,30 @@
     "companyName": "光明股份有限公司",
     "address": "越南高平省复和县塔隆口岸",
     "sitemap": "网站地图",
-    "legal": "法律信息",
+    "legal": "法律",
     "terms": "使用条款",
     "privacy": "隐私政策",
     "quickContact": "快速联系",
     "formName": "姓名",
     "formEmail": "您的邮箱",
-    "formMessage": "您的留言...",
+    "formMessage": "请求内容...",
     "formSend": "发送请求",
-    "copyright": "© 2025 光明股份有限公司。版权所有。"
+    "copyright": "© 2025 光明股份有限公司。保留所有权利。"
   },
   "Hero": {
     "title": "光明",
-    "subtitle": "智慧边境物流。",
-    "ctaQuote": "请求报价",
-    "ctaTrack": "追踪货物",
-    "trackingPlaceholder": "输入运单号 (AWB)"
+    "subtitle": "智能边境物流。",
+    "ctaQuote": "查询运费与预订场地",
+    "ctaTrack": "追踪货运",
+    "trackingPlaceholder": "输入提单号 (AWB)"
   },
   "Kpi": {
-    "storageTitle": "仓储面积",
-    "storageValue": "50,000 平方米",
-    "storageDesc": "国际标准",
+    "storageTitle": "仓储",
+    "storageValue": "5,000 平方米",
+    "storageDesc": "符合国际标准",
     "containerTitle": "集装箱 / 天",
     "containerValue": "500+",
-    "containerDesc": "通关能力",
+    "containerDesc": "清关能力",
     "customsTitle": "海关",
     "customsValue": "<2 小时",
     "customsDesc": "平均处理时间"
@@ -52,5 +53,94 @@
   "LatestNews": {
     "title": "新闻与活动",
     "viewAll": "查看所有新闻"
+  },
+  "ServicesPage": {
+    "title": "所有服务",
+    "description": "探索光明提供的专业物流解决方案，满足您的所有需求。"
+  },
+  "ServiceDetail": {
+    "ctaTitle": "准备优化您的供应链？",
+    "ctaButton": "立即请求报价",
+    "otherServicesTitle": "探索其他服务"
+  },
+  "NotFound": {
+    "title": "404 - 页面未找到",
+    "description": "抱歉，您寻找的页面不存在或已被移动。",
+    "goHome": "返回主页"
+  },
+  "AboutPage": {
+    "heroTitle": "关于光明",
+    "heroSubtitle": "边境智能物流的先锋。",
+    "missionTitle": "使命与愿景",
+    "missionText": "我们的使命是提供透明、高效和可持续的物流解决方案，打破贸易壁垒，连接越南企业与世界。我们的愿景是成为区域领先的“智能边境物流”供应商。",
+    "timelineTitle": "发展历程",
+    "leadershipTitle": "领导团队",
+    "timeline": {
+      "y2025": "成立光明股份有限公司。启动塔隆口岸物流中心建设。",
+      "y2026": "正式投入运营。成功实施智能提单追踪系统。",
+      "y2027": "扩展至茶岭口岸，将总仓储面积增至100,000平方米。"
+    },
+    "leadership": {
+      "person1Name": "阮文安",
+      "person1Title": "首席执行官",
+      "person2Name": "陈氏平",
+      "person2Title": "运营副总监",
+      "person3Name": "黎明强",
+      "person3Title": "销售总监"
+    }
+  },
+  "ContactPage": {
+    "title": "联系我们",
+    "description": "我们随时为您提供帮助。请通过以下信息与光明联系，或通过联系表单发送您的请求。",
+    "infoTitle": "联系信息",
+    "address": "地址",
+    "phone": "电话",
+    "email": "邮箱",
+    "salesDept": "销售部门",
+    "opsDept": "运营部门",
+    "hrDept": "人力资源部门",
+    "formTitle": "在线发送请求",
+    "faqTitle": "常见问题",
+    "faq": {
+      "q1": "公司的营业时间是？",
+      "a1": "我们的办公室工作时间为周一至周五上午8:00至下午5:00。然而，口岸运营团队24/7工作，以确保货物持续清关。",
+      "q2": "如何追踪我的货运？",
+      "a2": "您可以使用提供的提单号（AWB）在我们的网站主页通过“追踪货运”功能或访问跟踪页面直接查询。",
+      "q3": "光明提供拼箱（LCL）服务吗？",
+      "a3": "是的，我们为跨境整箱（FCL）和拼箱（LCL）提供全面服务。"
+    }
+  },
+  "CareersPage": {
+    "title": "职业机会",
+    "noOpenings": "目前我们没有开放的职位。请稍后再查看。"
+  },
+  "CareerDetailPage": {
+    "jobDescription": "职位描述",
+    "requirements": "应聘要求",
+    "applyTitle": "申请此职位",
+    "applySuccess": "感谢您的申请！我们将审阅您的资料，并在适合时与您联系。",
+    "applyError": "申请提交失败，请重试。",
+    "form": {
+      "nameLabel": "姓名",
+      "emailLabel": "邮箱",
+      "phoneLabel": "电话号码",
+      "cvLabel": "上传简历（.pdf, .doc, .docx - 最大5MB）",
+      "submitButton": "提交申请",
+      "submittingButton": "提交中..."
+    },
+    "validation": {
+      "nameRequired": "姓名是必填项",
+      "emailInvalid": "邮箱地址无效",
+      "phoneInvalid": "电话号码无效",
+      "cvRequired": "请上传您的简历",
+      "cvMaxSize": "文件大小不得超过5MB",
+      "cvFormat": "仅接受.pdf、.doc、.docx格式文件"
+    },
+    "notFound": "未找到职位。"
+  },
+  "Errors": {
+    "goBackTo": "返回 {pageName}",
+    "retry": "重试",
+    "failedToLoad": "无法加载数据。"
   }
 }

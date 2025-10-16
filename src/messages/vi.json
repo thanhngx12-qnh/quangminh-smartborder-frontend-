@@ -2,6 +2,7 @@
   "Navigation": {
     "services": "Dịch Vụ",
     "manifesto": "Biểu thiệu",
+    "careers": "Tuyển dụng",
     "about": "Giới Thiệu",
     "news": "Tin Tức",
     "contact": "Liên Hệ"
@@ -108,5 +109,64 @@
       "q3": "Quang Minh có cung cấp dịch vụ cho hàng lẻ (LCL) không?",
       "a3": "Có, chúng tôi cung cấp đầy đủ các dịch vụ cho cả hàng nguyên container (FCL) và hàng lẻ (LCL) qua biên giới."
     }
+  },
+  "CareersPage": {
+    "title": "Cơ Hội Nghề Nghiệp",
+    "noOpenings": "Hiện tại chúng tôi không có vị trí nào đang tuyển dụng. Vui lòng quay lại sau."
+  },
+  "CareerDetailPage": {
+    "jobDescription": "Mô Tả Công Việc",
+    "requirements": "Yêu Cầu Ứng Viên",
+    "applyTitle": "Nộp Hồ Sơ Ứng Tuyển",
+    "applySuccess": "Cảm ơn bạn đã ứng tuyển! Chúng tôi sẽ xem xét hồ sơ và liên hệ lại nếu phù hợp.",
+    "applyError": "Nộp hồ sơ thất bại, vui lòng thử lại.",
+    "form": {
+      "nameLabel": "Họ và tên",
+      "emailLabel": "Email",
+      "phoneLabel": "Số điện thoại",
+      "cvLabel": "Tải lên CV (.pdf, .doc, .docx - Tối đa 5MB)",
+      "submitButton": "Gửi Hồ Sơ",
+      "submittingButton": "Đang gửi..."
+    },
+    "validation": {
+      "nameRequired": "Họ và tên là bắt buộc",
+      "emailInvalid": "Email không hợp lệ",
+      "phoneInvalid": "Số điện thoại không hợp lệ",
+      "cvRequired": "Vui lòng tải lên CV của bạn",
+      "cvMaxSize": "Kích thước file không được vượt quá 5MB",
+      "cvFormat": "Chỉ chấp nhận file .pdf, .doc, .docx"
+    },
+    "notFound": "Không tìm thấy vị trí tuyển dụng."
+  },
+  "General": {
+    "search": "Tìm kiếm"
+  },
+  "Errors": {
+    "goBackTo": "Quay lại {pageName}",
+    "retry": "Thử lại",
+    "failedToLoad": "Không thể tải dữ liệu."
+  },
+  "NotFound": {
+    "title": "404 - Không Tìm Thấy Trang",
+    "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
+    "goHome": "Quay về Trang Chủ"
+  },
+  "ManifestoPage": {
+    "title": "Tuyên Ngôn Của Chúng Tôi",
+    "subtitle": "Kết Nối Giao Thương - Nâng Tầm Giá Trị",
+    "value1Title": "Minh Bạch",
+    "value1Text": "Mọi quy trình, chi phí và trạng thái đơn hàng đều được số hóa và cung cấp cho khách hàng một cách rõ ràng, dễ dàng truy cập. Chúng tôi tin rằng sự minh bạch là nền tảng của niềm tin.",
+    "value2Title": "Hiệu Quả",
+    "value2Text": "Bằng việc áp dụng công nghệ và tự động hóa, chúng tôi cam kết rút ngắn thời gian thông quan, tối ưu hóa chi phí logistics và đảm bảo hàng hóa của bạn đến đích một cách nhanh chóng nhất.",
+    "value3Title": "Đổi Mới",
+    "value3Text": "Thị trường luôn biến động, và chúng tôi luôn đi đầu. Quang Minh không ngừng nghiên cứu và ứng dụng các công nghệ mới như AI, IoT để tạo ra các giải pháp logistics thông minh, linh hoạt và vượt trội.",
+    "value4Title": "Bền Vững",
+    "value4Text": "Phát triển kinh doanh phải đi đôi với trách nhiệm xã hội và môi trường. Chúng tôi ưu tiên các giải pháp vận tải xanh, tối ưu hóa lộ trình để giảm thiểu khí thải carbon, và xây dựng một hệ sinh thái logistics bền vững."
+  },
+  "Search": {
+    "placeholder": "Tìm kiếm dịch vụ, tin tức...",
+    "noResults": "Không tìm thấy kết quả nào.",
+    "services": "Dịch vụ",
+    "news": "Tin tức"
   }
 }

@@ -75,6 +75,7 @@ export default function Footer() {
   const navLinks = [
     { href: '/services', label: tNav('services') },
     { href: '/about', label: tNav('about') },
+    { href: '/careers', label: tNav('careers') },
     { href: '/news', label: tNav('news') },
     { href: '/contact', label: tNav('contact') },
   ];
