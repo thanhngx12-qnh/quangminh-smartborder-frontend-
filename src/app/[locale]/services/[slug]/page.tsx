@@ -10,6 +10,7 @@ import { ButtonLink } from '@/components/ui/Button';
 import OtherServicesSection from '@/components/sections/ServiceDetailPage/OtherServicesSection';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import CardSkeleton from '@/components/ui/CardSkeleton';
+import { useEffect } from 'react';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -123,6 +124,19 @@ export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
 
   // Fetch dữ liệu cho dịch vụ hiện tại
   const { service, isLoading: isLoadingDetail, isError: isErrorDetail } = useServiceBySlug(slug, locale);
+
+  useEffect(() => {
+    if (service) {
+      const translation = service.translations[0];
+      document.title = `${translation.title} - Quang Minh Smart Border`;
+      
+      // Có thể cập nhật meta description ở đây nhưng không hiệu quả bằng server
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', translation.shortDesc);
+      }
+    }
+  }, [service]);
   
   // Fetch tất cả dịch vụ để hiển thị "Các dịch vụ khác"
   const { result, isLoading: isLoadingList } = useAllServices(locale, 1); 
