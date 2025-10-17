@@ -7,6 +7,7 @@ import { RiSearchLine } from 'react-icons/ri';
 import Button, { ButtonLink } from '@/components/ui/Button'; // <-- Import cả Button và ButtonLink
 import { useRouter } from '@/navigation';
 import { useForm } from 'react-hook-form';
+import TrackingSearchForm from '@/components/shared/TrackingSearchForm'; 
 
 // --- Styled Components ---
 const HeroWrapper = styled.section`
@@ -92,65 +93,16 @@ const CtaGroup = styled.div`
   }
 `;
 
-const TrackingWidget = styled.form`
-  display: flex;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 8px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-
-  input {
-    flex-grow: 1;
-    border: none;
-    background: transparent;
-    padding: 8px 12px;
-    font-size: 16px;
-    color: ${({ theme }) => theme.colors.primary};
-
-    &:focus {
-      outline: none;
-    }
-
-    &::placeholder {
-      color: #888;
-    }
-  }
-
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: ${({ theme }) => theme.colors.primary};
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: ${({ theme }) => theme.colors.accent};
-    }
-  }
-`;
-
-type FormData = {
-  awb: string;
-};
-
 // --- Main Component ---
 export default function HeroSection() {
   const t = useTranslations('Hero');
   const router = useRouter();
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    if (data.awb) {
-      router.push(`/tracking/${data.awb}` as never);
-    }
+  // Hàm này sẽ được truyền xuống TrackingSearchForm
+  const handleSearch = (awbs: string) => {
+    // Luôn URL encode chuỗi query để đảm bảo an toàn
+    const encodedAwbs = encodeURIComponent(awbs);
+    router.push(`/tracking?awbs=${encodedAwbs}` as never);
   };
 
   return (
@@ -164,17 +116,9 @@ export default function HeroSection() {
           <ButtonLink href="/tracking" variant="secondary" as="a">{t('ctaTrack')}</ButtonLink>
         </CtaGroup>
         
-        <TrackingWidget onSubmit={handleSubmit(onSubmit)}>
-          <input 
-            type="text" 
-            placeholder={t('trackingPlaceholder')}
-            {...register('awb', { required: 'Mã vận đơn là bắt buộc' })}
-          />
-          <button type="submit" aria-label="Track Shipment">
-            <RiSearchLine />
-          </button>
-        </TrackingWidget>
-        {errors.awb && <p style={{ color: 'white', marginTop: '8px', fontSize: '14px' }}>{errors.awb.message}</p>}
+        {/* Tích hợp component mới ở đây */}
+        <TrackingSearchForm onSearch={handleSearch} />
+
       </HeroContent>
     </HeroWrapper>
   );

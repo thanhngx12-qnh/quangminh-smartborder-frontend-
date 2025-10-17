@@ -168,5 +168,18 @@
     "noResults": "Không tìm thấy kết quả nào.",
     "services": "Dịch vụ",
     "news": "Tin tức"
+  },
+  "TrackingPage": {
+    "title": "Theo Dõi Hành Trình Vận Đơn",
+    "trackingPlaceholder": "Nhập 1 hoặc nhiều mã AWB, cách nhau bởi dấu phẩy",
+    "searchButton": "Tra cứu",
+    "loading": "Đang tải thông tin vận đơn...",
+    "loadingPage": "Đang tải trang...",
+    "errorTitle": "Đã có lỗi xảy ra",
+    "errorDescription": "Không thể tải thông tin vào lúc này. Vui lòng thử lại sau.",
+    "notFoundTitle": "Không tìm thấy vận đơn",
+    "notFoundDescription": "Chúng tôi không tìm thấy bất kỳ vận đơn nào khớp với mã: {awbs}. Vui lòng kiểm tra lại mã của bạn.",
+    "resultsFor": "Hiển thị kết quả cho:",
+    "noEvents": "Chưa có sự kiện nào cho vận đơn này."
   }
 }
