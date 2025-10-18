@@ -10,8 +10,6 @@ import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/navigation';
 
-// --- Styled Components ---
-
 const Overlay = styled(motion.div)`
   position: fixed;
   top: 0;
@@ -30,6 +28,10 @@ const SearchBox = styled(motion.div)`
   width: 100%;
   max-width: 550px;
   position: relative;
+
+  @media (max-width: 600px) {
+    margin: 0 16px;
+  }
 `;
 
 const SearchInputWrapper = styled.div`
@@ -38,8 +40,8 @@ const SearchInputWrapper = styled.div`
 
 const SearchInput = styled.input`
   width: 100%;
-  padding: 20px 60px 20px 20px;
-  font-size: 24px;
+  padding: 16px 50px 16px 16px;
+  font-size: 20px;
   border-radius: 8px;
   border: none;
   background-color: ${({ theme }) => theme.colors.background};
@@ -48,17 +50,26 @@ const SearchInput = styled.input`
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.accent};
   }
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+    padding: 14px 45px 14px 14px;
+  }
 `;
 
 const InputIconWrapper = styled.div`
   position: absolute;
   top: 50%;
-  right: 16px;
+  right: 12px;
   transform: translateY(-50%);
-  font-size: 28px;
+  font-size: 24px;
   color: ${({ theme }) => theme.colors.textSecondary};
   display: flex;
   align-items: center;
+
+  @media (max-width: 600px) {
+    font-size: 22px;
+  }
 `;
 
 const spin = keyframes` to { transform: rotate(360deg); } `;
@@ -93,13 +104,13 @@ const ResultGroup = styled.div`
 const ResultItem = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 12px 16px;
+  gap: 12px;
+  padding: 10px 16px;
   color: ${({ theme }) => theme.colors.text};
   transition: background-color 0.2s ease;
   
   svg {
-    font-size: 20px;
+    font-size: 18px;
     color: ${({ theme }) => theme.colors.textSecondary};
     flex-shrink: 0;
   }
@@ -116,7 +127,6 @@ const NoResults = styled.div`
   color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
-// --- MAIN COMPONENT ---
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -167,9 +177,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <ResultGroup>
                     <h3>{t('services')}</h3>
                     {results.services.map(service => {
-                      // Dữ liệu API trả về translations là một mảng
-                      const translation = service.translations[0]; // <-- SỬA Ở ĐÂY: Lấy phần tử đầu tiên
-                      // Kiểm tra xem translation có tồn tại không để tránh lỗi
+                      const translation = service.translations[0]; 
                       if (!translation) return null;
                       
                       return (
@@ -185,8 +193,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <ResultGroup>
                     <h3>{t('news')}</h3>
                     {results.news.map(newsItem => {
-                      // Dữ liệu API trả về translations là một mảng
-                      const translation = newsItem.translations[0]; // <-- SỬA Ở ĐÂY: Lấy phần tử đầu tiên
+                      const translation = newsItem.translations[0]; 
                       if (!translation) return null;
 
                       return (

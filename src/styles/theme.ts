@@ -2,6 +2,7 @@
 import { DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
+  name: 'light', // <--- THÊM DÒNG NÀY
   colors: {
     // Semantic Colors
     background: '#FFFFFF',           // Nền chính sáng
@@ -55,6 +56,7 @@ export const lightTheme: DefaultTheme = {
 };
 
 export const darkTheme: DefaultTheme = {
+  name: 'dark', // <--- THÊM DÒNG NÀY
   colors: {
     // Semantic Colors
     background: '#0F172A',           // Nền chính tối

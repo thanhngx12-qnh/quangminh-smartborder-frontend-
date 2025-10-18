@@ -91,7 +91,7 @@ export const mockLatestNews: News[] = [
     translations: [
       {
         locale: 'vi',
-        title: 'Quang Minh Logistics mở rộng hệ thống kho bãi thông minh',
+        title: 'Phú Anh Logistics mở rộng hệ thống kho bãi thông minh',
         slug: 'quang-minh-mo-rong-kho-bai-thong-minh',
         excerpt: 'Với việc áp dụng công nghệ IoT và tự động hóa, hệ thống kho bãi mới hứa hẹn giảm 30% thời gian xử lý hàng hóa...'
       }

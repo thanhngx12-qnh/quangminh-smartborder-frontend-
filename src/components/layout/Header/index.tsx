@@ -11,14 +11,15 @@ import {
   RiSunLine, 
   RiMoonLine,
   RiTranslate2,
-  RiBrushLine
+  RiBrushLine,
+  RiPhoneFill, 
+  RiMailFill, 
 } from 'react-icons/ri';
 import Button, { ButtonLink } from '@/components/ui/Button';
 import { useUIStore } from '@/hooks/useUIStore';
 import LanguageSwitcher from './LanguageSwitcher';
 import SearchModal from './SearchModal';
 
-// Import các styled components từ file style riêng
 import {
   HeaderWrapper,
   TopBar,
@@ -32,9 +33,11 @@ import {
   HeaderIcons,
   TopBarLink,
   MobileActions,
-  MobileSettings,
+  MobileSettingGroup, // Đổi từ MobileSettings
+  MobileSettingsWrapper, // Wrapper mới
   MobileButton,
-  MobileButtonLink
+  MobileButtonLink,
+  SearchButtonDesktop 
 } from './Header.styles';
 
 export default function Header() {
@@ -45,7 +48,7 @@ export default function Header() {
   const tNav = useTranslations('Navigation');
   const tActions = useTranslations('HeaderActions');
   const tCta = useTranslations('CtaButton');
-  const tGeneral = useTranslations('General'); // Giả sử đã thêm key "search"
+  const tGeneral = useTranslations('General');
   const pathname = usePathname();
   
   const navItems = [
@@ -57,22 +60,18 @@ export default function Header() {
     { href: '/contact', label: tNav('contact') },
   ];
 
-  // Tự động đóng menu khi chuyển trang
   useEffect(() => { 
     setIsMenuOpen(false); 
   }, [pathname]);
   
-  // Khóa cuộn trang khi menu hoặc search modal mở
   useEffect(() => {
     const isOverlayOpen = isMenuOpen || isSearchOpen;
     document.body.style.overflow = isOverlayOpen ? 'hidden' : 'unset';
-    // Cleanup function để đảm bảo style được reset khi component unmount
     return () => { 
       document.body.style.overflow = 'unset'; 
     };
   }, [isMenuOpen, isSearchOpen]);
 
-  // Hàm xử lý đóng menu khi click vào nền mờ
   const handleBackdropClick = (event: React.MouseEvent<HTMLElement>) => {
     if (event.target === event.currentTarget) {
       setIsMenuOpen(false);
@@ -84,8 +83,8 @@ export default function Header() {
       <HeaderWrapper>
         <TopBar>
           <ContactInfo>
-            <span>Hotline: +84 206 3888 888</span>
-            <span>Email: info@quangminh.vn</span>
+            <span><RiPhoneFill />Hotline: +84 206 3888 888</span>
+            <span><RiMailFill />Email: info@quangminh.vn</span>
           </ContactInfo>
           <Actions>
             <LanguageSwitcher variant="full" />
@@ -96,12 +95,33 @@ export default function Header() {
 
         <MainNav>
           <Logo href="/" as="a">
-            QUANG MINH
-            <br />
-            Smart Border
+            Phú Anh <span>Smart Border</span>
           </Logo>
 
           <NavLinks $isOpen={isMenuOpen} onClick={handleBackdropClick}>
+            {/* CÀI ĐẶT NGÔN NGỮ VÀ GIAO DIỆN TRÊN ĐẦU MENU MOBILE */}
+            <MobileSettingsWrapper>
+                <MobileSettingGroup>
+                    <div className="setting-label">
+                      <RiTranslate2 /> <span>{tGeneral('language')}</span> {/* Dùng tGeneral cho ngôn ngữ */}
+                    </div>
+                    <div className="setting-control">
+                      <LanguageSwitcher variant="icon" />
+                    </div>
+                </MobileSettingGroup>
+
+                <MobileSettingGroup>
+                    <div className="setting-label">
+                      <RiBrushLine /> <span>{tGeneral('theme')}</span> {/* Dùng tGeneral cho giao diện */}
+                    </div>
+                    <div className="setting-control">
+                      <button onClick={toggleTheme} aria-label="Toggle theme">
+                        {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
+                      </button>
+                    </div>
+                </MobileSettingGroup>
+            </MobileSettingsWrapper>
+
             {navItems.map((item) => (
               <NavLink
                 key={item.href}
@@ -113,39 +133,20 @@ export default function Header() {
               </NavLink>
             ))}
 
-            {/* CÁC NÚT HÀNH ĐỘNG VÀ CÀI ĐẶT CHO MENU MOBILE */}
+            {/* CÁC NÚT HÀNH ĐỘNG CHO MENU MOBILE (Đặt ở dưới cùng) */}
             <MobileActions>
               <MobileButtonLink href="/quote" variant="primary" as="a">{tCta('quote')}</MobileButtonLink>
-              <MobileButton onClick={() => setIsSearchOpen(true)} variant="secondary">
-                {tGeneral('search')}
+              <MobileButton onClick={() => { setIsSearchOpen(true); setIsMenuOpen(false); }} variant="secondary">
+                <RiSearchLine style={{ marginRight: '8px' }}/> {tGeneral('search')}
               </MobileButton>
-              
-              <MobileSettings>
-                <div className="setting-label">
-                  <RiTranslate2 /> <span>Ngôn ngữ</span>
-                </div>
-                <div className="setting-control">
-                  {/* Sử dụng variant="icon" cho LanguageSwitcher trong mobile */}
-                  <LanguageSwitcher variant="icon" />
-                </div>
-              </MobileSettings>
-
-              <MobileSettings>
-                <div className="setting-label">
-                  <RiBrushLine /> <span>Giao diện</span>
-                </div>
-                <div className="setting-control">
-                  <button onClick={toggleTheme} aria-label="Toggle theme">
-                    {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
-                  </button>
-                </div>
-              </MobileSettings>
             </MobileActions>
           </NavLinks>
 
           <HeaderIcons>
             <ButtonLink href="/quote" variant="primary" as="a">{tCta('quote')}</ButtonLink>
-            <RiSearchLine onClick={() => setIsSearchOpen(true)} />
+            <SearchButtonDesktop onClick={() => setIsSearchOpen(true)} aria-label="Search">
+              <RiSearchLine />
+            </SearchButtonDesktop>
             <button 
               onClick={toggleTheme} 
               aria-label="Toggle theme" 
@@ -153,7 +154,7 @@ export default function Header() {
                 background: 'none', 
                 border: 'none', 
                 color: 'inherit', 
-                fontSize: '22px', 
+                fontSize: 'inherit',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center'

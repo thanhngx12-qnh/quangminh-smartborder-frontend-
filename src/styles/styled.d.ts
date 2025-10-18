@@ -3,6 +3,7 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    name: 'light' | 'dark'; // <--- THÊM DÒNG NÀY
     colors: {
       // Semantic Colors - Màu theo ngữ nghĩa
       background: string;        // Nền chính của trang

@@ -80,7 +80,7 @@ export default function Footer() {
     <FooterWrapper>
       <FooterContent>
         <FooterColumn>
-          <Logo>QUANG MINH</Logo>
+          <Logo>Phú Anh</Logo>
           <h3>{t('companyName')}</h3>
           <address>{t('address')}</address>
           {/* <p>

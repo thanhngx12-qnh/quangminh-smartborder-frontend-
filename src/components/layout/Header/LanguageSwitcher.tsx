@@ -8,16 +8,21 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RiArrowDownSLine, RiTranslate2 } from 'react-icons/ri';
 
-// --- Interface ---
 interface LanguageSwitcherProps {
-  variant?: 'full' | 'icon'; // Định nghĩa các kiểu hiển thị
+  variant?: 'full' | 'icon'; 
 }
 
-// --- Styled Components ---
 const SwitcherWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  z-index: 1011; 
+
+  @media (max-width: 992px) {
+    // Để LanguageSwitcher trong MobileSettings không có margin/padding thừa
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 const CurrentLangButton = styled.button`
@@ -29,12 +34,25 @@ const CurrentLangButton = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 8px; // Tăng vùng click
+  padding: 8px;
   border-radius: 6px;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); // Giữ cho dark mode
+  }
+  
+  // Điều chỉnh hover cho light mode
+  ${({ theme }) => theme.name === 'light' && `
+    &:hover {
+      background-color: ${theme.colors.surface};
+    }
+  `}
+
+
+  // Chỉnh lại kích thước icon khi dùng variant="icon"
+  svg {
+    font-size: 24px; // Kích thước icon mặc định cho cả desktop (nếu dùng icon) và mobile
   }
 `;
 
@@ -49,16 +67,16 @@ const CurrentLangCode = styled.span`
 
 const Dropdown = styled(motion.div)`
   position: absolute;
-  top: calc(100% + 8px); // Cách nút chính 8px
+  top: calc(100% + 8px);
   right: 0;
-  min-width: 200px;
+  min-width: 180px;
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
   border-radius: 8px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   border: 1px solid ${({ theme }) => theme.colors.border};
   overflow: hidden;
-  z-index: 1012; // Cao hơn các phần tử khác
+  z-index: 1012;
 `;
 
 const DropdownItem = styled.button<{ $isActive: boolean }>`
@@ -66,7 +84,7 @@ const DropdownItem = styled.button<{ $isActive: boolean }>`
   align-items: center;
   gap: 12px;
   width: 100%;
-  padding: 12px 16px;
+  padding: 10px 16px;
   background: ${({ theme, $isActive }) => $isActive ? theme.colors.surface : 'none'};
   font-weight: ${({ $isActive }) => $isActive ? '600' : '500'};
   border: none;
@@ -82,10 +100,9 @@ const DropdownItem = styled.button<{ $isActive: boolean }>`
 `;
 
 const DropdownFlag = styled.span`
-  font-size: 20px;
+  font-size: 18px;
 `;
 
-// --- Logic ---
 const locales = [
   { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' },
   { code: 'en', name: 'English', flag: '🇬🇧' },
@@ -127,7 +144,7 @@ export default function LanguageSwitcher({ variant = 'full' }: LanguageSwitcherP
             <RiArrowDownSLine />
           </>
         ) : (
-          <RiTranslate2 style={{fontSize: '24px'}}/> // Dùng icon chung cho mobile
+          <RiTranslate2 /> 
         )}
       </CurrentLangButton>
       

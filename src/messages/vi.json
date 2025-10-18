@@ -1,7 +1,7 @@
 {
   "Navigation": {
     "services": "Dịch Vụ",
-    "manifesto": "Biểu thiệu",
+    "manifesto": "Tuyên ngôn",
     "careers": "Tuyển dụng",
     "about": "Giới Thiệu",
     "news": "Tin Tức",
@@ -15,8 +15,9 @@
     "quote": "Yêu Cầu Báo Giá"
   },
   "Footer": {
-    "companyName": "CÔNG TY CỔ PHẦN QUANG MINH",
-    "address": "Cửa khẩu Tà Lùng, huyện Phục Hòa, tỉnh Cao Bằng, Việt Nam",
+    "companyName": "CÔNG TY TNHH THƯƠNG MẠI VẬN TẢI PHÚ ANH",
+    "taxCode": "Mã số thuế: 4800166795",
+    "address": "Số nhà 057, Tổ dân phố Hợp Giang 07, phố Nước Giáp, Phường Thục Phán, Cao Bằng, Việt Nam",
     "sitemap": "Sitemap",
     "legal": "Pháp lý",
     "terms": "Điều khoản sử dụng",
@@ -25,11 +26,13 @@
     "formName": "Họ và tên",
     "formEmail": "Email của bạn",
     "formMessage": "Nội dung yêu cầu...",
+    "formPhone": "Số điện thoại",
+    "formServiceId": "Dịch vụ quan tâm (Tùy chọn)",
     "formSend": "Gửi Yêu Cầu",
-    "copyright": "© 2025 Công ty Cổ phần Quang Minh. Đã đăng ký bản quyền."
+    "copyright": "© 2025 Công ty TNHH Thương mại Vận tải Phú Anh. Đã đăng ký bản quyền."
   },
   "Hero": {
-    "title": "QUANG MINH",
+    "title": "Phú Anh",
     "subtitle": "Smart Border Logistics.",
     "ctaQuote": "Tra Cước Đặt Bãi",
     "ctaTrack": "Tra Vận Đơn",
@@ -56,27 +59,27 @@
   },
   "ServicesPage": {
     "title": "Tất Cả Dịch Vụ",
-    "description": "Khám phá đầy đủ các giải pháp logistics chuyên nghiệp mà Quang Minh cung cấp, được thiết kế để đáp ứng mọi nhu cầu của bạn."
+    "description": "Khám phá đầy đủ các giải pháp logistics chuyên nghiệp mà Phú Anh cung cấp, được thiết kế để đáp ứng mọi nhu cầu của bạn."
   },
   "ServiceDetail": {
     "ctaTitle": "Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?",
     "ctaButton": "Yêu Cầu Báo Giá Ngay",
     "otherServicesTitle": "Khám Phá Các Dịch Vụ Khác"
-  ,
-"NotFound": {
+  },
+  "NotFound": {
     "title": "404 - Không Tìm Thấy Trang",
     "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
     "goHome": "Quay về Trang Chủ"
-  }},
+  },
   "AboutPage": {
-    "heroTitle": "Về Quang Minh",
+    "heroTitle": "Về Phú Anh",
     "heroSubtitle": "Tiên phong giải pháp logistics thông minh tại biên giới.",
     "missionTitle": "Sứ Mệnh & Tầm Nhìn",
     "missionText": "Sứ mệnh của chúng tôi là cung cấp các giải pháp logistics minh bạch, hiệu quả và bền vững, phá vỡ các rào cản thương mại và kết nối doanh nghiệp Việt Nam với thế giới. Tầm nhìn của chúng tôi là trở thành nhà cung cấp dịch vụ 'Smart Border Logistics' hàng đầu khu vực.",
     "timelineTitle": "Hành Trình Phát Triển",
     "leadershipTitle": "Đội Ngũ Lãnh Đạo",
     "timeline": {
-      "y2025": "Thành lập Công ty Cổ phần Quang Minh. Khởi công xây dựng trung tâm logistics tại cửa khẩu Tà Lùng.",
+      "y2025": "Thành lập Công ty TNHH Thương mại Vận tải Phú Anh. Khởi công xây dựng trung tâm logistics tại cửa khẩu Tà Lùng.",
       "y2026": "Chính thức đi vào hoạt động. Triển khai thành công hệ thống tracking vận đơn thông minh.",
       "y2027": "Mở rộng chi nhánh tại cửa khẩu Trà Lĩnh, nâng tổng diện tích kho bãi lên 100,000 m²."
     },
@@ -91,7 +94,7 @@
   },
   "ContactPage": {
     "title": "Liên Hệ Với Chúng Tôi",
-    "description": "Chúng tôi luôn sẵn sàng lắng nghe. Hãy kết nối với Quang Minh qua thông tin dưới đây hoặc gửi yêu cầu của bạn qua form liên hệ.",
+    "description": "Chúng tôi luôn sẵn sàng lắng nghe. Hãy kết nối với Phú Anh qua thông tin dưới đây hoặc gửi yêu cầu của bạn qua form liên hệ.",
     "infoTitle": "Thông Tin Liên Lạc",
     "address": "Địa chỉ",
     "phone": "Điện thoại",
@@ -106,7 +109,7 @@
       "a1": "Văn phòng của chúng tôi làm việc từ 8:00 - 17:00, Thứ Hai đến Thứ Sáu. Tuy nhiên, đội ngũ vận hành tại cửa khẩu hoạt động 24/7 để đảm bảo hàng hóa được thông quan liên tục.",
       "q2": "Làm thế nào để tôi tra cứu vận đơn?",
       "a2": "Bạn có thể sử dụng mã vận đơn (AWB) được cung cấp để tra cứu trực tiếp trên website của chúng tôi thông qua ô 'Tra Vận Đơn' ở trang chủ hoặc truy cập trang Tracking.",
-      "q3": "Quang Minh có cung cấp dịch vụ cho hàng lẻ (LCL) không?",
+      "q3": "Phú Anh có cung cấp dịch vụ cho hàng lẻ (LCL) không?",
       "a3": "Có, chúng tôi cung cấp đầy đủ các dịch vụ cho cả hàng nguyên container (FCL) và hàng lẻ (LCL) qua biên giới."
     }
   },
@@ -139,17 +142,14 @@
     "notFound": "Không tìm thấy vị trí tuyển dụng."
   },
   "General": {
-    "search": "Tìm kiếm"
+    "search": "Tìm kiếm",
+    "language": "Ngôn ngữ",
+    "theme": "Giao diện"
   },
   "Errors": {
     "goBackTo": "Quay lại {pageName}",
     "retry": "Thử lại",
     "failedToLoad": "Không thể tải dữ liệu."
-  },
-  "NotFound": {
-    "title": "404 - Không Tìm Thấy Trang",
-    "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
-    "goHome": "Quay về Trang Chủ"
   },
   "ManifestoPage": {
     "title": "Tuyên Ngôn Của Chúng Tôi",
@@ -159,7 +159,7 @@
     "value2Title": "Hiệu Quả",
     "value2Text": "Bằng việc áp dụng công nghệ và tự động hóa, chúng tôi cam kết rút ngắn thời gian thông quan, tối ưu hóa chi phí logistics và đảm bảo hàng hóa của bạn đến đích một cách nhanh chóng nhất.",
     "value3Title": "Đổi Mới",
-    "value3Text": "Thị trường luôn biến động, và chúng tôi luôn đi đầu. Quang Minh không ngừng nghiên cứu và ứng dụng các công nghệ mới như AI, IoT để tạo ra các giải pháp logistics thông minh, linh hoạt và vượt trội.",
+    "value3Text": "Thị trường luôn biến động, và chúng tôi luôn đi đầu. Phú Anh không ngừng nghiên cứu và ứng dụng các công nghệ mới như AI, IoT để tạo ra các giải pháp logistics thông minh, linh hoạt và vượt trội.",
     "value4Title": "Bền Vững",
     "value4Text": "Phát triển kinh doanh phải đi đôi với trách nhiệm xã hội và môi trường. Chúng tôi ưu tiên các giải pháp vận tải xanh, tối ưu hóa lộ trình để giảm thiểu khí thải carbon, và xây dựng một hệ sinh thái logistics bền vững."
   },

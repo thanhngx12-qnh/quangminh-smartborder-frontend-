@@ -128,7 +128,7 @@ export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   useEffect(() => {
     if (service) {
       const translation = service.translations[0];
-      document.title = `${translation.title} - Quang Minh Smart Border`;
+      document.title = `${translation.title} - Phú Anh Smart Border`;
       
       // Có thể cập nhật meta description ở đây nhưng không hiệu quả bằng server
       const metaDesc = document.querySelector('meta[name="description"]');

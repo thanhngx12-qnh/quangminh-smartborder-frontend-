@@ -286,13 +286,13 @@ export default function ContactPage() {
                 </FormGroup>
                 
                 <FormGroup>
-                  <label htmlFor="phone">Số điện thoại</label>
+                  <label htmlFor="phone">{tFooter('formPhone')}</label>
                   <input id="phone" type="tel" {...register('phone')} />
                   {errors.phone && <FormError role="alert">{errors.phone.message}</FormError>}
                 </FormGroup>
 
                 <FormGroup>
-                  <label htmlFor="serviceId">Dịch vụ quan tâm (Tùy chọn)</label>
+                  <label htmlFor="serviceId">{tFooter('formServiceId')}</label>
                   <Controller
                     name="serviceId"
                     control={control}

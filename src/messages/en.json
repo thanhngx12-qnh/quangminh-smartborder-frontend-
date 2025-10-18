@@ -3,7 +3,7 @@
     "services": "Services",
     "manifesto": "Manifesto",
     "careers": "Careers",
-    "about": "About",
+    "about": "About Us",
     "news": "News",
     "contact": "Contact"
   },
@@ -15,8 +15,9 @@
     "quote": "Request a Quote"
   },
   "Footer": {
-    "companyName": "QUANG MINH JOINT STOCK COMPANY",
-    "address": "Tà Lùng Border Gate, Phục Hòa District, Cao Bằng Province, Vietnam",
+    "companyName": "PHU ANH TRADING AND TRANSPORTATION CO., LTD",
+    "taxCode": "Tax Code: 4800166795",
+    "address": "No. 057, Hop Giang 07 Residential Group, Nuoc Giap Street, Thuc Phan Ward, Cao Bang, Vietnam",
     "sitemap": "Sitemap",
     "legal": "Legal",
     "terms": "Terms of Use",
@@ -24,39 +25,41 @@
     "quickContact": "Quick Contact",
     "formName": "Full Name",
     "formEmail": "Your Email",
-    "formMessage": "Your Request...",
+    "formMessage": "Your message...",
+    "formPhone": "Phone Number",
+    "formServiceId": "Interested Service (Optional)",
     "formSend": "Send Request",
-    "copyright": "© 2025 Quang Minh Joint Stock Company. All rights reserved."
+    "copyright": "© 2025 Phu Anh Trading and Transportation Co., Ltd. All rights reserved."
   },
   "Hero": {
-    "title": "QUANG MINH",
+    "title": "Phu Anh",
     "subtitle": "Smart Border Logistics.",
-    "ctaQuote": "Check Rates & Book Space",
+    "ctaQuote": "Check Rates & Book Yard",
     "ctaTrack": "Track Shipment",
-    "trackingPlaceholder": "Enter Air Waybill (AWB) Number"
+    "trackingPlaceholder": "Enter Air Waybill (AWB) number"
   },
   "Kpi": {
-    "storageTitle": "Warehouse",
+    "storageTitle": "Warehouse Space",
     "storageValue": "5,000 m²",
-    "storageDesc": "International Standard",
+    "storageDesc": "International standards",
     "containerTitle": "Containers / Day",
     "containerValue": "500+",
-    "containerDesc": "Clearance Capacity",
+    "containerDesc": "Customs clearance capacity",
     "customsTitle": "Customs",
     "customsValue": "<2 Hours",
-    "customsDesc": "Average Processing Time"
+    "customsDesc": "Average processing time"
   },
   "FeaturedServices": {
     "title": "Featured Services",
-    "description": "We provide comprehensive logistics solutions designed to optimize your supply chain."
+    "description": "We provide comprehensive logistics solutions, designed to optimize your supply chain."
   },
   "LatestNews": {
     "title": "News & Events",
-    "viewAll": "View All News"
+    "viewAll": "View all news"
   },
   "ServicesPage": {
     "title": "All Services",
-    "description": "Explore the full range of professional logistics solutions provided by Quang Minh, tailored to meet all your needs."
+    "description": "Discover the full range of professional logistics solutions Phu Anh offers, designed to meet your every need."
   },
   "ServiceDetail": {
     "ctaTitle": "Ready to optimize your supply chain?",
@@ -66,48 +69,48 @@
   "NotFound": {
     "title": "404 - Page Not Found",
     "description": "Sorry, the page you are looking for does not exist or has been moved.",
-    "goHome": "Return to Homepage"
+    "goHome": "Go to Homepage"
   },
   "AboutPage": {
-    "heroTitle": "About Quang Minh",
-    "heroSubtitle": "Pioneering smart logistics solutions at the border.",
+    "heroTitle": "About Phu Anh",
+    "heroSubtitle": "Pioneering smart border logistics solutions.",
     "missionTitle": "Mission & Vision",
-    "missionText": "Our mission is to provide transparent, efficient, and sustainable logistics solutions, breaking down trade barriers and connecting Vietnamese businesses with the world. Our vision is to become the leading provider of 'Smart Border Logistics' in the region.",
-    "timelineTitle": "Our Journey",
+    "missionText": "Our mission is to provide transparent, efficient, and sustainable logistics solutions, breaking down trade barriers and connecting Vietnamese businesses with the world. Our vision is to become the leading 'Smart Border Logistics' service provider in the region.",
+    "timelineTitle": "Development Journey",
     "leadershipTitle": "Leadership Team",
     "timeline": {
-      "y2025": "Established Quang Minh Joint Stock Company. Began construction of the logistics center at Tà Lùng Border Gate.",
-      "y2026": "Officially commenced operations. Successfully implemented a smart shipment tracking system.",
-      "y2027": "Expanded to Trà Lĩnh Border Gate, increasing total warehouse space to 100,000 m²."
+      "y2025": "Establishment of Phu Anh Trading and Transportation Co., Ltd. Commencement of construction for the logistics center at Ta Lung border gate.",
+      "y2026": "Officially commence operations. Successfully implement a smart shipment tracking system.",
+      "y2027": "Expand branch at Tra Linh border gate, increasing total warehouse area to 100,000 m²."
     },
     "leadership": {
-      "person1Name": "Nguyễn Văn An",
-      "person1Title": "Chief Executive Officer",
-      "person2Name": "Trần Thị Bình",
+      "person1Name": "Nguyen Van An",
+      "person1Title": "General Director",
+      "person2Name": "Tran Thi Binh",
       "person2Title": "Deputy Director of Operations",
-      "person3Name": "Lê Minh Cường",
-      "person3Title": "Director of Sales"
+      "person3Name": "Le Minh Cuong",
+      "person3Title": "Sales Director"
     }
   },
   "ContactPage": {
     "title": "Contact Us",
-    "description": "We are always ready to listen. Connect with Quang Minh through the details below or send us your request via the contact form.",
+    "description": "We are always ready to listen. Connect with Phu Anh using the information below or send your request via the contact form.",
     "infoTitle": "Contact Information",
     "address": "Address",
     "phone": "Phone",
     "email": "Email",
     "salesDept": "Sales Department",
     "opsDept": "Operations Department",
-    "hrDept": "Human Resources Department",
-    "formTitle": "Send an Online Request",
+    "hrDept": "HR Department",
+    "formTitle": "Send Online Request",
     "faqTitle": "Frequently Asked Questions",
     "faq": {
       "q1": "What are the company's working hours?",
-      "a1": "Our office operates from 8:00 AM to 5:00 PM, Monday to Friday. However, our border gate operations team works 24/7 to ensure continuous cargo clearance.",
+      "a1": "Our office operates from 8:00 AM - 5:00 PM, Monday to Friday. However, our border gate operations team works 24/7 to ensure continuous cargo clearance.",
       "q2": "How can I track my shipment?",
-      "a2": "You can use the Air Waybill (AWB) number provided to track your shipment directly on our website via the 'Track Shipment' section on the homepage or by visiting the Tracking page.",
-      "q3": "Does Quang Minh provide services for Less than Container Load (LCL)?",
-      "a3": "Yes, we offer comprehensive services for both Full Container Load (FCL) and Less than Container Load (LCL) across borders."
+      "a2": "You can use the provided Air Waybill (AWB) number to track directly on our website via the 'Track Shipment' box on the homepage or by visiting the Tracking page.",
+      "q3": "Does Phu Anh provide services for Less than Container Load (LCL)?",
+      "a3": "Yes, we provide a full range of services for both Full Container Load (FCL) and Less than Container Load (LCL) across borders."
     }
   },
   "CareersPage": {
@@ -116,10 +119,10 @@
   },
   "CareerDetailPage": {
     "jobDescription": "Job Description",
-    "requirements": "Candidate Requirements",
+    "requirements": "Requirements",
     "applyTitle": "Apply for This Position",
-    "applySuccess": "Thank you for applying! We will review your application and contact you if suitable.",
-    "applyError": "Application submission failed, please try again.",
+    "applySuccess": "Thank you for your application! We will review your profile and contact you if it's a good fit.",
+    "applyError": "Application failed, please try again.",
     "form": {
       "nameLabel": "Full Name",
       "emailLabel": "Email",
@@ -138,9 +141,45 @@
     },
     "notFound": "Job position not found."
   },
+  "General": {
+    "search": "Search",
+    "language": "Language",
+    "theme": "Theme"
+  },
   "Errors": {
     "goBackTo": "Go back to {pageName}",
-    "retry": "Try Again",
+    "retry": "Retry",
     "failedToLoad": "Failed to load data."
+  },
+  "ManifestoPage": {
+    "title": "Our Manifesto",
+    "subtitle": "Connecting Commerce - Enhancing Value",
+    "value1Title": "Transparency",
+    "value1Text": "All processes, costs, and order statuses are digitized and provided to customers clearly and accessibly. We believe transparency is the foundation of trust.",
+    "value2Title": "Efficiency",
+    "value2Text": "By applying technology and automation, we commit to shortening customs clearance times, optimizing logistics costs, and ensuring your goods reach their destination as quickly as possible.",
+    "value3Title": "Innovation",
+    "value3Text": "The market is constantly changing, and we are always at the forefront. Phu Anh continuously researches and applies new technologies such as AI, IoT to create smart, flexible, and superior logistics solutions.",
+    "value4Title": "Sustainability",
+    "value4Text": "Business development must go hand in hand with social and environmental responsibility. We prioritize green transportation solutions, optimize routes to minimize carbon emissions, and build a sustainable logistics ecosystem."
+  },
+  "Search": {
+    "placeholder": "Search services, news...",
+    "noResults": "No results found.",
+    "services": "Services",
+    "news": "News"
+  },
+  "TrackingPage": {
+    "title": "Track Your Shipment Journey",
+    "trackingPlaceholder": "Enter 1 or more AWB numbers, separated by commas",
+    "searchButton": "Search",
+    "loading": "Loading shipment information...",
+    "loadingPage": "Loading page...",
+    "errorTitle": "An error occurred",
+    "errorDescription": "Unable to load information at this time. Please try again later.",
+    "notFoundTitle": "Shipment not found",
+    "notFoundDescription": "We could not find any shipments matching the code: {awbs}. Please check your code again.",
+    "resultsFor": "Showing results for:",
+    "noEvents": "No events yet for this shipment."
   }
 }
