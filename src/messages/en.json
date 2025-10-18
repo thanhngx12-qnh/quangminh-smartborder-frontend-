@@ -181,5 +181,17 @@
     "notFoundDescription": "We could not find any shipments matching the code: {awbs}. Please check your code again.",
     "resultsFor": "Showing results for:",
     "noEvents": "No events yet for this shipment."
+  },
+  "WhyChooseUs": {
+    "title": "Why Choose Us?",
+    "point1Title": "Pioneering Technology",
+    "point1Text": "We apply real-time tracking technology, smart warehouse management (WMS), and electronic customs declarations to ensure your goods are processed quickly and accurately.",
+    "point2Title": "Dedicated Team",
+    "point2Text": "Our team of experienced specialists is always ready to consult and provide 24/7 support, ensuring all your issues are resolved professionally.",
+    "point3Title": "Strategic Location",
+    "point3Text": "Located right at the Tà Lùng border gate, our logistics center is a vital trade bridge, optimizing transportation time and costs between Vietnam and China."
+  },
+  "Partners": {
+    "title": "Trusted by leading businesses"
   }
 }

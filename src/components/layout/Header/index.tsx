@@ -95,7 +95,7 @@ export default function Header() {
 
         <MainNav>
           <Logo href="/" as="a">
-            Phú Anh <span>Smart Border</span>
+            Phú Anh <span></span>
           </Logo>
 
           <NavLinks $isOpen={isMenuOpen} onClick={handleBackdropClick}>
