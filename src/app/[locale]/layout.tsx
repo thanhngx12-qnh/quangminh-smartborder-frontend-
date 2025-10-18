@@ -3,6 +3,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import { Providers } from "@/app/providers";
 import Header from "@/components/layout/Header"; // <-- THÊM LẠI IMPORT
 import Footer from "@/components/layout/Footer"; // <-- THÊM LẠI IMPORT
+import FloatingButtons from "@/components/shared/FloatingButtons";
 
 // Props bây giờ phải nhận một Promise
 type LocaleLayoutProps = {
@@ -38,6 +39,7 @@ export default async function LocaleLayout({
             <Header />
             <main>{children}</main>
             <Footer />
+             <FloatingButtons />
           </Providers>
         </StyledComponentsRegistry>
       </body>

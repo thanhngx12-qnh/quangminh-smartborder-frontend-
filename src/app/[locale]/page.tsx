@@ -10,6 +10,8 @@ import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import { useFeaturedServices } from '@/hooks/useServices';
 import { useLatestNews } from '@/hooks/useNews';
 import HomePageSkeleton from '@/components/skeletons/HomePageSkeleton'; // <-- Import
+import WhyChooseUsSection from '@/components/sections/HomePage/WhyChooseUsSection'; // <-- Import
+import PartnersSection from '@/components/sections/HomePage/PartnersSection'; 
 
 export default function Home() {
   const locale = useLocale();
@@ -47,6 +49,8 @@ export default function Home() {
             )
           )}
 
+          <WhyChooseUsSection />
+
           {isErrorNews ? (
             <div>Failed to load news.</div>
           ) : (
@@ -56,6 +60,8 @@ export default function Home() {
               </FadeInWhenVisible>
             )
           )}
+
+          <PartnersSection />
         </>
       )}
     </>

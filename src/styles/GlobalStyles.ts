@@ -47,6 +47,7 @@ export const GlobalStyles = createGlobalStyle`
   html {
     /* Đảm bảo trang chiếm toàn bộ chiều cao viewport */
     height: 100%;
+    zoom: 0.9;
   }
 
   body {

@@ -181,5 +181,17 @@
     "notFoundDescription": "Chúng tôi không tìm thấy bất kỳ vận đơn nào khớp với mã: {awbs}. Vui lòng kiểm tra lại mã của bạn.",
     "resultsFor": "Hiển thị kết quả cho:",
     "noEvents": "Chưa có sự kiện nào cho vận đơn này."
-  }
+  },
+  "WhyChooseUs": {
+    "title": "Tại Sao Lựa Chọn Chúng Tôi?",
+    "point1Title": "Công Nghệ Tiên Phong",
+    "point1Text": "Chúng tôi áp dụng công nghệ tracking thời gian thực, quản lý kho bãi thông minh (WMS) và khai báo hải quan điện tử để đảm bảo hàng hóa của bạn được xử lý nhanh chóng và chính xác nhất.",
+    "point2Title": "Đội Ngũ Tận Tâm",
+    "point2Text": "Đội ngũ chuyên gia giàu kinh nghiệm của chúng tôi luôn sẵn sàng tư vấn và hỗ trợ 24/7, đảm bảo mọi vấn đề của bạn đều được giải quyết một cách chuyên nghiệp.",
+    "point3Title": "Vị Trí Chiến Lược",
+    "point3Text": "Nằm ngay tại cửa khẩu Tà Lùng, trung tâm logistics của chúng tôi là cầu nối giao thương huyết mạch, giúp tối ưu hóa thời gian và chi phí vận chuyển giữa Việt Nam và Trung Quốc."
+  },
+  "Partners": {
+    "title": "Được tin cậy bởi các doanh nghiệp hàng đầu"
+  } 
 }

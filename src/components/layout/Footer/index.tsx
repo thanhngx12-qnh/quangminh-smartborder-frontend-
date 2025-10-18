@@ -83,37 +83,30 @@ export default function Footer() {
           <Logo>Phú Anh</Logo>
           <h3>{t('companyName')}</h3>
           <address>{t('address')}</address>
-          {/* <p>
-            <RiPhoneLine /> Hotline: +84 206 3888 888<br/>
-            <RiWechatLine /> Email: info@quangminh.vn<br/>
-            <RiBuildingLine /> {tContact('salesDept')}: sales@quangminh.vn<br/>
-            <RiBuildingLine /> {tContact('opsDept')}: operations@quangminh.vn<br/>
-            <RiUserLine /> {tContact('hrDept')}: hr@quangminh.vn
-          </p> */}
           <ContactList>
             <ContactItem>
               <IconWrapper><RiPhoneLine /></IconWrapper>
-              <span>Hotline: +84 206 3888 888</span>
+              <span>Hotline: +84 123456789</span>
             </ContactItem>
 
             <ContactItem>
               <IconWrapper><RiWechatLine /></IconWrapper>
-              <span>Email: info@quangminh.vn</span>
+              <span>Email: info@phuanh.com</span>
             </ContactItem>
 
             <ContactItem>
               <IconWrapper><RiBuildingLine /></IconWrapper>
-              <span>{tContact('salesDept')}: sales@quangminh.vn</span>
+              <span>{tContact('salesDept')}: sales@phuanh.com</span>
             </ContactItem>
 
             <ContactItem>
               <IconWrapper><RiBuildingLine /></IconWrapper>
-              <span>{tContact('opsDept')}: operations@quangminh.vn</span>
+              <span>{tContact('opsDept')}: operations@phuanh.com</span>
             </ContactItem>
 
             <ContactItem>
               <IconWrapper><RiUserLine /></IconWrapper>
-              <span>{tContact('hrDept')}: hr@quangminh.vn</span>
+              <span>{tContact('hrDept')}: hr@phuanh.com</span>
             </ContactItem>
           </ContactList>
           <SocialLinks>

@@ -83,8 +83,8 @@ export default function Header() {
       <HeaderWrapper>
         <TopBar>
           <ContactInfo>
-            <span><RiPhoneFill />Hotline: +84 206 3888 888</span>
-            <span><RiMailFill />Email: info@quangminh.vn</span>
+            <span><RiPhoneFill />Hotline: +84 123456789</span>
+            <span><RiMailFill />Email: info@phuanh.com</span>
           </ContactInfo>
           <Actions>
             <LanguageSwitcher variant="full" />
