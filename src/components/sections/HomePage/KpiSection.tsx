@@ -54,7 +54,7 @@ const TextContent = styled.div`
   h3 {
     font-size: 36px;
     font-weight: 700;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.text};
     line-height: 1.2;
   }
 
@@ -65,7 +65,7 @@ const TextContent = styled.div`
   
   span {
     font-size: 14px;
-    color: #999;
+    color: ${({ theme }) => theme.colors.textMuted};
   }
 `;
 

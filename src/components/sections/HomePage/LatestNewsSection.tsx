@@ -59,7 +59,7 @@ const CardContent = styled.div`
 
   time {
     font-size: 14px;
-    color: #999;
+    color: ${({ theme }) => theme.colors.textMuted};
     margin-bottom: 8px;
     display: block;
   }
@@ -67,7 +67,7 @@ const CardContent = styled.div`
   h3 {
     font-size: 18px;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.text};
     margin-bottom: 12px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
