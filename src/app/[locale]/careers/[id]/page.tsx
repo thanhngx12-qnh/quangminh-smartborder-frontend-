@@ -15,6 +15,7 @@ import Button from '@/components/ui/Button';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import { RiMapPinLine, RiTimeLine } from 'react-icons/ri';
 import ErrorState from '@/components/ui/ErrorState'; // Import component ErrorState
+import { useEffect } from 'react';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -220,6 +221,26 @@ export default function CareerDetailPage({ params }: CareerDetailPageProps) {
   const jobId = parseInt(params.id, 10);
   const { jobPosting, isLoading, isError } = useJobPostingById(jobId);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  useEffect(() => {
+    if (jobPosting) {
+      document.title = `Tuyển dụng: ${jobPosting.title} - Phú Anh Transport`;
+      
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        document.head.appendChild(metaDescription);
+      }
+      // Lấy một phần mô tả làm meta description
+      const description = `${jobPosting.description.substring(0, 155)}...`;
+      metaDescription.setAttribute('content', description);
+    }
+
+    return () => {
+      document.title = 'Phú Anh Transport & Trading';
+    };
+  }, [jobPosting]);
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ApplicationFormValues>({
     resolver: zodResolver(applicationFormSchema),

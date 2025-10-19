@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import { RiCalendar2Line, RiUserLine } from 'react-icons/ri';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import CardSkeleton from '@/components/ui/CardSkeleton';
+import { useEffect } from 'react'; 
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -144,6 +145,36 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
   const { slug } = params;
   const locale = useLocale();
   const { news, isLoading, isError } = useNewsBySlug(slug, locale);
+
+   useEffect(() => {
+    // Chỉ cập nhật khi đã fetch xong và có dữ liệu `news`
+    if (news) {
+      // Tìm bản dịch phù hợp
+      const translation = news.translations.find(t => t.locale === locale) || news.translations[0];
+      if (translation) {
+        // Cập nhật thẻ <title>
+        document.title = `${translation.title} - Phú Anh Transport`; // Sử dụng tên công ty mới
+
+        // Tìm và cập nhật thẻ <meta name="description">
+        let metaDescription = document.querySelector('meta[name="description"]');
+        
+        // Nếu thẻ meta chưa tồn tại, tạo mới và thêm vào <head>
+        if (!metaDescription) {
+          metaDescription = document.createElement('meta');
+          metaDescription.setAttribute('name', 'description');
+          document.head.appendChild(metaDescription);
+        }
+        
+        // Cập nhật nội dung
+        metaDescription.setAttribute('content', translation.excerpt);
+      }
+    }
+    
+    // Cleanup function: reset lại title khi component bị unmount
+    return () => {
+      document.title = 'Phú Anh Transport & Trading'; // Hoặc tên mặc định của bạn
+    };
+  }, [news, locale]);
 
   if (isLoading) {
       return (
