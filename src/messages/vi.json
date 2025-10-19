@@ -199,5 +199,15 @@
     "serviceTitle": "{serviceName} - Phú Anh Transport",
     "newsTitle": "{newsTitle} - Phú Anh Transport",
     "careerTitle": "Tuyển dụng: {jobTitle} - Phú Anh Transport"
+  },
+  "TermsPage": {
+    "title": "Điều Khoản Sử Dụng",
+    "lastUpdated": "Cập nhật lần cuối: 18 tháng 10, 2025",
+    "content": "Chào mừng bạn đến với trang web của Công ty TNHH Thương mại Vận tải Phú Anh.\n\nBằng việc truy cập và sử dụng trang web này, bạn đồng ý tuân thủ các điều khoản và điều kiện được nêu dưới đây. Vui lòng đọc kỹ trước khi sử dụng dịch vụ của chúng tôi.\n\n### 1. Trách nhiệm của Người dùng\nNgười dùng có trách nhiệm cung cấp thông tin chính xác khi yêu cầu báo giá hoặc sử dụng các dịch vụ trực tuyến. Mọi hành vi lạm dụng, phá hoại hoặc cố gắng xâm nhập hệ thống đều bị nghiêm cấm.\n\n### 2. Quyền Sở hữu Trí tuệ\nToàn bộ nội dung, hình ảnh, và thương hiệu trên trang web này thuộc quyền sở hữu của Công ty TNHH Thương mại Vận tải Phú Anh. Mọi hành vi sao chép, sử dụng khi chưa có sự cho phép bằng văn bản đều là vi phạm."
+  },
+  "PrivacyPage": {
+    "title": "Chính Sách Bảo Mật",
+    "lastUpdated": "Cập nhật lần cuối: 18 tháng 10, 2025",
+    "content": "Công ty TNHH Thương mại Vận tải Phú Anh cam kết bảo vệ thông tin cá nhân của bạn.\n\nChính sách này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu của bạn khi bạn truy cập trang web của chúng tôi.\n\n### 1. Thu thập thông tin\nChúng tôi thu thập các thông tin bạn cung cấp qua form liên hệ, bao gồm: Họ và tên, email, số điện thoại và nội dung yêu cầu. Chúng tôi cũng có thể thu thập dữ liệu kỹ thuật như địa chỉ IP cho mục đích phân tích.\n\n### 2. Sử dụng thông tin\nThông tin của bạn được sử dụng để:\n- Liên hệ và trả lời các yêu cầu của bạn.\n- Cải thiện chất lượng dịch vụ và trang web.\n- Gửi các thông tin cập nhật quan trọng (nếu bạn đồng ý).\nChúng tôi cam kết không chia sẻ thông tin của bạn cho bất kỳ bên thứ ba nào mà không có sự đồng ý của bạn."
   }
 }
