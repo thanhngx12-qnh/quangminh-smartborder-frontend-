@@ -204,7 +204,6 @@ const FormGroup = styled.div`
 const FormError = styled.p`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.error};
-  /* Bỏ margin-top ở đây, gap của FormGroup sẽ xử lý */
 `;
 
 // --- Main Component ---
@@ -221,26 +220,22 @@ export default function CareerDetailPage({ params }: CareerDetailPageProps) {
   const jobId = parseInt(params.id, 10);
   const { jobPosting, isLoading, isError } = useJobPostingById(jobId);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const t_meta = useTranslations('Metadata');
 
   useEffect(() => {
     if (jobPosting) {
-      document.title = `Tuyển dụng: ${jobPosting.title} - Phú Anh Transport`;
-      
-      let metaDescription = document.querySelector('meta[name="description"]');
-      if (!metaDescription) {
-        metaDescription = document.createElement('meta');
-        metaDescription.setAttribute('name', 'description');
-        document.head.appendChild(metaDescription);
-      }
-      // Lấy một phần mô tả làm meta description
-      const description = `${jobPosting.description.substring(0, 155)}...`;
-      metaDescription.setAttribute('content', description);
-    }
+      document.title = t_meta('careerTitle', { jobTitle: jobPosting.title });
 
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        const description = jobPosting.description.substring(0, 155).replace(/\s+/g, ' ').trim() + '...';
+        metaDesc.setAttribute('content', description);
+      }
+    }
     return () => {
-      document.title = 'Phú Anh Transport & Trading';
+      document.title = t_meta('defaultTitle');
     };
-  }, [jobPosting]);
+  }, [jobPosting, t_meta]);
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ApplicationFormValues>({
     resolver: zodResolver(applicationFormSchema),

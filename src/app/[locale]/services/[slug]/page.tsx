@@ -121,22 +121,28 @@ export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   const { slug } = params;
   const locale = useLocale();
   const t = useTranslations('ServiceDetail');
+  const t_meta = useTranslations('Metadata'); 
 
   // Fetch dữ liệu cho dịch vụ hiện tại
   const { service, isLoading: isLoadingDetail, isError: isErrorDetail } = useServiceBySlug(slug, locale);
 
   useEffect(() => {
     if (service) {
-      const translation = service.translations[0];
-      document.title = `${translation.title} - Phú Anh Smart Border`;
-      
-      // Có thể cập nhật meta description ở đây nhưng không hiệu quả bằng server
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', translation.shortDesc);
+      const translation = service.translations.find(tr => tr.locale === locale) || service.translations[0];
+      if (translation) {
+        // Sử dụng chuỗi dịch với tham số
+        document.title = t_meta('serviceTitle', { serviceName: translation.title });
+
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute('content', translation.shortDesc);
+        }
       }
     }
-  }, [service]);
+    return () => {
+      document.title = t_meta('defaultTitle');
+    };
+  }, [service, locale, t_meta]);
   
   // Fetch tất cả dịch vụ để hiển thị "Các dịch vụ khác"
   const { result, isLoading: isLoadingList } = useAllServices(locale, 1); 

@@ -1,7 +1,7 @@
 // dir: ~/quangminh-smart-border/frontend/src/app/[locale]/news/[slug]/page.tsx
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useNewsBySlug } from '@/hooks/useNews';
 import styled from 'styled-components';
 import Image from 'next/image';
@@ -145,36 +145,24 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
   const { slug } = params;
   const locale = useLocale();
   const { news, isLoading, isError } = useNewsBySlug(slug, locale);
+  const t = useTranslations('Metadata'); 
 
    useEffect(() => {
-    // Chỉ cập nhật khi đã fetch xong và có dữ liệu `news`
     if (news) {
-      // Tìm bản dịch phù hợp
-      const translation = news.translations.find(t => t.locale === locale) || news.translations[0];
+      const translation = news.translations.find(tr => tr.locale === locale) || news.translations[0];
       if (translation) {
-        // Cập nhật thẻ <title>
-        document.title = `${translation.title} - Phú Anh Transport`; // Sử dụng tên công ty mới
+        document.title = t('newsTitle', { newsTitle: translation.title });
 
-        // Tìm và cập nhật thẻ <meta name="description">
-        let metaDescription = document.querySelector('meta[name="description"]');
-        
-        // Nếu thẻ meta chưa tồn tại, tạo mới và thêm vào <head>
-        if (!metaDescription) {
-          metaDescription = document.createElement('meta');
-          metaDescription.setAttribute('name', 'description');
-          document.head.appendChild(metaDescription);
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute('content', translation.excerpt);
         }
-        
-        // Cập nhật nội dung
-        metaDescription.setAttribute('content', translation.excerpt);
       }
     }
-    
-    // Cleanup function: reset lại title khi component bị unmount
     return () => {
-      document.title = 'Phú Anh Transport & Trading'; // Hoặc tên mặc định của bạn
+      document.title = t('defaultTitle');
     };
-  }, [news, locale]);
+  }, [news, locale, t]);
 
   if (isLoading) {
       return (

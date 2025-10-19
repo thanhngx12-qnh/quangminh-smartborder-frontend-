@@ -193,5 +193,11 @@
   },
   "Partners": {
     "title": "Được tin cậy bởi các doanh nghiệp hàng đầu"
-  } 
+  },
+  "Metadata": {
+    "defaultTitle": "Công ty TNHH Thương mại Vận tải Phú Anh",
+    "serviceTitle": "{serviceName} - Phú Anh Transport",
+    "newsTitle": "{newsTitle} - Phú Anh Transport",
+    "careerTitle": "Tuyển dụng: {jobTitle} - Phú Anh Transport"
+  }
 }
