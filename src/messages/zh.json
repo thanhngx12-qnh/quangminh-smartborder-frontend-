@@ -2,51 +2,51 @@
   "Navigation": {
     "services": "服务",
     "manifesto": "宣言",
-    "careers": "招聘",
+    "careers": "职业机会",
     "about": "关于我们",
     "news": "新闻",
     "contact": "联系我们"
   },
   "HeaderActions": {
-    "tracking": "追踪",
-    "quote": "询价"
+    "tracking": "跟踪",
+    "quote": "报价"
   },
   "CtaButton": {
     "quote": "请求报价"
   },
   "Footer": {
-    "companyName": "富英贸易运输有限公司",
-    "taxCode": "税号: 4800166795",
-    "address": "越南高平省淑潘坊水甲街合江07居民组057号",
+    "companyName": "富安商贸运输有限公司",
+    "taxCode": "税号：4800166795",
+    "address": "越南高平省玉凡坊水夹街合江07居民区057号",
     "sitemap": "网站地图",
-    "legal": "法律声明",
+    "legal": "法律信息",
     "terms": "使用条款",
     "privacy": "隐私政策",
     "quickContact": "快速联系",
-    "formName": "全名",
-    "formEmail": "您的邮箱",
-    "formMessage": "您的信息...",
+    "formName": "姓名",
+    "formEmail": "您的电子邮件",
+    "formMessage": "请求内容...",
     "formPhone": "电话号码",
-    "formServiceId": "感兴趣的服务 (可选)",
+    "formServiceId": "感兴趣的服务（可选）",
     "formSend": "发送请求",
-    "copyright": "© 2025 富英贸易运输有限公司。保留所有权利。"
+    "copyright": "© 2025 富安商贸运输有限公司。版权所有。"
   },
   "Hero": {
-    "title": "富英",
-    "subtitle": "智能边境物流。",
-    "ctaQuote": "查询运费 & 预订堆场",
-    "ctaTrack": "追踪货运",
-    "trackingPlaceholder": "输入空运提单 (AWB) 号码"
+    "title": "富安",
+    "subtitle": "富安商贸运输有限公司",
+    "ctaQuote": "查询运费与预订",
+    "ctaTrack": "追踪运单",
+    "trackingPlaceholder": "输入运单号 (AWB)"
   },
   "Kpi": {
-    "storageTitle": "仓储面积",
+    "storageTitle": "仓储",
     "storageValue": "5,000 平方米",
-    "storageDesc": "国际标准",
+    "storageDesc": "符合国际标准",
     "containerTitle": "集装箱 / 天",
     "containerValue": "500+",
-    "containerDesc": "清关能力",
+    "containerDesc": "通关能力",
     "customsTitle": "海关",
-    "customsValue": "<2 小时",
+    "customsValue": "<2小时",
     "customsDesc": "平均处理时间"
   },
   "FeaturedServices": {
@@ -54,12 +54,12 @@
     "description": "我们提供全面的物流解决方案，旨在优化您的供应链。"
   },
   "LatestNews": {
-    "title": "新闻与事件",
+    "title": "新闻与活动",
     "viewAll": "查看所有新闻"
   },
   "ServicesPage": {
     "title": "所有服务",
-    "description": "探索富英提供的全方位专业物流解决方案，旨在满足您的各种需求。"
+    "description": "探索富安提供的专业物流解决方案，满足您的各种需求。"
   },
   "ServiceDetail": {
     "ctaTitle": "准备好优化您的供应链了吗？",
@@ -68,78 +68,78 @@
   },
   "NotFound": {
     "title": "404 - 页面未找到",
-    "description": "抱歉，您查找的页面不存在或已移动。",
-    "goHome": "返回主页"
+    "description": "抱歉，您查找的页面不存在或已被移动。",
+    "goHome": "返回首页"
   },
   "AboutPage": {
-    "heroTitle": "关于富英",
-    "heroSubtitle": "开创智能边境物流解决方案的先河。",
+    "heroTitle": "关于富安",
+    "heroSubtitle": "在边境提供智能物流解决方案的先锋。",
     "missionTitle": "使命与愿景",
-    "missionText": "我们的使命是提供透明、高效和可持续的物流解决方案，打破贸易壁垒，连接越南企业与世界。我们的愿景是成为该地区领先的“智能边境物流”服务提供商。",
+    "missionText": "我们的使命是提供透明、高效和可持续的物流解决方案，打破贸易壁垒，连接越南企业与世界。我们的愿景是成为区域领先的“智能边境物流”服务提供商。",
     "timelineTitle": "发展历程",
     "leadershipTitle": "领导团队",
     "timeline": {
-      "y2025": "富英贸易运输有限公司成立。动工建设塔隆口岸物流中心。",
-      "y2026": "正式投入运营。成功实施智能货运追踪系统。",
-      "y2027": "在茶岭口岸设立分公司，将总仓库面积扩大到100,000平方米。"
+      "y2025": "成立富安商贸运输有限公司。开始在塔隆口岸建设物流中心。",
+      "y2026": "正式投入运营。成功实施智能运单跟踪系统。",
+      "y2027": "在茶岭口岸扩展分部，仓储总面积增至100,000平方米。"
     },
     "leadership": {
-      "person1Name": "阮文安",
-      "person1Title": "总经理",
-      "person2Name": "陈氏平",
-      "person2Title": "运营副总监",
-      "person3Name": "黎明强",
-      "person3Title": "销售总监"
+      "person1Name": "阮阮阮",
+      "person1Title": "首席执行官",
+      "person2Name": "陈陈陈",
+      "person2Title": "首席执行官",
+      "person3Name": "梁梁梁",
+      "person3Title": "首席执行官"
     }
   },
   "ContactPage": {
     "title": "联系我们",
-    "description": "我们随时恭候。请通过以下信息联系富英，或通过联系表格发送您的请求。",
-    "infoTitle": "联系方式",
+    "description": "我们随时倾听您的需求。请通过以下信息联系富安，或通过联系表单提交您的请求。",
+    "infoTitle": "联系信息",
     "address": "地址",
     "phone": "电话",
-    "email": "邮箱",
-    "salesDept": "销售部",
-    "opsDept": "运营部",
-    "hrDept": "人力资源部",
-    "formTitle": "在线发送请求",
+    "email": "电子邮件",
+    "salesDept": "销售部门",
+    "opsDept": "运营部门",
+    "hrDept": "人力资源部门",
+    "formTitle": "在线提交请求",
     "faqTitle": "常见问题",
     "faq": {
-      "q1": "公司工作时间是？",
-      "a1": "我们的办公室工作时间为周一至周五，上午8:00至下午5:00。但是，我们的口岸运营团队24/7工作，以确保货物持续清关。",
-      "q2": "我如何追踪我的货运？",
-      "a2": "您可以使用提供的空运提单 (AWB) 号码，通过主页上的“追踪货运”框或访问追踪页面直接在我们的网站上进行追踪。",
-      "q3": "富英是否提供零担货运 (LCL) 服务？",
-      "a3": "是的，我们提供跨境整箱货运 (FCL) 和零担货运 (LCL) 的全方位服务。"
+      "q1": "公司的工作时间是什么？",
+      "a1": "我们的办公室工作时间为周一至周五的8:00至17:00。然而，口岸运营团队24/7工作，以确保货物持续通关。",
+      "q2": "如何追踪运单？",
+      "a2": "您可以使用提供的运单号（AWB）在我们的网站首页的“追踪运单”框中直接查询，或访问跟踪页面。",
+      "q3": "富安提供拼箱（LCL）服务吗？",
+      "a3": "是的，我们为整箱（FCL）和拼箱（LCL）货物提供全面的跨境服务。"
     }
   },
   "CareersPage": {
     "title": "职业机会",
-    "noOpenings": "我们目前没有空缺职位。请稍后查看。"
+    "noOpenings": "目前我们没有开放的职位。请稍后再查看。"
   },
   "CareerDetailPage": {
     "jobDescription": "职位描述",
-    "requirements": "职位要求",
-    "applyTitle": "申请该职位",
-    "applySuccess": "感谢您的申请！我们将审查您的个人资料，如果合适会与您联系。",
-    "applyError": "申请失败，请重试。",
+    "requirements": "应聘要求",
+    "applyTitle": "提交申请",
+    "applySuccess": "感谢您的申请！我们将审阅您的简历，并在合适时与您联系。",
+    "applyError": "提交申请失败，请重试。",
     "form": {
-      "nameLabel": "全名",
-      "emailLabel": "邮箱",
+      "nameLabel": "姓名",
+      "emailLabel": "电子邮件",
       "phoneLabel": "电话号码",
-      "cvLabel": "上传简历 (.pdf, .doc, .docx - 最大5MB)",
+      "cvLabel": "上传简历（.pdf, .doc, .docx - 最大5MB）",
       "submitButton": "提交申请",
       "submittingButton": "正在提交..."
     },
     "validation": {
-      "nameRequired": "全名是必填项",
-      "emailInvalid": "邮箱地址无效",
-      "phoneInvalid": "电话号码无效",
+      "nameRequired": "姓名是必填项",
+      "emailInvalid": "电子邮件格式无效",
+      "phoneInvalid": "电话号码格式无效",
       "cvRequired": "请上传您的简历",
-      "cvMaxSize": "文件大小不能超过5MB",
-      "cvFormat": "只接受 .pdf, .doc, .docx 文件"
+      "cvMaxSize": "文件大小不得超过5MB",
+      "cvFormat": "仅接受.pdf、.doc、.docx格式的文件"
     },
-    "notFound": "未找到职位。"
+    "notFound": "未找到该职位。"
   },
   "General": {
     "search": "搜索",
@@ -147,51 +147,67 @@
     "theme": "主题"
   },
   "Errors": {
-    "goBackTo": "返回 {pageName}",
+    "goBackTo": "返回{pageName}",
     "retry": "重试",
-    "failedToLoad": "加载数据失败。"
+    "failedToLoad": "无法加载数据。"
   },
   "ManifestoPage": {
     "title": "我们的宣言",
     "subtitle": "连接贸易 - 提升价值",
-    "value1Title": "透明度",
-    "value1Text": "所有流程、成本和订单状态均数字化，并以清晰、易于访问的方式提供给客户。我们相信透明度是信任的基础。",
-    "value2Title": "效率",
-    "value2Text": "通过应用技术和自动化，我们致力于缩短清关时间，优化物流成本，并确保您的货物尽快抵达目的地。",
+    "value1Title": "透明",
+    "value1Text": "所有流程、费用和订单状态都实现数字化，客户可以轻松访问。我们相信透明是信任的基础。",
+    "value2Title": "高效",
+    "value2Text": "通过应用技术和自动化，我们致力于缩短通关时间，优化物流成本，确保您的货物以最快的速度到达目的地。",
     "value3Title": "创新",
-    "value3Text": "市场瞬息万变，我们始终走在前沿。富英不断研究和应用人工智能、物联网等新技术，以创建智能、灵活和卓越的物流解决方案。",
-    "value4Title": "可持续性",
-    "value4Text": "业务发展必须与社会和环境责任并重。我们优先采用绿色运输解决方案，优化路线以最大限度地减少碳排放，并构建可持续的物流生态系统。"
+    "value3Text": "市场瞬息万变，我们始终走在前沿。富安不断研究和应用人工智能、物联网等新技术，打造智能、灵活和卓越的物流解决方案。",
+    "value4Title": "可持续",
+    "value4Text": "商业发展必须与社会和环境责任并重。我们优先选择绿色运输解决方案，优化路线以减少碳排放，构建可持续的物流生态系统。"
   },
   "Search": {
     "placeholder": "搜索服务、新闻...",
-    "noResults": "未找到结果。",
+    "noResults": "未找到任何结果。",
     "services": "服务",
     "news": "新闻"
   },
   "TrackingPage": {
-    "title": "追踪您的货运旅程",
-    "trackingPlaceholder": "输入一个或多个空运提单号码，用逗号分隔",
-    "searchButton": "搜索",
-    "loading": "正在加载货运信息...",
+    "title": "追踪运单行程",
+    "trackingPlaceholder": "输入一个或多个运单号（AWB），用逗号分隔",
+    "searchButton": "查询",
+    "loading": "正在加载运单信息...",
     "loadingPage": "正在加载页面...",
     "errorTitle": "发生错误",
-    "errorDescription": "目前无法加载信息。请稍后重试。",
-    "notFoundTitle": "未找到货运",
-    "notFoundDescription": "我们找不到与代码 {awbs} 匹配的任何货运。请重新检查您的代码。",
+    "errorDescription": "此时无法加载信息。请稍后重试。",
+    "notFoundTitle": "未找到运单",
+    "notFoundDescription": "我们无法找到与运单号 {awbs} 匹配的记录。请检查您的运单号。",
     "resultsFor": "显示结果：",
-    "noEvents": "此货运尚未有任何事件。"
+    "noEvents": "此运单暂无事件记录。"
   },
   "WhyChooseUs": {
     "title": "为什么选择我们？",
     "point1Title": "领先技术",
-    "point1Text": "我们采用实时跟踪技术、智能仓储管理（WMS）和电子报关，确保您的货物得到快速准确的处理。",
-    "point2Title": "敬业团队",
-    "point2Text": "我们经验丰富的专家团队随时准备提供24/7咨询和支持，确保您所有的问题都得到专业解决。",
+    "point1Text": "我们采用实时跟踪技术、智能仓储管理系统（WMS）和电子海关申报，确保您的货物处理快速且准确。",
+    "point2Title": "专业团队",
+    "point2Text": "我们经验丰富的专业团队随时为您提供24/7咨询和支持，确保您的问题得到专业解决。",
     "point3Title": "战略位置",
-    "point3Text": "我们的物流中心位于Tà Lùng口岸，是连接越南和中国的重要贸易桥梁，有助于优化运输时间和成本。"
+    "point3Text": "位于塔隆口岸的物流中心是我们连接越南与中国的贸易桥梁，优化运输时间和成本。"
   },
   "Partners": {
     "title": "深受领先企业的信赖"
+  },
+  "Metadata": {
+    "defaultTitle": "富安商贸运输有限公司",
+    "serviceTitle": "{serviceName} - 富安运输",
+    "newsTitle": "{newsTitle} - 富安运输",
+    "careerTitle": "招聘：{jobTitle} - 富安运输"
+  },
+  "TermsPage": {
+    "title": "使用条款",
+    "lastUpdated": "最后更新：2025年10月18日",
+    "content": "欢迎访问富安商贸运输有限公司的网站。\n\n访问和使用本网站即表示您同意遵守以下条款和条件。请在使用我们的服务前仔细阅读。\n\n### 1. 用户责任\n用户有责任在请求报价或使用在线服务时提供准确信息。任何滥用、破坏或尝试入侵系统的行为均被严格禁止。\n\n### 2. 知识产权\n本网站上的所有内容、图片和品牌均属于富安商贸运输有限公司所有。未经书面许可，任何复制或使用行为均属违法。"
+  },
+  "PrivacyPage": {
+    "title": "隐私政策",
+    "lastUpdated": "最后更新：2025年10月18日",
+    "content": "富安商贸运输有限公司致力于保护您的个人信息。\n\n本政策解释了我们如何在您访问我们的网站时收集、使用和保护您的数据。\n\n### 1. 信息收集\n我们通过联系表单收集您提供的信息，包括：姓名、电子邮件、电话号码和请求内容。我们还可能收集技术数据，如IP地址，用于分析目的。\n\n### 2. 信息使用\n您的信息用于：\n- 联系并回复您的请求。\n- 改进服务和网站质量。\n- 发送重要更新信息（需您同意）。\n我们承诺未经您同意不向第三方分享您的信息。"
   }
 }
