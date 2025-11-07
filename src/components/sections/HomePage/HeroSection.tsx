@@ -115,9 +115,6 @@ export default function HeroSection() {
           <ButtonLink href="/tracking" variant="primary" as="a">{t('ctaTrack')}</ButtonLink>
         </CtaGroup>
         
-        {/* Tích hợp component mới ở đây */}
-        <TrackingSearchForm onSearch={handleSearch} />
-
       </HeroContent>
     </HeroWrapper>
   );
