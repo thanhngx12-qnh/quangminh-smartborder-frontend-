@@ -62,10 +62,11 @@ const NoDataState = styled.p`
 export default function ServicesPage() {
   const locale = useLocale();
   const t = useTranslations('ServicesPage');
+  const t_errors = useTranslations('Errors'); // Lấy translation cho lỗi chung
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-  const { result, isLoading, isError } = useAllServices(locale, currentPage);
+  const { result, isLoading, isError } = useAllServices(locale, currentPage); // Lấy thêm `mutate`
 
   const renderContent = () => {
     if (isLoading) {
@@ -78,24 +79,38 @@ export default function ServicesPage() {
       );
     }
     
-    if (isError) return <ErrorState>Failed to load services.</ErrorState>;
-    if (!result || result.data.length === 0) return <NoDataState>No services available.</NoDataState>;
+    if (isError) {
+        return <ErrorState 
+            title={t_errors('failedToLoad')}
+        />
+    };
+
+    // SỬA LỖI Ở ĐÂY: Lọc dữ liệu trước khi render
+    const servicesWithTranslation = result?.data.filter(service => 
+      service.translations.some(translation => translation.locale === locale)
+    ) || [];
+
+    if (!servicesWithTranslation || servicesWithTranslation.length === 0) {
+      return <NoDataState>Không có dịch vụ nào phù hợp.</NoDataState>;
+    }
 
     return (
       <>
         <ServicesGrid>
-          {result.data.map((service, index) => (
+          {servicesWithTranslation.map((service, index) => (
             <FadeInWhenVisible key={service.id} transition={{ delay: index * 0.1 }}>
               <ServiceCard service={service} />
             </FadeInWhenVisible>
           ))}
         </ServicesGrid>
         
-        <Pagination 
-          currentPage={result.page} 
-          totalPages={result.lastPage}
-          basePath="/services"
-        />
+        {result && (
+            <Pagination 
+                currentPage={result.page} 
+                totalPages={result.lastPage}
+                basePath="/services"
+            />
+        )}
       </>
     );
   };
