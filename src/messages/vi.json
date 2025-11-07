@@ -36,7 +36,9 @@
     "subtitle": "CÔNG TY TNHH THƯƠNG MẠI VẬN TẢI PHÚ ANH",
     "ctaQuote": "Tra Cước Đặt Bãi",
     "ctaTrack": "Tra Vận Đơn",
-    "trackingPlaceholder": "Nhập mã vận đơn (AWB)"
+    "trackingPlaceholder": "Nhập mã vận đơn (AWB)",
+    "ctaServices": "Khám Phá Dịch Vụ",
+    "ctaContact": "Liên Hệ Tư Vấn"
   },
   "Kpi": {
     "storageTitle": "Kho Bãi",
@@ -145,7 +147,9 @@
   "General": {
     "search": "Tìm kiếm",
     "language": "Ngôn ngữ",
-    "theme": "Giao diện"
+    "theme": "Giao diện",
+    "viewAll": "Xem tất cả",
+    "viewAllServices": "Xem Tất Cả Dịch Vụ"
   },
   "Errors": {
     "goBackTo": "Quay lại {pageName}",

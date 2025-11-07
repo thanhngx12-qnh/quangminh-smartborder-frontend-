@@ -36,7 +36,9 @@
     "subtitle": "富安商贸运输有限公司",
     "ctaQuote": "查询运费与预订",
     "ctaTrack": "追踪运单",
-    "trackingPlaceholder": "输入运单号 (AWB)"
+    "trackingPlaceholder": "输入运单号 (AWB)",
+    "ctaServices": "探索服务",
+    "ctaContact": "联系咨询"
   },
   "Kpi": {
     "storageTitle": "仓储",
@@ -145,7 +147,9 @@
   "General": {
     "search": "搜索",
     "language": "语言",
-    "theme": "主题"
+    "theme": "主题",
+    "viewAll": "查看全部",
+    "viewAllServices": "查看所有服务"
   },
   "Errors": {
     "goBackTo": "返回{pageName}",

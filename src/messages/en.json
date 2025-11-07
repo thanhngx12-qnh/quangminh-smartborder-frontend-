@@ -36,7 +36,9 @@
     "subtitle": "Phu Anh Trading and Transportation Co., Ltd.",
     "ctaQuote": "Check Rates & Book",
     "ctaTrack": "Track Shipment",
-    "trackingPlaceholder": "Enter AWB Number"
+    "trackingPlaceholder": "Enter AWB Number",
+    "ctaServices": "Explore Services",
+    "ctaContact": "Contact for Consultation"
   },
   "Kpi": {
     "storageTitle": "Storage",
@@ -145,7 +147,9 @@
   "General": {
     "search": "Search",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "viewAll": "View All",
+    "viewAllServices": "View All Services"
   },
   "Errors": {
     "goBackTo": "Back to {pageName}",

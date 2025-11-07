@@ -1,16 +1,16 @@
 // dir: ~/quangminh-smart-border/frontend/src/app/[locale]/news/[slug]/page.tsx
 'use client';
 
+import { useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
+import { useRouter } from '@/navigation';
 import { useNewsBySlug } from '@/hooks/useNews';
 import styled from 'styled-components';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
+import parse from 'html-react-parser';
 import { RiCalendar2Line, RiUserLine } from 'react-icons/ri';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
-import CardSkeleton from '@/components/ui/CardSkeleton';
-import { useEffect } from 'react'; 
-import parse from 'html-react-parser';
+import ArticlePageSkeleton from '@/components/skeletons/ArticlePageSkeleton'; // <-- Import skeleton mới
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -145,39 +145,47 @@ interface NewsDetailPageProps {
 export default function NewsDetailPage({ params }: NewsDetailPageProps) {
   const { slug } = params;
   const locale = useLocale();
+  const router = useRouter();
   const { news, isLoading, isError } = useNewsBySlug(slug, locale);
-  const t = useTranslations('Metadata'); 
-
-   useEffect(() => {
+  
+  const t = useTranslations('Metadata');
+  const t_errors = useTranslations('Errors');
+  const t_news_page = useTranslations('LatestNews'); // Dùng key 'viewAll'
+  
+  // Xử lý SEO/metadata phía client
+  useEffect(() => {
     if (news) {
-      const translation = news.translations.find(tr => tr.locale === locale) || news.translations[0];
+      const translation = news.translations.find(tr => tr.locale === locale);
       if (translation) {
         document.title = t('newsTitle', { newsTitle: translation.title });
-
         const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-          metaDesc.setAttribute('content', translation.excerpt);
-        }
+        if (metaDesc) metaDesc.setAttribute('content', translation.excerpt);
       }
     }
-    return () => {
-      document.title = t('defaultTitle');
-    };
+    return () => { document.title = t('defaultTitle'); };
   }, [news, locale, t]);
-
+  
+  // RENDER LOADING STATE
   if (isLoading) {
-      return (
-        <PageWrapper>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <CardSkeleton key={index} />
-          ))}
-        </PageWrapper>
-      );
-    } 
-  if (isError) return <ErrorState>Could not find the requested article.</ErrorState>;
-  if (!news) return null;
+    return <ArticlePageSkeleton />;
+  } 
 
-  const translation = news.translations.find(t => t.locale === locale) || news.translations[0];
+  // RENDER ERROR/NOT FOUND STATE
+  if (isError || !news) {
+    return <ErrorState 
+      title="Không tìm thấy bài viết"
+    />
+  }
+
+  // SỬA LỖI "DATA MISSING"
+  const translation = news.translations.find(t => t.locale === locale);
+
+  // NẾU KHÔNG CÓ BẢN DỊCH, HIỂN THỊ TRANG LỖI
+  if (!translation) {
+    return <ErrorState 
+      title="Nội dung chưa có sẵn"
+    />
+  }
 
   return (
     <PageWrapper>
@@ -193,15 +201,9 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
             <Title>{translation.title}</Title>
             <MetaInfo>
               {news.publishedAt && (
-                <span>
-                  <RiCalendar2Line />
-                  <time dateTime={news.publishedAt}>{formatDate(news.publishedAt, locale)}</time>
-                </span>
+                <span><RiCalendar2Line /><time dateTime={news.publishedAt}>{formatDate(news.publishedAt, locale)}</time></span>
               )}
-              <span>
-                <RiUserLine />
-                Admin
-              </span>
+              <span><RiUserLine />Admin</span>
             </MetaInfo>
           </FadeInWhenVisible>
         </HeaderContent>
@@ -209,7 +211,7 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
 
       <FadeInWhenVisible>
         <ArticleBody>
-          {parse(translation.content || '<p>No content available.</p>')}
+          {parse(translation.content || '<p>Nội dung đang được cập nhật.</p>')}
         </ArticleBody>
       </FadeInWhenVisible>
     </PageWrapper>
