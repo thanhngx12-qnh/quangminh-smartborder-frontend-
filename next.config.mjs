@@ -11,6 +11,17 @@ const nextConfig = {
   },
   output: 'standalone',
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        // Có thể thêm pathname nếu muốn giới hạn chặt chẽ hơn
+        // pathname: '/YOUR_CLOUD_NAME/**', 
+      },
+    ],
+  },
+
   async redirects() {
     return [
       {

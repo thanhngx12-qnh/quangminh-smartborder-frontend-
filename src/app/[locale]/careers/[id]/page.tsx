@@ -16,6 +16,7 @@ import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import { RiMapPinLine, RiTimeLine } from 'react-icons/ri';
 import ErrorState from '@/components/ui/ErrorState'; // Import component ErrorState
 import { useEffect } from 'react';
+import parse from 'html-react-parser';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -295,9 +296,9 @@ export default function CareerDetailPage({ params }: CareerDetailPageProps) {
         <FadeInWhenVisible>
           <DescriptionSection>
             <h2>{t('jobDescription')}</h2>
-            <ReactMarkdown>{jobPosting.description}</ReactMarkdown>
+            {parse(jobPosting.description || '<p>No content available.</p>')}
             <h2 style={{ marginTop: '40px' }}>{t('requirements')}</h2>
-            <ReactMarkdown>{jobPosting.requirements}</ReactMarkdown>
+            {parse(jobPosting.requirements || '<p>No content available.</p>')}
           </DescriptionSection>
         </FadeInWhenVisible>
         

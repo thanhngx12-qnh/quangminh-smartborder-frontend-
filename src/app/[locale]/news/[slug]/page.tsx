@@ -10,6 +10,7 @@ import { RiCalendar2Line, RiUserLine } from 'react-icons/ri';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import CardSkeleton from '@/components/ui/CardSkeleton';
 import { useEffect } from 'react'; 
+import parse from 'html-react-parser';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -208,9 +209,7 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
 
       <FadeInWhenVisible>
         <ArticleBody>
-          <ReactMarkdown>
-            {translation.content || 'No content available.'}
-          </ReactMarkdown>
+          {parse(translation.content || '<p>No content available.</p>')}
         </ArticleBody>
       </FadeInWhenVisible>
     </PageWrapper>
