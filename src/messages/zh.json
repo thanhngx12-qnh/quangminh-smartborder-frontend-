@@ -59,7 +59,8 @@
   },
   "ServicesPage": {
     "title": "所有服务",
-    "description": "探索富安提供的专业物流解决方案，满足您的各种需求。"
+    "description": "探索富安提供的专业物流解决方案，满足您的各种需求。",
+    "noServices": "当前没有可显示的服务。"
   },
   "ServiceDetail": {
     "ctaTitle": "准备好优化您的供应链了吗？",

@@ -91,7 +91,7 @@ export default function ServicesPage() {
     ) || [];
 
     if (!servicesWithTranslation || servicesWithTranslation.length === 0) {
-      return <NoDataState>Không có dịch vụ nào phù hợp.</NoDataState>;
+      return <NoDataState>{t('noServices')}</NoDataState>;
     }
 
     return (

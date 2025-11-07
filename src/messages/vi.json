@@ -59,7 +59,8 @@
   },
   "ServicesPage": {
     "title": "Tất Cả Dịch Vụ",
-    "description": "Khám phá đầy đủ các giải pháp logistics chuyên nghiệp mà Phú Anh cung cấp, được thiết kế để đáp ứng mọi nhu cầu của bạn."
+    "description": "Khám phá đầy đủ các giải pháp logistics chuyên nghiệp mà Phú Anh cung cấp, được thiết kế để đáp ứng mọi nhu cầu của bạn.",
+    "noServices": "Hiện tại không có dịch vụ nào để hiển thị."
   },
   "ServiceDetail": {
     "ctaTitle": "Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?",

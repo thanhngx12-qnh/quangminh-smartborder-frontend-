@@ -59,7 +59,8 @@
   },
   "ServicesPage": {
     "title": "All Services",
-    "description": "Explore the full range of professional logistics solutions offered by Phu Anh, tailored to meet your needs."
+    "description": "Explore the full range of professional logistics solutions offered by Phu Anh, tailored to meet your needs.",
+    "noServices": "There are currently no services to display."
   },
   "ServiceDetail": {
     "ctaTitle": "Ready to optimize your supply chain?",
