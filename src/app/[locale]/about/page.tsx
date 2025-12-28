@@ -470,7 +470,7 @@ export default function AboutPage() {
         <FadeInWhenVisible delay={0.2}>
           <IntroImage>
             <Image 
-              src="/images/about-intro.jpg" 
+              src="/images/image.png" 
               alt="Giới thiệu Phú Anh" 
               fill 
               sizes="(max-width: 992px) 100vw, 50vw"
