@@ -1,55 +1,95 @@
 {
   "Navigation": {
+    "home": "Home",
     "services": "Services",
     "manifesto": "Manifesto",
     "careers": "Careers",
-    "about": "About",
+    "about": "About Us",
     "news": "News",
     "contact": "Contact"
   },
   "HeaderActions": {
     "tracking": "Tracking",
-    "quote": "Quote"
+    "quote": "Get a Quote"
   },
   "CtaButton": {
     "quote": "Request a Quote"
   },
-  "Footer": {
-    "companyName": "Phu Anh Trading and Transportation Co., Ltd.",
-    "taxCode": "Tax Code: 4800166795",
-    "address": "No. 057, Hop Giang 07 Residential Area, Nuoc Giap Street, Thuc Phan Ward, Cao Bang, Vietnam",
-    "sitemap": "Sitemap",
-    "legal": "Legal",
-    "terms": "Terms of Use",
-    "privacy": "Privacy Policy",
-    "quickContact": "Quick Contact",
-    "formName": "Full Name",
-    "formEmail": "Your Email",
-    "formMessage": "Request Details...",
-    "formPhone": "Phone Number",
-    "formServiceId": "Service of Interest (Optional)",
-    "formSend": "Send Request",
-    "copyright": "© 2025 Phu Anh Trading and Transportation Co., Ltd. All rights reserved."
+  "General": {
+    "search": "Search",
+    "language": "Language",
+    "theme": "Theme",
+    "viewAll": "View All",
+    "viewAllServices": "View All Services",
+    "contact": "Contact"
+  },
+  "Social": {
+    "facebook": "Facebook",
+    "wechat": "WeChat",
+    "zalo": "Zalo",
+    "whatsapp": "WhatsApp"
   },
   "Hero": {
-    "title": "PHU ANH",
-    "subtitle": "Phu Anh Trading and Transportation Co., Ltd.",
-    "ctaQuote": "Check Rates & Book",
-    "ctaTrack": "Track Shipment",
-    "trackingPlaceholder": "Enter AWB Number",
+    "label": "RELIABLE LOGISTICS PARTNER AT TA LUNG INTERNATIONAL BORDER GATE",
+    "title": "CONNECTING BORDERS<br>REACHING GLOBALLY",
+    "subtitle": "Over 15 years of experience in warehouse operations, customs procedures, and international transportation. We provide fast, safe, and cost-effective clearance solutions for businesses.",
     "ctaServices": "Explore Services",
     "ctaContact": "Contact for Consultation"
   },
   "Kpi": {
-    "storageTitle": "Storage",
-    "storageValue": "5,000 m²",
-    "storageDesc": "International Standard",
+    "storageTitle": "Warehouse Area",
+    "storageValue": "25 Ha",
+    "storageDesc": "Total area of 3 yards",
     "containerTitle": "Containers / Day",
     "containerValue": "500+",
-    "containerDesc": "Clearance Capacity",
+    "containerDesc": "Clearance capacity",
     "customsTitle": "Customs",
     "customsValue": "<2 Hours",
-    "customsDesc": "Average Processing Time"
+    "customsDesc": "Average processing time"
+  },
+  "AboutPage": {
+    "heroTitle": "ABOUT TA LUNG LOGISTICS",
+    "heroSubtitle": "Over 15 years of creating Logistics solutions at Ta Lung International Border Gate",
+    "intro": {
+      "title": "GENERAL INTRODUCTION",
+      "content": "Phu Anh Trading and Transport Co., Ltd. (brand name Ta Lung Logistics) was established in 2008. Following the promotion of trade between Vietnam and China through the Ta Lung International Border Gate - Cao Bang, the company invested in a system of warehouses and gathering points for import-export goods in the area.\n\nThe company specializes in: Warehousing; Bus stations; Import-Export; Logistics; and International transportation by road, sea, and rail."
+    },
+    "missionTitle": "Mission & Vision",
+    "missionText": "Our mission is to provide transparent, efficient, and sustainable logistics solutions. Our vision is to become a key hub connecting trade between China and Vietnam.",
+    "timelineTitle": "DEVELOPMENT JOURNEY",
+    "timeline": {
+      "stage1_year": "2008",
+      "stage1_text": "Established Phu Anh Trading and Transport Co., Ltd., began cross-border transport operations.",
+      "stage2_year": "Present",
+      "stage2_text": "Completed investment in a 3-yard system (25 ha), meeting high standards for storage and transshipment.",
+      "stage3_year": "Future",
+      "stage3_text": "Establish an integrated service chain of Ta Lung - Chi Ma, becoming a key node in China-Vietnam trade."
+    },
+    "facilities": {
+      "warehouseTitle": "WAREHOUSE SYSTEM",
+      "warehouseContent": "Owning 3 main yards (Phu Anh, Vu Thanh, Son Cang) with a total area of up to 25 hectares. We meet all storage and transshipment needs to the highest standards.",
+      "transportTitle": "TRANSPORTATION CAPACITY",
+      "transportContent": "Providing a variety of trucks to suit all customer needs. We own a fleet with diverse load capacities, ensuring we meet multimodal transport requirements."
+    },
+    "process": {
+      "title": "IMPORT-EXPORT PROCESS",
+      "steps": {
+        "1": { "title": "Receive Plan", "desc": "Businesses send plans and documents" },
+        "2": { "title": "Procedures", "desc": "We handle import/clearance procedures" },
+        "3": { "title": "Arrange Vehicles", "desc": "Receive and arrange vehicles to the transshipment area" },
+        "4": { "title": "Transship Goods", "desc": "Perform professional goods transshipment" },
+        "5": { "title": "Complete", "desc": "Finalize vehicle procedures and hand over goods" }
+      }
+    },
+    "vision": {
+      "title": "DEVELOPMENT ORIENTATION",
+      "content": "We are currently completing our infrastructure, focusing on building high-standard warehouse and logistics facilities.\n\nThe long-term goal is to fully integrate business activities into the border gate system formed by Ta Lung and Chi Ma, establishing an integrated service chain along the Vietnam-China border. Ta Lung Logistics will become a crucial hub connecting China-Vietnam trade."
+    },
+    "offices": {
+      "title": "OFFICE SYSTEM",
+      "halong": "No. 29 Le Duan, Bai Chay, Quang Ninh",
+      "caobang": "Ta Lung International Border Gate, Phuc Hoa Commune, Cao Bang Province"
+    }
   },
   "FeaturedServices": {
     "title": "Featured Services",
@@ -57,75 +97,66 @@
   },
   "LatestNews": {
     "title": "News & Events",
-    "viewAll": "View All News"
+    "viewAll": "View all news"
   },
   "ServicesPage": {
     "title": "All Services",
-    "description": "Explore the full range of professional logistics solutions offered by Phu Anh, tailored to meet your needs.",
+    "description": "Discover the full range of professional logistics solutions that Ta Lung Logistics offers, designed to meet all your needs.",
     "noServices": "There are currently no services to display."
   },
   "ServiceDetail": {
     "ctaTitle": "Ready to optimize your supply chain?",
     "ctaButton": "Request a Quote Now",
-    "otherServicesTitle": "Explore Other Services"
+    "otherServicesTitle": "Discover Other Services"
   },
-  "NotFound": {
-    "title": "404 - Page Not Found",
-    "description": "Sorry, the page you are looking for does not exist or has been moved.",
-    "goHome": "Back to Homepage"
+  "WhyChooseUs": {
+    "title": "Why Choose Us?",
+    "point1Title": "Pioneering Technology",
+    "point1Text": "Applying real-time tracking technology, smart warehouse management (WMS), and electronic customs declaration.",
+    "point2Title": "Dedicated Team",
+    "point2Text": "Our team of experienced experts is always ready to advise and support 24/7.",
+    "point3Title": "Strategic Location",
+    "point3Text": "Located right at the Ta Lung International Border Gate, a vital trade connection between Vietnam and China."
   },
-  "AboutPage": {
-    "heroTitle": "About Phu Anh",
-    "heroSubtitle": "Pioneering smart logistics solutions at the border.",
-    "missionTitle": "Mission & Vision",
-    "missionText": "Our mission is to deliver transparent, efficient, and sustainable logistics solutions, breaking down trade barriers and connecting Vietnamese businesses with the world. Our vision is to become the leading provider of 'Smart Border Logistics' in the region.",
-    "timelineTitle": "Our Journey",
-    "leadershipTitle": "Leadership Team",
-    "timeline": {
-      "y2025": "Established Phu Anh Trading and Transportation Co., Ltd. Began construction of a logistics center at Ta Lung border gate.",
-      "y2026": "Officially commenced operations. Successfully implemented a smart shipment tracking system.",
-      "y2027": "Expanded branch at Tra Linh border gate, increasing total warehouse area to 100,000 m²."
-    },
-    "leadership": {
-      "person1Name": "Nguyen Nguyen Nguyen",
-      "person1Title": "CEO",
-      "person2Name": "Tran Tran Tran",
-      "person2Title": "CEO",
-      "person3Name": "Luong Luong Luong",
-      "person3Title": "CEO"
-    }
+  "Partners": {
+    "title": "Trusted by leading businesses"
   },
   "ContactPage": {
     "title": "Contact Us",
-    "description": "We’re always ready to listen. Connect with Phu Anh through the information below or submit your request via the contact form.",
+    "description": "We are always ready to listen. Connect with Ta Lung Logistics through the information below or send your request via the contact form.",
     "infoTitle": "Contact Information",
     "address": "Address",
     "phone": "Phone",
     "email": "Email",
     "salesDept": "Sales Department",
     "opsDept": "Operations Department",
-    "hrDept": "Human Resources Department",
-    "formTitle": "Submit a Request Online",
+    "hrDept": "HR Department",
+    "formTitle": "Send an Online Request",
     "faqTitle": "Frequently Asked Questions",
     "faq": {
-      "q1": "What are the company’s working hours?",
-      "a1": "Our office operates from 8:00 AM to 5:00 PM, Monday to Friday. However, our border gate operations team works 24/7 to ensure continuous cargo clearance.",
+      "q1": "What are the company's working hours?",
+      "a1": "Our administrative office is open from 8:00 AM - 5:00 PM (Mon - Sat). However, our field team at the Ta Lung International Border Gate operates 24/7 to ensure continuous cargo clearance.",
       "q2": "How can I track my shipment?",
-      "a2": "You can use the provided AWB number to track your shipment directly on our website via the 'Track Shipment' box on the homepage or by visiting the Tracking page.",
-      "q3": "Does Phu Anh provide LCL services?",
-      "a3": "Yes, we offer comprehensive services for both Full Container Load (FCL) and Less than Container Load (LCL) shipments across borders."
+      "a2": "You can use the 'Tracking' feature on the menu, enter your Air Waybill (AWB) number to see real-time status, or contact our Hotline for support.",
+      "q3": "Does Ta Lung Logistics handle Less than Container Load (LCL) shipments?",
+      "a3": "Yes. We provide solutions for both LCL and Full Container Load (FCL) shipments between Vietnam and China with optimal costs and stable schedules."
     }
   },
   "CareersPage": {
     "title": "Career Opportunities",
-    "noOpenings": "We currently have no open positions. Please check back later."
+    "subtitle": "Join the Ta Lung Logistics team to build the future together.",
+    "noOpenings": "We currently have no open positions.",
+    "noOpeningsDesc": "Please check back later or send your CV to our HR email to be kept on file.",
+    "errorTitle": "Could not load job listings",
+    "errorDesc": "Please check your connection and try again.",
+    "retry": "Retry"
   },
   "CareerDetailPage": {
     "jobDescription": "Job Description",
     "requirements": "Candidate Requirements",
-    "applyTitle": "Apply for the Position",
-    "applySuccess": "Thank you for your application! We will review your profile and contact you if suitable.",
-    "applyError": "Application submission failed. Please try again.",
+    "applyTitle": "Apply for this Position",
+    "applySuccess": "Thank you for applying! We will review your application and be in touch if it's a match.",
+    "applyError": "Application failed, please try again.",
     "form": {
       "nameLabel": "Full Name",
       "emailLabel": "Email",
@@ -136,37 +167,25 @@
     },
     "validation": {
       "nameRequired": "Full name is required",
-      "emailInvalid": "Invalid email format",
-      "phoneInvalid": "Invalid phone number format",
+      "emailInvalid": "Invalid email address",
+      "phoneInvalid": "Invalid phone number",
       "cvRequired": "Please upload your CV",
-      "cvMaxSize": "File size must not exceed 5MB",
+      "cvMaxSize": "File size cannot exceed 5MB",
       "cvFormat": "Only .pdf, .doc, .docx files are accepted"
     },
-    "notFound": "Job position not found."
-  },
-  "General": {
-    "search": "Search",
-    "language": "Language",
-    "theme": "Theme",
-    "viewAll": "View All",
-    "viewAllServices": "View All Services"
-  },
-  "Errors": {
-    "goBackTo": "Back to {pageName}",
-    "retry": "Retry",
-    "failedToLoad": "Failed to load data."
+    "notFound": "Job posting not found."
   },
   "ManifestoPage": {
     "title": "Our Manifesto",
-    "subtitle": "Connecting Trade - Elevating Value",
+    "subtitle": "CONNECTING BORDERS - REACHING GLOBALLY",
     "value1Title": "Transparency",
-    "value1Text": "All processes, costs, and order statuses are digitized and easily accessible to customers. We believe transparency is the foundation of trust.",
+    "value1Text": "All processes, costs, and order statuses are digitized and provided to customers clearly.",
     "value2Title": "Efficiency",
-    "value2Text": "By leveraging technology and automation, we are committed to reducing clearance times, optimizing logistics costs, and ensuring your cargo reaches its destination as quickly as possible.",
+    "value2Text": "Committed to shortening customs clearance times and optimizing logistics costs.",
     "value3Title": "Innovation",
-    "value3Text": "The market is ever-changing, and we stay ahead. Phu Anh continuously researches and applies new technologies like AI and IoT to deliver smart, flexible, and superior logistics solutions.",
+    "value3Text": "Continuously researching and applying new technologies to create smart solutions.",
     "value4Title": "Sustainability",
-    "value4Text": "Business growth must go hand-in-hand with social and environmental responsibility. We prioritize green transportation solutions, optimize routes to reduce carbon emissions, and build a sustainable logistics ecosystem."
+    "value4Text": "Business development must go hand in hand with social and environmental responsibility."
   },
   "Search": {
     "placeholder": "Search services, news...",
@@ -175,44 +194,64 @@
     "news": "News"
   },
   "TrackingPage": {
-    "title": "Track Your Shipment",
+    "title": "Track Your Shipment Journey",
     "trackingPlaceholder": "Enter one or more AWB numbers, separated by commas",
-    "searchButton": "Search",
+    "searchButton": "Track",
     "loading": "Loading shipment information...",
     "loadingPage": "Loading page...",
-    "errorTitle": "An Error Occurred",
-    "errorDescription": "Unable to load information at this time. Please try again later.",
-    "notFoundTitle": "Shipment Not Found",
-    "notFoundDescription": "We couldn’t find any shipments matching the AWB number(s): {awbs}. Please check your input.",
+    "errorTitle": "An error occurred",
+    "errorDescription": "Could not load information at this time. Please try again later.",
+    "notFoundTitle": "Shipment not found",
+    "notFoundDescription": "We could not find any shipments matching the code: {awbs}. Please check your code.",
     "resultsFor": "Showing results for:",
-    "noEvents": "No events recorded for this shipment."
+    "noEvents": "There are no events for this shipment yet."
   },
-  "WhyChooseUs": {
-    "title": "Why Choose Us?",
-    "point1Title": "Cutting-Edge Technology",
-    "point1Text": "We utilize real-time tracking, smart warehouse management systems (WMS), and electronic customs declarations to ensure your cargo is handled quickly and accurately.",
-    "point2Title": "Dedicated Team",
-    "point2Text": "Our experienced team of experts is available 24/7 to provide consultation and support, ensuring your issues are resolved professionally.",
-    "point3Title": "Strategic Location",
-    "point3Text": "Located at the Ta Lung border gate, our logistics center serves as a vital trade link, optimizing time and costs for shipments between Vietnam and China."
+
+  "Footer": {
+    "companyName": "Phu Anh Trading and Transport Co., Ltd. (Ta Lung Logistics)",
+    "taxCode": "Tax Code: 4800166795",
+    "address": "Ta Lung International Border Gate, Phuc Hoa Commune, Cao Bang Province, Vietnam",
+    "sitemap": "Sitemap",
+    "legal": "Legal",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "quickContact": "Quick Contact",
+    "formName": "Full Name",
+    "formEmail": "Your Email",
+    "formMessage": "Message...",
+    "formPhone": "Phone Number",
+    "formServiceId": "Service of Interest (Optional)",
+    "formSend": "Send Request",
+    "formSuccess": "Thank you! We have received your request.",
+    "formSubmitting": "Submitting...",
+    "formError": "An error occurred, please try again.",
+    "copyright": "© 2025 Ta Lung Logistics (Phu Anh Trading and Transport Co., Ltd.). All rights reserved.",
+    "tracking": "Shipment Tracking"
   },
-  "Partners": {
-    "title": "Trusted by Leading Businesses"
+  "Errors": {
+    "goBackTo": "Back to {pageName}",
+    "retry": "Retry",
+    "failedToLoad": "Failed to load data."
+  },
+  "NotFound": {
+    "title": "404 - Page Not Found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "goHome": "Back to Homepage"
   },
   "Metadata": {
-    "defaultTitle": "Phu Anh Trading and Transportation Co., Ltd.",
-    "serviceTitle": "{serviceName} - Phu Anh Transport",
-    "newsTitle": "{newsTitle} - Phu Anh Transport",
-    "careerTitle": "Careers: {jobTitle} - Phu Anh Transport"
+    "defaultTitle": "Ta Lung Logistics | Vietnam - China Border Gate Logistics Solutions",
+    "serviceTitle": "{serviceName} - Ta Lung Logistics",
+    "newsTitle": "{newsTitle} - Ta Lung Logistics",
+    "careerTitle": "Career: {jobTitle} - Ta Lung Logistics"
   },
   "TermsPage": {
     "title": "Terms of Use",
     "lastUpdated": "Last Updated: October 18, 2025",
-    "content": "Welcome to the website of Phu Anh Trading and Transportation Co., Ltd.\n\nBy accessing and using this website, you agree to comply with the terms and conditions outlined below. Please read carefully before using our services.\n\n### 1. User Responsibilities\nUsers are responsible for providing accurate information when requesting quotes or using online services. Any abuse, tampering, or attempts to breach the system are strictly prohibited.\n\n### 2. Intellectual Property\nAll content, images, and branding on this website are the property of Phu Anh Trading and Transportation Co., Ltd. Any unauthorized copying or use is a violation."
+    "content": "Welcome to the official website of Ta Lung Logistics (under Phu Anh Trading and Transport Co., Ltd.).\n\nBy accessing and using talunglogistics.com, you agree to comply with the terms and conditions set forth below.\n\n### 1. USER RIGHTS AND RESPONSIBILITIES\n- Users are responsible for providing accurate information when using quote or contact forms.\n- Any use of the website for malicious purposes, attacks, or unauthorized access is strictly prohibited.\n\n### 2. INTELLECTUAL PROPERTY\n- All content, images, and trademarks on this site are the property of Ta Lung Logistics.\n- Any unauthorized copying or use for commercial purposes is a violation.\n\n### 3. DISCLAIMER\n- The information on this website is for reference purposes only. We are not liable for any loss arising from the use of this information.\n\n### 4. CHANGES TO TERMS\nTa Lung Logistics reserves the right to amend these terms at any time."
   },
   "PrivacyPage": {
     "title": "Privacy Policy",
     "lastUpdated": "Last Updated: October 18, 2025",
-    "content": "Phu Anh Trading and Transportation Co., Ltd. is committed to protecting your personal information.\n\nThis policy explains how we collect, use, and protect your data when you visit our website.\n\n### 1. Information Collection\nWe collect information you provide through contact forms, including: full name, email, phone number, and request details. We may also collect technical data, such as IP addresses, for analytics purposes.\n\n### 2. Information Use\nYour information is used to:\n- Contact and respond to your requests.\n- Improve service and website quality.\n- Send important updates (with your consent).\nWe commit to not sharing your information with third parties without your consent."
+    "content": "Ta Lung Logistics is committed to protecting your personal information.\n\nThis policy explains how we collect, use, and protect your data when you visit our website.\n\n### 1. INFORMATION COLLECTION\nWe collect information you provide via contact forms, including: Full name, email, phone number.\n\n### 2. USE OF INFORMATION\nYour information is used to contact you, respond to requests, and improve our services.\n\n### 3. SECURITY AND SHARING\nWe are committed to not sharing your information with any third party without your consent, unless required by law.\n\n### 4. YOUR RIGHTS\nYou have the right to request access to, correct, or delete your personal information by contacting us at: **info@talunglogistics.com**."
   }
 }

@@ -542,9 +542,7 @@ export default function AboutPage() {
               <StepItem key={step}>
                 <StepNumber>{step}</StepNumber>
                 <StepContent>
-                  {/* @ts-ignore: dynamic key */}
                   <h4>{t(`process.steps.${step}.title`)}</h4>
-                   {/* @ts-ignore */}
                   <p>{t(`process.steps.${step}.desc`)}</p>
                 </StepContent>
               </StepItem>
