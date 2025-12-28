@@ -56,7 +56,7 @@ export default function Home() {
           ) : (
             news && news.length > 0 && (
               <FadeInWhenVisible>
-                <LatestNewsSection news={news} />
+                <LatestNewsSection/>
               </FadeInWhenVisible>
             )
           )}

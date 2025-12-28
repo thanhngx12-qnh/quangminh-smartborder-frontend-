@@ -1,3 +1,4 @@
+// dir: ~/quangminh-smart-border/frontend/src/hook/useNews.ts
 import useSWR from 'swr';
 import { News } from '@/types';
 
