@@ -84,7 +84,7 @@ export default function Header() {
         <TopBar>
           <ContactInfo>
             <span><RiPhoneFill />Hotline: +84 123456789</span>
-            <span><RiMailFill />Email: info@phuanh.com</span>
+            <span><RiMailFill />Email: info@talunglogistics.com</span>
           </ContactInfo>
           <Actions>
             <LanguageSwitcher variant="full" />

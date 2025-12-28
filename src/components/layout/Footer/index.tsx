@@ -91,22 +91,22 @@ export default function Footer() {
 
             <ContactItem>
               <IconWrapper><RiWechatLine /></IconWrapper>
-              <span>Email: info@phuanh.com</span>
+              <span>Email: info@talunglogistics.com</span>
             </ContactItem>
 
             <ContactItem>
               <IconWrapper><RiBuildingLine /></IconWrapper>
-              <span>{tContact('salesDept')}: sales@phuanh.com</span>
+              <span>{tContact('salesDept')}: sales@talunglogistics.com</span>
             </ContactItem>
 
             <ContactItem>
               <IconWrapper><RiBuildingLine /></IconWrapper>
-              <span>{tContact('opsDept')}: operations@phuanh.com</span>
+              <span>{tContact('opsDept')}: operations@talunglogistics.com</span>
             </ContactItem>
 
             <ContactItem>
               <IconWrapper><RiUserLine /></IconWrapper>
-              <span>{tContact('hrDept')}: hr@phuanh.com</span>
+              <span>{tContact('hrDept')}: hr@talunglogistics.com</span>
             </ContactItem>
           </ContactList>
           <SocialLinks>

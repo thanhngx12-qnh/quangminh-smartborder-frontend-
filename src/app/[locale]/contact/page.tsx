@@ -262,7 +262,7 @@ export default function ContactPage() {
             <h2>{t('infoTitle')}</h2>
             <InfoBlock><RiMapPin2Line /><div><h3>{t('address')}</h3><p>Cửa khẩu Tà Lùng, huyện Phục Hòa, tỉnh Cao Bằng</p></div></InfoBlock>
             <InfoBlock><RiPhoneLine /><div><h3>{t('phone')}</h3><p>{t('salesDept')}: +84 123 456 789<br/>{t('opsDept')}: +84 987 654 321</p></div></InfoBlock>
-            <InfoBlock><RiMailLine /><div><h3>{t('email')}</h3><p><a href="mailto:kinhdoanh@quangminh.vn">kinhdoanh@quangminh.vn</a><br/><a href="mailto:vanhanh@quangminh.vn">vanhanh@quangminh.vn</a></p></div></InfoBlock>
+            <InfoBlock><RiMailLine /><div><h3>{t('email')}</h3><p><a href="mailto:kinhdoanh@talunglogistics.com">kinhdoanh@talunglogistics.com</a><br/><a href="mailto:vanhanh@talunglogistics.com">vanhanh@talunglogistics.com</a></p></div></InfoBlock>
           </InfoColumn>
         </FadeInWhenVisible>
 

@@ -165,7 +165,7 @@ export default function FloatingButtons() {
   // Danh sách các nút hành động
   const actions = [
     { href: 'tel:+84123456789', icon: <RiPhoneFill />, label: 'Gọi Hotline' },
-    { href: 'mailto:info@quangminh.vn', icon: <RiMailFill />, label: 'Gửi Email' },
+    { href: 'mailto:info@talunglogistics.com', icon: <RiMailFill />, label: 'Gửi Email' },
     { href: 'https://zalo.me/yourzalonumber', icon: <RiMessage3Fill />, label: 'Nhắn tin Zalo', target: '_blank' },
     { href: '#', icon: <RiWechatFill />, label: 'Liên hệ WeChat' },
   ];

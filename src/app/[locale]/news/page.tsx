@@ -118,6 +118,7 @@ export default function NewsPage() {
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
+  // Hook đã sửa sẽ trả về đúng cấu trúc PaginatedNewsResult
   const { result, isLoading, isError } = usePaginatedNews(locale, currentPage);
 
   const renderContent = () => {
@@ -130,28 +131,44 @@ export default function NewsPage() {
         </NewsGrid>
       );
     } 
+    
     if (isError) return <ErrorState>Failed to load news.</ErrorState>;
-    if (!result || result.data.length === 0) return <p style={{textAlign: 'center'}}>No news articles found.</p>;
+    
+    // Kiểm tra kỹ hơn: result phải tồn tại VÀ result.data phải là mảng
+    if (!result || !Array.isArray(result.data) || result.data.length === 0) {
+      return <p style={{textAlign: 'center'}}>No news articles found.</p>;
+    }
 
     return (
       <>
         <NewsGrid>
           {result.data.map((article, index) => {
-            const translation = article.translations.find(t => t.locale === locale) || article.translations[0];
+            // Logic tìm bản dịch an toàn
+            const translation = article.translations?.find(t => t.locale === locale) 
+                                || article.translations?.[0];
+
+            // Nếu không có bản dịch nào thì không render card này để tránh lỗi
+            if (!translation) return null;
+
             return (
               <FadeInWhenVisible key={article.id} transition={{ delay: index * 0.1 }}>
+                {/* Dùng optional chaining ?.slug để an toàn tuyệt đối */}
                 <NewsCard href={`/news/${translation.slug}`} as="a">
                   <ImageWrapper>
                     <Image 
                       src={article.coverImage || '/placeholder.jpg'} 
-                      alt={translation.title} 
+                      alt={translation.title || 'News'} 
                       fill 
                       style={{ objectFit: 'cover' }}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </ImageWrapper>
                   <CardContent>
-                    {article.publishedAt && <time style={{fontSize: '14px', color: '#999', marginBottom: '8px'}}>{formatDate(article.publishedAt, locale)}</time>}
+                    {article.publishedAt && (
+                        <time style={{fontSize: '14px', color: '#999', marginBottom: '8px'}}>
+                            {formatDate(article.publishedAt, locale)}
+                        </time>
+                    )}
                     <h3>{translation.title}</h3>
                     <p>{translation.excerpt}</p>
                   </CardContent>
