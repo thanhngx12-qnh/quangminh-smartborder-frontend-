@@ -1,64 +1,81 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/sections/HomePage/LatestNewsSection.tsx
+// dir: frontend/src/components/sections/HomePage/LatestNewsSection.tsx
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
 import styled from 'styled-components';
 import { Link } from '@/navigation';
 import Image from 'next/image';
-import Button from '@/components/ui/Button';
-import { useFeaturedNews } from '@/hooks/useNews'; // Import Hook mới
+import { ButtonLink } from '@/components/ui/Button'; // Sử dụng ButtonLink
+import { useFeaturedNews } from '@/hooks/useNews';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
+import { RiCalendarLine, RiArrowRightLine } from 'react-icons/ri';
 
-// --- Styled Components (Giữ nguyên, chỉ chỉnh nhẹ ImageWrapper) ---
+// --- Styled Components ---
+
 const SectionWrapper = styled.section`
-  padding: 80px 20px;
-  background-color: ${({ theme }) => theme.colors.surface};
+  padding: 100px 20px;
+  background-color: ${({ theme }) => theme.colors.surfaceAlt}; // Nền xám nhẹ để tách biệt
 `;
 
 const SectionHeader = styled.div`
   text-align: center;
+  max-width: 800px;
   margin: 0 auto 60px auto;
 
   h2 {
+    font-family: ${({ theme }) => theme.fonts.heading};
     font-size: 36px;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.primary};
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    position: relative;
+    display: inline-block;
+    
+    // Gạch chân đỏ trang trí
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: ${({ theme }) => theme.colors.accent};
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
   }
+
   p {
+    font-size: 16px;
     color: ${({ theme }) => theme.colors.textSecondary};
   }
 `;
 
 const NewsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr); // 3 cột chuẩn
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
-`;
 
-const NewsCard = styled(Link)`
-  display: flex; /* Chuyển sang flex để footer card đều nhau */
-  flex-direction: column;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  background-color: ${({ theme }) => theme.colors.background};
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
   }
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* Tỷ lệ 16:9 chuẩn đẹp */
+  padding-top: 60%; // Tỷ lệ ảnh
   overflow: hidden;
+  background-color: #eee;
+
+  img {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
 `;
 
 const CardContent = styled.div`
@@ -66,46 +83,96 @@ const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+`;
 
-  time {
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.textMuted};
-    margin-bottom: 8px;
-    display: block;
+const MetaInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.textMuted};
+  margin-bottom: 12px;
+  
+  svg {
+    color: ${({ theme }) => theme.colors.accent};
   }
+`;
 
-  h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.text};
-    margin-bottom: 12px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+const Title = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 18px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s ease;
 
-  p {
-    font-size: 16px;
-    color: #666;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: auto; /* Đẩy nội dung lên trên */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
+
+const Excerpt = styled.p`
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  line-height: 1.6;
+  margin-bottom: 20px;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
+
+const ReadMore = styled.div`
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.primary};
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+
+  svg { transition: transform 0.2s ease; }
+`;
+
+const NewsCard = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.colors.background};
+  box-shadow: ${({ theme }) => theme.shadows.card};
+  transition: all 0.3s ease;
+  height: 100%;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: ${({ theme }) => theme.shadows.hover};
+    border-bottom-color: ${({ theme }) => theme.colors.accent};
+
+    ${ImageWrapper} img {
+      transform: scale(1.1);
+    }
+
+    ${Title} {
+      color: ${({ theme }) => theme.colors.accent};
+    }
+
+    ${ReadMore} {
+      gap: 10px;
+      color: ${({ theme }) => theme.colors.accent};
+    }
   }
 `;
 
 const ViewAllButtonWrapper = styled.div`
   text-align: center;
   margin-top: 60px;
-`;
-
-const LoadingState = styled.div`
-  text-align: center; 
-  padding: 40px; 
-  color: #888;
 `;
 
 // Helper format ngày
@@ -122,65 +189,60 @@ const formatDate = (dateString: string, locale: string) => {
 };
 
 // --- Main Component ---
-// Bỏ props news, vì component tự fetch
 export default function LatestNewsSection() { 
   const t = useTranslations('LatestNews');
+  const tGeneral = useTranslations('General');
   const locale = useLocale();
   
-  // Gọi Hook lấy tin nổi bật
-  const { news, isLoading, isError } = useFeaturedNews(locale);
+  const { news, isLoading } = useFeaturedNews(locale);
 
-  // Xử lý Loading
-  if (isLoading) {
-    return (
-      <SectionWrapper>
-        <SectionHeader><h2>{t('title')}</h2></SectionHeader>
-        <LoadingState>Loading...</LoadingState>
-      </SectionWrapper>
-    );
-  }
+  // Loading Skeleton đơn giản (Optional)
+  if (isLoading) return null;
 
-  // Nếu không có tin nào
-  if (!news || news.length === 0) {
-    return null; // Ẩn luôn section nếu không có bài nổi bật
-  }
+  // Nếu không có tin nào thì ẩn section
+  if (!news || news.length === 0) return null;
+
+  // Lấy tối đa 3 tin để hiển thị đẹp trên Grid
+  const displayNews = news.slice(0, 3);
 
   return (
     <SectionWrapper>
       <FadeInWhenVisible>
         <SectionHeader>
           <h2>{t('title')}</h2>
-          <p>{t('subtitle') || 'Những tin tức mới nhất và nổi bật từ chúng tôi'}</p>
+          {/* Subtitle có thể thêm vào JSON sau nếu cần */}
         </SectionHeader>
       </FadeInWhenVisible>
 
       <NewsGrid>
-        {news.map((article, index) => {
-          // Logic tìm bản dịch an toàn
+        {displayNews.map((article, index) => {
           const translation = article.translations?.find(t => t.locale === locale) 
                               || article.translations?.[0];
 
           if (!translation) return null;
 
           return (
-            <FadeInWhenVisible key={article.id} transition={{ delay: index * 0.1 }}>
-              {/* Đã thêm as="a" và prefetch={false} để tránh load quá nhiều */}
+            // SỬA LỖI: dùng prop delay thay vì transition
+            <FadeInWhenVisible key={article.id} delay={index * 0.1}>
               <NewsCard href={`/news/${translation.slug}`} as="a">
                 <ImageWrapper>
                   <Image 
-                    src={article.coverImage || '/placeholder.jpg'} 
+                    src={article.coverImage || '/images/placeholder.jpg'} 
                     alt={translation.title || 'News'} 
                     fill 
-                    style={{ objectFit: 'cover' }}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
                   />
                 </ImageWrapper>
                 <CardContent>
-                  {article.publishedAt && (
-                    <time>{formatDate(article.publishedAt, locale)}</time>
-                  )}
-                  <h3>{translation.title}</h3>
-                  <p>{translation.excerpt}</p>
+                  <MetaInfo>
+                    <RiCalendarLine />
+                    <time>{article.publishedAt ? formatDate(article.publishedAt, locale) : ''}</time>
+                  </MetaInfo>
+                  <Title>{translation.title}</Title>
+                  <Excerpt>{translation.excerpt}</Excerpt>
+                  <ReadMore>
+                    {tGeneral('viewAll') || 'Xem chi tiết'} <RiArrowRightLine />
+                  </ReadMore>
                 </CardContent>
               </NewsCard>
             </FadeInWhenVisible>
@@ -188,11 +250,11 @@ export default function LatestNewsSection() {
         })}
       </NewsGrid>
 
-      <FadeInWhenVisible>
+      <FadeInWhenVisible delay={0.3}>
         <ViewAllButtonWrapper>
-          <Button as="a" href="/news" variant="secondary">
-            {t('viewAll')}
-          </Button>
+          <ButtonLink href="/news" variant="secondary" as="a">
+            {t('viewAll')} <RiArrowRightLine style={{ marginLeft: 8 }}/>
+          </ButtonLink>
         </ViewAllButtonWrapper>
       </FadeInWhenVisible>
     </SectionWrapper>

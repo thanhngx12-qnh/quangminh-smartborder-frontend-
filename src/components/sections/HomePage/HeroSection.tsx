@@ -28,7 +28,7 @@ const BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
   // Bạn nhớ thay ảnh này bằng ảnh Container/Cửa khẩu chất lượng cao
-  background-image: url('/images/hero-bg.jpg'); 
+  background-image: url('https://chimahtt.com/wp-content/uploads/2025/11/chima-htt-banner-anh-2.jpg'); 
   background-size: cover;
   background-position: center;
   z-index: -2;

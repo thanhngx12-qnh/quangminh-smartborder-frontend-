@@ -68,7 +68,7 @@ export default function Footer() {
   const navLinks = [
     { href: '/', label: tNav('home') },
     { href: '/services', label: tNav('services') },
-    { href: '/tracking', label: t('tracking') || 'Tra cứu' },
+    // { href: '/tracking', label: t('tracking') || 'Tra cứu' },
     { href: '/news', label: tNav('news') },
     { href: '/contact', label: tNav('contact') },
   ];

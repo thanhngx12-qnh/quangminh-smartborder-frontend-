@@ -1,4 +1,4 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/sections/HomePage/KpiSection.tsx
+// dir: frontend/src/components/sections/HomePage/KpiSection.tsx
 'use client';
 
 import { useTranslations } from 'next-intl';
@@ -7,68 +7,105 @@ import { RiBuilding2Line, RiTruckLine, RiFileList3Line } from 'react-icons/ri';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 
 // --- Styled Components ---
-const KpiWrapper = styled.section`
-  background-color: ${({ theme }) => theme.colors.surface};
+
+const SectionWrapper = styled.section`
+  // Sử dụng màu Primary (Xanh đậm) làm nền để nổi bật Text trắng
+  background-color: ${({ theme }) => theme.colors.primary};
   padding: 80px 20px;
-  display: flex;
-  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  // Thêm họa tiết trang trí mờ (optional)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 const KpiGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1000px;
-  width: 100%;
+  gap: 40px;
+  
+  // Đường kẻ phân cách giữa các cột trên Desktop
+  & > div:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+  }
 
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    gap: 60px;
+    
+    & > div:not(:last-child) {
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 40px;
+    }
   }
 `;
 
-const KpiCard = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+const KpiItem = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.white};
+  padding: 0 20px;
+  transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
   }
 `;
 
 const IconWrapper = styled.div`
-  font-size: 48px;
-  color: ${({ theme }) => theme.colors.accent};
-  flex-shrink: 0; // Đảm bảo icon không bị co lại
-`;
-
-const TextContent = styled.div`
-  h3 {
-    font-size: 36px;
-    font-weight: 700;
-    color: ${({ theme }) => theme.colors.text};
-    line-height: 1.2;
-  }
-
-  p {
-    font-size: 16px;
-    color: ${({ theme }) => theme.colors.textSecondary};
-  }
+  font-size: 56px;
+  color: ${({ theme }) => theme.colors.accent}; // Icon màu Đỏ nổi bật trên nền Xanh
+  margin-bottom: 20px;
   
-  span {
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.textMuted};
+  svg {
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
   }
 `;
 
+const Value = styled.div`
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 12px;
+  background: linear-gradient(to right, #ffffff, #e0e0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
+`;
+
+const Title = styled.h3`
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: ${({ theme }) => theme.colors.white};
+  opacity: 0.9;
+`;
+
+const Description = styled.p`
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.footer.textSecondary}; // Màu xám nhạt dễ đọc
+  max-width: 250px;
+`;
 
 // --- Main Component ---
 export default function KpiSection() {
@@ -76,18 +113,21 @@ export default function KpiSection() {
 
   const kpiItems = [
     {
+      key: 'storage',
       icon: <RiBuilding2Line />,
       value: t('storageValue'),
       title: t('storageTitle'),
       description: t('storageDesc'),
     },
     {
+      key: 'container',
       icon: <RiTruckLine />,
       value: t('containerValue'),
       title: t('containerTitle'),
       description: t('containerDesc'),
     },
     {
+      key: 'customs',
       icon: <RiFileList3Line />,
       value: t('customsValue'),
       title: t('customsTitle'),
@@ -95,23 +135,23 @@ export default function KpiSection() {
     },
   ];
 
-    return (
-    <KpiWrapper>
-      <KpiGrid>
-        {kpiItems.map((item, index) => (
-          // Áp dụng animation cho từng thẻ với một độ trễ nhỏ tăng dần
-          <FadeInWhenVisible key={index} transition={{ duration: 0.5, delay: index * 0.2 }}>
-            <KpiCard>
-              <IconWrapper>{item.icon}</IconWrapper>
-              <TextContent>
-                <h3>{item.value}</h3>
-                <p>{item.title}</p>
-                <span>{item.description}</span>
-              </TextContent>
-            </KpiCard>
-          </FadeInWhenVisible>
-        ))}
-      </KpiGrid>
-    </KpiWrapper>
+  return (
+    <SectionWrapper>
+      <Container>
+        <KpiGrid>
+          {kpiItems.map((item, index) => (
+            // Sửa lỗi: dùng prop delay trực tiếp thay vì transition object
+            <FadeInWhenVisible key={index} delay={index * 0.2}>
+              <KpiItem>
+                <IconWrapper>{item.icon}</IconWrapper>
+                <Value>{item.value}</Value>
+                <Title>{item.title}</Title>
+                <Description>{item.description}</Description>
+              </KpiItem>
+            </FadeInWhenVisible>
+          ))}
+        </KpiGrid>
+      </Container>
+    </SectionWrapper>
   );
 }
