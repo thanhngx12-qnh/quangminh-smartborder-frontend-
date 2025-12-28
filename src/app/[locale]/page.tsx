@@ -51,15 +51,9 @@ export default function Home() {
 
           <WhyChooseUsSection />
 
-          {isErrorNews ? (
-            <div>Failed to load news.</div>
-          ) : (
-            news && news.length > 0 && (
-              <FadeInWhenVisible>
-                <LatestNewsSection/>
-              </FadeInWhenVisible>
-            )
-          )}
+          <FadeInWhenVisible>
+            <LatestNewsSection />
+          </FadeInWhenVisible>
 
           <PartnersSection />
         </>
