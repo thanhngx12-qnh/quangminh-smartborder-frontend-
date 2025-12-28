@@ -112,7 +112,7 @@ export default function HeroSection() {
         <Title>{t('title')}</Title>
         <Subtitle>{t('subtitle')}</Subtitle>
         <CtaGroup>
-          <ButtonLink href="/tracking" variant="primary" as="a">{t('ctaTrack')}</ButtonLink>
+          {/* <ButtonLink href="/tracking" variant="primary" as="a">{t('ctaTrack')}</ButtonLink> */}
         </CtaGroup>
         
       </HeroContent>

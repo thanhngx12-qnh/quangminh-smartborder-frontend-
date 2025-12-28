@@ -66,3 +66,21 @@ export function useNewsBySlug(slug: string, locale: string) {
     isError: error,
   };
 }
+
+export function useFeaturedNews(locale: string) {
+  // Gọi API với tham số featured=true và giới hạn 3 bài
+  const queryString = `/news?locale=${locale}&status=PUBLISHED&featured=true&limit=3`;
+
+  // Lưu ý: Backend trả về phân trang, nên ta lấy data.data
+  const { data, error, isLoading } = useSWR<ApiResponse<PaginatedNewsResult>>(
+    queryString,
+    fetcher
+  );
+
+  return {
+    // Trả về mảng bài viết (data.data.data)
+    news: data?.data?.data || [], 
+    isLoading,
+    isError: error,
+  };
+}
