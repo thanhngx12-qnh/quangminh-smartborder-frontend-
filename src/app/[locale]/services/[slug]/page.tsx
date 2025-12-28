@@ -1,41 +1,65 @@
-// dir: ~/quangminh-smart-border/frontend/src/app/[locale]/services/[slug]/page.tsx
+// dir: frontend/src/app/[locale]/services/[slug]/page.tsx
 'use client';
 
+import { useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
+import { useRouter, Link } from '@/navigation';
 import { useServiceBySlug, useAllServices } from '@/hooks/useServices';
 import styled from 'styled-components';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown'; // <-- Import
+import parse from 'html-react-parser'; // Dùng html-react-parser
 import { ButtonLink } from '@/components/ui/Button'; 
 import OtherServicesSection from '@/components/sections/ServiceDetailPage/OtherServicesSection';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
-import CardSkeleton from '@/components/ui/CardSkeleton';
-import { useEffect } from 'react';
-import parse from 'html-react-parser';
+import ArticlePageSkeleton from '@/components/skeletons/ArticlePageSkeleton'; // Tận dụng Skeleton bài viết
+import ErrorState from '@/components/ui/ErrorState';
+import { RiArrowLeftLine, RiArrowRightLine, RiMenuFoldLine } from 'react-icons/ri';
 
 // --- Styled Components ---
+
 const PageWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.surfaceAlt}; // Nền xám nhẹ
+  padding: 40px 20px 80px;
+  min-height: 100vh;
 `;
 
-const HeroWrapper = styled.section`
-  position: relative;
-  height: 400px;
-  color: ${({ theme }) => theme.colors.white};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6));
-    z-index: 1;
+const BackButtonWrapper = styled.div`
+  margin-bottom: 20px;
+`;
+
+const ContentGrid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); // Cột chính - Cột phụ (Sidebar)
+  align-items: start;
+  gap: 40px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+// --- Cột chính ---
+const MainContent = styled.main`
+  background-color: ${({ theme }) => theme.colors.background};
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: ${({ theme }) => theme.shadows.card};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+`;
+
+const HeroImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 400px; // Banner ảnh dịch vụ
+  background-color: ${({ theme }) => theme.colors.border};
+
+  @media (max-width: 768px) {
+    height: 250px;
   }
 `;
 
@@ -43,75 +67,136 @@ const HeroImage = styled(Image)`
   object-fit: cover;
 `;
 
-const HeroContent = styled.div`
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  padding: 20px;
-
-  h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-`;
-
-const ContentWrapper = styled.main`
-  max-width: 800px;
-  margin: -80px auto 0 auto;
-  position: relative;
-  z-index: 3;
-  background-color: ${({ theme }) => theme.colors.background};
+const ArticleHeader = styled.div`
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-`;
-
-// Component để style nội dung Markdown
-const MarkdownContent = styled.div`
-  font-size: 18px;
-  line-height: 1.8;
-  color: ${({ theme }) => theme.colors.textSecondary};
-
-  h2, h3 {
-    color: ${({ theme }) => theme.colors.text};
-    margin-top: 40px;
-    margin-bottom: 16px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  
+  h1 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: ${({ theme }) => theme.colors.primary};
     line-height: 1.3;
   }
-  
-  p {
-    margin-bottom: 16px;
+`;
+
+// Wrapper cho nội dung HTML từ TinyMCE
+const RichTextWrapper = styled.article`
+  padding: 40px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: ${({ theme }) => theme.colors.text};
+
+  h2, h3, h4 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    color: ${({ theme }) => theme.colors.primary};
+    margin: 32px 0 16px;
+    font-weight: 700;
   }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+
+  p { margin-bottom: 16px; }
 
   ul, ol {
-    margin-left: 24px;
-    margin-bottom: 16px;
+    margin: 0 0 20px 24px;
     li {
       margin-bottom: 8px;
+      &::marker { color: ${({ theme }) => theme.colors.accent}; font-weight: bold; }
     }
   }
 
-  a {
-    color: ${({ theme }) => theme.colors.accent};
-    text-decoration: underline;
+  strong { color: ${({ theme }) => theme.colors.primary}; font-weight: 700; }
+  a { color: ${({ theme }) => theme.colors.accent}; text-decoration: underline; }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 32px 0;
+    box-shadow: ${({ theme }) => theme.shadows.md};
+  }
+
+  blockquote {
+    border-left: 3px solid ${({ theme }) => theme.colors.accent};
+    padding: 20px 24px;
+    margin: 32px 0;
+    font-style: italic;
+    font-size: 18px;
+    color: ${({ theme }) => theme.colors.text};
+    background-color: ${({ theme }) => theme.colors.surfaceAlt};
+    border-radius: 8px;
   }
 `;
 
-const CtaSection = styled.section`
-  text-align: center;
-  padding: 60px 20px;
+// --- Cột phụ (Sidebar) ---
+const Sidebar = styled.aside`
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @media (max-width: 992px) {
+    position: static;
+  }
+`;
+
+const SidebarCard = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  box-shadow: ${({ theme }) => theme.shadows.card};
+
+  h3 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: 18px;
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.primary};
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    svg { color: ${({ theme }) => theme.colors.accent}; }
+  }
+`;
+
+const ServiceLink = styled(Link)`
+  display: block;
+  padding: 10px 0;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
+    padding-left: 8px;
+  }
+`;
+
+const CtaCard = styled(SidebarCard)`
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary} 0%, ${({ theme }) => theme.colors.primaryDark} 100%);
+  color: ${({ theme }) => theme.colors.white};
+  text-align: center;
   
-  h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.text};
+  h3 {
+    color: white;
+  }
+  
+  p {
+    font-size: 15px;
+    opacity: 0.9;
     margin-bottom: 24px;
   }
 `;
-
-const ErrorState = styled.div` /* ... */ `;
 
 // --- Main Component ---
 interface ServiceDetailPageProps {
@@ -121,87 +206,116 @@ interface ServiceDetailPageProps {
 export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   const { slug } = params;
   const locale = useLocale();
+  const router = useRouter();
   const t = useTranslations('ServiceDetail');
-  const t_meta = useTranslations('Metadata'); 
+  const tMeta = useTranslations('Metadata'); 
 
-  // Fetch dữ liệu cho dịch vụ hiện tại
-  const { service, isLoading: isLoadingDetail, isError: isErrorDetail } = useServiceBySlug(slug, locale);
+  // Fetch dữ liệu
+  const { service, isLoading, isError } = useServiceBySlug(slug, locale);
+  const { result: allServicesResult } = useAllServices(locale, 1); 
 
+  // SEO
   useEffect(() => {
     if (service) {
       const translation = service.translations.find(tr => tr.locale === locale) || service.translations[0];
       if (translation) {
-        // Sử dụng chuỗi dịch với tham số
-        document.title = t_meta('serviceTitle', { serviceName: translation.title });
-
+        document.title = tMeta('serviceTitle', { serviceName: translation.title });
         const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-          metaDesc.setAttribute('content', translation.shortDesc);
-        }
+        if (metaDesc) metaDesc.setAttribute('content', translation.shortDesc);
       }
     }
-    return () => {
-      document.title = t_meta('defaultTitle');
-    };
-  }, [service, locale, t_meta]);
+    return () => { document.title = tMeta('defaultTitle'); };
+  }, [service, locale, tMeta]);
   
-  // Fetch tất cả dịch vụ để hiển thị "Các dịch vụ khác"
-  const { result, isLoading: isLoadingList } = useAllServices(locale, 1); 
+  if (isLoading) return <ArticlePageSkeleton />;
 
-  if (isLoadingDetail || isLoadingList) return(
-        <PageWrapper>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <CardSkeleton key={index} />
-          ))}
-        </PageWrapper>);
-  if (isErrorDetail) return <ErrorState>Could not find the requested service.</ErrorState>;
-  if (!service) return null;
-
-  // Lọc ra các dịch vụ khác (không bao gồm dịch vụ hiện tại), chỉ lấy tối đa 3
-  const otherServices = result?.data
-    ?.filter(s => s.id !== service.id)
-    .slice(0, 3) || [];
+  if (isError || !service) {
+    return (
+      <ErrorState 
+        title="Không tìm thấy dịch vụ"
+        description="Dịch vụ bạn đang tìm không tồn tại hoặc đã bị xóa."
+        actionText="Quay lại danh sách dịch vụ"
+        onAction={() => router.push('/services' as never)}
+        fullScreen
+      />
+    );
+  }
 
   const translation = service.translations.find(t => t.locale === locale) || service.translations[0];
+  if (!translation) return null; // Trường hợp không có bản dịch nào
+
+  const otherServices = allServicesResult?.data
+    ?.filter(s => s.id !== service.id)
+    .slice(0, 5) || []; // Lấy tối đa 5 dịch vụ khác
 
   const contactHref = `/contact?serviceId=${service.id}&serviceName=${encodeURIComponent(translation.title)}`;
 
   return (
     <PageWrapper>
-      <HeroWrapper>
-        <HeroImage src={service.coverImage || '/placeholder.jpg'} alt={translation.title} fill priority />
-        <HeroContent>
-          <h1>{translation.title}</h1>
-        </HeroContent>
-      </HeroWrapper>
-
-      <FadeInWhenVisible>
-        <ContentWrapper>
-          <MarkdownContent>
-            {parse(translation.content || '<p>No content available.</p>')}
-          </MarkdownContent>
-        </ContentWrapper>
-      </FadeInWhenVisible>
-
-      <FadeInWhenVisible>
-        <CtaSection>
-          <h2>{t('ctaTitle')}</h2>
-          
-          <ButtonLink 
-            href={contactHref} // Truyền chuỗi URL vào
-            as="a" 
-          >
-            {t('ctaButton')}
+      <Container>
+        <BackButtonWrapper>
+          <ButtonLink href="/services" variant="ghost" size="small" as="a">
+            <RiArrowLeftLine style={{ marginRight: 8 }} /> Quay lại danh sách dịch vụ
           </ButtonLink>
+        </BackButtonWrapper>
 
-        </CtaSection>
-      </FadeInWhenVisible>
+        <ContentGrid>
+          {/* Cột Nội dung chính */}
+          <FadeInWhenVisible>
+            <MainContent>
+              <HeroImageWrapper>
+                <HeroImage src={service.coverImage || '/images/placeholder.jpg'} alt={translation.title} fill priority />
+              </HeroImageWrapper>
+              
+              <ArticleHeader>
+                <h1>{translation.title}</h1>
+              </ArticleHeader>
+              
+              <RichTextWrapper>
+                {/* Dùng parse để render HTML từ TinyMCE */}
+                {parse(translation.content || '')}
+              </RichTextWrapper>
+            </MainContent>
+          </FadeInWhenVisible>
 
-      {otherServices.length > 0 && (
+          {/* Cột Phụ (Sidebar) */}
+          <FadeInWhenVisible delay={0.2}>
+            <Sidebar>
+              {/* Card Báo giá */}
+              <CtaCard>
+                <h3>{t('ctaTitle')}</h3>
+                <p>Nhận tư vấn & báo giá chi tiết cho dịch vụ này.</p>
+                <ButtonLink href={contactHref} as="a" variant="primary" $fullWidth>
+                  {t('ctaButton')} <RiArrowRightLine style={{ marginLeft: 8 }} />
+                </ButtonLink>
+              </CtaCard>
+
+              {/* Card Các dịch vụ khác */}
+              {otherServices.length > 0 && (
+                <SidebarCard>
+                  <h3><RiMenuFoldLine /> {t('otherServicesTitle')}</h3>
+                  {otherServices.map(otherService => {
+                    const otherTranslation = otherService.translations.find(t => t.locale === locale) || otherService.translations[0];
+                    if (!otherTranslation) return null;
+                    return (
+                      <ServiceLink key={otherService.id} href={`/services/${otherTranslation.slug}`} as="a">
+                        {otherTranslation.title}
+                      </ServiceLink>
+                    )
+                  })}
+                </SidebarCard>
+              )}
+            </Sidebar>
+          </FadeInWhenVisible>
+        </ContentGrid>
+      </Container>
+
+      {/* Phần các dịch vụ khác ở dưới (có thể giữ hoặc bỏ nếu đã có trong sidebar) */}
+      {/* 
         <FadeInWhenVisible>
           <OtherServicesSection services={otherServices} />
-        </FadeInWhenVisible>
-      )}
+        </FadeInWhenVisible> 
+      */}
     </PageWrapper>
   );
 }

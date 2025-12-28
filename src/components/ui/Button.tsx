@@ -76,7 +76,7 @@ const buttonStyles = css<ButtonProps>`
       border-color: ${theme.colors.accent};
 
       &:hover {
-        background-color: ${theme.colors.accentHover};
+        background-color: ${theme.colors.white};
         border-color: ${theme.colors.accentHover};
         transform: translateY(-1px);
         box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2);
@@ -94,7 +94,7 @@ const buttonStyles = css<ButtonProps>`
       border-color: ${theme.colors.primary};
 
       &:hover {
-        background-color: ${theme.colors.primaryLight};
+        background-color: ${theme.colors.white};
         border-color: ${theme.colors.primaryLight};
         box-shadow: 0 4px 6px rgba(0, 51, 102, 0.2);
       }
@@ -109,7 +109,7 @@ const buttonStyles = css<ButtonProps>`
       border-color: ${theme.colors.primary};
 
       &:hover {
-        background-color: ${theme.colors.secondary}; // Xanh nhạt
+        background-color: ${theme.colors.primary}; // Xanh nhạt
         color: ${theme.colors.primary};
       }
     `}
@@ -122,7 +122,7 @@ const buttonStyles = css<ButtonProps>`
       color: ${theme.colors.text};
       
       &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: ${theme.colors.secondary}; // Xanh nhạt
         color: ${theme.colors.accent};
       }
     `}

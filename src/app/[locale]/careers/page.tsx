@@ -9,7 +9,7 @@ import { Link } from '@/navigation';
 import { RiMapPinLine, RiTimeLine, RiBriefcaseLine, RiArrowRightLine } from 'react-icons/ri';
 import Pagination from '@/components/ui/Pagination';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
-import { ButtonLink } from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
 import ErrorState from '@/components/ui/ErrorState';
 import CardSkeleton from '@/components/ui/CardSkeleton';
 
@@ -45,6 +45,7 @@ const HeroSection = styled.section`
     position: relative;
     z-index: 1;
     text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.white};
   }
 
   p {
@@ -155,27 +156,48 @@ const LoadingSkeleton = () => (
   </Container>
 );
 
+
 // --- Main Component ---
 export default function CareersPage() {
   const locale = useLocale();
   const t = useTranslations('CareersPage');
-  const tCommon = useTranslations('General'); // Lấy text "Xem chi tiết" hoặc "Ứng tuyển"
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-  const { result, isLoading, isError, refetch } = usePaginatedJobPostings(locale, currentPage, 'OPEN');
+  // Hook gốc (không có refetch)
+  const { result, isLoading, isError } = usePaginatedJobPostings(locale, currentPage, 'OPEN');
   
-  if (isLoading) return <LoadingSkeleton />;
+  // SỬA LỖI Ở ĐÂY: Hàm reload trang
+  const handleRetry = () => {
+    window.location.reload();
+  };
+
+  if (isLoading) {
+    return (
+      <PageWrapper>
+        <HeroSection>
+          <FadeInWhenVisible><h1>{t('title')}</h1><p>{t('subtitle')}</p></FadeInWhenVisible>
+        </HeroSection>
+        <LoadingSkeleton />
+      </PageWrapper>
+    );
+  }
   
   if (isError) {
     return (
-      <ErrorState 
-        title={t('errorTitle', { defaultMessage: 'Không thể tải danh sách việc làm' })}
-        description={t('errorDesc', { defaultMessage: 'Vui lòng kiểm tra kết nối và thử lại.' })}
-        actionText={t('retry', { defaultMessage: 'Thử lại' })}
-        onAction={() => refetch()} // Gọi hàm refetch từ hook (nếu hook hỗ trợ, hoặc reload trang)
-        fullScreen
-      />
+      <PageWrapper>
+        <HeroSection>
+          <FadeInWhenVisible><h1>{t('title')}</h1><p>{t('subtitle')}</p></FadeInWhenVisible>
+        </HeroSection>
+        <Container>
+          <ErrorState 
+            title={t('errorTitle')}
+            description={t('errorDesc')}
+            actionText={t('retry')}
+            onAction={handleRetry} // Gọi hàm reload
+          />
+        </Container>
+      </PageWrapper>
     );
   }
 
@@ -184,8 +206,7 @@ export default function CareersPage() {
       <HeroSection>
         <FadeInWhenVisible>
           <h1>{t('title')}</h1>
-          {/* Subtitle mặc định nếu chưa có trong JSON */}
-          <p>{t('subtitle') || 'Gia nhập đội ngũ Phú Anh Logistics để cùng kiến tạo tương lai.'}</p>
+          <p>{t('subtitle')}</p>
         </FadeInWhenVisible>
       </HeroSection>
       
@@ -194,29 +215,20 @@ export default function CareersPage() {
           <>
             <JobList>
               {result.data.map((job, index) => (
-                // SỬA LỖI: dùng prop delay thay vì transition
                 <FadeInWhenVisible key={job.id} delay={index * 0.1}>
                   <JobCard href={`/careers/${job.id}`} as="a">
                     <JobContent>
                       <JobTitle>{job.title}</JobTitle>
                       <MetaTags>
-                        <Tag>
-                          <RiMapPinLine /> {job.location}
-                        </Tag>
-                        <Tag>
-                          <RiBriefcaseLine /> {job.department || 'Phú Anh Logistics'}
-                        </Tag>
-                        <Tag>
-                          <RiTimeLine /> {new Date(job.createdAt).toLocaleDateString(locale)}
-                        </Tag>
+                        <Tag><RiMapPinLine /> {job.location}</Tag>
+                        <Tag><RiTimeLine /> {new Date(job.createdAt).toLocaleDateString(locale)}</Tag>
                       </MetaTags>
                     </JobContent>
                     
                     <ActionArea>
-                      {/* ButtonLink giả lập nút bấm để kích thích CTA */}
-                      <ButtonLink href={`/careers/${job.id}`} variant="outline" size="small" as="span">
+                      <Button variant="outline" size="small" as="span">
                         Xem chi tiết <RiArrowRightLine style={{ marginLeft: 6 }} />
-                      </ButtonLink>
+                      </Button>
                     </ActionArea>
                   </JobCard>
                 </FadeInWhenVisible>
@@ -230,10 +242,9 @@ export default function CareersPage() {
             )}
           </>
         ) : (
-          // Empty State
           <ErrorState 
             title={t('noOpenings')} 
-            description={t('noOpeningsDesc', { defaultMessage: 'Hiện tại chúng tôi chưa có vị trí nào đang mở. Hãy quay lại sau nhé!' })}
+            description={t('noOpeningsDesc')}
           />
         )}
       </Container>

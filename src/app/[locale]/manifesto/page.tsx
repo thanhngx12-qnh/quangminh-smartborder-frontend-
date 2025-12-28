@@ -37,6 +37,7 @@ const HeroSection = styled.section`
     margin-bottom: 24px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: ${({ theme }) => theme.colors.white};
   }
 
   p {

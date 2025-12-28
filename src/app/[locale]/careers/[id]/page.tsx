@@ -306,6 +306,7 @@ export default function CareerDetailPage() {
         title={t('notFoundTitle')}
         description={t('notFoundDescription')}
         actionText="Quay lại danh sách"
+        onAction={() => router.push('/careers' as never)}
         fullScreen
       />
     );
@@ -332,7 +333,7 @@ export default function CareerDetailPage() {
 
         <ContentGrid>
           {/* Cột trái: Nội dung mô tả (HTML từ TinyMCE) */}
-          <FadeInWhenVisible delay={0.1}>
+          {/* <FadeInWhenVisible delay={0.1}> */}
             <RichTextWrapper>
               <SectionTitle>{t('jobDescription')}</SectionTitle>
               {/* Dùng html-react-parser để render HTML an toàn */}
@@ -343,10 +344,10 @@ export default function CareerDetailPage() {
               <SectionTitle>{t('requirements')}</SectionTitle>
               <div>{parse(jobPosting.requirements || '')}</div>
             </RichTextWrapper>
-          </FadeInWhenVisible>
+          {/* </FadeInWhenVisible> */}
           
           {/* Cột phải: Form Ứng tuyển (Sticky) */}
-          <FadeInWhenVisible delay={0.2}>
+          <FadeInWhenVisible delay={0.1}>
             <Sidebar>
               <SectionTitle style={{ textAlign: 'center' }}>{t('applyTitle')}</SectionTitle>
               

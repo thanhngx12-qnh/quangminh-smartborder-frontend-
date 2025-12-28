@@ -43,6 +43,7 @@ const PageHeader = styled.div`
     font-weight: 700; 
     color: ${({ theme }) => theme.colors.primary}; 
     margin-bottom: 16px; 
+    color: ${({ theme }) => theme.colors.white};
   }
   
   p { 

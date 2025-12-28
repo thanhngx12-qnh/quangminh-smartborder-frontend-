@@ -86,7 +86,7 @@ export default function Footer() {
             </ContactItem>
             <ContactItem>
               <IconWrapper><RiPhoneLine /></IconWrapper>
-              <a href="tel:0963320335">Hotline: 0963.320.335</a>
+              <a href="tel:0963320335">Hotline: +8496.3320.335</a>
             </ContactItem>
             <ContactItem>
               <IconWrapper><RiMailLine /></IconWrapper>
@@ -120,16 +120,16 @@ export default function Footer() {
             <li><FooterLink href="/terms" as="a">{t('terms')}</FooterLink></li>
             <li><FooterLink href="/privacy" as="a">{t('privacy')}</FooterLink></li>
           </LinkList>
-          
+{/*           
           <div style={{ marginTop: 20 }}>
             <h3>Văn phòng</h3>
              <ContactList>
                 <ContactItem>
                   <IconWrapper><RiMapPinLine /></IconWrapper>
-                  <span>VP Hạ Long: 29 Lê Duẩn, Bãi Cháy</span>
+                  <span>VP Hạ Long: 29 Lê Duẩn, Phường Bãi Cháy, tỉnh Quảng Ninh</span>
                 </ContactItem>
              </ContactList>
-          </div>
+          </div> */}
         </FooterColumn>
 
         {/* Cột 4: Form liên hệ nhanh */}

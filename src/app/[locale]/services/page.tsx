@@ -1,4 +1,4 @@
-// dir: ~/quangminh-smart-border/frontend/src/app/[locale]/services/page.tsx
+// dir: frontend/src/app/[locale]/services/page.tsx
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
@@ -9,64 +9,79 @@ import ServiceCard from '@/components/shared/ServiceCard';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import CardSkeleton from '@/components/ui/CardSkeleton';
 import Pagination from '@/components/ui/Pagination';
+import ErrorState from '@/components/ui/ErrorState'; // Import ErrorState
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
-  width: 100%; // Ngăn tràn màn hình
-  padding: 80px 20px;
-  background-color: ${({ theme }) => theme.colors.surface};
-  min-height: 80vh;
+  background-color: ${({ theme }) => theme.colors.background};
+  min-height: 100vh;
 `;
 
-const PageHeader = styled.div`
+const HeroSection = styled.section`
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary} 0%, ${({ theme }) => theme.colors.primaryDark} 100%);
+  padding: 100px 20px;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 60px auto;
+  color: ${({ theme }) => theme.colors.white};
 
   h1 {
-    font-size: 48px;
-    font-weight: 700;
-    color: ${({ theme }) => theme.colors.text}; // Sử dụng màu text từ theme
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    text-transform: uppercase;
     margin-bottom: 16px;
+    color: ${({ theme }) => theme.colors.white};
   }
 
   p {
     font-size: 18px;
-    color: ${({ theme }) => theme.colors.textSecondary}; // Sử dụng màu textSecondary từ theme
-    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
   }
+`;
+
+const ContentContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
 `;
 
 const ServicesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
+  align-items: stretch; // Quan trọng: Đảm bảo các card trong grid có chiều cao bằng nhau
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const ErrorState = styled.p`
-  text-align: center;
-  font-size: 18px;
-  color: ${({ theme }) => theme.colors.error};
+const PaginationWrapper = styled.div`
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
 `;
-
-const NoDataState = styled.p`
-  text-align: center;
-  font-size: 18px;
-  color: ${({ theme }) => theme.colors.textSecondary};
-`;
-
 
 // --- Main Component ---
 export default function ServicesPage() {
   const locale = useLocale();
   const t = useTranslations('ServicesPage');
-  const t_errors = useTranslations('Errors'); // Lấy translation cho lỗi chung
+  const tErrors = useTranslations('Errors');
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-  const { result, isLoading, isError } = useAllServices(locale, currentPage); // Lấy thêm `mutate`
+  // Hook gốc (không có refetch)
+  const { result, isLoading, isError } = useAllServices(locale, currentPage);
+
+  // SỬA LỖI Ở ĐÂY: Hàm reload trang
+  const handleRetry = () => {
+    window.location.reload();
+  };
 
   const renderContent = () => {
     if (isLoading) {
@@ -80,36 +95,47 @@ export default function ServicesPage() {
     }
     
     if (isError) {
-        return <ErrorState 
-            title={t_errors('failedToLoad')}
+      return (
+        <ErrorState 
+          title={tErrors('failedToLoad')}
+          description="Có lỗi xảy ra khi tải danh sách dịch vụ. Vui lòng thử lại."
+          actionText={tErrors('retry')}
+          onAction={handleRetry} // Gọi hàm reload
         />
-    };
+      );
+    }
 
-    // SỬA LỖI Ở ĐÂY: Lọc dữ liệu trước khi render
     const servicesWithTranslation = result?.data.filter(service => 
       service.translations.some(translation => translation.locale === locale)
     ) || [];
 
     if (!servicesWithTranslation || servicesWithTranslation.length === 0) {
-      return <NoDataState>{t('noServices')}</NoDataState>;
+      return (
+        <ErrorState 
+          title={t('noServices')}
+          description="Chúng tôi đang cập nhật thông tin dịch vụ. Vui lòng quay lại sau."
+        />
+      );
     }
 
     return (
       <>
         <ServicesGrid>
           {servicesWithTranslation.map((service, index) => (
-            <FadeInWhenVisible key={service.id} transition={{ delay: index * 0.1 }}>
+            <FadeInWhenVisible key={service.id} delay={index * 0.1}>
               <ServiceCard service={service} />
             </FadeInWhenVisible>
           ))}
         </ServicesGrid>
         
-        {result && (
+        {result && result.lastPage > 1 && (
+          <PaginationWrapper>
             <Pagination 
-                currentPage={result.page} 
-                totalPages={result.lastPage}
-                basePath="/services"
+              currentPage={result.page} 
+              totalPages={result.lastPage}
+              basePath="/services"
             />
+          </PaginationWrapper>
         )}
       </>
     );
@@ -118,12 +144,15 @@ export default function ServicesPage() {
   return (
     <PageWrapper>
       <FadeInWhenVisible>
-        <PageHeader>
+        <HeroSection>
           <h1>{t('title')}</h1>
           <p>{t('description')}</p>
-        </PageHeader>
+        </HeroSection>
       </FadeInWhenVisible>
-      {renderContent()}
+      
+      <ContentContainer>
+        {renderContent()}
+      </ContentContainer>
     </PageWrapper>
   );
 }

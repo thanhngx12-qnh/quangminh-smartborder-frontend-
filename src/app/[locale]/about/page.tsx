@@ -48,6 +48,7 @@ const HeroSection = styled.section`
     z-index: 1;
     text-transform: uppercase;
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    color: ${({ theme }) => theme.colors.white};
   }
 
   p {

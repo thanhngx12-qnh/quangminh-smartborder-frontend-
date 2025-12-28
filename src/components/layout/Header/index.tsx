@@ -52,6 +52,7 @@ export default function Header() {
   const tActions = useTranslations('HeaderActions');
   const tCta = useTranslations('CtaButton');
   const tGeneral = useTranslations('General');
+  const tAddress = useTranslations('Footer');
   const pathname = usePathname();
   
   const navItems = [
@@ -79,9 +80,9 @@ export default function Header() {
         <TopBar>
           <TopBarContainer className="container">
             <ContactInfo>
-              <a href="tel:0963320335"><RiPhoneFill /> 0963.320.335</a>
+              <a href="tel:0963320335"><RiPhoneFill /> +8496.3320.335</a>
               <a href="mailto:info@talunglogistics.com"><RiMailFill /> info@talunglogistics.com</a>
-              <span className="office-loc"><RiMapPinFill /> Tà Lùng, Cao Bằng</span>
+              <span className="office-loc"><RiMapPinFill /> {tAddress('address')}</span>
             </ContactInfo>
             <Actions>
               <LanguageSwitcher variant="full" />
@@ -113,14 +114,14 @@ export default function Header() {
                     <div className="setting-label"><RiTranslate2 /> <span>{tGeneral('language')}</span></div>
                     <div className="setting-control"><LanguageSwitcher variant="icon" /></div>
                 </MobileSettingGroup>
-                <MobileSettingGroup>
+                {/* <MobileSettingGroup>
                     <div className="setting-label"><RiBrushLine /> <span>{tGeneral('theme')}</span></div>
                     <div className="setting-control">
                       <button onClick={toggleTheme} aria-label="Toggle theme">
                         {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
                       </button>
                     </div>
-                </MobileSettingGroup>
+                </MobileSettingGroup> */}
             </MobileSettingsWrapper>
 
             {/* Menu Items */}
@@ -144,9 +145,9 @@ export default function Header() {
             <SearchButtonDesktop onClick={() => setIsSearchOpen(true)} aria-label="Search">
               <RiSearchLine />
             </SearchButtonDesktop>
-            <button onClick={toggleTheme} aria-label="Toggle theme" className="theme-toggle">
+            {/* <button onClick={toggleTheme} aria-label="Toggle theme" className="theme-toggle">
               {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
-            </button>
+            </button> */}
             {/* Bây giờ size="small" đã hoạt động tốt */}
             <ButtonLink href="/contact" variant="primary" size="small" as="a">
               {tCta('quote')}
