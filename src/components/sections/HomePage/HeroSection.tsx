@@ -1,4 +1,4 @@
-// dir: frontend/src/components/sections/HomePage/HeroSection.tsx
+// dir: frontend/src/components/sections/HomePage/HeroSection.tsx background-image: url('https://chimahtt.com/wp-content/uploads/2025/11/chima-htt-banner-anh-2.jpg'); 
 'use client';
 
 import { useTranslations } from 'next-intl';
@@ -190,11 +190,12 @@ export default function HeroSection() {
           </motion.div>
           
           <motion.div variants={itemVariants}>
-            <Title>
+            {/* <Title>
               {t.rich('title', {
                 br: () => <br /> // Hỗ trợ xuống dòng từ JSON
               })}
-            </Title>
+            </Title> */}
+            <Title>{t('title')}</Title>
           </motion.div>
           
           <motion.div variants={itemVariants}>

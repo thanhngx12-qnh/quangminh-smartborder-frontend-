@@ -1,4 +1,4 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/sections/ServiceDetailPage/OtherServicesSection.tsx
+// dir: frontend/src/components/sections/ServiceDetailPage/OtherServicesSection.tsx
 'use client';
 
 import { useTranslations } from 'next-intl';
@@ -7,25 +7,60 @@ import { Service } from '@/types';
 import ServiceCard from '@/components/shared/ServiceCard';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 
+// --- Styled Components ---
+
 const SectionWrapper = styled.section`
   padding: 80px 20px;
-  background-color: ${({ theme }) => theme.colors.surface};
+  background-color: ${({ theme }) => theme.colors.surfaceAlt}; // Nền xám nhẹ tách biệt với nội dung chính
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
-const SectionHeader = styled.h2`
-  font-size: 36px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.primary};
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const SectionHeader = styled.div`
   text-align: center;
   margin-bottom: 60px;
+
+  h2 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: 32px;
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.primary};
+    margin-bottom: 16px;
+    position: relative;
+    display: inline-block;
+
+    // Gạch chân đỏ trang trí
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: ${({ theme }) => theme.colors.accent};
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+  }
 `;
 
 const ServicesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
+
+  // Đảm bảo card cao bằng nhau
+  align-items: stretch;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 interface OtherServicesSectionProps {
@@ -35,16 +70,27 @@ interface OtherServicesSectionProps {
 export default function OtherServicesSection({ services }: OtherServicesSectionProps) {
   const t = useTranslations('ServiceDetail');
 
+  // Nếu không có dịch vụ nào khác thì ẩn section này đi
+  if (!services || services.length === 0) return null;
+
   return (
     <SectionWrapper>
-      <SectionHeader>{t('otherServicesTitle')}</SectionHeader>
-      <ServicesGrid>
-        {services.map((service, index) => (
-          <FadeInWhenVisible key={service.id} transition={{ delay: index * 0.1 }}>
-            <ServiceCard service={service} />
-          </FadeInWhenVisible>
-        ))}
-      </ServicesGrid>
+      <Container>
+        <FadeInWhenVisible>
+          <SectionHeader>
+            <h2>{t('otherServicesTitle')}</h2>
+          </SectionHeader>
+        </FadeInWhenVisible>
+        
+        <ServicesGrid>
+          {services.map((service, index) => (
+            // SỬA LỖI: dùng prop delay trực tiếp
+            <FadeInWhenVisible key={service.id} delay={index * 0.1}>
+              <ServiceCard service={service} />
+            </FadeInWhenVisible>
+          ))}
+        </ServicesGrid>
+      </Container>
     </SectionWrapper>
   );
 }

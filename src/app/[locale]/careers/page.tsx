@@ -1,4 +1,4 @@
-// dir: ~/quangminh-smart-border/frontend/src/app/[locale]/careers/page.tsx
+// dir: frontend/src/app/[locale]/careers/page.tsx
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
@@ -6,115 +6,237 @@ import { useSearchParams } from 'next/navigation';
 import styled from 'styled-components';
 import { usePaginatedJobPostings } from '@/hooks/useCareers';
 import { Link } from '@/navigation';
-import { RiMapPinLine, RiTimeLine } from 'react-icons/ri';
+import { RiMapPinLine, RiTimeLine, RiBriefcaseLine, RiArrowRightLine } from 'react-icons/ri';
 import Pagination from '@/components/ui/Pagination';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
+import { ButtonLink } from '@/components/ui/Button';
+import ErrorState from '@/components/ui/ErrorState';
+import CardSkeleton from '@/components/ui/CardSkeleton';
 
 // --- Styled Components ---
-const LoadingState = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  font-size: 18px;
-  color: ${({ theme }) => theme.colors.textSecondary};
-`;
 
 const PageWrapper = styled.div`
-  padding: 80px 20px;
-  background-color: ${({ theme }) => theme.colors.surface};
-  min-height: 80vh;
+  background-color: ${({ theme }) => theme.colors.background};
+  min-height: 100vh;
 `;
 
-const PageHeader = styled.div`
+// 1. Hero Section
+const HeroSection = styled.section`
+  background-color: ${({ theme }) => theme.colors.primary};
+  padding: 100px 20px;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 60px auto;
-  h1 { font-size: 48px; color: ${({ theme }) => theme.colors.primary}; }
+  color: ${({ theme }) => theme.colors.white};
+  position: relative;
+  overflow: hidden;
+
+  // Họa tiết nền
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 60%);
+  }
+
+  h1 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+`;
+
+const Container = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
 `;
 
 const JobList = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
 `;
 
+// 2. Job Card Design
 const JobCard = styled(Link)`
-  display: block;
-  padding: 24px;
-  background-color: ${({ theme }) => theme.colors.background};
+  display: grid;
+  grid-template-columns: 1fr auto; // Content - Button
+  gap: 24px;
+  align-items: center;
+  padding: 32px;
+  background-color: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 12px;
-  transition: all 0.2s ease;
-  
+  text-decoration: none;
+  transition: all 0.2s ease-out;
+  border-left: 4px solid transparent; // Chuẩn bị cho hover effect
+
   &:hover {
-    border-color: ${({ theme }) => theme.colors.accent};
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transform: translateY(-4px);
+    box-shadow: ${({ theme }) => theme.shadows.md};
+    border-left-color: ${({ theme }) => theme.colors.accent}; // Highlight đỏ bên trái
+    border-color: ${({ theme }) => theme.colors.primaryLight};
   }
 
-  h2 {
-    font-size: 22px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.accent};
-    margin-bottom: 16px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Chuyển thành 1 cột trên mobile
+    padding: 24px;
   }
 `;
 
-const MetaInfo = styled.div`
+const JobContent = styled.div`
   display: flex;
-  gap: 24px;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 14px;
+  flex-direction: column;
+  gap: 12px;
+`;
 
-  span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+const JobTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 20px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.primary};
+  margin: 0;
+  transition: color 0.2s;
+
+  ${JobCard}:hover & {
+    color: ${({ theme }) => theme.colors.accent};
   }
 `;
+
+const MetaTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 4px;
+`;
+
+const Tag = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.surfaceAlt};
+  padding: 6px 12px;
+  border-radius: 6px;
+  
+  svg {
+    color: ${({ theme }) => theme.colors.textMuted};
+  }
+`;
+
+const ActionArea = styled.div`
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
+`;
+
+// Helper hiển thị skeleton loading
+const LoadingSkeleton = () => (
+  <Container>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      {/* Tái sử dụng CardSkeleton nhưng bọc trong div để mô phỏng list dọc */}
+      <div style={{ height: 160 }}><CardSkeleton /></div>
+      <div style={{ height: 160 }}><CardSkeleton /></div>
+      <div style={{ height: 160 }}><CardSkeleton /></div>
+    </div>
+  </Container>
+);
 
 // --- Main Component ---
 export default function CareersPage() {
   const locale = useLocale();
-  const t = useTranslations('CareersPage'); // Cần thêm vào file message
+  const t = useTranslations('CareersPage');
+  const tCommon = useTranslations('General'); // Lấy text "Xem chi tiết" hoặc "Ứng tuyển"
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-  const { result, isLoading, isError } = usePaginatedJobPostings(locale, currentPage, 'OPEN');
+  const { result, isLoading, isError, refetch } = usePaginatedJobPostings(locale, currentPage, 'OPEN');
   
-  if (isLoading) return <LoadingState>Loading job details...</LoadingState>;
-  if (isError) return <div>Failed to load careers.</div>;
+  if (isLoading) return <LoadingSkeleton />;
+  
+  if (isError) {
+    return (
+      <ErrorState 
+        title={t('errorTitle', { defaultMessage: 'Không thể tải danh sách việc làm' })}
+        description={t('errorDesc', { defaultMessage: 'Vui lòng kiểm tra kết nối và thử lại.' })}
+        actionText={t('retry', { defaultMessage: 'Thử lại' })}
+        onAction={() => refetch()} // Gọi hàm refetch từ hook (nếu hook hỗ trợ, hoặc reload trang)
+        fullScreen
+      />
+    );
+  }
 
   return (
     <PageWrapper>
-      <FadeInWhenVisible>
-        <PageHeader><h1>{t('title')}</h1></PageHeader>
-      </FadeInWhenVisible>
+      <HeroSection>
+        <FadeInWhenVisible>
+          <h1>{t('title')}</h1>
+          {/* Subtitle mặc định nếu chưa có trong JSON */}
+          <p>{t('subtitle') || 'Gia nhập đội ngũ Phú Anh Logistics để cùng kiến tạo tương lai.'}</p>
+        </FadeInWhenVisible>
+      </HeroSection>
       
-      {result && result.data.length > 0 ? (
-        <JobList>
-          {result.data.map((job, index) => (
-            <FadeInWhenVisible key={job.id} transition={{ delay: index * 0.1 }}>
-              <JobCard href={`/careers/${job.id}`} as="a">
-                <h2>{job.title}</h2>
-                <MetaInfo>
-                  <span><RiMapPinLine /> {job.location}</span>
-                  <span><RiTimeLine /> {new Date(job.createdAt).toLocaleDateString(locale)}</span>
-                </MetaInfo>
-              </JobCard>
-            </FadeInWhenVisible>
-          ))}
-        </JobList>
-      ) : (
-        <p style={{ textAlign: 'center' }}>{t('noOpenings')}</p>
-      )}
+      <Container>
+        {result && result.data.length > 0 ? (
+          <>
+            <JobList>
+              {result.data.map((job, index) => (
+                // SỬA LỖI: dùng prop delay thay vì transition
+                <FadeInWhenVisible key={job.id} delay={index * 0.1}>
+                  <JobCard href={`/careers/${job.id}`} as="a">
+                    <JobContent>
+                      <JobTitle>{job.title}</JobTitle>
+                      <MetaTags>
+                        <Tag>
+                          <RiMapPinLine /> {job.location}
+                        </Tag>
+                        <Tag>
+                          <RiBriefcaseLine /> {job.department || 'Phú Anh Logistics'}
+                        </Tag>
+                        <Tag>
+                          <RiTimeLine /> {new Date(job.createdAt).toLocaleDateString(locale)}
+                        </Tag>
+                      </MetaTags>
+                    </JobContent>
+                    
+                    <ActionArea>
+                      {/* ButtonLink giả lập nút bấm để kích thích CTA */}
+                      <ButtonLink href={`/careers/${job.id}`} variant="outline" size="small" as="span">
+                        Xem chi tiết <RiArrowRightLine style={{ marginLeft: 6 }} />
+                      </ButtonLink>
+                    </ActionArea>
+                  </JobCard>
+                </FadeInWhenVisible>
+              ))}
+            </JobList>
 
-      {result && result.lastPage > 1 && (
-        <Pagination currentPage={result.page} totalPages={result.lastPage} basePath="/careers" />
-      )}
+            {result.lastPage > 1 && (
+              <div style={{ marginTop: 60 }}>
+                <Pagination currentPage={result.page} totalPages={result.lastPage} basePath="/careers" />
+              </div>
+            )}
+          </>
+        ) : (
+          // Empty State
+          <ErrorState 
+            title={t('noOpenings')} 
+            description={t('noOpeningsDesc', { defaultMessage: 'Hiện tại chúng tôi chưa có vị trí nào đang mở. Hãy quay lại sau nhé!' })}
+          />
+        )}
+      </Container>
     </PageWrapper>
   );
 }

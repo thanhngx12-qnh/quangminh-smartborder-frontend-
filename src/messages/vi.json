@@ -15,24 +15,21 @@
   "CtaButton": {
     "quote": "Yêu Cầu Báo Giá"
   },
-  "Footer": {
-    "companyName": "CÔNG TY TNHH THƯƠNG MẠI VẬN TẢI PHÚ ANH",
-    "taxCode": "Mã số thuế: 4800166795",
-    "address": "Số nhà 057, Tổ dân phố Hợp Giang 07, phố Nước Giáp, Phường Thục Phán, Cao Bằng, Việt Nam",
-    "sitemap": "Sitemap",
-    "legal": "Pháp lý",
-    "terms": "Điều khoản sử dụng",
-    "privacy": "Chính sách bảo mật",
-    "quickContact": "Liên hệ nhanh",
-    "formName": "Họ và tên",
-    "formEmail": "Email của bạn",
-    "formMessage": "Nội dung yêu cầu...",
-    "formPhone": "Số điện thoại",
-    "formServiceId": "Dịch vụ quan tâm (Tùy chọn)",
-    "formSend": "Gửi Yêu Cầu",
-    "copyright": "© 2025 Công ty TNHH Thương mại Vận tải Phú Anh. Đã đăng ký bản quyền."
+  "General": {
+    "search": "Tìm kiếm",
+    "language": "Ngôn ngữ",
+    "theme": "Giao diện",
+    "viewAll": "Xem tất cả",
+    "viewAllServices": "Xem Tất Cả Dịch Vụ",
+    "contact": "Liên hệ"
   },
-  "Hero": {
+  "Social": {
+    "facebook": "Facebook",
+    "wechat": "WeChat",
+    "zalo": "Zalo",
+    "whatsapp": "WhatsApp"
+  },
+ "Hero": {
     "label": "ĐỐI TÁC LOGISTICS TIN CẬY TẠI CỬA KHẨU TÀ LÙNG",
     "title": "KẾT NỐI BIÊN GIỚI\nVƯƠN TỚI TOÀN CẦU",
     "subtitle": "Hơn 15 năm kinh nghiệm vận hành kho bãi, thủ tục hải quan và vận tải quốc tế. Chúng tôi mang đến giải pháp thông quan nhanh chóng, an toàn và tối ưu chi phí cho doanh nghiệp.",
@@ -41,14 +38,58 @@
   },
   "Kpi": {
     "storageTitle": "Kho Bãi",
-    "storageValue": "5,000 m²",
-    "storageDesc": "Đạt chuẩn quốc tế",
+    "storageValue": "25 Ha",
+    "storageDesc": "Tổng diện tích 3 bãi",
     "containerTitle": "Container / Ngày",
     "containerValue": "500+",
     "containerDesc": "Năng lực thông quan",
     "customsTitle": "Hải Quan",
     "customsValue": "<2 Giờ",
     "customsDesc": "Thời gian xử lý trung bình"
+  },
+  "AboutPage": {
+    "heroTitle": "VỀ PHÚ ANH LOGISTICS",
+    "heroSubtitle": "Hơn 15 năm kiến tạo giải pháp Logistics tại cửa khẩu Tà Lùng",
+    "intro": {
+      "title": "GIỚI THIỆU CHUNG",
+      "content": "CÔNG TY TNHH THƯƠNG MẠI VẬN TẢI PHÚ ANH được thành lập từ năm 2008. Sau khi việc thông thương hàng hóa giữa hai nước Việt Nam và Trung Quốc qua cửa khẩu quốc tế Tà Lùng - Cao Bằng được đẩy mạnh, công ty đã đầu tư hệ thống kho bãi, địa điểm tập kết hàng hóa xuất nhập khẩu trong khu vực cửa khẩu quốc tế Tà Lùng.\n\nCông ty hoạt động chuyên sâu trong các lĩnh vực: Kho bãi; Bến xe; Xuất nhập khẩu; Logistics; Vận chuyển hàng hóa quốc tế đường bộ, đường thủy, đường sắt."
+    },
+    "missionTitle": "Sứ Mệnh & Tầm Nhìn",
+    "missionText": "Sứ mệnh của chúng tôi là cung cấp các giải pháp logistics minh bạch, hiệu quả và bền vững. Tầm nhìn trở thành nút giao quan trọng kết nối thương mại Trung - Việt.",
+    "timelineTitle": "CHẶNG ĐƯỜNG PHÁT TRIỂN",
+    "timeline": {
+      "stage1_year": "2008",
+      "stage1_text": "Thành lập Công ty TNHH Thương mại Vận tải Phú Anh, bắt đầu khai thác vận tải biên mậu.",
+      "stage2_year": "Hiện tại",
+      "stage2_text": "Đầu tư hoàn thiện hệ thống 3 bãi (25 ha), đáp ứng nhu cầu lưu trữ và sang tải tiêu chuẩn cao.",
+      "stage3_year": "Tương lai",
+      "stage3_text": "Thiết lập chuỗi dịch vụ tích hợp Tà Lùng - Chi Ma, trở thành nút giao thương mại Trung - Việt."
+    },
+    "facilities": {
+      "warehouseTitle": "HỆ THỐNG KHO BÃI",
+      "warehouseContent": "Công ty sở hữu 3 bãi chính là Phú Anh, Vũ Thành, Sơn Cảng với tổng diện tích lên tới 25 ha. Chúng tôi đáp ứng mọi nhu cầu lưu trữ và sang tải hàng hóa với tiêu chuẩn cao nhất.",
+      "transportTitle": "NĂNG LỰC VẬN TẢI",
+      "transportContent": "Cung cấp đa dạng xe tải phù hợp với mọi nhu cầu của khách hàng. Chúng tôi sở hữu đội xe có tải trọng phong phú, đảm bảo đáp ứng yêu cầu vận chuyển hàng hóa đa phương thức."
+    },
+    "process": {
+      "title": "QUY TRÌNH XUẤT NHẬP KHẨU",
+      "steps": {
+        "1": { "title": "Nhận kế hoạch", "desc": "Doanh nghiệp gửi kế hoạch và chứng từ đến công ty" },
+        "2": { "title": "Thủ tục", "desc": "Phú Anh thực hiện thủ tục nhập khẩu/thông quan" },
+        "3": { "title": "Sắp xếp xe", "desc": "Đón và sắp xếp xe đến khu vực riêng để chuyển tải" },
+        "4": { "title": "Sang tải hàng", "desc": "Thực hiện sang tải hàng hóa chuyên nghiệp" },
+        "5": { "title": "Hoàn thiện", "desc": "Hoàn thiện thủ tục xe và bàn giao hàng hóa" }
+      }
+    },
+    "vision": {
+      "title": "ĐỊNH HƯỚNG PHÁT TRIỂN",
+      "content": "Công ty hiện đang trong giai đoạn hoàn thiện cơ sở hạ tầng, tập trung xây dựng các cơ sở kho bãi và logistics đạt tiêu chuẩn cao.\n\nMục tiêu dài hạn là tích hợp toàn diện hoạt động kinh doanh vào hệ thống cửa khẩu được hình thành từ Tà Lùng và Chi Ma, thiết lập một chuỗi dịch vụ cửa khẩu tích hợp chạy dọc biên giới Việt Nam và Trung Quốc. Thông qua nỗ lực và đầu tư liên tục, Phú Anh Logistics sẽ trở thành nút giao quan trọng kết nối thương mại Trung - Việt."
+    },
+    "offices": {
+      "title": "HỆ THỐNG VĂN PHÒNG",
+      "halong": "Số 29 Lê Duẩn, Bãi Cháy, Quảng Ninh",
+      "caobang": "Cửa khẩu quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng"
+    }
   },
   "FeaturedServices": {
     "title": "Dịch Vụ Nổi Bật",
@@ -68,31 +109,17 @@
     "ctaButton": "Yêu Cầu Báo Giá Ngay",
     "otherServicesTitle": "Khám Phá Các Dịch Vụ Khác"
   },
-  "NotFound": {
-    "title": "404 - Không Tìm Thấy Trang",
-    "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
-    "goHome": "Quay về Trang Chủ"
+  "WhyChooseUs": {
+    "title": "Tại Sao Lựa Chọn Chúng Tôi?",
+    "point1Title": "Công Nghệ Tiên Phong",
+    "point1Text": "Áp dụng công nghệ tracking thời gian thực, quản lý kho bãi thông minh (WMS) và khai báo hải quan điện tử.",
+    "point2Title": "Đội Ngũ Tận Tâm",
+    "point2Text": "Đội ngũ chuyên gia giàu kinh nghiệm luôn sẵn sàng tư vấn và hỗ trợ 24/7.",
+    "point3Title": "Vị Trí Chiến Lược",
+    "point3Text": "Nằm ngay tại cửa khẩu Tà Lùng, kết nối giao thương huyết mạch giữa Việt Nam và Trung Quốc."
   },
-  "AboutPage": {
-    "heroTitle": "Về Phú Anh",
-    "heroSubtitle": "Tiên phong giải pháp logistics thông minh tại biên giới.",
-    "missionTitle": "Sứ Mệnh & Tầm Nhìn",
-    "missionText": "Sứ mệnh của chúng tôi là cung cấp các giải pháp logistics minh bạch, hiệu quả và bền vững, phá vỡ các rào cản thương mại và kết nối doanh nghiệp Việt Nam với thế giới. Tầm nhìn của chúng tôi là trở thành nhà cung cấp dịch vụ 'Smart Border Logistics' hàng đầu khu vực.",
-    "timelineTitle": "Hành Trình Phát Triển",
-    "leadershipTitle": "Đội Ngũ Lãnh Đạo",
-    "timeline": {
-      "y2025": "Thành lập Công ty TNHH Thương mại Vận tải Phú Anh. Khởi công xây dựng trung tâm logistics tại cửa khẩu Tà Lùng.",
-      "y2026": "Chính thức đi vào hoạt động. Triển khai thành công hệ thống tracking vận đơn thông minh.",
-      "y2027": "Mở rộng chi nhánh tại cửa khẩu Trà Lĩnh, nâng tổng diện tích kho bãi lên 100,000 m²."
-    },
-    "leadership": {
-      "person1Name": "Nguyễn Nguyễn Nguyễn",
-      "person1Title": "Tổng Giám Đốc",
-      "person2Name": "Trần Trần Trần",
-      "person2Title": "Tổng Giám Đốc",
-      "person3Name": "Lương Lương Lương",
-      "person3Title": "Tổng Giám Đốc"
-    }
+  "Partners": {
+    "title": "Được tin cậy bởi các doanh nghiệp hàng đầu"
   },
   "ContactPage": {
     "title": "Liên Hệ Với Chúng Tôi",
@@ -108,16 +135,21 @@
     "faqTitle": "Câu Hỏi Thường Gặp",
     "faq": {
       "q1": "Thời gian làm việc của công ty?",
-      "a1": "Văn phòng của chúng tôi làm việc từ 8:00 - 17:00, Thứ Hai đến Thứ Sáu. Tuy nhiên, đội ngũ vận hành tại cửa khẩu hoạt động 24/7 để đảm bảo hàng hóa được thông quan liên tục.",
-      "q2": "Làm thế nào để tôi tra cứu vận đơn?",
-      "a2": "Bạn có thể sử dụng mã vận đơn (AWB) được cung cấp để tra cứu trực tiếp trên website của chúng tôi thông qua ô 'Tra Vận Đơn' ở trang chủ hoặc truy cập trang Tracking.",
-      "q3": "Phú Anh có cung cấp dịch vụ cho hàng lẻ (LCL) không?",
-      "a3": "Có, chúng tôi cung cấp đầy đủ các dịch vụ cho cả hàng nguyên container (FCL) và hàng lẻ (LCL) qua biên giới."
+      "a1": "Văn phòng hành chính làm việc từ 8:00 - 17:00 (Thứ 2 - Thứ 7). Tuy nhiên, đội ngũ hiện trường tại cửa khẩu Tà Lùng hoạt động 24/7 để đảm bảo tiến độ thông quan hàng hóa.",
+      "q2": "Làm thế nào để theo dõi lô hàng của tôi?",
+      "a2": "Bạn có thể sử dụng tính năng 'Tracking' trên thanh menu, nhập mã vận đơn để xem trạng thái thời gian thực, hoặc liên hệ Hotline để được hỗ trợ.",
+      "q3": "Phú Anh có nhận vận chuyển hàng lẻ (LCL) không?",
+      "a3": "Có. Chúng tôi cung cấp giải pháp gom hàng lẻ (LCL) và hàng nguyên xe (FCL) hai chiều Việt - Trung với chi phí tối ưu và lịch trình ổn định."
     }
   },
   "CareersPage": {
     "title": "Cơ Hội Nghề Nghiệp",
-    "noOpenings": "Hiện tại chúng tôi không có vị trí nào đang tuyển dụng. Vui lòng quay lại sau."
+    "subtitle": "Gia nhập đội ngũ Phú Anh Logistics để cùng kiến tạo tương lai.",
+    "noOpenings": "Hiện tại chúng tôi không có vị trí nào đang tuyển dụng.",
+    "noOpeningsDesc": "Vui lòng quay lại sau hoặc gửi CV vào email nhân sự để được lưu vào hồ sơ.",
+    "errorTitle": "Không thể tải danh sách việc làm",
+    "errorDesc": "Vui lòng kiểm tra kết nối và thử lại.",
+    "retry": "Thử lại"
   },
   "CareerDetailPage": {
     "jobDescription": "Mô Tả Công Việc",
@@ -143,29 +175,17 @@
     },
     "notFound": "Không tìm thấy vị trí tuyển dụng."
   },
-  "General": {
-    "search": "Tìm kiếm",
-    "language": "Ngôn ngữ",
-    "theme": "Giao diện",
-    "viewAll": "Xem tất cả",
-    "viewAllServices": "Xem Tất Cả Dịch Vụ"
-  },
-  "Errors": {
-    "goBackTo": "Quay lại {pageName}",
-    "retry": "Thử lại",
-    "failedToLoad": "Không thể tải dữ liệu."
-  },
   "ManifestoPage": {
     "title": "Tuyên Ngôn Của Chúng Tôi",
-    "subtitle": "Kết Nối Giao Thương - Nâng Tầm Giá Trị",
+    "subtitle": "KẾT NỐI BIÊN GIỚI - VƯƠN TỚI TOÀN CẦU",
     "value1Title": "Minh Bạch",
-    "value1Text": "Mọi quy trình, chi phí và trạng thái đơn hàng đều được số hóa và cung cấp cho khách hàng một cách rõ ràng, dễ dàng truy cập. Chúng tôi tin rằng sự minh bạch là nền tảng của niềm tin.",
+    "value1Text": "Mọi quy trình, chi phí và trạng thái đơn hàng đều được số hóa và cung cấp cho khách hàng một cách rõ ràng.",
     "value2Title": "Hiệu Quả",
-    "value2Text": "Bằng việc áp dụng công nghệ và tự động hóa, chúng tôi cam kết rút ngắn thời gian thông quan, tối ưu hóa chi phí logistics và đảm bảo hàng hóa của bạn đến đích một cách nhanh chóng nhất.",
+    "value2Text": "Cam kết rút ngắn thời gian thông quan, tối ưu hóa chi phí logistics.",
     "value3Title": "Đổi Mới",
-    "value3Text": "Thị trường luôn biến động, và chúng tôi luôn đi đầu. Phú Anh không ngừng nghiên cứu và ứng dụng các công nghệ mới như AI, IoT để tạo ra các giải pháp logistics thông minh, linh hoạt và vượt trội.",
+    "value3Text": "Không ngừng nghiên cứu và ứng dụng công nghệ mới để tạo ra giải pháp thông minh.",
     "value4Title": "Bền Vững",
-    "value4Text": "Phát triển kinh doanh phải đi đôi với trách nhiệm xã hội và môi trường. Chúng tôi ưu tiên các giải pháp vận tải xanh, tối ưu hóa lộ trình để giảm thiểu khí thải carbon, và xây dựng một hệ sinh thái logistics bền vững."
+    "value4Text": "Phát triển kinh doanh đi đôi với trách nhiệm xã hội và môi trường."
   },
   "Search": {
     "placeholder": "Tìm kiếm dịch vụ, tin tức...",
@@ -186,23 +206,42 @@
     "resultsFor": "Hiển thị kết quả cho:",
     "noEvents": "Chưa có sự kiện nào cho vận đơn này."
   },
-  "WhyChooseUs": {
-    "title": "Tại Sao Lựa Chọn Chúng Tôi?",
-    "point1Title": "Công Nghệ Tiên Phong",
-    "point1Text": "Chúng tôi áp dụng công nghệ tracking thời gian thực, quản lý kho bãi thông minh (WMS) và khai báo hải quan điện tử để đảm bảo hàng hóa của bạn được xử lý nhanh chóng và chính xác nhất.",
-    "point2Title": "Đội Ngũ Tận Tâm",
-    "point2Text": "Đội ngũ chuyên gia giàu kinh nghiệm của chúng tôi luôn sẵn sàng tư vấn và hỗ trợ 24/7, đảm bảo mọi vấn đề của bạn đều được giải quyết một cách chuyên nghiệp.",
-    "point3Title": "Vị Trí Chiến Lược",
-    "point3Text": "Nằm ngay tại cửa khẩu Tà Lùng, trung tâm logistics của chúng tôi là cầu nối giao thương huyết mạch, giúp tối ưu hóa thời gian và chi phí vận chuyển giữa Việt Nam và Trung Quốc."
+  "Footer": {
+    "companyName": "CÔNG TY TNHH THƯƠNG MẠI VẬN TẢI PHÚ ANH",
+    "taxCode": "Mã số thuế: 4800166795",
+    "address": "Cửa khẩu quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng, Việt Nam",
+    "sitemap": "Sitemap",
+    "legal": "Pháp lý",
+    "terms": "Điều khoản sử dụng",
+    "privacy": "Chính sách bảo mật",
+    "quickContact": "Liên hệ nhanh",
+    "formName": "Họ và tên",
+    "formEmail": "Email của bạn",
+    "formMessage": "Nội dung yêu cầu...",
+    "formPhone": "Số điện thoại",
+    "formServiceId": "Dịch vụ quan tâm (Tùy chọn)",
+    "formSend": "Gửi Yêu Cầu",
+    "formSuccess": "Cảm ơn bạn! Chúng tôi đã nhận được yêu cầu.",
+    "formSubmitting": "Đang gửi...",
+    "formError": "Có lỗi xảy ra, vui lòng thử lại.",
+    "copyright": "© 2025 Công ty TNHH Thương mại Vận tải Phú Anh. Đã đăng ký bản quyền.",
+    "tracking": "Tra cứu vận đơn"
   },
-  "Partners": {
-    "title": "Được tin cậy bởi các doanh nghiệp hàng đầu"
+  "Errors": {
+    "goBackTo": "Quay lại {pageName}",
+    "retry": "Thử lại",
+    "failedToLoad": "Không thể tải dữ liệu."
+  },
+  "NotFound": {
+    "title": "404 - Không Tìm Thấy Trang",
+    "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
+    "goHome": "Quay về Trang Chủ"
   },
   "Metadata": {
     "defaultTitle": "Công ty TNHH Thương mại Vận tải Phú Anh",
-    "serviceTitle": "{serviceName} - Phú Anh Transport",
-    "newsTitle": "{newsTitle} - Phú Anh Transport",
-    "careerTitle": "Tuyển dụng: {jobTitle} - Phú Anh Transport"
+    "serviceTitle": "{serviceName} - Phú Anh Logistics",
+    "newsTitle": "{newsTitle} - Phú Anh Logistics",
+    "careerTitle": "Tuyển dụng: {jobTitle} - Phú Anh Logistics"
   },
   "TermsPage": {
     "title": "Điều Khoản Sử Dụng",
@@ -213,5 +252,14 @@
     "title": "Chính Sách Bảo Mật",
     "lastUpdated": "Cập nhật lần cuối: 18 tháng 10, 2025",
     "content": "Công ty TNHH Thương mại Vận tải Phú Anh cam kết bảo vệ thông tin cá nhân của bạn.\n\nChính sách này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu của bạn khi bạn truy cập trang web của chúng tôi.\n\n### 1. Thu thập thông tin\nChúng tôi thu thập các thông tin bạn cung cấp qua form liên hệ, bao gồm: Họ và tên, email, số điện thoại và nội dung yêu cầu. Chúng tôi cũng có thể thu thập dữ liệu kỹ thuật như địa chỉ IP cho mục đích phân tích.\n\n### 2. Sử dụng thông tin\nThông tin của bạn được sử dụng để:\n- Liên hệ và trả lời các yêu cầu của bạn.\n- Cải thiện chất lượng dịch vụ và trang web.\n- Gửi các thông tin cập nhật quan trọng (nếu bạn đồng ý).\nChúng tôi cam kết không chia sẻ thông tin của bạn cho bất kỳ bên thứ ba nào mà không có sự đồng ý của bạn."
-  }
+  },
+  "timelineTitle": "CHẶNG ĐƯỜNG & ĐỊNH HƯỚNG",
+    "timeline": {
+      "stage1_year": "2008",
+      "stage1_text": "Thành lập Công ty TNHH Thương mại Vận tải Phú Anh, bắt đầu khai thác vận tải biên mậu.",
+      "stage2_year": "Hiện tại",
+      "stage2_text": "Đầu tư hoàn thiện hệ thống 3 bãi (25 ha), đáp ứng nhu cầu lưu trữ và sang tải tiêu chuẩn cao.",
+      "stage3_year": "Tương lai",
+      "stage3_text": "Thiết lập chuỗi dịch vụ tích hợp Tà Lùng - Chi Ma, trở thành nút giao thương mại Trung - Việt."
+    }
 }

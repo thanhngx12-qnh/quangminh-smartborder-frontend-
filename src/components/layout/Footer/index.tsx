@@ -182,7 +182,7 @@ export default function Footer() {
         {/* Map Full Width - Vệ Tinh */}
         <MapWrapper>
           <iframe
-            src="https://maps.google.com/maps?q=22.477244,106.582163&t=k&z=17&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.google.com/maps?q=22.477244,106.582163&t=k&z=15&ie=UTF8&iwloc=&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Vị trí kho bãi Tà Lùng Logistics"

@@ -1,4 +1,4 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/shared/FaqItem.tsx
+// dir: frontend/src/components/shared/FaqItem.tsx
 'use client';
 
 import { useState } from 'react';
@@ -20,12 +20,19 @@ const Question = styled.button`
   border: none;
   cursor: pointer;
   text-align: left;
-  font-size: 18px;
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 16px;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
+  transition: color 0.2s ease;
 
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
+  }
+  
+  .icon {
+    font-size: 20px;
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
@@ -34,7 +41,7 @@ const AnswerPanel = styled(motion.div)`
   
   p {
     padding: 0 0 24px 0;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.7;
     color: ${({ theme }) => theme.colors.textSecondary};
   }
@@ -47,7 +54,7 @@ interface FaqItemProps {
 
 export default function FaqItem({ question, answer }: FaqItemProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const panelId = `faq-panel-${question.replace(/\s+/g, '-')}`; // Tạo ID duy nhất
+  const panelId = `faq-panel-${question.replace(/\s+/g, '-')}`; 
 
   return (
     <FaqItemWrapper>
@@ -60,6 +67,7 @@ export default function FaqItem({ question, answer }: FaqItemProps) {
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
+          className="icon"
         >
           {isOpen ? <RiSubtractLine /> : <RiAddLine />}
         </motion.div>
