@@ -1,4 +1,4 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/layout/Footer/index.tsx
+// dir: frontend/src/components/layout/Footer/index.tsx
 'use client';
 
 import { useState } from 'react';
@@ -7,7 +7,14 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactFormSchema, ContactFormValues } from '@/lib/schemas';
 import { postQuoteRequest } from '@/lib/api';
-import { RiWechatLine, RiMessage2Line, RiPhoneLine, RiBuildingLine, RiUserLine, RiFacebookCircleLine } from 'react-icons/ri';
+import { 
+  RiFacebookCircleLine, 
+  RiWechatLine, 
+  RiWhatsappLine, // Thay cho Zalo nếu chưa có icon Zalo
+  RiPhoneLine, 
+  RiMailLine, 
+  RiMapPinLine 
+} from 'react-icons/ri';
 import Button from '@/components/ui/Button';
 import {
   FooterWrapper,
@@ -32,8 +39,7 @@ export default function Footer() {
   const t = useTranslations('Footer');
   const tNav = useTranslations('Navigation');
   const tContact = useTranslations('ContactPage');
-  const tSocial = useTranslations('Social');
-
+  
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const { 
@@ -51,73 +57,51 @@ export default function Footer() {
       await postQuoteRequest(data);
       setFormStatus('success');
       reset();
+      // Reset status sau 5 giây
+      setTimeout(() => setFormStatus('idle'), 5000);
     } catch (error) {
-      console.error("Failed to submit quote request:", error);
+      console.error("Failed to submit:", error);
       setFormStatus('error');
     }
   };
 
   const navLinks = [
+    { href: '/', label: tNav('home') },
     { href: '/services', label: tNav('services') },
-    { href: '/about', label: tNav('about') },
-    { href: '/careers', label: tNav('careers') },
+    { href: '/tracking', label: t('tracking') || 'Tra cứu' },
     { href: '/news', label: tNav('news') },
     { href: '/contact', label: tNav('contact') },
-  ];
-
-  const legalLinks = [
-    { href: '/terms', label: t('terms') },
-    { href: '/privacy', label: t('privacy') },
-  ];
-
-  const socialLinks = [
-    { href: '#', label: tSocial('facebook', { defaultMessage: 'Facebook' }), icon: <RiFacebookCircleLine /> },
-    { href: '#', label: tSocial('wechat', { defaultMessage: 'WeChat' }), icon: <RiWechatLine /> },
-    { href: '#', label: tSocial('zalo', { defaultMessage: 'Zalo' }), icon: <RiMessage2Line /> },
   ];
 
   return (
     <FooterWrapper>
       <FooterContent>
+        {/* Cột 1: Thông tin công ty */}
         <FooterColumn>
-          <Logo>Phú Anh</Logo>
-          <h3>{t('companyName')}</h3>
-          <address>{t('address')}</address>
+          <Logo>PHÚ ANH <span>LOGISTICS</span></Logo>
           <ContactList>
             <ContactItem>
+              <IconWrapper><RiMapPinLine /></IconWrapper>
+              <address>{t('address')}</address>
+            </ContactItem>
+            <ContactItem>
               <IconWrapper><RiPhoneLine /></IconWrapper>
-              <span>Hotline: +84 123456789</span>
+              <a href="tel:0963320335">Hotline: 0963.320.335</a>
             </ContactItem>
-
             <ContactItem>
-              <IconWrapper><RiWechatLine /></IconWrapper>
-              <span>Email: info@talunglogistics.com</span>
-            </ContactItem>
-
-            <ContactItem>
-              <IconWrapper><RiBuildingLine /></IconWrapper>
-              <span>{tContact('salesDept')}: sales@talunglogistics.com</span>
-            </ContactItem>
-
-            <ContactItem>
-              <IconWrapper><RiBuildingLine /></IconWrapper>
-              <span>{tContact('opsDept')}: operations@talunglogistics.com</span>
-            </ContactItem>
-
-            <ContactItem>
-              <IconWrapper><RiUserLine /></IconWrapper>
-              <span>{tContact('hrDept')}: hr@talunglogistics.com</span>
+              <IconWrapper><RiMailLine /></IconWrapper>
+              <a href="mailto:info@talunglogistics.com">info@talunglogistics.com</a>
             </ContactItem>
           </ContactList>
+          
           <SocialLinks>
-            {socialLinks.map(({ href, label, icon }) => (
-              <a key={href} href={href} aria-label={label}>
-                {icon}
-              </a>
-            ))}
+            <a href="#" aria-label="Facebook"><RiFacebookCircleLine /></a>
+            <a href="#" aria-label="WeChat"><RiWechatLine /></a>
+            <a href="#" aria-label="WhatsApp"><RiWhatsappLine /></a>
           </SocialLinks>
         </FooterColumn>
         
+        {/* Cột 2: Liên kết nhanh */}
         <FooterColumn>
           <h3>{t('sitemap')}</h3>
           <LinkList>
@@ -129,82 +113,84 @@ export default function Footer() {
           </LinkList>
         </FooterColumn>
 
+        {/* Cột 3: Văn phòng & Pháp lý */}
         <FooterColumn>
           <h3>{t('legal')}</h3>
           <LinkList>
-            {legalLinks.map(link => (
-              <li key={link.href}>
-                <FooterLink href={link.href} as="a">{link.label}</FooterLink>
-              </li>
-            ))}
+            <li><FooterLink href="/terms" as="a">{t('terms')}</FooterLink></li>
+            <li><FooterLink href="/privacy" as="a">{t('privacy')}</FooterLink></li>
           </LinkList>
+          
+          <div style={{ marginTop: 20 }}>
+            <h3>Văn phòng</h3>
+             <ContactList>
+                <ContactItem>
+                  <IconWrapper><RiMapPinLine /></IconWrapper>
+                  <span>VP Hạ Long: 29 Lê Duẩn, Bãi Cháy</span>
+                </ContactItem>
+             </ContactList>
+          </div>
         </FooterColumn>
 
+        {/* Cột 4: Form liên hệ nhanh */}
         <FooterColumn>
           <h3>{t('quickContact')}</h3>
           {formStatus === 'success' ? (
-            <FormSuccess>{t('formSuccess', { defaultMessage: 'Cảm ơn bạn! Chúng tôi đã nhận được yêu cầu của bạn và sẽ phản hồi sớm.' })}</FormSuccess>
+            <FormSuccess>
+              {t('formSuccess', { defaultMessage: 'Đã gửi thành công!' })}
+            </FormSuccess>
           ) : (
             <ContactForm onSubmit={handleSubmit(onSubmit)} noValidate>
               {formStatus === 'submitting' && (
-                <LoadingOverlay>
-                  <div className="spinner" />
-                </LoadingOverlay>
+                <LoadingOverlay><div className="spinner" /></LoadingOverlay>
               )}
-              <div>
-                <input 
-                  type="text" 
-                  placeholder={t('formName')} 
-                  {...register('name')}
-                />
-                {errors.name && <FormError>{errors.name.message}</FormError>}
-              </div>
+              
+              <input 
+                type="text" 
+                placeholder={t('formName')} 
+                {...register('name')}
+              />
+              {errors.name && <FormError>{errors.name.message}</FormError>}
 
-              <div>
-                <input 
-                  type="email" 
-                  placeholder={t('formEmail')} 
-                  {...register('email')}
-                />
-                {errors.email && <FormError>{errors.email.message}</FormError>}
-              </div>
+              <input 
+                type="email" 
+                placeholder={t('formEmail')} 
+                {...register('email')}
+              />
+              {errors.email && <FormError>{errors.email.message}</FormError>}
 
-              <div>
-                <input 
-                  type="tel" 
-                  placeholder={tContact('phone')} 
-                  {...register('phone')}
-                />
-                {errors.phone && <FormError>{errors.phone.message}</FormError>}
-              </div>
+              <input 
+                type="tel" 
+                placeholder={t('formPhone')} 
+                {...register('phone')}
+              />
+              {errors.phone && <FormError>{errors.phone.message}</FormError>}
 
-              <div>
-                <textarea 
-                  placeholder={t('formMessage')} 
-                  {...register('message')}
-                />
-                {errors.message && <FormError>{errors.message.message}</FormError>}
-              </div>
+              <textarea 
+                placeholder={t('formMessage')} 
+                {...register('message')}
+              />
+              {errors.message && <FormError>{errors.message.message}</FormError>}
 
-              <Button type="submit" variant="primary" disabled={formStatus === 'submitting'}>
-                {formStatus === 'submitting' ? t('formSubmitting', { defaultMessage: 'Đang gửi...' }) : t('formSend')}
+              <Button type="submit" variant="primary" size="small" disabled={formStatus === 'submitting'}>
+                {t('formSend')}
               </Button>
-              {formStatus === 'error' && (
-                <FormError>{t('formError', { defaultMessage: 'Có lỗi xảy ra, vui lòng thử lại.' })}</FormError>
-              )}
             </ContactForm>
           )}
         </FooterColumn>
 
+        {/* Map Full Width - Vệ Tinh */}
         <MapWrapper>
           <iframe
-            src="https://www.google.com/maps/embed?t=k&pb=!1m18!1m12!1m3!1d14545.922416181976!2d106.71181605!3d22.6713837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36a6e7b7f1e1b8b9%3A0xe8c7f3e8b8b8b8b9!2zQ-G7rWEgS2jhuql1IFThu6AgTOG7pW5n!5e0!3m2!1svi!2s!4v1678888888888!5m2!1svi!2s"
+            src="https://maps.google.com/maps?q=22.477244,106.582163&t=k&z=17&ie=UTF8&iwloc=&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Cửa khẩu Tà Lùng"
+            title="Vị trí kho bãi Tà Lùng Logistics"
+            allowFullScreen
           ></iframe>
         </MapWrapper>
       </FooterContent>
+
       <CopyrightBar>
         <p>{t('copyright')}</p>
       </CopyrightBar>

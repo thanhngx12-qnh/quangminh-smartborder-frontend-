@@ -1,102 +1,85 @@
-// dir: ~/quangminh-smart-border/frontend/src/styles/GlobalStyles.ts
+// dir: frontend/src/styles/GlobalStyles.ts
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  /* Định nghĩa các biến CSS toàn cục (CSS Variables) */
-  :root {
-    /* (Chúng ta sẽ định nghĩa các biến màu ở đây sau nếu cần) */
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Định nghĩa font face cho Inter */
-  @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/Inter-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/Inter-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  /* Reset CSS */
-  *,
-  *::before,
-  *::after {
+  /* Reset cơ bản */
+  *, *::before, *::after {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
   }
 
   html {
-    /* Đảm bảo trang chiếm toàn bộ chiều cao viewport */
+    font-size: 16px;
+    scroll-behavior: smooth;
     height: 100%;
-    zoom: 0.9;
   }
 
   body {
     height: 100%;
-    /* SỬA LỖI TRÀN MÀN HÌNH */
-    /* Thay vì max-width: 100vw, hãy để trình duyệt tự quản lý */
-    overflow-x: hidden;
-    line-height: 1.5; /* Thêm line-height mặc định cho dễ đọc */
-
+    margin: 0;
+    padding: 0;
+    
+    /* Sử dụng màu và font từ Theme Provider */
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
     font-family: ${({ theme }) => theme.fonts.body};
+    
+    line-height: 1.6;
+    overflow-x: hidden; /* Tránh thanh cuộn ngang không mong muốn */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Cải thiện khả năng đọc của input, button, ... */
-  input, button, textarea, select {
-    font: inherit;
-    color: inherit;
-  }
-  
-  /* Bỏ style mặc định của button */
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
+  /* Typography Style - Áp dụng Font Montserrat cho tiêu đề */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    color: ${({ theme }) => theme.colors.primary}; /* Mặc định tiêu đề màu Xanh Phú Anh */
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: ${({ theme }) => theme.spacing.md};
   }
 
-  /* Style link chung */
+  p {
+    margin-bottom: ${({ theme }) => theme.spacing.md};
+  }
+
   a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: ${({ theme }) => theme.colors.accent}; /* Hover màu đỏ */
+    }
+  }
+
+  button, input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
   }
   
-  /* Style cho hình ảnh responsive */
-  img, picture, video, canvas, svg {
-    display: block;
+  ul, ol {
+    list-style: none;
+  }
+
+  img {
     max-width: 100%;
+    height: auto;
+    display: block;
   }
-  
-  /* Loại bỏ animation cho những người dùng không mong muốn */
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+
+  /* Utility Class cho Container (giữ layout gọn gàng) */
+  .container {
+    width: 100%;
+    max-width: 1280px; /* Chuẩn màn hình desktop hiện đại */
+    margin: 0 auto;
+    padding: 0 ${({ theme }) => theme.spacing.md};
+    
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      padding: 0 ${({ theme }) => theme.spacing.lg};
     }
   }
 `;

@@ -1,7 +1,8 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/layout/Header/index.tsx
+// dir: frontend/src/components/layout/Header/index.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image'; 
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/navigation';
 import { 
@@ -13,9 +14,10 @@ import {
   RiTranslate2,
   RiBrushLine,
   RiPhoneFill, 
-  RiMailFill, 
+  RiMailFill,
+  RiMapPinFill
 } from 'react-icons/ri';
-import Button, { ButtonLink } from '@/components/ui/Button';
+import { ButtonLink } from '@/components/ui/Button'; // Import ButtonLink đã nâng cấp
 import { useUIStore } from '@/hooks/useUIStore';
 import LanguageSwitcher from './LanguageSwitcher';
 import SearchModal from './SearchModal';
@@ -23,6 +25,7 @@ import SearchModal from './SearchModal';
 import {
   HeaderWrapper,
   TopBar,
+  TopBarContainer,
   ContactInfo,
   Actions,
   MainNav,
@@ -33,11 +36,11 @@ import {
   HeaderIcons,
   TopBarLink,
   MobileActions,
-  MobileSettingGroup, // Đổi từ MobileSettings
-  MobileSettingsWrapper, // Wrapper mới
+  MobileSettingGroup,
+  MobileSettingsWrapper,
   MobileButton,
   MobileButtonLink,
-  SearchButtonDesktop 
+  SearchButtonDesktop
 } from './Header.styles';
 
 export default function Header() {
@@ -52,68 +55,66 @@ export default function Header() {
   const pathname = usePathname();
   
   const navItems = [
+    { href: '/', label: tNav('home') },
+    { href: '/about', label: tNav('about') },
     { href: '/services', label: tNav('services') },
+    { href: '/news', label: tNav('news') },
     { href: '/manifesto', label: tNav('manifesto') },
     { href: '/careers', label: tNav('careers') },
-    { href: '/about', label: tNav('about') },
-    { href: '/news', label: tNav('news') },
     { href: '/contact', label: tNav('contact') },
   ];
 
-  useEffect(() => { 
-    setIsMenuOpen(false); 
-  }, [pathname]);
+  useEffect(() => { setIsMenuOpen(false); }, [pathname]);
   
   useEffect(() => {
     const isOverlayOpen = isMenuOpen || isSearchOpen;
     document.body.style.overflow = isOverlayOpen ? 'hidden' : 'unset';
-    return () => { 
-      document.body.style.overflow = 'unset'; 
-    };
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isMenuOpen, isSearchOpen]);
-
-  const handleBackdropClick = (event: React.MouseEvent<HTMLElement>) => {
-    if (event.target === event.currentTarget) {
-      setIsMenuOpen(false);
-    }
-  };
 
   return (
     <>
       <HeaderWrapper>
+        {/* TopBar: Màu xanh đậm, chứa thông tin liên hệ */}
         <TopBar>
-          <ContactInfo>
-            <span><RiPhoneFill />Hotline: +84 123456789</span>
-            <span><RiMailFill />Email: info@talunglogistics.com</span>
-          </ContactInfo>
-          <Actions>
-            <LanguageSwitcher variant="full" />
-            <TopBarLink href="/tracking" as="a">{tActions('tracking')}</TopBarLink>
-            <TopBarLink href="/quote" as="a">{tActions('quote')}</TopBarLink>
-          </Actions>
+          <TopBarContainer className="container">
+            <ContactInfo>
+              <a href="tel:0963320335"><RiPhoneFill /> 0963.320.335</a>
+              <a href="mailto:info@talunglogistics.com"><RiMailFill /> info@talunglogistics.com</a>
+              <span className="office-loc"><RiMapPinFill /> Tà Lùng, Cao Bằng</span>
+            </ContactInfo>
+            <Actions>
+              <LanguageSwitcher variant="full" />
+              <TopBarLink href="/tracking" as="a">{tActions('tracking')}</TopBarLink>
+            </Actions>
+          </TopBarContainer>
         </TopBar>
 
-        <MainNav>
+        {/* MainNav: Logo và Menu */}
+        <MainNav className="container">
           <Logo href="/" as="a">
-            Phú Anh <span></span>
+            <div className="logo-container">
+              {/* Bạn nhớ lưu file logo vào public/images/logo.png nhé */}
+              <Image 
+                src="/images/logo.png" 
+                alt="Tà Lùng Quang Minh Logistics" 
+                fill
+                priority
+                sizes="(max-width: 768px) 150px, 200px"
+                style={{ objectFit: 'contain', objectPosition: 'left' }}
+              />
+            </div>
           </Logo>
 
-          <NavLinks $isOpen={isMenuOpen} onClick={handleBackdropClick}>
-            {/* CÀI ĐẶT NGÔN NGỮ VÀ GIAO DIỆN TRÊN ĐẦU MENU MOBILE */}
+          <NavLinks $isOpen={isMenuOpen} onClick={(e) => e.target === e.currentTarget && setIsMenuOpen(false)}>
+            {/* Mobile Settings */}
             <MobileSettingsWrapper>
                 <MobileSettingGroup>
-                    <div className="setting-label">
-                      <RiTranslate2 /> <span>{tGeneral('language')}</span> {/* Dùng tGeneral cho ngôn ngữ */}
-                    </div>
-                    <div className="setting-control">
-                      <LanguageSwitcher variant="icon" />
-                    </div>
+                    <div className="setting-label"><RiTranslate2 /> <span>{tGeneral('language')}</span></div>
+                    <div className="setting-control"><LanguageSwitcher variant="icon" /></div>
                 </MobileSettingGroup>
-
                 <MobileSettingGroup>
-                    <div className="setting-label">
-                      <RiBrushLine /> <span>{tGeneral('theme')}</span> {/* Dùng tGeneral cho giao diện */}
-                    </div>
+                    <div className="setting-label"><RiBrushLine /> <span>{tGeneral('theme')}</span></div>
                     <div className="setting-control">
                       <button onClick={toggleTheme} aria-label="Toggle theme">
                         {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
@@ -122,46 +123,34 @@ export default function Header() {
                 </MobileSettingGroup>
             </MobileSettingsWrapper>
 
+            {/* Menu Items */}
             {navItems.map((item) => (
-              <NavLink
-                key={item.href}
-                href={item.href}
-                as="a"
-                $isActive={pathname === item.href}
-              >
+              <NavLink key={item.href} href={item.href} as="a" $isActive={pathname === item.href}>
                 {item.label}
               </NavLink>
             ))}
 
-            {/* CÁC NÚT HÀNH ĐỘNG CHO MENU MOBILE (Đặt ở dưới cùng) */}
+            {/* Mobile Actions */}
             <MobileActions>
-              <MobileButtonLink href="/quote" variant="primary" as="a">{tCta('quote')}</MobileButtonLink>
+              <MobileButtonLink href="/contact" variant="primary" as="a">{tCta('quote')}</MobileButtonLink>
               <MobileButton onClick={() => { setIsSearchOpen(true); setIsMenuOpen(false); }} variant="secondary">
                 <RiSearchLine style={{ marginRight: '8px' }}/> {tGeneral('search')}
               </MobileButton>
             </MobileActions>
           </NavLinks>
 
+          {/* Desktop Actions */}
           <HeaderIcons>
-            <ButtonLink href="/quote" variant="primary" as="a">{tCta('quote')}</ButtonLink>
             <SearchButtonDesktop onClick={() => setIsSearchOpen(true)} aria-label="Search">
               <RiSearchLine />
             </SearchButtonDesktop>
-            <button 
-              onClick={toggleTheme} 
-              aria-label="Toggle theme" 
-              style={{ 
-                background: 'none', 
-                border: 'none', 
-                color: 'inherit', 
-                fontSize: 'inherit',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center'
-              }}
-            >
+            <button onClick={toggleTheme} aria-label="Toggle theme" className="theme-toggle">
               {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
             </button>
+            {/* Bây giờ size="small" đã hoạt động tốt */}
+            <ButtonLink href="/contact" variant="primary" size="small" as="a">
+              {tCta('quote')}
+            </ButtonLink>
           </HeaderIcons>
           
           <MenuIcon $isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>

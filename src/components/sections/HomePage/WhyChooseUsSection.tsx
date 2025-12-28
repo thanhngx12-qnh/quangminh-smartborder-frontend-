@@ -1,103 +1,170 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/sections/HomePage/WhyChooseUsSection.tsx
+// dir: frontend/src/components/sections/HomePage/WhyChooseUsSection.tsx
 'use client';
 
 import { useTranslations } from 'next-intl';
 import styled from 'styled-components';
-import Image from 'next/image';
-import { RiRocketLine, RiTeamLine, RiRoadMapLine } from 'react-icons/ri';
+import { RiRocketLine, RiTeamLine, RiMapPinRangeLine } from 'react-icons/ri'; // Dùng icon Map Pin cho vị trí
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 
 // --- Styled Components ---
+
 const SectionWrapper = styled.section`
-  padding: 80px 20px;
+  padding: 100px 20px;
+  background-color: ${({ theme }) => theme.colors.surfaceAlt}; // Màu nền xám nhẹ (#F8F9FA) để tách biệt
+  position: relative;
 `;
 
-const SectionHeader = styled.h2`
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const HeaderWrapper = styled.div`
   text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+`;
+
+const Title = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.heading};
   font-size: 36px;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.text};
-  margin-bottom: 60px;
+  color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+  
+  // Gạch chân đỏ trang trí
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: ${({ theme }) => theme.colors.accent};
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
 `;
 
-const FeatureItem = styled.div<{ $reverse?: boolean }>`
+const Subtitle = styled.p`
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  line-height: 1.6;
+`;
+
+const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto 80px auto;
-  
-  // Đảo ngược vị trí cho item thứ hai
-  grid-template-areas: ${({ $reverse }) => $reverse ? '"text image"' : '"image text"'};
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 
   @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    grid-template-areas: "image" "text"; // Luôn là ảnh ở trên
-    gap: 40px;
   }
 `;
 
-const FeatureImageWrapper = styled.div`
-  grid-area: image;
-  position: relative;
-  width: 100%;
-  padding-top: 66.66%; // Tỷ lệ 3:2
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+const Card = styled.div`
+  background: ${({ theme }) => theme.colors.white};
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: ${({ theme }) => theme.shadows.card}; // Shadow nhẹ
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
 
-  img {
-    object-fit: cover;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: ${({ theme }) => theme.shadows.hover};
+    border-color: ${({ theme }) => theme.colors.primaryLight};
+    
+    // Hiệu ứng icon khi hover card
+    .icon-wrapper {
+      background-color: ${({ theme }) => theme.colors.accent};
+      color: ${({ theme }) => theme.colors.white};
+      transform: scale(1.1) rotate(5deg);
+    }
   }
 `;
 
-const FeatureText = styled.div`
-  grid-area: text;
-  
-  h3 {
-    font-size: 28px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.text};
-    margin-bottom: 16px;
-  }
-  
-  p {
-    font-size: 18px;
-    line-height: 1.8;
-    color: ${({ theme }) => theme.colors.textSecondary};
-  }
+const IconWrapper = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.secondary}; // Nền xanh nhạt
+  color: ${({ theme }) => theme.colors.primary}; // Icon xanh đậm
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 36px;
+  transition: all 0.3s ease;
+`;
+
+const CardTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 20px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+  margin-bottom: 16px;
+`;
+
+const CardText = styled.p`
+  font-size: 15px;
+  line-height: 1.7;
+  color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 // --- Main Component ---
 export default function WhyChooseUsSection() {
   const t = useTranslations('WhyChooseUs');
 
+  // Mapping đúng nội dung JSON với Icon phù hợp
   const features = [
-    { title: t('point1Title'), text: t('point1Text'), image: '/about/why-choose-us-1.jpg' },
-    { title: t('point2Title'), text: t('point2Text'), image: '/about/why-choose-us-2.jpg' },
-    { title: t('point3Title'), text: t('point3Text'), image: '/about/why-choose-us-3.jpg' },
+    { 
+      key: 'point1',
+      icon: <RiRocketLine />, // Công nghệ tiên phong -> Tên lửa
+    },
+    { 
+      key: 'point2',
+      icon: <RiTeamLine />, // Đội ngũ tận tâm -> Team
+    },
+    { 
+      key: 'point3',
+      icon: <RiMapPinRangeLine />, // Vị trí chiến lược -> Map Pin
+    },
   ];
 
   return (
     <SectionWrapper>
-      <FadeInWhenVisible>
-        <SectionHeader>{t('title')}</SectionHeader>
-      </FadeInWhenVisible>
-      
-      {features.map((feature, index) => (
-        <FadeInWhenVisible key={index}>
-          <FeatureItem $reverse={index % 2 !== 0}>
-            <FeatureImageWrapper>
-              <Image src={feature.image} alt={feature.title} fill sizes="(max-width: 992px) 100vw, 50vw"/>
-            </FeatureImageWrapper>
-            <FeatureText>
-              <h3>{feature.title}</h3>
-              <p>{feature.text}</p>
-            </FeatureText>
-          </FeatureItem>
+      <Container>
+        <FadeInWhenVisible>
+          <HeaderWrapper>
+            <Title>{t('title')}</Title>
+            {/* Nếu có subtitle chung thì thêm vào đây, hiện tại JSON chưa có nên để trống hoặc thêm sau */}
+          </HeaderWrapper>
         </FadeInWhenVisible>
-      ))}
+        
+        <Grid>
+          {features.map((feature, index) => (
+            <FadeInWhenVisible key={index} delay={index * 0.1}>
+              <Card>
+                <IconWrapper className="icon-wrapper">
+                  {feature.icon}
+                </IconWrapper>
+                <CardTitle>{t(`${feature.key}Title`)}</CardTitle>
+                <CardText>{t(`${feature.key}Text`)}</CardText>
+              </Card>
+            </FadeInWhenVisible>
+          ))}
+        </Grid>
+      </Container>
     </SectionWrapper>
   );
 }

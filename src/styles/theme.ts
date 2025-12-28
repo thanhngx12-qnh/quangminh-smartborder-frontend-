@@ -1,110 +1,131 @@
-// dir: ~/quangminh-smart-border/frontend/src/styles/theme.ts
+// dir: frontend/src/styles/theme.ts
 import { DefaultTheme } from 'styled-components';
 
+const breakpoints = {
+  mobile: '576px',
+  tablet: '768px',
+  desktop: '1024px',
+  wide: '1280px',
+};
+
+const shadows = {
+  sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+  md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+  lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+  // THÊM VÀO ĐÂY:
+  card: '0 6px 16px rgba(0,0,0,0.08)', // Shadow cho Card nhẹ nhàng
+  hover: '0 12px 24px rgba(0,0,0,0.12)', // Shadow lớn hơn khi hover
+};
+
+const spacing = {
+  xs: '4px',
+  sm: '8px',
+  md: '16px',
+  lg: '24px',
+  xl: '32px',
+  xxl: '48px',
+};
+
 export const lightTheme: DefaultTheme = {
-  name: 'light', // <--- THÊM DÒNG NÀY
+  name: 'light',
   colors: {
-    // Semantic Colors
-    background: '#FFFFFF',           // Nền chính sáng
-    surface: '#F8FAFC',              // Nền card, section sáng
-    text: '#0F172A',                 // Chữ chính đậm
-    textSecondary: '#64748B',        // Chữ phụ trung bình
-    textMuted: '#94A3B8',            // Chữ rất nhạt
+    background: '#FFFFFF',
+    surface: '#FFFFFF',
+    surfaceAlt: '#F8F9FA',
     
-    // Brand Colors
-    primary: '#1E293B',              // Navy đậm - màu chính
-    secondary: '#334155',            // Navy trung bình - màu phụ
-    accent: '#0EA5E9',               // Cyan - màu nổi bật
+    text: '#1A1A1A',
+    textSecondary: '#4B5563',
+    textMuted: '#9CA3AF',
+    textInverse: '#FFFFFF',
+
+    primary: '#003366',
+    primaryLight: '#004c99',
+    primaryDark: '#002244',
     
-    // Status Colors
-    success: '#10B981',              // Xanh lá thành công
-    warning: '#F59E0B',              // Cam cảnh báo
-    error: '#EF4444',                // Đỏ lỗi
-    info: '#3B82F6',                 // Xanh dương thông tin
+    secondary: '#E6F0FA',
     
-    // Utility Colors
+    accent: '#FF0000',
+    accentHover: '#CC0000',
+
+    success: '#10B981',
+    warning: '#F59E0B',
+    error: '#DC2626',
+    info: '#3B82F6',
+
     white: '#FFFFFF',
-    black: '#0F172A',
-    
-    // Border Colors
-    border: '#E2E8F0',               // Viền chính sáng
-    borderLight: '#F1F5F9',          // Viền rất nhạt
-    divider: '#E2E8F0',              // Đường phân cách
-    
-    // Component Specific
+    black: '#000000',
+
+    border: '#E5E7EB',
+    divider: '#E5E7EB',
+
     header: {
-      bg: '#1E293B',                 // Navy đậm cho header
-      text: '#FFFFFF',               // Chữ trắng trên header
+      bg: '#FFFFFF',
+      text: '#003366',
+      borderBottom: '#E5E7EB',
     },
     footer: {
-      bg: '#1E293B',                 // Navy đậm cho footer
-      text: '#F1F5F9',               // Chữ sáng trên footer
-      textSecondary: '#94A3B8',      // Chữ phụ trên footer
+      bg: '#003366',
+      text: '#FFFFFF',
+      textSecondary: '#CBD5E1',
     },
   },
   fonts: {
-    body: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
-    heading: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+    body: 'var(--font-inter), sans-serif',
+    heading: 'var(--font-montserrat), sans-serif',
   },
-  spacing: {
-    xs: '4px',
-    sm: '8px',
-    md: '16px',
-    lg: '24px',
-    xl: '32px',
-  },
+  spacing,
+  breakpoints,
+  shadows, // Đảm bảo shadows được export
 };
 
 export const darkTheme: DefaultTheme = {
-  name: 'dark', // <--- THÊM DÒNG NÀY
+  name: 'dark',
   colors: {
-    // Semantic Colors
-    background: '#0F172A',           // Nền chính tối
-    surface: '#1E293B',              // Nền card, section tối
-    text: '#F1F5F9',                 // Chữ chính sáng
-    textSecondary: '#CBD5E1',        // Chữ phụ sáng
-    textMuted: '#64748B',            // Chữ nhạt trên nền tối
+    background: '#0B1120',
+    surface: '#111827',
+    surfaceAlt: '#1F2937',
     
-    // Brand Colors
-    primary: '#F1F5F9',              // Chữ sáng làm primary trên nền tối
-    secondary: '#E2E8F0',            // Màu xám sáng
-    accent: '#0EA5E9',               // Cyan giữ nguyên
+    text: '#F9FAFB',
+    textSecondary: '#D1D5DB',
+    textMuted: '#6B7280',
+    textInverse: '#111827',
+
+    primary: '#3B82F6',
+    primaryLight: '#60A5FA',
+    primaryDark: '#1D4ED8',
     
-    // Status Colors
-    success: '#34D399',              // Xanh lá sáng hơn trên nền tối
-    warning: '#FBBF24',              // Cam sáng hơn
-    error: '#F87171',                // Đỏ sáng hơn
-    info: '#60A5FA',                 // Xanh dương sáng hơn
+    secondary: '#1E293B',
     
-    // Utility Colors
+    accent: '#FF4545',
+    accentHover: '#FF0000',
+
+    success: '#34D399',
+    warning: '#FBBF24',
+    error: '#F87171',
+    info: '#60A5FA',
+
     white: '#FFFFFF',
-    black: '#0F172A',
-    
-    // Border Colors
-    border: '#334155',               // Viền tối
-    borderLight: '#475569',          // Viền sáng hơn trên nền tối
-    divider: '#334155',              // Đường phân cách tối
-    
-    // Component Specific
+    black: '#000000',
+
+    border: '#374151',
+    divider: '#374151',
+
     header: {
-      bg: '#1E293B',                 // Nền tối cho header
-      text: '#F1F5F9',               // Chữ sáng trên header
+      bg: '#111827',
+      text: '#F9FAFB',
+      borderBottom: '#374151',
     },
     footer: {
-      bg: '#0F172A',                 // Nền tối hơn cho footer
-      text: '#F1F5F9',               // Chữ sáng trên footer
-      textSecondary: '#64748B',      // Chữ phụ trên footer
+      bg: '#0B1120',
+      text: '#F9FAFB',
+      textSecondary: '#9CA3AF',
     },
   },
   fonts: {
-    body: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
-    heading: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+    body: 'var(--font-inter), sans-serif',
+    heading: 'var(--font-montserrat), sans-serif',
   },
-  spacing: {
-    xs: '4px',
-    sm: '8px',
-    md: '16px',
-    lg: '24px',
-    xl: '32px',
-  },
+  spacing,
+  breakpoints,
+  shadows, // Đảm bảo shadows được export
 };

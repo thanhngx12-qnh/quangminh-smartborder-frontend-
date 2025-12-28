@@ -1,4 +1,4 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/layout/Footer/Footer.styles.ts
+// dir: frontend/src/components/layout/Footer/Footer.styles.ts
 'use client';
 import styled, { keyframes } from 'styled-components';
 import { Link } from '@/navigation';
@@ -21,15 +21,16 @@ export const FooterContent = styled.div`
   margin: 0 auto;
   padding: 0 24px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 48px;
+  // Layout linh hoạt: 4 cột cho desktop
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 40px;
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr); // 2 cột cho tablet
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; // 1 cột cho mobile
     text-align: center;
     padding: 0 16px;
   }
@@ -41,71 +42,74 @@ export const FooterColumn = styled.div`
   gap: 20px;
 
   h3 {
-    font-size: 20px;
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: 18px;
     font-weight: 700;
-    color: ${({ theme }) => theme.colors.footer.text};
+    color: ${({ theme }) => theme.colors.white}; // Tiêu đề trắng
     margin-bottom: 12px;
+    text-transform: uppercase;
     position: relative;
 
     &::after {
       content: '';
       display: block;
       width: 40px;
-      height: 2px;
+      height: 3px;
       background-color: ${({ theme }) => theme.colors.accent};
       margin-top: 8px;
+      border-radius: 2px;
+      
       @media (max-width: 768px) {
         margin: 8px auto;
       }
     }
   }
 
-  p, address {
+  address {
     font-style: normal;
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.6;
     color: ${({ theme }) => theme.colors.footer.textSecondary};
   }
 `;
 
-export const Logo = styled.h2`
-  font-size: 28px;
+export const Logo = styled.div`
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 24px;
   font-weight: 800;
   line-height: 1.2;
-  color: ${({ theme }) => theme.colors.footer.text};
+  color: ${({ theme }) => theme.colors.white};
   margin-bottom: 12px;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
+  
+  span {
+    color: ${({ theme }) => theme.colors.accent};
   }
 `;
 
 export const SocialLinks = styled.div`
   display: flex;
-  gap: 20px;
-  margin-top: 12px;
-  font-size: 28px;
+  gap: 16px;
+  margin-top: 16px;
 
   @media (max-width: 768px) {
     justify-content: center;
   }
 
   a {
-    color: ${({ theme }) => theme.colors.footer.textSecondary};
-    transition: all 0.3s ease;
+    color: ${({ theme }) => theme.colors.white};
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
+    font-size: 20px;
+    transition: all 0.3s ease;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.accent};
-      transform: translateY(-2px);
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: ${({ theme }) => theme.colors.accent};
+      transform: translateY(-3px);
     }
   }
 `;
@@ -114,132 +118,108 @@ export const LinkList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 `;
 
 export const FooterLink = styled(Link)`
-  font-size: 15px;
+  font-size: 14px;
   color: ${({ theme }) => theme.colors.footer.textSecondary};
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
+  text-decoration: none;
 
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
-    padding-left: 8px;
+    padding-left: 6px;
   }
 `;
 
 export const ContactForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   position: relative;
 
   input, textarea {
     width: 100%;
-    padding: 14px;
-    border-radius: 8px;
-    border: 1px solid ${({ theme }) => theme.colors.border};
-    background-color: ${({ theme }) => theme.colors.surface};
-    color: ${({ theme }) => theme.colors.text};
-    font-family: inherit;
-    font-size: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.1); // Nền mờ trên footer tối
+    color: ${({ theme }) => theme.colors.white};
+    font-size: 14px;
     transition: all 0.2s ease;
 
     &::placeholder {
-      color: ${({ theme }) => theme.colors.textSecondary};
+      color: rgba(255, 255, 255, 0.5);
     }
 
     &:focus {
       outline: none;
+      background-color: rgba(255, 255, 255, 0.15);
       border-color: ${({ theme }) => theme.colors.accent};
-      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
     }
   }
 
   textarea {
-    min-height: 120px;
+    min-height: 100px;
     resize: vertical;
   }
 `;
 
 export const FormError = styled.p`
-  font-size: 13px;
-  color: ${({ theme }) => theme.colors.error};
-  margin-top: 6px;
-  animation: ${fadeIn} 0.3s ease;
+  font-size: 12px;
+  color: #ff6b6b; // Đỏ sáng dễ nhìn trên nền tối
+  margin-top: 4px;
 `;
 
 export const FormSuccess = styled.div`
-  font-size: 15px;
+  font-size: 14px;
   color: ${({ theme }) => theme.colors.success};
   background-color: rgba(16, 185, 129, 0.1);
-  padding: 20px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 6px;
   text-align: center;
   border: 1px solid rgba(16, 185, 129, 0.3);
-  animation: ${fadeIn} 0.5s ease;
 `;
 
 export const LoadingOverlay = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 6px;
   z-index: 10;
-
-  .spinner {
-    border: 3px solid ${({ theme }) => theme.colors.accent};
-    border-top: 3px solid transparent;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
 `;
 
+// Map Wrapper trải dài full width ở dưới cùng của grid content (hoặc tách riêng)
 export const MapWrapper = styled.div`
-  grid-column: span 2;
+  grid-column: 1 / -1; // Chiếm toàn bộ chiều ngang grid
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
   
   iframe {
     width: 100%;
     height: 100%;
-    min-height: 300px;
-    border-radius: 10px;
     border: 0;
-  }
-
-  @media (max-width: 1024px) {
-    grid-column: span 1;
-  }
-
-  @media (max-width: 768px) {
-    min-height: 200px;
+    filter: grayscale(20%) contrast(1.1); // Chỉnh màu map cho hợp tông tối
   }
 `;
 
 export const CopyrightBar = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: rgba(0, 0, 0, 0.2); // Đậm hơn nền footer chút
+  color: ${({ theme }) => theme.colors.footer.textSecondary};
   text-align: center;
-  padding: 20px 24px;
-  margin-top: 80px;
+  padding: 20px;
+  margin-top: 60px;
   font-size: 13px;
-  border-top: 1px solid ${({ theme }) => theme.colors.divider};
-  @media (max-width: 768px) {
-    padding: 16px;
-  }
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 `;
 
 export const ContactList = styled.div`
@@ -252,14 +232,16 @@ export const ContactItem = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 15px;
+  font-size: 14px;
   color: ${({ theme }) => theme.colors.footer.textSecondary};
-  line-height: 1.4;
-  white-space: nowrap; /* giữ icon và text không bị wrap tách hàng */
+  
+  a {
+    color: inherit;
+    &:hover { color: ${({ theme }) => theme.colors.white}; }
+  }
 
   @media (max-width: 768px) {
     justify-content: center;
-    white-space: normal; /* cho mobile cho phép wrap nếu quá dài */
   }
 `;
 
@@ -267,9 +249,7 @@ export const IconWrapper = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  min-height: 28px;
-  font-size: 20px;
-  color: ${({ theme }) => theme.colors.footer.textSecondary};
+  font-size: 18px;
+  color: ${({ theme }) => theme.colors.accent}; // Icon màu đỏ nổi bật
   flex-shrink: 0;
 `;

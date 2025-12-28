@@ -35,15 +35,16 @@ import { ReactNode } from 'react';
 // Kết hợp props của chúng ta và tất cả các props hợp lệ của motion.div
 interface FadeInWhenVisibleProps extends MotionProps {
   children: ReactNode;
+  delay?: number;
 }
 
-export default function FadeInWhenVisible({ children, ...props }: FadeInWhenVisibleProps) {
+export default function FadeInWhenVisible({ children, delay = 0, ...props }: FadeInWhenVisibleProps) {
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.6, delay }}
       variants={{
         visible: { opacity: 1, y: 0 },
         hidden: { opacity: 0, y: 50 },
