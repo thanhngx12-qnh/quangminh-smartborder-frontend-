@@ -15,6 +15,7 @@ import {
   RiMailLine, 
   RiMapPinLine 
 } from 'react-icons/ri';
+import { SiZalo } from "react-icons/si";
 import Button from '@/components/ui/Button';
 import {
   FooterWrapper,
@@ -78,7 +79,7 @@ export default function Footer() {
       <FooterContent>
         {/* Cột 1: Thông tin công ty */}
         <FooterColumn>
-          <Logo>PHÚ ANH <span>LOGISTICS</span></Logo>
+          <Logo>TA LUNG <span>LOGISTICS</span></Logo>
           <ContactList>
             <ContactItem>
               <IconWrapper><RiMapPinLine /></IconWrapper>
@@ -97,7 +98,7 @@ export default function Footer() {
           <SocialLinks>
             <a href="#" aria-label="Facebook"><RiFacebookCircleLine /></a>
             <a href="#" aria-label="WeChat"><RiWechatLine /></a>
-            <a href="#" aria-label="WhatsApp"><RiWhatsappLine /></a>
+            <a href="#" aria-label="Zalo"><SiZalo /></a>
           </SocialLinks>
         </FooterColumn>
         

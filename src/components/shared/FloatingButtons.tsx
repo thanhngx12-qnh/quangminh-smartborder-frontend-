@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RiPhoneFill, RiMailFill, RiFacebookCircleFill, RiArrowUpSLine } from 'react-icons/ri';
+import { SiZalo } from "react-icons/si";
 
 // --- Styled Components ---
 
@@ -60,13 +61,13 @@ const FabButton = styled(motion.a)<{ $isPrimary?: boolean }>`
 `;
 
 // Icon Zalo custom (vì react-icons có thể chưa có logo Zalo mới nhất hoặc muốn dùng SVG chuẩn)
-const ZaloIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M42 12C42 9.79086 40.2091 8 38 8H10C7.79086 8 6 9.79086 6 12V36C6 38.2091 7.79086 40 10 40H38C40.2091 40 42 38.2091 42 36V12Z" fill="#0068FF"/>
-    <path d="M34 23H28V17H25V31H28V26H31V31H34V23Z" fill="white"/>
-    <path d="M14 17H23V20H18L23 27V31H14V27H19L14 20V17Z" fill="white"/>
-  </svg>
-);
+// const ZaloIcon = () => (
+//   <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+//     <path d="M42 12C42 9.79086 40.2091 8 38 8H10C7.79086 8 6 9.79086 6 12V36C6 38.2091 7.79086 40 10 40H38C40.2091 40 42 38.2091 42 36V12Z" fill="#0068FF"/>
+//     <path d="M34 23H28V17H25V31H28V26H31V31H34V23Z" fill="white"/>
+//     <path d="M14 17H23V20H18L23 27V31H14V27H19L14 20V17Z" fill="white"/>
+//   </svg>
+// );
 
 const ScrollToTopButton = styled(motion.button)`
   display: flex;
@@ -167,7 +168,7 @@ export default function FloatingButtons() {
   
   const actions = [
     { href: 'tel:0963320335', icon: <RiPhoneFill />, label: 'Hotline: 0963.320.335', isPrimary: true },
-    { href: 'https://zalo.me/1564601831220674638', icon: <ZaloIcon />, label: 'Chat Zalo', target: '_blank' },
+    { href: 'https://zalo.me/1564601831220674638', icon: <SiZalo />, label: 'Chat Zalo', target: '_blank' },
     { href: 'https://facebook.com/talunglogistics.11', icon: <RiFacebookCircleFill style={{ color: '#1877F2' }} />, label: 'Facebook Fanpage', target: '_blank' },
     { href: 'mailto:info@talunglogistics.com', icon: <RiMailFill />, label: 'Gửi Email' },
   ];
