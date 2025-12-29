@@ -24,8 +24,8 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Phú Anh Logistics',
-    default: 'Phú Anh Logistics - Smart Border',
+    template: '%s | Tà Lùng Logistics',
+    default: 'Công ty TNHH Thương mại Vận tải Phú Anh - Tà Lùng Logistics',
   },
   description: 'Giải pháp Logistics toàn diện Việt - Trung: Kho bãi, Xuất nhập khẩu, Vận tải',
 };
