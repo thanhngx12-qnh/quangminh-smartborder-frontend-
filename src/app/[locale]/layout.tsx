@@ -9,12 +9,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 // Cấu hình Font (giữ nguyên)
-const inter = Inter({
-  subsets: ["latin", "vietnamese"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
+const inter = Inter({ subsets: ["latin", "vietnamese"], variable: "--font-inter", display: "swap" });
 const montserrat = Montserrat({
   subsets: ["latin", "vietnamese"],
   variable: "--font-montserrat",
@@ -22,80 +17,61 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-// Hàm tạo Metadata động (ĐÃ SỬA LỖI THEO CÁCH CHUẨN)
+// Định nghĩa Type cho props, giờ đây params là một Promise
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+// Hàm generateMetadata (ĐÃ SỬA LỖI)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // SỬA Ở ĐÂY: Dùng `await` để lấy locale từ Promise
+  const { locale } = await params;
+
   let messages;
   try {
-    // SỬA Ở ĐÂY: Import trực tiếp file JSON, không cần hàm của next-intl
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
     notFound();
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://talunglogistics.com';
-  
-  // Lấy dữ liệu trực tiếp từ file JSON đã import
   const brandName = messages.Brand?.name || 'Tà Lùng Logistics';
-  const defaultTitle = messages.Metadata?.defaultTitle || 'Tà Lùng Logistics | Giải pháp Logistics biên mậu Việt - Trung';
-  const defaultDescription = messages.Metadata?.defaultDescription || 'Giải pháp Logistics toàn diện Việt - Trung.';
-  const keywords = messages.Metadata?.keywords || 'logistics, tà lùng, việt trung';
+  const defaultTitle = messages.Metadata?.defaultTitle || 'Tà Lùng Logistics';
+  const defaultDescription = messages.Metadata?.defaultDescription || '';
+  const keywords = messages.Metadata?.keywords || '';
 
   return {
     metadataBase: new URL(baseUrl),
-    title: {
-      template: `%s | ${brandName}`,
-      default: defaultTitle,
-    },
+    title: { template: `%s | ${brandName}`, default: defaultTitle },
     description: defaultDescription,
     keywords: keywords,
-    
-    icons: {
-      icon: '/images/logo.png',
-      apple: '/apple-touch-icon.png',
-    },
-    
+    icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
     openGraph: {
       title: defaultTitle,
       description: defaultDescription,
       url: baseUrl,
       siteName: brandName,
-      images: [
-        {
-          url: `${baseUrl}/images/logo.png`,
-          width: 1200,
-          height: 630,
-          alt: `${brandName} Banner`,
-        },
-      ],
+      images: [{ url: `${baseUrl}/og-image.jpg`, width: 1200, height: 630 }],
       locale: locale,
       type: 'website',
     },
-
     alternates: {
       canonical: `/${locale}`,
-      languages: {
-        'vi-VN': '/vi',
-        'en-US': '/en',
-        'zh-CN': '/zh',
-        'x-default': '/vi',
-      },
+      languages: { 'vi-VN': '/vi', 'en-US': '/en', 'zh-CN': '/zh', 'x-default': '/vi' },
     },
   };
 }
 
-// Layout Component (giữ nguyên)
+// Layout Component (ĐÃ SỬA LỖI)
 export default async function LocaleLayout({
   children,
-  params,
+  params, // Nhận params như một Promise
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>; // Định nghĩa type cho params là Promise
 }) {
-  const { locale } = params;
+  // SỬA Ở ĐÂY: Dùng `await` để lấy locale từ Promise
+  const { locale } = await params;
   const timeZone = "Asia/Ho_Chi_Minh";
 
   let messages;
