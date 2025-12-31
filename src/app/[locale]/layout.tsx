@@ -4,17 +4,17 @@ import { Providers } from "@/app/providers";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingButtons from "@/components/shared/FloatingButtons";
-import { Inter, Montserrat } from "next/font/google"; // Import Font Google
+import { Inter, Montserrat } from "next/font/google";
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-// Cấu hình Font: Inter cho văn bản thường
+// Cấu hình Font (giữ nguyên)
 const inter = Inter({
   subsets: ["latin", "vietnamese"],
   variable: "--font-inter",
   display: "swap",
 });
 
-// Cấu hình Font: Montserrat cho tiêu đề (Mạnh mẽ, hiện đại)
 const montserrat = Montserrat({
   subsets: ["latin", "vietnamese"],
   variable: "--font-montserrat",
@@ -22,32 +22,86 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s | Tà Lùng Logistics',
-    default: 'Công ty TNHH Thương mại Vận tải Phú Anh - Tà Lùng Logistics',
-  },
-  description: 'Giải pháp Logistics toàn diện Việt - Trung: Kho bãi, Xuất nhập khẩu, Vận tải',
+// Hàm tạo Metadata động (ĐÃ SỬA LỖI THEO CÁCH CHUẨN)
+type Props = {
+  params: { locale: string };
 };
 
-type LocaleLayoutProps = {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-};
+export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+  let messages;
+  try {
+    // SỬA Ở ĐÂY: Import trực tiếp file JSON, không cần hàm của next-intl
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://talunglogistics.com';
+  
+  // Lấy dữ liệu trực tiếp từ file JSON đã import
+  const brandName = messages.Brand?.name || 'Tà Lùng Logistics';
+  const defaultTitle = messages.Metadata?.defaultTitle || 'Tà Lùng Logistics | Giải pháp Logistics biên mậu Việt - Trung';
+  const defaultDescription = messages.Metadata?.defaultDescription || 'Giải pháp Logistics toàn diện Việt - Trung.';
+  const keywords = messages.Metadata?.keywords || 'logistics, tà lùng, việt trung';
+
+  return {
+    metadataBase: new URL(baseUrl),
+    title: {
+      template: `%s | ${brandName}`,
+      default: defaultTitle,
+    },
+    description: defaultDescription,
+    keywords: keywords,
+    
+    icons: {
+      icon: '/images/logo.png',
+      apple: '/apple-touch-icon.png',
+    },
+    
+    openGraph: {
+      title: defaultTitle,
+      description: defaultDescription,
+      url: baseUrl,
+      siteName: brandName,
+      images: [
+        {
+          url: `${baseUrl}/images/logo.png`,
+          width: 1200,
+          height: 630,
+          alt: `${brandName} Banner`,
+        },
+      ],
+      locale: locale,
+      type: 'website',
+    },
+
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        'vi-VN': '/vi',
+        'en-US': '/en',
+        'zh-CN': '/zh',
+        'x-default': '/vi',
+      },
+    },
+  };
+}
+
+// Layout Component (giữ nguyên)
 export default async function LocaleLayout({
   children,
   params,
-}: LocaleLayoutProps) {
-  const { locale } = await params;
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  const { locale } = params;
   const timeZone = "Asia/Ho_Chi_Minh";
 
-  // Load file ngôn ngữ, fallback về tiếng Việt nếu lỗi
   let messages;
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
-    console.error(`Missing messages for locale: ${locale}`, error);
     messages = (await import(`../../messages/vi.json`)).default;
   }
 
@@ -56,7 +110,6 @@ export default async function LocaleLayout({
       <body>
         <StyledComponentsRegistry>
           <Providers locale={locale} messages={messages} timeZone={timeZone}>
-            {/* Wrapper flex column để footer luôn ở đáy */}
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
               <Header />
               <main style={{ flex: 1 }}>

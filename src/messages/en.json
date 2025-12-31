@@ -31,7 +31,7 @@
   },
   "Hero": {
     "label": "RELIABLE LOGISTICS PARTNER AT TA LUNG INTERNATIONAL BORDER GATE",
-    "title": "CONNECTING BORDERS<br>REACHING GLOBALLY",
+    "title": "CONNECTING BORDERS\nREACHING GLOBALLY",
     "subtitle": "Over 15 years of experience in warehouse operations, customs procedures, and international transportation. We provide fast, safe, and cost-effective clearance solutions for businesses.",
     "ctaServices": "Explore Services",
     "ctaContact": "Contact for Consultation"
@@ -41,7 +41,7 @@
     "storageValue": "25 Ha",
     "storageDesc": "Total area of 3 yards",
     "containerTitle": "Containers / Day",
-    "containerValue": "500+",
+    "containerValue": "100+",
     "containerDesc": "Clearance capacity",
     "customsTitle": "Customs",
     "customsValue": "<2 Hours",
@@ -52,7 +52,7 @@
     "heroSubtitle": "Over 15 years of creating Logistics solutions at Ta Lung International Border Gate",
     "intro": {
       "title": "GENERAL INTRODUCTION",
-      "content": "Phu Anh Trading and Transport Co., Ltd. (brand name Ta Lung Logistics) was established in 2008. Following the promotion of trade between Vietnam and China through the Ta Lung International Border Gate - Cao Bang, the company invested in a system of warehouses and gathering points for import-export goods in the area.\n\nThe company specializes in: Warehousing; Bus stations; Import-Export; Logistics; and International transportation by road, sea, and rail."
+      "content": "Phu Anh Trading and Transport Co., Ltd. (brand name Ta Lung Logistics) was established in 2008. Following the promotion of trade between Vietnam and China through the Ta Lung International Border Gate - Cao Bang, the company invested in a system of warehouses and gathering points for import-export goods in the area.\n\nThe company specializes in: Warehousing; Bus stations; Import-Export; Logistics; and International road transport."
     },
     "missionTitle": "Mission & Vision",
     "missionText": "Our mission is to provide transparent, efficient, and sustainable logistics solutions. Our vision is to become a key hub connecting trade between China and Vietnam.",
@@ -206,7 +206,6 @@
     "resultsFor": "Showing results for:",
     "noEvents": "There are no events for this shipment yet."
   },
-
   "Footer": {
     "companyName": "Phu Anh Trading and Transport Co., Ltd. (Ta Lung Logistics)",
     "taxCode": "Tax Code: 4800166795",
@@ -238,8 +237,13 @@
     "description": "Sorry, the page you are looking for does not exist or has been moved.",
     "goHome": "Back to Homepage"
   },
+  "Brand": {
+    "name": "Ta Lung Logistics"
+  },
   "Metadata": {
     "defaultTitle": "Ta Lung Logistics | Vietnam - China Border Gate Logistics Solutions",
+    "defaultDescription": "Comprehensive Vietnam-China logistics solutions at Ta Lung International Border Gate: Warehousing, Import-Export, Transportation.",
+    "keywords": "vietnam china logistics, cross-border transport, ta lung border gate, phu anh, cao bang warehouse, china import export",
     "serviceTitle": "{serviceName} - Ta Lung Logistics",
     "newsTitle": "{newsTitle} - Ta Lung Logistics",
     "careerTitle": "Career: {jobTitle} - Ta Lung Logistics"
