@@ -1,19 +1,19 @@
 {
   "Navigation": {
     "home": "首页",
-    "services": "服务项目",
-    "manifesto": "公司宣言",
-    "careers": "招贤纳士",
+    "services": "服务",
+    "manifesto": "宣言",
+    "careers": "招聘",
     "about": "关于我们",
-    "news": "新闻资讯",
-    "contact": "联系我们"
+    "news": "新闻",
+    "contact": "联系"
   },
   "HeaderActions": {
-    "tracking": "运单查询",
-    "quote": "获取报价"
+    "tracking": "追踪",
+    "quote": "报价"
   },
   "CtaButton": {
-    "quote": "获取报价"
+    "quote": "请求报价"
   },
   "General": {
     "search": "搜索",
@@ -24,23 +24,23 @@
     "contact": "联系"
   },
   "Social": {
-    "facebook": "脸书",
+    "facebook": "Facebook",
     "wechat": "微信",
     "zalo": "Zalo",
     "whatsapp": "WhatsApp"
   },
   "Hero": {
-    "label": "塔隆国际口岸值得信赖的物流合作伙伴",
-    "title": "连接边界\n走向全球",
-    "subtitle": "超过15年的仓储运营、报关和国际运输经验。我们为企业提供快速、安全、经济高效的通关解决方案。",
+    "label": "塔隆国际口岸可靠物流合作伙伴",
+    "title": "连接边境\n迈向全球",
+    "subtitle": "拥有超过15年的仓库运营、海关手续和国际运输经验。我们为企业提供快速、安全且成本优化的通关解决方案。",
     "ctaServices": "探索服务",
     "ctaContact": "联系咨询"
   },
   "Kpi": {
-    "storageTitle": "仓储面积",
+    "storageTitle": "仓储",
     "storageValue": "25公顷",
-    "storageDesc": "3个堆场的总面积",
-    "containerTitle": "集装箱/日",
+    "storageDesc": "三个货场总面积",
+    "containerTitle": "集装箱/天",
     "containerValue": "100+",
     "containerDesc": "通关能力",
     "customsTitle": "海关",
@@ -49,51 +49,51 @@
   },
   "AboutPage": {
     "heroTitle": "关于塔隆物流",
-    "heroSubtitle": "超过15年在塔隆国际口岸创造物流解决方案",
+    "heroSubtitle": "超过15年在塔隆国际口岸打造物流解决方案",
     "intro": {
-      "title": "公司简介",
-      "content": "富英运输公司（品牌名：塔隆物流）成立于2008年。在越南和中国两国通过高平省塔隆国际口岸实现货物通商后，公司已在口岸区域内投资了仓库系统和进出口货物集散地。\n\n公司经营范围包括：仓储、汽车客运站、进出口贸易、物流以及国际公路运输。"
+      "title": "公司概况",
+      "content": "富安商贸运输有限责任公司（品牌：塔隆物流）成立于2008年。随着越南与中国通过高平省塔隆国际口岸的货物通商大力推进，公司在该区域投资建设了仓库系统和进出口货物集散点。\n\n公司专业从事以下领域：仓储；货车站；进出口；物流；国际公路运输。"
     },
     "missionTitle": "使命与愿景",
-    "missionText": "我们的使命是提供透明、高效、可持续的物流解决方案。我们的愿景是成为连接中越贸易的关键节点。",
+    "missionText": "我们的使命是提供透明、高效且可持续的物流解决方案。愿景是成为连接中越贸易的关键枢纽。",
     "timelineTitle": "发展历程",
     "timeline": {
-      "stage1_year": "2008年",
-      "stage1_text": "成立富英运输公司，开始从事边境贸易运输业务。",
-      "stage2_year": "至今",
-      "stage2_text": "投资建成3个堆场（总面积25公顷），满足高标准的仓储和转运需求。",
+      "stage1_year": "2008",
+      "stage1_text": "成立富安商贸运输有限责任公司，开始边贸运输业务。",
+      "stage2_year": "现在",
+      "stage2_text": "完成三个货场（25公顷）的投资，满足高标准存储和转运需求。",
       "stage3_year": "未来",
-      "stage3_text": "建立“塔隆-芝麻”一体化服务链，成为中越贸易的关键枢纽。"
+      "stage3_text": "建立塔隆-支马一体化服务链，成为中越贸易关键枢纽。"
     },
     "facilities": {
-      "warehouseTitle": "仓储系统",
-      "warehouseContent": "公司拥有富英、武城、山港三个主要堆场，总占地面积达25公顷。我们以最高标准，满足货物存储和转运的各项需求。",
+      "warehouseTitle": "仓库系统",
+      "warehouseContent": "拥有富安、武成、山县三个主要货场，总面积达25公顷。我们以最高标准满足所有存储和转运需求。",
       "transportTitle": "运输能力",
-      "transportContent": "提供多种型号的卡车，以匹配客户多样化的运输需求。我们拥有载重量各异的卡车车队，确保满足多式联运的要求。"
+      "transportContent": "提供多样化车队，满足客户各种需求。我们拥有载重范围广泛的车队，确保满足多式联运要求。"
     },
     "process": {
       "title": "进出口流程",
       "steps": {
-        "1": { "title": "收到计划", "desc": "企业将计划和文件提交给公司" },
-        "2": { "title": "办理手续", "desc": "我司办理进口/通关手续" },
-        "3": { "title": "安排车辆", "desc": "接待并安排车辆到指定区域进行转运" },
-        "4": { "title": "转运货物", "desc": "进行专业的货物转运操作" },
-        "5": { "title": "完成", "desc": "完善车辆手续并交付货物" }
+        "1": { "title": "接收计划", "desc": "企业提交计划和单证" },
+        "2": { "title": "海关手续", "desc": "办理进口/通关手续" },
+        "3": { "title": "安排车辆", "desc": "接车并安排至转运区" },
+        "4": { "title": "转运货物", "desc": "专业转运货物" },
+        "5": { "title": "完成交接", "desc": "完成车辆手续并交付货物" }
       }
     },
     "vision": {
       "title": "发展方向",
-      "content": "公司目前正处于基础设施的完善阶段，致力于建设高标准的仓储和物流设施。\n\n我们的长远目标是，将公司业务全面融入由塔隆和芝麻构成的口岸体系，建立一条贯穿越南和中国边境的一体化口岸服务链。塔隆物流将成为连接中越贸易的关键性节点。"
+      "content": "目前，我们正处于完善基础设施阶段，重点建设高标准仓库和物流设施。\n\n长期目标是将业务活动全面融入由塔隆和支马形成的口岸系统，建立沿中越边境的一体化口岸服务链。塔隆物流将成为连接中越贸易的重要节点。"
     },
     "offices": {
-      "title": "办公系统",
-      "halong": "广宁省, 拜寨坊, 黎笋路29号",
-      "caobang": "高平省, 福祉社, 塔隆国际口岸"
+      "title": "办公室网络",
+      "halong": "广宁省下龙市白斋黎尊路29号",
+      "caobang": "高平省福和社塔隆国际口岸"
     }
   },
   "FeaturedServices": {
-    "title": "特色服务",
-    "description": "我们提供全面的物流解决方案，旨在优化您的供应链。"
+    "title": "精选服务",
+    "description": "我们提供全面物流解决方案，旨在优化您的供应链。"
   },
   "LatestNews": {
     "title": "新闻与活动",
@@ -101,115 +101,115 @@
   },
   "ServicesPage": {
     "title": "所有服务",
-    "description": "探索塔隆物流提供的全方位专业物流解决方案，旨在满足您的所有需求。",
-    "noServices": "目前没有任何服务可显示。"
+    "description": "探索塔隆物流提供的全方位专业物流解决方案，满足您的所有需求。",
+    "noServices": "目前没有服务可显示。"
   },
   "ServiceDetail": {
     "ctaTitle": "准备好优化您的供应链了吗？",
-    "ctaButton": "立即获取报价",
+    "ctaButton": "立即请求报价",
     "otherServicesTitle": "探索其他服务"
   },
   "WhyChooseUs": {
     "title": "为什么选择我们？",
-    "point1Title": "领先技术",
-    "point1Text": "应用实时追踪技术、智能仓储管理系统（WMS）和电子报关。",
-    "point2Title": "专业团队",
-    "point2Text": "经验丰富的专家团队随时准备提供24/7的咨询和支持。",
+    "point1Title": "前沿技术",
+    "point1Text": "应用实时追踪技术、智能仓库管理（WMS）和电子海关申报。",
+    "point2Title": "敬业团队",
+    "point2Text": "经验丰富的专家团队随时提供24/7咨询和支持。",
     "point3Title": "战略位置",
-    "point3Text": "位于塔隆国际口岸，是越南和中国之间重要的贸易枢纽。"
+    "point3Text": "位于塔隆国际口岸，连接越南与中国的重要贸易动脉。"
   },
   "Partners": {
-    "title": "深受领先企业的信赖"
+    "title": "深受领先企业信赖"
   },
   "ContactPage": {
     "title": "联系我们",
-    "description": "我们随时准备倾听。通过以下信息与塔隆物流联系，或通过联系表单发送您的请求。",
+    "description": "我们随时倾听。请通过以下信息联系塔隆物流，或通过联系表格发送您的需求。",
     "infoTitle": "联系信息",
     "address": "地址",
     "phone": "电话",
     "email": "电子邮件",
     "salesDept": "销售部",
     "opsDept": "运营部",
-    "hrDept": "人事部",
+    "hrDept": "人力资源部",
     "formTitle": "在线发送请求",
     "faqTitle": "常见问题",
     "faq": {
-      "q1": "公司的工作时间是？",
-      "a1": "我们的行政办公室工作时间为8:00 - 17:00（周一至周六）。但是，我们在塔隆国际口岸的现场团队是24/7运作，以确保持续的货物通关。",
+      "q1": "公司营业时间？",
+      "a1": "行政办公室营业时间为周一至周六8:00-17:00。但塔隆国际口岸现场团队24/7运作，确保货物通关进度。",
       "q2": "如何追踪我的货物？",
-      "a2": "您可以使用菜单栏上的“运单查询”功能，输入您的运单号查看实时状态，或联系我们的热线获取支持。",
-      "q3": "塔隆物流是否处理拼箱货（LCL）？",
-      "a3": "是的。我们为越中之间的拼箱货（LCL）和整箱货（FCL）提供解决方案，成本优化，班期稳定。"
+      "a2": "您可以使用菜单栏中的“追踪”功能，输入运单号查看实时状态，或联系热线获取支持。",
+      "q3": "塔隆物流是否受理拼箱（LCL）运输？",
+      "a3": "是的。我们提供越南-中国双向拼箱（LCL）和整箱（FCL）解决方案，成本优化且排期稳定。"
     }
   },
   "CareersPage": {
-    "title": "工作机会",
+    "title": "职业机会",
     "subtitle": "加入塔隆物流团队，共创未来。",
-    "noOpenings": "我们目前没有空缺职位。",
-    "noOpeningsDesc": "请稍后回来查看，或将您的简历发送到我们的人事邮箱备案。",
+    "noOpenings": "目前没有空缺职位。",
+    "noOpeningsDesc": "请稍后查看，或将简历发送至人力资源邮箱备案。",
     "errorTitle": "无法加载职位列表",
-    "errorDesc": "请检查您的网络连接并重试。",
+    "errorDesc": "请检查网络连接并重试。",
     "retry": "重试"
   },
   "CareerDetailPage": {
     "jobDescription": "职位描述",
-    "requirements": "应聘要求",
-    "applyTitle": "申请该职位",
-    "applySuccess": "感谢您的申请！我们会审核您的资料，如果合适会与您联系。",
-    "applyError": "申请失败，请重试。",
+    "requirements": "候选人要求",
+    "applyTitle": "提交申请",
+    "applySuccess": "感谢您的申请！我们将审核您的资料，如合适将联系您。",
+    "applyError": "提交失败，请重试。",
     "form": {
       "nameLabel": "姓名",
       "emailLabel": "电子邮件",
       "phoneLabel": "电话号码",
-      "cvLabel": "上传简历 (.pdf, .doc, .docx - 最大5MB)",
+      "cvLabel": "上传简历（.pdf, .doc, .docx - 最大5MB）",
       "submitButton": "提交申请",
       "submittingButton": "提交中..."
     },
     "validation": {
-      "nameRequired": "姓名是必填项",
-      "emailInvalid": "电子邮件地址无效",
+      "nameRequired": "姓名必填",
+      "emailInvalid": "电子邮件无效",
       "phoneInvalid": "电话号码无效",
       "cvRequired": "请上传您的简历",
-      "cvMaxSize": "文件大小不能超过5MB",
-      "cvFormat": "只接受.pdf, .doc, .docx格式的文件"
+      "cvMaxSize": "文件大小不得超过5MB",
+      "cvFormat": "仅接受.pdf、.doc、.docx格式"
     },
-    "notFound": "未找到招聘职位。"
+    "notFound": "未找到职位。"
   },
   "ManifestoPage": {
     "title": "我们的宣言",
-    "subtitle": "连接边界 - 走向全球",
+    "subtitle": "连接边境 - 迈向全球",
     "value1Title": "透明",
-    "value1Text": "所有流程、成本和订单状态都数字化，并清晰地提供给客户。",
+    "value1Text": "所有流程、费用和订单状态均数字化并清晰提供给客户。",
     "value2Title": "高效",
-    "value2Text": "致力于缩短通关时间，优化物流成本。",
+    "value2Text": "承诺缩短通关时间，优化物流成本。",
     "value3Title": "创新",
-    "value3Text": "不断研究和应用新技术，创造智能解决方案。",
+    "value3Text": "持续研究并应用新技术，创造智能解决方案。",
     "value4Title": "可持续",
     "value4Text": "业务发展与社会和环境责任并重。"
   },
   "Search": {
     "placeholder": "搜索服务、新闻...",
     "noResults": "未找到结果。",
-    "services": "服务项目",
-    "news": "新闻资讯"
+    "services": "服务",
+    "news": "新闻"
   },
   "TrackingPage": {
-    "title": "追踪您的货物行程",
-    "trackingPlaceholder": "输入一个或多个运单号，用逗号分隔",
+    "title": "追踪运单行程",
+    "trackingPlaceholder": "输入一个或多个AWB代码，用逗号分隔",
     "searchButton": "查询",
-    "loading": "正在加载货物信息...",
+    "loading": "正在加载运单信息...",
     "loadingPage": "正在加载页面...",
     "errorTitle": "发生错误",
-    "errorDescription": "暂时无法加载信息。请稍后再试。",
+    "errorDescription": "目前无法加载信息。请稍后重试。",
     "notFoundTitle": "未找到运单",
-    "notFoundDescription": "我们找不到与代码匹配的任何货物：{awbs}。请检查您的代码。",
+    "notFoundDescription": "未找到匹配代码{awbs}的运单。请检查您的代码。",
     "resultsFor": "显示结果：",
-    "noEvents": "此运单尚无任何事件。"
+    "noEvents": "该运单暂无事件记录。"
   },
   "Footer": {
-    "companyName": "富英运输公司 (塔隆物流)",
-    "taxCode": "税号: 4800166795",
-    "address": "越南, 高平省, 福祉社, 塔隆国际口岸",
+    "companyName": "富安商贸运输有限责任公司（塔隆物流）",
+    "taxCode": "税号：4800166795",
+    "address": "越南高平省福和社塔隆国际口岸",
     "sitemap": "网站地图",
     "legal": "法律",
     "terms": "使用条款",
@@ -217,15 +217,15 @@
     "quickContact": "快速联系",
     "formName": "姓名",
     "formEmail": "您的电子邮件",
-    "formMessage": "留言内容...",
+    "formMessage": "您的请求内容...",
     "formPhone": "电话号码",
-    "formServiceId": "感兴趣的服务 (可选)",
+    "formServiceId": "感兴趣的服务（可选）",
     "formSend": "发送请求",
-    "formSuccess": "谢谢！我们已收到您的请求。",
+    "formSuccess": "感谢！我们已收到您的请求。",
     "formSubmitting": "发送中...",
     "formError": "发生错误，请重试。",
-    "copyright": "© 2025 塔隆物流 (富英运输公司). 版权所有。",
-    "tracking": "运单查询"
+    "copyright": "© 2025 塔隆物流（富安商贸运输有限责任公司）。保留所有权利。",
+    "tracking": "运单追踪"
   },
   "Errors": {
     "goBackTo": "返回{pageName}",
@@ -233,29 +233,29 @@
     "failedToLoad": "加载数据失败。"
   },
   "NotFound": {
-    "title": "404 - 找不到页面",
-    "description": "抱歉，您正在查找的页面不存在或已被移动。",
+    "title": "404 - 页面未找到",
+    "description": "抱歉，您查找的页面不存在或已被移动。",
     "goHome": "返回首页"
+  },
+  "TermsPage": {
+    "title": "使用条款",
+    "lastUpdated": "最后更新：2025年10月18日",
+    "content": "欢迎访问塔隆物流（富安商贸运输有限责任公司）官方网站。\n\n访问并使用网站talunglogistics.com，即表示您同意遵守以下条款和条件。\n\n### 1. 用户权利与责任\n- 用户在使用报价请求或联系表格时有责任提供准确信息。\n- 任何旨在破坏、攻击或未经授权访问系统的行为均严格禁止。\n\n### 2. 知识产权\n- 本网站所有内容、图片和商标均归塔隆物流所有。\n- 未经书面许可复制或使用任何材料均构成侵权。\n\n### 3. 免责声明\n- 网站信息仅供参考。我们不对因使用这些信息而造成的任何损失承担责任。\n\n### 4. 条款变更\n塔隆物流保留随时修改这些条款的权利。"
+  },
+  "PrivacyPage": {
+    "title": "隐私政策",
+    "lastUpdated": "最后更新：2025年10月18日",
+    "content": "塔隆物流致力于保护您的个人信息。\n\n本政策解释了我们在您访问网站时如何收集、使用和保护您的数据。\n\n### 1. 信息收集\n我们通过联系表格收集您提供的信息，包括：姓名、电子邮件、电话号码。\n\n### 2. 信息使用\n您的信息用于联系您、回复请求并提升服务质量。\n\n### 3. 安全与共享\n我们承诺未经您的同意不与任何第三方共享您的信息，除非法律要求。\n\n### 4. 您的权利\n您有权请求访问、修改或删除个人信息，请通过电子邮件**info@talunglogistics.com**联系我们。"
   },
   "Brand": {
     "name": "塔隆物流"
   },
   "Metadata": {
-    "defaultTitle": "塔隆物流 | 越中边境物流解决方案",
-    "defaultDescription": "在塔隆国际口岸提供全面的越中物流解决方案：仓储、进出口、运输。",
-    "keywords": "越中物流, 跨境运输, 塔隆口岸, 富英, 高平仓储, 中国进出口",
+    "defaultTitle": "塔隆物流 | 富安商贸运输有限责任公司",
+    "defaultDescription": "塔隆国际口岸全面中越物流解决方案：仓储、进出口、运输。",
+    "keywords": "中越物流,边贸运输,塔隆口岸,富安,高平仓储,中国进出口",
     "serviceTitle": "{serviceName} - 塔隆物流",
     "newsTitle": "{newsTitle} - 塔隆物流",
-    "careerTitle": "招聘: {jobTitle} - 塔隆物流"
-  },
-  "TermsPage": {
-    "title": "使用条款",
-    "lastUpdated": "最后更新: 2025年10月18日",
-    "content": "欢迎访问塔隆物流（隶属于富英运输公司）的官方网站。\n\n访问和使用talunglogistics.com，即表示您同意遵守以下条款和条件。\n\n### 1. 用户的权利与责任\n- 用户在使用报价或联系表单时有责任提供准确的信息。\n- 严禁任何以恶意目的、攻击或未经授权访问本网站的行为。\n\n### 2. 知识产权\n- 本网站的所有内容、图像和商标均为塔隆物流的财产。\n- 未经书面许可，任何用于商业目的的复制或使用均构成侵权。\n\n### 3. 免责声明\n- 本网站上的信息仅供参考。我们对因使用此信息而引起的任何损失概不负责。\n\n### 4. 条款变更\n塔隆物流保留随时修改这些条款的权利。"
-  },
-  "PrivacyPage": {
-    "title": "隐私政策",
-    "lastUpdated": "最后更新: 2025年10月18日",
-    "content": "塔隆物流承诺保护您的个人信息。\n\n本政策解释了当您访问我们的网站时，我们如何收集、使用和保护您的数据。\n\n### 1. 信息收集\n我们收集您通过联系表单提供的信息，包括：姓名、电子邮件、电话号码。\n\n### 2. 信息使用\n您的信息用于联系您、回复您的请求以及改善我们的服务。\n\n### 3. 安全与共享\n我们承诺，除非法律要求，否则未经您的同意，不会将您的信息分享给任何第三方。\n\n### 4. 您的权利\n您有权通过发送电子邮件至 **info@talunglogistics.com** 来请求访问、更正或删除您的个人信息。"
+    "careerTitle": "招聘：{jobTitle} - 塔隆物流"
   }
 }
