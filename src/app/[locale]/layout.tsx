@@ -45,7 +45,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { template: `%s | ${brandName}`, default: defaultTitle },
     description: defaultDescription,
     keywords: keywords,
-    icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
+    icons: {
+      icon: '/logo.png',  // Hoặc array nếu muốn nhiều kích thước
+      apple: '/apple-touch-icon.png',  // Nếu có riêng cho iOS
+    },
     openGraph: {
       title: defaultTitle,
       description: defaultDescription,
