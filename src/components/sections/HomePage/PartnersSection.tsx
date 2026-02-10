@@ -112,6 +112,7 @@ const partnerLogos = [
   '/partners/capitaland.png',
   '/partners/glotrans.png',
   '/partners/chimahtt.png',
+  '/partners/xnk-logistics.png',
 ];
 
 export default function PartnersSection() {
