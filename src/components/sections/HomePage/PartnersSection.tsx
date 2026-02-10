@@ -102,13 +102,16 @@ const PartnerLogo = styled.div`
 // --- Main Component ---
 // Placeholder logos (Bạn hãy thay thế bằng ảnh thật trong public/partners/)
 const partnerLogos = [
-  '/partners/logo1.svg',
-  '/partners/logo1.svg',
-  '/partners/logo1.svg',
-  '/partners/logo1.svg',
-  '/partners/logo1.svg',
-  '/partners/logo1.svg',
-  '/partners/logo1.svg',
+  '/partners/bhtscm.png',
+  '/partners/mn-shipping.png',
+  '/partners/vla.png',
+  '/partners/vinafco.png',
+  '/partners/fm-logistics.png',
+  '/partners/hpl.png',
+  '/partners/hankyu-hanshin.png',
+  '/partners/capitaland.png',
+  '/partners/glotrans.png',
+  '/partners/chimahtt.png',
 ];
 
 export default function PartnersSection() {
