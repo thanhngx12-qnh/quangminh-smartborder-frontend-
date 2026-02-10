@@ -8,9 +8,9 @@ import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 
 // --- Styled Components ---
 const SectionWrapper = styled.section`
-  padding: 60px 0;
-  background-color: ${({ theme }) => theme.colors.white}; // Nền trắng sạch sẽ
-  border-top: 1px solid ${({ theme }) => theme.colors.border}; // Đường kẻ nhẹ ngăn cách
+  padding: 80px 0;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
   overflow: hidden;
 `;
 
@@ -20,20 +20,32 @@ const Container = styled.div`
   padding: 0 20px;
 `;
 
-const Title = styled.h4`
+const Title = styled.h2`
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 16px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.textMuted};
-  margin-bottom: 40px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-size: 32px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: 60px;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: ${({ theme }) => theme.colors.accent};
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
 `;
 
 const scroll = keyframes`
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* Di chuyển 50% vì ta nhân đôi danh sách */
+  100% { transform: translateX(-50%); }
 `;
 
 const SliderContainer = styled.div`
@@ -41,23 +53,9 @@ const SliderContainer = styled.div`
   width: 100%;
   overflow: hidden;
   
-  // Hiệu ứng làm mờ 2 bên (Fade edges)
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+  mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
 
-  // Pause on hover
   &:hover .track {
     animation-play-state: paused;
   }
@@ -65,42 +63,40 @@ const SliderContainer = styled.div`
 
 const SliderTrack = styled.div`
   display: flex;
+  align-items: center; // Quan trọng: Căn giữa các logo theo chiều dọc
   width: fit-content;
   gap: 80px;
-  animation: ${scroll} 30s linear infinite;
-  padding: 20px 0; // Padding để tránh shadow bị cắt (nếu có)
+  animation: ${scroll} 40s linear infinite;
   
   @media (max-width: 768px) {
-    gap: 40px;
-    animation-duration: 20s; // Chạy nhanh hơn chút trên mobile
+    gap: 60px;
+    animation-duration: 25s;
   }
 `;
 
-const PartnerLogo = styled.div`
-  position: relative;
-  width: 160px;
-  height: 60px;
-  flex-shrink: 0;
+// SỬA ĐỔI: Bỏ chiều cao và chiều rộng cố định
+const PartnerLogo = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  // Cho phép container co giãn theo nội dung
+  height: 60px; // Giữ lại chiều cao để các item trên track thẳng hàng
   
   img {
-    object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.5;
+    filter: grayscale(100%) brightness(1.2);
+    opacity: 0.7;
     transition: all 0.3s ease;
   }
 
   &:hover img {
-    filter: grayscale(0%);
+    filter: grayscale(0%) brightness(1);
     opacity: 1;
     transform: scale(1.1);
   }
 `;
 
 // --- Main Component ---
-// Placeholder logos (Bạn hãy thay thế bằng ảnh thật trong public/partners/)
 const partnerLogos = [
   '/partners/bhtscm.png',
   '/partners/mn-shipping.png',
@@ -115,12 +111,14 @@ const partnerLogos = [
   '/partners/xnk-logistics.png',
 ];
 
+const generateAltText = (src: string) => {
+  const fileName = src.split('/').pop()?.split('.')[0] || 'partner logo';
+  return fileName.replace(/-/g, ' ').toUpperCase();
+};
+
 export default function PartnersSection() {
   const t = useTranslations('Partners');
-
-  // Nhân đôi danh sách logo đủ nhiều để tạo hiệu ứng vô tận mượt mà
-  // (Nhân 4 lần để đảm bảo lấp đầy màn hình rộng nhất)
-  const duplicatedLogos = [...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos];
+  const duplicatedLogos = [...partnerLogos, ...partnerLogos];
 
   return (
     <SectionWrapper>
@@ -130,14 +128,18 @@ export default function PartnersSection() {
           <SliderContainer>
             <SliderTrack className="track">
               {duplicatedLogos.map((logoSrc, index) => (
-                <PartnerLogo key={index}>
-                  {/* Sử dụng ảnh thật hoặc fallback text nếu chưa có ảnh */}
+                <PartnerLogo key={index} href="#" target="_blank" rel="noopener noreferrer">
+                  {/* SỬA ĐỔI: Áp style trực tiếp vào Image component */}
                   <Image 
                     src={logoSrc} 
-                    alt={`Partner ${index}`} 
-                    width={160} 
-                    height={60}
-                    style={{ width: 'auto', height: '100%' }}
+                    alt={generateAltText(logoSrc)} 
+                    width={160} // Giữ lại để gợi ý aspect ratio
+                    height={60} // Giữ lại để gợi ý aspect ratio
+                    style={{
+                      objectFit: 'contain', // Đảm bảo toàn bộ ảnh được hiển thị
+                      width: 'auto',      // Để chiều rộng tự điều chỉnh
+                      maxHeight: '60px'     // Giới hạn chiều cao tối đa của ảnh
+                    }}
                   />
                 </PartnerLogo>
               ))}
