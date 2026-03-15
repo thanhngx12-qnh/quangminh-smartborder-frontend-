@@ -9,19 +9,19 @@
     "contact": "Contact"
   },
   "HeaderActions": {
-    "tracking": "Tracking",
-    "quote": "Get Quote"
+    "tracking": "Track Shipment",
+    "quote": "Get a Quote"
   },
   "CtaButton": {
-    "quote": "Request a Quote"
+    "quote": "Request a Quote Now"
   },
   "General": {
     "search": "Search",
     "language": "Language",
     "theme": "Theme",
     "viewAll": "View All",
-    "viewAllServices": "View All Services",
-    "contact": "Contact"
+    "viewAllServices": "Explore All Services",
+    "contact": "Contact Us"
   },
   "Social": {
     "facebook": "Facebook",
@@ -30,232 +30,232 @@
     "whatsapp": "WhatsApp"
   },
   "Hero": {
-    "label": "RELIABLE LOGISTICS PARTNER AT TÀ LÙNG INTERNATIONAL BORDER GATE",
+    "label": "STRATEGIC LOGISTICS PARTNER AT TA LUNG INTERNATIONAL BORDER GATE",
     "title": "CONNECTING BORDERS\nREACHING THE WORLD",
-    "subtitle": "With over 15 years of experience in warehouse operations, customs procedures, and international transportation, we deliver fast, safe, and cost-optimized clearance solutions for businesses.",
+    "subtitle": "Establishing our position since 2008, Ta Lung Quang Minh proudly provides the safest, fastest, and most cost-effective solutions for customs clearance, warehousing, and multimodal transport.",
     "ctaServices": "Explore Services",
-    "ctaContact": "Contact for Consultation"
+    "ctaContact": "Get Expert Advice"
   },
   "Kpi": {
-    "storageTitle": "Warehousing",
+    "storageTitle": "Warehouse Area",
     "storageValue": "25 Ha",
-    "storageDesc": "Total area of 3 yards",
-    "containerTitle": "Containers / Day",
+    "storageDesc": "Scale of 3 strategic yards",
+    "containerTitle": "Processing Capacity",
     "containerValue": "100+",
-    "containerDesc": "Clearance capacity",
-    "customsTitle": "Customs",
+    "containerDesc": "Containers cleared daily",
+    "customsTitle": "Clearance Speed",
     "customsValue": "<2 Hours",
     "customsDesc": "Average processing time"
   },
   "AboutPage": {
-    "heroTitle": "ABOUT TÀ LÙNG LOGISTICS",
-    "heroSubtitle": "Over 15 years building logistics solutions at Tà Lùng International Border Gate",
+    "heroTitle": "ABOUT TA LUNG QUANG MINH",
+    "heroSubtitle": "Over a decade of building a seamless supply chain at Ta Lung International Border Gate",
     "intro": {
-      "title": "OVERVIEW",
-      "content": "Phú Anh Trading and Transportation Co., Ltd (brand: Tà Lùng Logistics) was established in 2008. As trade between Vietnam and China through Tà Lùng International Border Gate - Cao Bằng province intensified, the company invested in a system of warehouses and collection points for import-export goods in the area.\n\nThe company specializes in: Warehousing; Truck terminals; Import-export; Logistics; International road transportation."
+      "title": "COMPANY OVERVIEW",
+      "content": "Established in 2008, formerly known as Phu Anh Trading and Transportation Co., Ltd., Ta Lung Quang Minh Joint Stock Company has rapidly grown to become a leading force in border logistics. Capturing the trade flow between Vietnam and China through Ta Lung International Border Gate, we have heavily invested in international-standard warehousing systems and import-export cargo gathering sites.\n\nOur comprehensive service ecosystem covers: Warehousing, Bus Stations, Customs Agency, and International Multimodal Transport (road, waterway, railway)."
     },
     "missionTitle": "Mission & Vision",
-    "missionText": "Our mission is to provide transparent, efficient, and sustainable logistics solutions. Our vision is to become a key hub connecting China-Vietnam trade.",
-    "timelineTitle": "DEVELOPMENT JOURNEY",
+    "missionText": "Our mission is to eliminate all customs clearance barriers and optimize the supply chain through transparency and speed. Our strategic vision is to become the most crucial link on the Vietnam - China economic corridor.",
+    "timelineTitle": "DEVELOPMENT MILESTONES",
     "timeline": {
       "stage1_year": "2008",
-      "stage1_text": "Established Phú Anh Trading and Transportation Co., Ltd, beginning border trade transportation operations.",
-      "stage2_year": "Present",
-      "stage2_text": "Completed investment in a system of 3 yards (25 ha), meeting high-standard storage and transloading needs.",
-      "stage3_year": "Future",
-      "stage3_text": "Establish an integrated service chain between Tà Lùng - Chi Ma, becoming a key China-Vietnam trade hub."
+      "stage1_text": "Established Phu Anh Trading and Transportation Co., Ltd., laying the first bricks for cross-border transport services.",
+      "stage2_year": "Innovation",
+      "stage2_text": "Transformed into Ta Lung Quang Minh Joint Stock Company, expanded infrastructure investment to 25 hectares, establishing new customs clearance standards.",
+      "stage3_year": "The Future",
+      "stage3_text": "Fully integrate into the border gate system formed by Ta Lung and Chi Ma, creating an integrated logistics service chain along the border."
     },
     "facilities": {
-      "warehouseTitle": "WAREHOUSE SYSTEM",
-      "warehouseContent": "We own 3 main yards: Phú Anh, Vũ Thành, and Sơn Cảng, with a total area of up to 25 hectares. We meet all storage and transloading needs with the highest standards.",
-      "transportTitle": "TRANSPORTATION CAPACITY",
-      "transportContent": "We provide a diverse fleet suitable for every customer need. Our trucks offer a wide range of load capacities, ensuring multimodal transportation requirements are met."
+      "warehouseTitle": "LARGE-SCALE WAREHOUSING INFRASTRUCTURE",
+      "warehouseContent": "Owning 3 strategic yards: Phu Anh, Vu Thanh, and Son Cang with a total area of up to 25 hectares. The closed-design infrastructure perfectly meets the strictest standards for storing and transshipping heavy-tonnage cargo.",
+      "transportTitle": "DIVERSE TRANSPORTATION CAPACITY",
+      "transportContent": "Operating a robust fleet of trucks with various tonnages, ready to meet all multimodal transportation challenges of enterprises with flexibility and absolute safety."
     },
     "process": {
-      "title": "IMPORT-EXPORT PROCEDURE",
+      "title": "PROFESSIONAL OPERATING PROCESS",
       "steps": {
-        "1": { "title": "Receive Plan", "desc": "Business submits plan and documents" },
-        "2": { "title": "Customs Procedures", "desc": "Perform import/customs clearance procedures" },
-        "3": { "title": "Arrange Vehicles", "desc": "Receive and arrange vehicles to the transloading area" },
-        "4": { "title": "Transload Goods", "desc": "Professionally transload goods" },
-        "5": { "title": "Completion", "desc": "Complete vehicle procedures and hand over goods" }
+        "1": { "title": "Receive & Evaluate", "desc": "Receive plans, documents, and consult on optimal solutions" },
+        "2": { "title": "Customs Declaration", "desc": "Handle legal procedures and ultra-fast customs clearance" },
+        "3": { "title": "Vehicle Dispatch", "desc": "Direct and coordinate vehicles to specialized transshipment areas" },
+        "4": { "title": "Safe Transshipment", "desc": "Safely transship goods with specialized equipment and a professional team" },
+        "5": { "title": "Completion & Handover", "desc": "Complete exit procedures, track the final mile, and hand over the cargo" }
       }
     },
     "vision": {
-      "title": "DEVELOPMENT DIRECTION",
-      "content": "Currently, we are in the phase of completing infrastructure, focusing on building high-standard warehouses and logistics facilities.\n\nOur long-term goal is to fully integrate business operations into the border gate system formed by Tà Lùng and Chi Ma, establishing an integrated border service chain along the Vietnam-China border. Tà Lùng Logistics will become a vital node connecting China-Vietnam trade."
+      "title": "FUTURE ORIENTATION",
+      "content": "Ta Lung Quang Minh is currently undergoing a strong transformation, focusing on digitizing processes and comprehensively upgrading logistics warehousing infrastructure.\n\nOur ambition does not stop at Ta Lung. The long-term goal is to seamlessly connect business operations into the Ta Lung and Chi Ma border gate system, establishing a closed border service chain. Thereby, affirming our position as a key intersection connecting trade between Vietnam and China."
     },
     "offices": {
-      "title": "OFFICE NETWORK",
-      "halong": "No. 29 Le Duan, Bai Chay, Quang Ninh",
-      "caobang": "Tà Lùng International Border Gate, Phuc Hoa Commune, Cao Bang Province"
+      "title": "BRANCH NETWORK",
+      "halong": "No. 29 Le Duan, Bai Chay Ward, Ha Long City, Quang Ninh Province",
+      "caobang": "Ta Lung International Border Gate Area, Phuc Hoa Commune, Cao Bang Province"
     }
   },
   "FeaturedServices": {
-    "title": "Featured Services",
-    "description": "We provide comprehensive logistics solutions designed to optimize your supply chain."
+    "title": "Comprehensive Logistics Solutions",
+    "description": "Providing tailored, closed-loop service chains designed to thoroughly solve your business's operational and customs clearance challenges."
   },
   "LatestNews": {
-    "title": "News & Events",
-    "viewAll": "View all news"
+    "title": "Trade News & Insights",
+    "viewAll": "Read all news"
   },
   "ServicesPage": {
-    "title": "All Services",
-    "description": "Explore the full range of professional logistics solutions that Tà Lùng Logistics offers, tailored to meet all your needs.",
-    "noServices": "There are currently no services to display."
+    "title": "Service Ecosystem",
+    "description": "From warehousing and customs to international transport, explore the top-tier service facilities operated by the Ta Lung Quang Minh team.",
+    "noServices": "Service data is currently being updated."
   },
   "ServiceDetail": {
-    "ctaTitle": "Ready to optimize your supply chain?",
-    "ctaButton": "Request a Quote Now",
-    "otherServicesTitle": "Explore Other Services"
+    "ctaTitle": "Need a more optimal logistics plan?",
+    "ctaButton": "Contact for Solutions",
+    "otherServicesTitle": "Related Services"
   },
   "WhyChooseUs": {
-    "title": "Why Choose Us?",
-    "point1Title": "Cutting-Edge Technology",
-    "point1Text": "We apply real-time tracking technology, smart warehouse management (WMS), and electronic customs declaration.",
-    "point2Title": "Dedicated Team",
-    "point2Text": "Our experienced experts are always ready to provide consultation and 24/7 support.",
-    "point3Title": "Strategic Location",
-    "point3Text": "Located right at Tà Lùng International Border Gate, the vital trade link between Vietnam and China."
+    "title": "Guaranteeing Your Success",
+    "point1Title": "Closed & Large-Scale Infrastructure",
+    "point1Text": "Owning a 25-hectare gathering yard fully equipped with the most modern lifting and handling equipment right at the center of trade.",
+    "point2Title": "Practical Experience",
+    "point2Text": "A team of experts with deep knowledge of cross-border trade policies, flexibly handling all customs clearance situations 24/7.",
+    "point3Title": "Speed & Transparency",
+    "point3Text": "Committed to minimizing yard storage time, with clear procedural workflows and transparent costs with no hidden fees."
   },
   "Partners": {
-    "title": "Trusted by leading enterprises"
+    "title": "Trusted partner of hundreds of import-export enterprises"
   },
   "ContactPage": {
-    "title": "Contact Us",
-    "description": "We are always ready to listen. Connect with Tà Lùng Logistics using the information below or send your request via the contact form.",
-    "infoTitle": "Contact Information",
+    "title": "Connect With Us",
+    "description": "The Ta Lung Quang Minh team is always ready to listen and solve your supply chain challenges. Contact us today.",
+    "infoTitle": "Headquarters & Contact",
     "address": "Address",
-    "phone": "Phone",
-    "email": "Email",
-    "salesDept": "Sales Department",
-    "opsDept": "Operations Department",
-    "hrDept": "Human Resources Department",
-    "formTitle": "Send Request Online",
+    "phone": "Hotline",
+    "email": "Support Email",
+    "salesDept": "Sales & Marketing Department",
+    "opsDept": "Import-Export Operations Center",
+    "hrDept": "Human Resources - Recruitment",
+    "formTitle": "Submit Professional Request",
     "faqTitle": "Frequently Asked Questions",
     "faq": {
-      "q1": "What are the company's working hours?",
-      "a1": "Administrative office operates from 8:00 - 17:00 (Monday - Saturday). However, our on-site team at Tà Lùng International Border Gate works 24/7 to ensure smooth customs clearance.",
-      "q2": "How can I track my shipment?",
-      "a2": "You can use the 'Tracking' feature in the menu bar, enter the AWB number to view real-time status, or contact the Hotline for assistance.",
-      "q3": "Does Tà Lùng Logistics handle less-than-container-load (LCL) shipments?",
-      "a3": "Yes. We provide both LCL consolidation and full-container-load (FCL) solutions for two-way Vietnam-China transport with optimized costs and stable schedules."
+      "q1": "What is the average customs clearance processing speed at the company?",
+      "a1": "With valid documents and prior preparation, customs procedures at Ta Lung Quang Minh's yard average less than 2 working hours.",
+      "q2": "Does the company support the transshipment of special cargo?",
+      "a2": "Absolutely. With a diverse equipment system and 25 hectares of space, we have the capacity to safely handle and transship all types of goods, from agricultural products and minerals to oversized and overweight machinery.",
+      "q3": "Can I request waterway or railway transportation?",
+      "a3": "Yes. Ta Lung Quang Minh proudly provides multimodal transportation solutions, flexibly combining road, waterway, and railway to optimize freight rates according to your needs."
     }
   },
   "CareersPage": {
-    "title": "Career Opportunities",
-    "subtitle": "Join the Tà Lùng Logistics team to shape the future together.",
-    "noOpenings": "We currently have no open positions.",
-    "noOpeningsDesc": "Please check back later or send your CV to the HR email to be kept on file.",
-    "errorTitle": "Unable to load job listings",
-    "errorDesc": "Please check your connection and try again.",
-    "retry": "Retry"
+    "title": "Career Development",
+    "subtitle": "Become a piece of the puzzle in the leading logistics ecosystem in the border region.",
+    "noOpenings": "There are currently no suitable vacancies.",
+    "noOpeningsDesc": "However, we always welcome talent. Please proactively send your CV to the HR department so you don't miss out on future opportunities.",
+    "errorTitle": "System under maintenance",
+    "errorDesc": "Cannot load the recruitment list at this time, please try again later.",
+    "retry": "Reload Page"
   },
   "CareerDetailPage": {
-    "jobDescription": "Job Description",
-    "requirements": "Candidate Requirements",
-    "applyTitle": "Submit Application",
-    "applySuccess": "Thank you for your application! We will review your profile and contact you if suitable.",
-    "applyError": "Submission failed, please try again.",
+    "jobDescription": "Job Details",
+    "requirements": "Candidate Profile",
+    "applyTitle": "Join Us",
+    "applySuccess": "Your application has been recorded! The recruitment department will respond shortly.",
+    "applyError": "Submission interrupted, please check and try again.",
     "form": {
       "nameLabel": "Full Name",
-      "emailLabel": "Email",
-      "phoneLabel": "Phone Number",
-      "cvLabel": "Upload CV (.pdf, .doc, .docx - Max 5MB)",
+      "emailLabel": "Email Address",
+      "phoneLabel": "Contact Phone Number",
+      "cvLabel": "Attach CV (.pdf, .doc, .docx - Size < 5MB)",
       "submitButton": "Submit Application",
-      "submittingButton": "Submitting..."
+      "submittingButton": "Processing..."
     },
     "validation": {
-      "nameRequired": "Full name is required",
-      "emailInvalid": "Invalid email",
-      "phoneInvalid": "Invalid phone number",
-      "cvRequired": "Please upload your CV",
-      "cvMaxSize": "File size must not exceed 5MB",
-      "cvFormat": "Only .pdf, .doc, .docx files are accepted"
+      "nameRequired": "Please enter your full name.",
+      "emailInvalid": "Incorrect email format.",
+      "phoneInvalid": "Invalid phone number.",
+      "cvRequired": "Please attach your Curriculum Vitae (CV).",
+      "cvMaxSize": "File size exceeds the 5MB limit.",
+      "cvFormat": "Unsupported file format."
     },
-    "notFound": "Job position not found."
+    "notFound": "This job has expired or does not exist."
   },
   "ManifestoPage": {
-    "title": "Our Manifesto",
+    "title": "Value Manifesto",
     "subtitle": "CONNECTING BORDERS - REACHING THE WORLD",
-    "value1Title": "Transparency",
-    "value1Text": "All processes, costs, and order statuses are digitized and provided to customers clearly.",
-    "value2Title": "Efficiency",
-    "value2Text": "Committed to shortening clearance time and optimizing logistics costs.",
-    "value3Title": "Innovation",
-    "value3Text": "Continuously researching and applying new technologies to create smart solutions.",
-    "value4Title": "Sustainability",
-    "value4Text": "Business growth paired with social and environmental responsibility."
+    "value1Title": "Accuracy & Transparency",
+    "value1Text": "All processes from quoting to customs clearance are standardized. Customers clearly understand all costs and cargo routes.",
+    "value2Title": "Speed & Flexibility",
+    "value2Text": "Time is customer profit. We react quickly to remove all bottlenecks in the operational stages.",
+    "value3Title": "Growing Together",
+    "value3Text": "The success of our partners is the measure of our capability. Ta Lung Quang Minh aims for long-term strategic partnerships.",
+    "value4Title": "Community Responsibility",
+    "value4Text": "Business operations are inseparable from environmental awareness and contributing to the economic prosperity of the border region."
   },
   "Search": {
-    "placeholder": "Search services, news...",
-    "noResults": "No results found.",
+    "placeholder": "Type keywords to search...",
+    "noResults": "No results found matching your keywords.",
     "services": "Services",
     "news": "News"
   },
   "TrackingPage": {
-    "title": "Track Your Shipment",
-    "trackingPlaceholder": "Enter one or more AWB codes, separated by commas",
-    "searchButton": "Search",
-    "loading": "Loading shipment information...",
-    "loadingPage": "Loading page...",
-    "errorTitle": "An error occurred",
-    "errorDescription": "Unable to load information at this time. Please try again later.",
-    "notFoundTitle": "Shipment not found",
-    "notFoundDescription": "We could not find any shipments matching the code(s): {awbs}. Please double-check your code.",
-    "resultsFor": "Showing results for:",
-    "noEvents": "No events recorded for this shipment yet."
+    "title": "Waybill Tracking Center",
+    "trackingPlaceholder": "Enter the Air Waybill (AWB) number to track...",
+    "searchButton": "Check",
+    "loading": "System is retrieving data...",
+    "loadingPage": "Connecting...",
+    "errorTitle": "Connection Error",
+    "errorDescription": "Server is busy, please try again in a few minutes.",
+    "notFoundTitle": "Invalid Waybill Number",
+    "notFoundDescription": "The system did not record data for code: {awbs}. Please verify the information with the sender.",
+    "resultsFor": "Current status for:",
+    "noEvents": "Shipment is awaiting its first status update."
   },
   "Footer": {
-    "companyName": "Phú Anh Trading and Transportation Co., Ltd (Tà Lùng Logistics)",
-    "taxCode": "Tax code: 4800166795",
-    "address": "Tà Lùng International Border Gate, Phuc Hoa Commune, Cao Bang Province, Vietnam",
+    "companyName": "Ta Lung Quang Minh Joint Stock Company",
+    "taxCode": "Business Code / Tax ID: 4800166795",
+    "address": "Headquarters: Ta Lung International Border Gate, Phuc Hoa Commune, Cao Bang Province, Vietnam",
     "sitemap": "Sitemap",
-    "legal": "Legal",
-    "terms": "Terms of Use",
+    "legal": "Legal Information",
+    "terms": "Terms of Service",
     "privacy": "Privacy Policy",
-    "quickContact": "Quick Contact",
-    "formName": "Full Name",
-    "formEmail": "Your Email",
-    "formMessage": "Your request...",
+    "quickContact": "Send a Quick Message",
+    "formName": "Your Name",
+    "formEmail": "Contact Email",
+    "formMessage": "How can we help you?",
     "formPhone": "Phone Number",
-    "formServiceId": "Interested Service (Optional)",
-    "formSend": "Send Request",
-    "formSuccess": "Thank you! We have received your request.",
-    "formSubmitting": "Sending...",
-    "formError": "An error occurred, please try again.",
-    "copyright": "© 2025 Tà Lùng Logistics (Phú Anh Trading and Transportation Co., Ltd). All rights reserved.",
-    "tracking": "Track Shipment"
+    "formServiceId": "Service of Interest",
+    "formSend": "Submit Request",
+    "formSuccess": "Request sent successfully. Our specialist will call you back shortly.",
+    "formSubmitting": "System is receiving...",
+    "formError": "Transmission error, please resend.",
+    "copyright": "© 2026 Ta Lung Quang Minh. All rights reserved.",
+    "tracking": "Track Route"
   },
   "Errors": {
-    "goBackTo": "Back to {pageName}",
-    "retry": "Retry",
-    "failedToLoad": "Failed to load data."
+    "goBackTo": "Return to {pageName}",
+    "retry": "Reload",
+    "failedToLoad": "Cannot fetch data from the server."
   },
   "NotFound": {
     "title": "404 - Page Not Found",
-    "description": "Sorry, the page you are looking for does not exist or has been moved.",
-    "goHome": "Back to Home"
+    "description": "The URL address you accessed may have been changed or removed.",
+    "goHome": "Return to Home Screen"
   },
   "TermsPage": {
-    "title": "Terms of Use",
-    "lastUpdated": "Last updated: October 18, 2025",
-    "content": "Welcome to the official website of Tà Lùng Logistics (Phú Anh Trading and Transportation Co., Ltd).\n\nBy accessing and using the website talunglogistics.com, you agree to comply with the terms and conditions outlined below.\n\n### 1. USER RIGHTS AND RESPONSIBILITIES\n- Users are responsible for providing accurate information when using quote request or contact forms.\n- Any actions aimed at damaging, attacking, or unauthorized access to the system are strictly prohibited.\n\n### 2. INTELLECTUAL PROPERTY\n- All content, images, and trademarks on this website are owned by Tà Lùng Logistics.\n- Copying or using any material without written permission constitutes a violation.\n\n### 3. DISCLAIMER\n- Information on the website is provided for reference purposes only. We are not liable for any losses arising from the use of this information.\n\n### 4. CHANGES TO TERMS\nTà Lùng Logistics reserves the right to modify these terms at any time."
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: March 15, 2026",
+    "content": "Welcome to the official web portal of Ta Lung Quang Minh Joint Stock Company.\n\nBy accessing and interacting on this website, you are deemed to have understood and accepted the following provisions.\n\n### 1. CUSTOMER OBLIGATIONS\n- Ensure the truthfulness and accuracy of the information provided via quote, application, or contact forms.\n- Strictly prohibit any acts of spreading malicious code, interfering, or illegally exploiting our database system.\n\n### 2. COPYRIGHT AND INTELLECTUAL PROPERTY\n- All text content, brand identity, images, and source code on the website are intellectual property managed by Ta Lung Quang Minh Joint Stock Company.\n- Copying, distributing, or using for commercial purposes without written consent from the company is illegal.\n\n### 3. DISCLAIMER POLICY\n- Information listed on the website is for illustrative and capacity introduction purposes. Depending on the time and actual contract, operating terms may be adjusted. We are not legally responsible for decisions based entirely on website content without direct consultation.\n\n### 4. RIGHT TO UPDATE\nThe company reserves the right to adjust, change, or delete these terms at any time without prior notice."
   },
   "PrivacyPage": {
-    "title": "Privacy Policy",
-    "lastUpdated": "Last updated: October 18, 2025",
-    "content": "Tà Lùng Logistics is committed to protecting your personal information.\n\nThis policy explains how we collect, use, and protect your data when you visit our website.\n\n### 1. INFORMATION COLLECTION\nWe collect information you provide through contact forms, including: Full name, email, phone number.\n\n### 2. USE OF INFORMATION\nYour information is used to contact you, respond to requests, and improve service quality.\n\n### 3. SECURITY AND SHARING\nWe commit not to share your information with any third party without your consent, except where required by law.\n\n### 4. YOUR RIGHTS\nYou have the right to request access, correction, or deletion of your personal information by contacting us at **info@talunglogistics.com**."
+    "title": "Data Privacy Policy",
+    "lastUpdated": "Last updated: March 15, 2026",
+    "content": "Ta Lung Quang Minh Joint Stock Company values and is committed to absolutely protecting the safety of personal data as well as the business information of our partners.\n\n### 1. SCOPE OF COLLECTION\nThe system only records data proactively provided by users via forms (including: Name, phone number, email, request content) and anonymous access data (cookies) for statistical purposes.\n\n### 2. PURPOSE OF USE\nThe collected data is used exclusively for the following purposes:\n- Analyzing requests and contacting to consult on solutions and provide quotes.\n- Supporting the resolution of incidents related to operating processes.\n- Improving the user interface experience on the website.\n\n### 3. CONFIDENTIALITY COMMITMENT\nWe apply the most advanced data encryption standards. All customer information is retained in our internal system, and we commit NOT to sell, exchange, or transfer it to any third party, except in cases requested by competent authorities as prescribed by law.\n\n### 4. USER RIGHTS\nYou have full rights to request the extraction, modification, or deletion of personal information from our system at any time via the official support email: **info@talunglogistics.com**."
   },
   "Brand": {
-    "name": "Tà Lùng Logistics"
+    "name": "Ta Lung Quang Minh Joint Stock Company"
   },
   "Metadata": {
-    "defaultTitle": "Tà Lùng Logistics | Phú Anh Trading and Transportation Co., Ltd",
-    "defaultDescription": "Comprehensive Vietnam-China logistics solutions at Tà Lùng International Border Gate: Warehousing, Import-Export, Transportation.",
-    "keywords": "vietnam china logistics, border trade transportation, ta lung border gate, phu anh, cao bang warehousing, china import export",
-    "serviceTitle": "{serviceName} - Tà Lùng Logistics",
-    "newsTitle": "{newsTitle} - Tà Lùng Logistics",
-    "careerTitle": "Recruitment: {jobTitle} - Tà Lùng Logistics"
+    "defaultTitle": "Ta Lung Quang Minh Logistics | Top-tier Border Trade Transport",
+    "defaultDescription": "Ta Lung Quang Minh Joint Stock Company provides comprehensive Logistics solutions at Ta Lung International Border Gate. Leading in 25ha warehousing, fast customs clearance, and multimodal transport.",
+    "keywords": "ta lung quang minh, ta lung logistics, ta lung international border gate, cao bang transport, cross-border import export, sino-vietnamese warehousing, ta lung customs clearance",
+    "serviceTitle": "{serviceName} | Ta Lung Quang Minh Logistics",
+    "newsTitle": "{newsTitle} | Ta Lung Quang Minh News",
+    "careerTitle": "Careers: {jobTitle} | Ta Lung Quang Minh"
   }
 }

@@ -9,18 +9,18 @@
     "contact": "Liên Hệ"
   },
   "HeaderActions": {
-    "tracking": "Tracking",
-    "quote": "Báo giá"
+    "tracking": "Tra cứu vận đơn",
+    "quote": "Nhận Báo Giá"
   },
   "CtaButton": {
-    "quote": "Yêu Cầu Báo Giá"
+    "quote": "Yêu Cầu Báo Giá Ngay"
   },
   "General": {
     "search": "Tìm kiếm",
     "language": "Ngôn ngữ",
     "theme": "Giao diện",
     "viewAll": "Xem tất cả",
-    "viewAllServices": "Xem Tất Cả Dịch Vụ",
+    "viewAllServices": "Khám Phá Toàn Bộ Dịch Vụ",
     "contact": "Liên hệ"
   },
   "Social": {
@@ -30,232 +30,232 @@
     "whatsapp": "WhatsApp"
   },
   "Hero": {
-    "label": "ĐỐI TÁC LOGISTICS TIN CẬY TẠI CỬA KHẨU QUỐC TẾ TÀ LÙNG",
+    "label": "ĐỐI TÁC LOGISTICS CHIẾN LƯỢC TẠI CỬA KHẨU QUỐC TẾ TÀ LÙNG",
     "title": "KẾT NỐI BIÊN GIỚI\nVƯƠN TỚI TOÀN CẦU",
-    "subtitle": "Hơn 15 năm kinh nghiệm vận hành kho bãi, thủ tục hải quan và vận tải quốc tế. Chúng tôi mang đến giải pháp thông quan nhanh chóng, an toàn và tối ưu chi phí cho doanh nghiệp.",
+    "subtitle": "Khẳng định vị thế từ năm 2008, Tà Lùng Quang Minh tự hào mang đến các giải pháp thông quan, lưu bãi và vận tải đa phương thức an toàn, tốc độ và tối ưu chi phí nhất.",
     "ctaServices": "Khám Phá Dịch Vụ",
-    "ctaContact": "Liên Hệ Tư Vấn"
+    "ctaContact": "Nhận Tư Vấn Chuyên Sâu"
   },
   "Kpi": {
-    "storageTitle": "Kho Bãi",
+    "storageTitle": "Diện Tích Kho Bãi",
     "storageValue": "25 Ha",
-    "storageDesc": "Tổng diện tích 3 bãi",
-    "containerTitle": "Container / Ngày",
+    "storageDesc": "Quy mô 3 bãi trọng điểm",
+    "containerTitle": "Năng Lực Xử Lý",
     "containerValue": "100+",
-    "containerDesc": "Năng lực thông quan",
-    "customsTitle": "Hải Quan",
+    "containerDesc": "Container thông quan mỗi ngày",
+    "customsTitle": "Tốc Độ Thông Quan",
     "customsValue": "<2 Giờ",
-    "customsDesc": "Thời gian xử lý trung bình"
+    "customsDesc": "Thời gian hoàn thiện thủ tục"
   },
   "AboutPage": {
-    "heroTitle": "VỀ TÀ LÙNG LOGISTICS",
-    "heroSubtitle": "Hơn 15 năm kiến tạo giải pháp Logistics tại Cửa khẩu Quốc tế Tà Lùng",
+    "heroTitle": "VỀ TÀ LÙNG QUANG MINH",
+    "heroSubtitle": "Hơn một thập kỷ kiến tạo chuỗi cung ứng thông suốt tại Cửa khẩu Quốc tế Tà Lùng",
     "intro": {
-      "title": "GIỚI THIỆU CHUNG",
-      "content": "Công ty TNHH Thương mại Vận tải Phú Anh (thương hiệu Tà Lùng Logistics) được thành lập từ năm 2008. Sau khi việc thông thương hàng hóa giữa hai nước Việt Nam và Trung Quốc qua Cửa khẩu Quốc tế Tà Lùng - Cao Bằng được đẩy mạnh, công ty đã đầu tư hệ thống kho bãi, địa điểm tập kết hàng hóa xuất nhập khẩu trong khu vực.\n\nCông ty hoạt động chuyên sâu trong các lĩnh vực: Kho bãi; Bến xe; Xuất nhập khẩu; Logistics; Vận chuyển hàng hóa quốc tế đường bộ."
+      "title": "TỔNG QUAN DOANH NGHIỆP",
+      "content": "Được thành lập từ năm 2008 với tiền thân là Công ty TNHH Thương mại Vận tải Phú Anh, Công ty Cổ phần Tà Lùng Quang Minh đã nhanh chóng vươn mình trở thành thế lực hàng đầu trong ngành logistics vùng biên. Nắm bắt dòng chảy thương mại Việt - Trung qua Cửa khẩu Quốc tế Tà Lùng, chúng tôi đã đầu tư mạnh mẽ vào hệ thống kho bãi và địa điểm tập kết hàng hóa đạt chuẩn quốc tế.\n\nHệ sinh thái dịch vụ của chúng tôi bao trùm toàn diện: Kho bãi, Bến xe, Đại lý Hải quan, và Vận tải hàng hóa quốc tế đa phương thức (đường bộ, đường thủy, đường sắt)."
     },
     "missionTitle": "Sứ Mệnh & Tầm Nhìn",
-    "missionText": "Sứ mệnh của chúng tôi là cung cấp các giải pháp logistics minh bạch, hiệu quả và bền vững. Tầm nhìn trở thành nút giao quan trọng kết nối thương mại Trung - Việt.",
-    "timelineTitle": "CHẶNG ĐƯỜNG PHÁT TRIỂN",
+    "missionText": "Sứ mệnh của chúng tôi là xóa bỏ mọi rào cản thông quan, tối ưu hóa chuỗi cung ứng bằng sự minh bạch và tốc độ. Tầm nhìn chiến lược vươn lên trở thành mắt xích quan trọng nhất trên tuyến hành lang kinh tế Việt - Trung.",
+    "timelineTitle": "DẤU ẤN PHÁT TRIỂN",
     "timeline": {
       "stage1_year": "2008",
-      "stage1_text": "Thành lập Công ty TNHH Thương mại Vận tải Phú Anh, bắt đầu khai thác vận tải biên mậu.",
-      "stage2_year": "Hiện tại",
-      "stage2_text": "Đầu tư hoàn thiện hệ thống 3 bãi (25 ha), đáp ứng nhu cầu lưu trữ và sang tải tiêu chuẩn cao.",
-      "stage3_year": "Tương lai",
-      "stage3_text": "Thiết lập chuỗi dịch vụ tích hợp Tà Lùng - Chi Ma, trở thành nút giao thương mại Trung - Việt."
+      "stage1_text": "Thành lập Công ty TNHH Thương mại Vận tải Phú Anh, đặt những viên gạch đầu tiên cho dịch vụ vận tải biên mậu.",
+      "stage2_year": "Đổi Mới",
+      "stage2_text": "Chuyển đổi thành Công ty Cổ phần Tà Lùng Quang Minh, mở rộng đầu tư hạ tầng lên đến 25 ha, thiết lập tiêu chuẩn thông quan mới.",
+      "stage3_year": "Tương Lai",
+      "stage3_text": "Tích hợp hoàn thiện hệ thống cửa khẩu Tà Lùng - Chi Ma, kiến tạo chuỗi dịch vụ logistics dọc tuyến biên giới."
     },
     "facilities": {
-      "warehouseTitle": "HỆ THỐNG KHO BÃI",
-      "warehouseContent": "Sở hữu 3 bãi chính là Phú Anh, Vũ Thành, Sơn Cảng với tổng diện tích lên tới 25 ha. Chúng tôi đáp ứng mọi nhu cầu lưu trữ và sang tải hàng hóa với tiêu chuẩn cao nhất.",
-      "transportTitle": "NĂNG LỰC VẬN TẢI",
-      "transportContent": "Cung cấp đa dạng xe tải phù hợp với mọi nhu cầu của khách hàng. Chúng tôi sở hữu đội xe có tải trọng phong phú, đảm bảo đáp ứng yêu cầu vận chuyển hàng hóa đa phương thức."
+      "warehouseTitle": "HẠ TẦNG KHO BÃI QUY MÔ",
+      "warehouseContent": "Sở hữu 3 cụm bãi chiến lược: Phú Anh, Vũ Thành và Sơn Cảng với tổng diện tích lên tới 25 ha. Cơ sở hạ tầng được thiết kế khép kín, đáp ứng hoàn hảo các tiêu chuẩn khắt khe nhất về lưu trữ và sang tải hàng hóa tải trọng lớn.",
+      "transportTitle": "NĂNG LỰC VẬN TẢI ĐA DẠNG",
+      "transportContent": "Vận hành đội xe hùng hậu với đủ loại tải trọng, sẵn sàng đáp ứng mọi bài toán vận chuyển đa phương thức của doanh nghiệp một cách linh hoạt và an toàn tuyệt đối."
     },
     "process": {
-      "title": "QUY TRÌNH XUẤT NHẬP KHẨU",
+      "title": "QUY TRÌNH VẬN HÀNH CHUYÊN NGHIỆP",
       "steps": {
-        "1": { "title": "Nhận kế hoạch", "desc": "Doanh nghiệp gửi kế hoạch và chứng từ" },
-        "2": { "title": "Thủ tục", "desc": "Thực hiện thủ tục nhập khẩu/thông quan" },
-        "3": { "title": "Sắp xếp xe", "desc": "Đón và sắp xếp xe đến khu vực chuyển tải" },
-        "4": { "title": "Sang tải hàng", "desc": "Thực hiện sang tải hàng hóa chuyên nghiệp" },
-        "5": { "title": "Hoàn thiện", "desc": "Hoàn thiện thủ tục xe và bàn giao hàng hóa" }
+        "1": { "title": "Tiếp Nhận & Đánh Giá", "desc": "Tiếp nhận kế hoạch, chứng từ và tư vấn phương án tối ưu" },
+        "2": { "title": "Khai Báo Hải Quan", "desc": "Xử lý thủ tục pháp lý, khai báo thông quan siêu tốc" },
+        "3": { "title": "Điều Phối Phương Tiện", "desc": "Phân luồng và điều phối xe vào khu vực chuyển tải chuyên dụng" },
+        "4": { "title": "Sang Tải An Toàn", "desc": "Sang tải hàng hóa với hệ thống máy móc và đội ngũ chuyên nghiệp" },
+        "5": { "title": "Hoàn Thiện & Bàn Giao", "desc": "Hoàn tất thủ tục xuất bãi và theo dõi hành trình chặng cuối" }
       }
     },
     "vision": {
-      "title": "ĐỊNH HƯỚNG PHÁT TRIỂN",
-      "content": "Hiện tại, chúng tôi đang trong giai đoạn hoàn thiện cơ sở hạ tầng, tập trung xây dựng các cơ sở kho bãi và logistics đạt tiêu chuẩn cao.\n\nMục tiêu dài hạn là tích hợp toàn diện hoạt động kinh doanh vào hệ thống cửa khẩu được hình thành từ Tà Lùng và Chi Ma, thiết lập một chuỗi dịch vụ cửa khẩu tích hợp chạy dọc biên giới Việt Nam và Trung Quốc. Tà Lùng Logistics sẽ trở thành nút giao quan trọng kết nối thương mại Trung - Việt."
+      "title": "ĐỊNH HƯỚNG TƯƠNG LAI",
+      "content": "Tà Lùng Quang Minh đang trong giai đoạn chuyển mình mạnh mẽ, tập trung số hóa quy trình và nâng cấp toàn diện cơ sở hạ tầng kho bãi logistics.\n\nTham vọng của chúng tôi không dừng lại ở Tà Lùng. Mục tiêu dài hạn là kết nối liền mạch các hoạt động kinh doanh vào hệ thống cửa khẩu Tà Lùng và Chi Ma, thiết lập một dải dịch vụ cửa khẩu khép kín chạy dọc biên giới. Qua đó, khẳng định vị thế nút giao trọng điểm kết nối thương mại hai nước Việt - Trung."
     },
     "offices": {
-      "title": "HỆ THỐNG VĂN PHÒNG",
-      "halong": "Số 29 Lê Duẩn, Bãi Cháy, Quảng Ninh",
-      "caobang": "Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng"
+      "title": "HỆ THỐNG CHI NHÁNH",
+      "halong": "Số 29 Lê Duẩn, phường Bãi Cháy, TP. Hạ Long, Quảng Ninh",
+      "caobang": "Khu vực Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng"
     }
   },
   "FeaturedServices": {
-    "title": "Dịch Vụ Nổi Bật",
-    "description": "Chúng tôi cung cấp các giải pháp logistics toàn diện, được thiết kế để tối ưu hóa chuỗi cung ứng của bạn."
+    "title": "Giải Pháp Logistics Toàn Diện",
+    "description": "Cung cấp chuỗi dịch vụ khép kín, thiết kế may đo nhằm giải quyết triệt để các bài toán vận hành và thông quan của doanh nghiệp."
   },
   "LatestNews": {
-    "title": "Tin Tức & Sự Kiện",
-    "viewAll": "Xem tất cả tin tức"
+    "title": "Điểm Tin Giao Thương",
+    "viewAll": "Đọc tất cả tin tức"
   },
   "ServicesPage": {
-    "title": "Tất Cả Dịch Vụ",
-    "description": "Khám phá đầy đủ các giải pháp logistics chuyên nghiệp mà Tà Lùng Logistics cung cấp, được thiết kế để đáp ứng mọi nhu cầu của bạn.",
-    "noServices": "Hiện tại không có dịch vụ nào để hiển thị."
+    "title": "Hệ Sinh Thái Dịch Vụ",
+    "description": "Từ kho bãi, hải quan đến vận tải quốc tế, khám phá các tiện ích dịch vụ đẳng cấp được vận hành bởi đội ngũ Tà Lùng Quang Minh.",
+    "noServices": "Dữ liệu dịch vụ đang được cập nhật."
   },
   "ServiceDetail": {
-    "ctaTitle": "Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?",
-    "ctaButton": "Yêu Cầu Báo Giá Ngay",
-    "otherServicesTitle": "Khám Phá Các Dịch Vụ Khác"
+    "ctaTitle": "Bạn cần một phương án logistics tối ưu hơn?",
+    "ctaButton": "Liên Hệ Nhận Giải Pháp",
+    "otherServicesTitle": "Dịch Vụ Liên Quan"
   },
   "WhyChooseUs": {
-    "title": "Tại Sao Lựa Chọn Chúng Tôi?",
-    "point1Title": "Công Nghệ Tiên Phong",
-    "point1Text": "Áp dụng công nghệ tracking thời gian thực, quản lý kho bãi thông minh (WMS) và khai báo hải quan điện tử.",
-    "point2Title": "Đội Ngũ Tận Tâm",
-    "point2Text": "Đội ngũ chuyên gia giàu kinh nghiệm luôn sẵn sàng tư vấn và hỗ trợ 24/7.",
-    "point3Title": "Vị Trí Chiến Lược",
-    "point3Text": "Nằm ngay tại Cửa khẩu Quốc tế Tà Lùng, kết nối giao thương huyết mạch giữa Việt Nam và Trung Quốc."
+    "title": "Bảo Chứng Cho Sự Thành Công Của Bạn",
+    "point1Title": "Hạ Tầng Khép Kín & Quy Mô",
+    "point1Text": "Sở hữu 25ha bãi tập kết với đầy đủ trang thiết bị nâng hạ hiện đại nhất ngay tại tâm điểm giao thương.",
+    "point2Title": "Kinh Nghiệm Thực Chiến",
+    "point2Text": "Đội ngũ chuyên gia am hiểu sâu sắc chính sách biên mậu, xử lý linh hoạt mọi tình huống thông quan 24/7.",
+    "point3Title": "Tốc Độ & Minh Bạch",
+    "point3Text": "Cam kết rút ngắn tối đa thời gian lưu bãi, quy trình thủ tục rõ ràng, chi phí minh bạch không phát sinh."
   },
   "Partners": {
-    "title": "Được tin cậy bởi các doanh nghiệp hàng đầu"
+    "title": "Đối tác đồng hành cùng hàng trăm doanh nghiệp xuất nhập khẩu"
   },
   "ContactPage": {
-    "title": "Liên Hệ Với Chúng Tôi",
-    "description": "Chúng tôi luôn sẵn sàng lắng nghe. Hãy kết nối với Tà Lùng Logistics qua thông tin dưới đây hoặc gửi yêu cầu của bạn qua form liên hệ.",
-    "infoTitle": "Thông Tin Liên Lạc",
+    "title": "Kết Nối Cùng Chúng Tôi",
+    "description": "Đội ngũ Tà Lùng Quang Minh luôn sẵn sàng lắng nghe và giải quyết mọi bài toán chuỗi cung ứng của bạn. Hãy liên hệ ngay hôm nay.",
+    "infoTitle": "Trụ Sở & Liên Hệ",
     "address": "Địa chỉ",
-    "phone": "Điện thoại",
-    "email": "Email",
-    "salesDept": "Phòng Kinh Doanh",
-    "opsDept": "Phòng Vận Hành",
-    "hrDept": "Phòng Nhân Sự",
-    "formTitle": "Gửi Yêu Cầu Trực Tuyến",
-    "faqTitle": "Câu Hỏi Thường Gặp",
+    "phone": "Đường dây nóng",
+    "email": "Email hỗ trợ",
+    "salesDept": "Phòng Kinh Doanh Tiếp Thị",
+    "opsDept": "Trung Tâm Điều Hành Xuất Nhập Khẩu",
+    "hrDept": "Khối Nhân Sự - Tuyển Dụng",
+    "formTitle": "Gửi Yêu Cầu Chuyên Môn",
+    "faqTitle": "Giải Đáp Thắc Mắc",
     "faq": {
-      "q1": "Thời gian làm việc của công ty?",
-      "a1": "Văn phòng hành chính làm việc từ 8:00 - 17:00 (Thứ 2 - Thứ 7). Tuy nhiên, đội ngũ hiện trường tại Cửa khẩu Quốc tế Tà Lùng hoạt động 24/7 để đảm bảo tiến độ thông quan hàng hóa.",
-      "q2": "Làm thế nào để theo dõi lô hàng của tôi?",
-      "a2": "Bạn có thể sử dụng tính năng 'Tracking' trên thanh menu, nhập mã vận đơn để xem trạng thái thời gian thực, hoặc liên hệ Hotline để được hỗ trợ.",
-      "q3": "Tà Lùng Logistics có nhận vận chuyển hàng lẻ (LCL) không?",
-      "a3": "Có. Chúng tôi cung cấp giải pháp gom hàng lẻ (LCL) và hàng nguyên xe (FCL) hai chiều Việt - Trung với chi phí tối ưu và lịch trình ổn định."
+      "q1": "Tốc độ xử lý thông quan trung bình tại công ty là bao lâu?",
+      "a1": "Với hồ sơ hợp lệ và sự chuẩn bị trước, thời gian xử lý thủ tục hải quan tại bãi của Tà Lùng Quang Minh trung bình chưa tới 2 giờ làm việc.",
+      "q2": "Công ty có hỗ trợ sang tải hàng hóa đặc thù không?",
+      "a2": "Hoàn toàn có. Với hệ thống thiết bị đa dạng và 25ha mặt bằng, chúng tôi có năng lực xử lý, sang tải an toàn mọi loại hàng hóa từ nông sản, khoáng sản đến máy móc siêu trường siêu trọng.",
+      "q3": "Có thể yêu cầu vận tải đường thủy hoặc đường sắt không?",
+      "a3": "Có. Tà Lùng Quang Minh tự hào cung cấp giải pháp vận tải đa phương thức, kết hợp linh hoạt đường bộ, đường thủy và đường sắt để tối ưu cước phí theo nhu cầu của bạn."
     }
   },
   "CareersPage": {
-    "title": "Cơ Hội Nghề Nghiệp",
-    "subtitle": "Gia nhập đội ngũ Tà Lùng Logistics để cùng kiến tạo tương lai.",
-    "noOpenings": "Hiện tại chúng tôi không có vị trí nào đang tuyển dụng.",
-    "noOpeningsDesc": "Vui lòng quay lại sau hoặc gửi CV vào email nhân sự để được lưu vào hồ sơ.",
-    "errorTitle": "Không thể tải danh sách việc làm",
-    "errorDesc": "Vui lòng kiểm tra kết nối và thử lại.",
-    "retry": "Thử lại"
+    "title": "Phát Triển Sự Nghiệp",
+    "subtitle": "Trở thành một mảnh ghép trong hệ sinh thái logistics dẫn đầu khu vực biên giới.",
+    "noOpenings": "Hiện tại chưa có vị trí trống phù hợp.",
+    "noOpeningsDesc": "Tuy nhiên, chúng tôi luôn chào đón nhân tài. Hãy chủ động gửi CV về phòng Nhân sự để không bỏ lỡ cơ hội trong tương lai.",
+    "errorTitle": "Hệ thống đang bảo trì",
+    "errorDesc": "Không thể tải danh sách tuyển dụng lúc này, vui lòng thử lại sau.",
+    "retry": "Tải lại trang"
   },
   "CareerDetailPage": {
-    "jobDescription": "Mô Tả Công Việc",
-    "requirements": "Yêu Cầu Ứng Viên",
-    "applyTitle": "Nộp Hồ Sơ Ứng Tuyển",
-    "applySuccess": "Cảm ơn bạn đã ứng tuyển! Chúng tôi sẽ xem xét hồ sơ và liên hệ lại nếu phù hợp.",
-    "applyError": "Nộp hồ sơ thất bại, vui lòng thử lại.",
+    "jobDescription": "Chi Tiết Công Việc",
+    "requirements": "Chân Dung Ứng Viên",
+    "applyTitle": "Tham Gia Cùng Chúng Tôi",
+    "applySuccess": "Hồ sơ của bạn đã được ghi nhận! Bộ phận tuyển dụng sẽ sớm phản hồi.",
+    "applyError": "Việc gửi hồ sơ gặp gián đoạn, vui lòng kiểm tra lại.",
     "form": {
-      "nameLabel": "Họ và tên",
-      "emailLabel": "Email",
-      "phoneLabel": "Số điện thoại",
-      "cvLabel": "Tải lên CV (.pdf, .doc, .docx - Tối đa 5MB)",
-      "submitButton": "Gửi Hồ Sơ",
-      "submittingButton": "Đang gửi..."
+      "nameLabel": "Họ và tên đầy đủ",
+      "emailLabel": "Địa chỉ Email",
+      "phoneLabel": "Số điện thoại liên hệ",
+      "cvLabel": "Đính kèm CV (.pdf, .doc, .docx - Dung lượng < 5MB)",
+      "submitButton": "Nộp Hồ Sơ",
+      "submittingButton": "Đang xử lý..."
     },
     "validation": {
-      "nameRequired": "Họ và tên là bắt buộc",
-      "emailInvalid": "Email không hợp lệ",
-      "phoneInvalid": "Số điện thoại không hợp lệ",
-      "cvRequired": "Vui lòng tải lên CV của bạn",
-      "cvMaxSize": "Kích thước file không được vượt quá 5MB",
-      "cvFormat": "Chỉ chấp nhận file .pdf, .doc, .docx"
+      "nameRequired": "Vui lòng nhập họ và tên.",
+      "emailInvalid": "Định dạng email không chính xác.",
+      "phoneInvalid": "Số điện thoại không hợp lệ.",
+      "cvRequired": "Vui lòng đính kèm hồ sơ năng lực (CV) của bạn.",
+      "cvMaxSize": "Dung lượng tệp vượt quá giới hạn 5MB.",
+      "cvFormat": "Định dạng tệp không được hỗ trợ."
     },
-    "notFound": "Không tìm thấy vị trí tuyển dụng."
+    "notFound": "Công việc này đã hết hạn hoặc không tồn tại."
   },
   "ManifestoPage": {
-    "title": "Tuyên Ngôn Của Chúng Tôi",
+    "title": "Tuyên Ngôn Giá Trị",
     "subtitle": "KẾT NỐI BIÊN GIỚI - VƯƠN TỚI TOÀN CẦU",
-    "value1Title": "Minh Bạch",
-    "value1Text": "Mọi quy trình, chi phí và trạng thái đơn hàng đều được số hóa và cung cấp cho khách hàng một cách rõ ràng.",
-    "value2Title": "Hiệu Quả",
-    "value2Text": "Cam kết rút ngắn thời gian thông quan, tối ưu hóa chi phí logistics.",
-    "value3Title": "Đổi Mới",
-    "value3Text": "Không ngừng nghiên cứu và ứng dụng công nghệ mới để tạo ra giải pháp thông minh.",
-    "value4Title": "Bền Vững",
-    "value4Text": "Phát triển kinh doanh đi đôi với trách nhiệm xã hội và môi trường."
+    "value1Title": "Chính Xác & Minh Bạch",
+    "value1Text": "Mọi quy trình từ báo giá đến thông quan đều được chuẩn hóa. Khách hàng nắm rõ mọi chi phí và lộ trình hàng hóa.",
+    "value2Title": "Tốc Độ & Linh Hoạt",
+    "value2Text": "Thời gian là lợi nhuận của khách hàng. Chúng tôi phản ứng nhanh chóng để tháo gỡ mọi điểm nghẽn trong khâu vận hành.",
+    "value3Title": "Đồng Hành Cùng Phát Triển",
+    "value3Text": "Thành công của đối tác chính là thước đo năng lực của chúng tôi. Tà Lùng Quang Minh hướng đến những mối quan hệ hợp tác chiến lược dài hạn.",
+    "value4Title": "Trách Nhiệm Cộng Đồng",
+    "value4Text": "Vận hành doanh nghiệp không tách rời ý thức bảo vệ môi trường và đóng góp vào sự hưng thịnh của kinh tế vùng biên."
   },
   "Search": {
-    "placeholder": "Tìm kiếm dịch vụ, tin tức...",
-    "noResults": "Không tìm thấy kết quả nào.",
+    "placeholder": "Gõ từ khóa để tìm kiếm...",
+    "noResults": "Không có kết quả nào phù hợp với từ khóa của bạn.",
     "services": "Dịch vụ",
     "news": "Tin tức"
   },
   "TrackingPage": {
-    "title": "Theo Dõi Hành Trình Vận Đơn",
-    "trackingPlaceholder": "Nhập 1 hoặc nhiều mã AWB, cách nhau bởi dấu phẩy",
-    "searchButton": "Tra cứu",
-    "loading": "Đang tải thông tin vận đơn...",
-    "loadingPage": "Đang tải trang...",
-    "errorTitle": "Đã có lỗi xảy ra",
-    "errorDescription": "Không thể tải thông tin vào lúc này. Vui lòng thử lại sau.",
-    "notFoundTitle": "Không tìm thấy vận đơn",
-    "notFoundDescription": "Chúng tôi không tìm thấy bất kỳ vận đơn nào khớp với mã: {awbs}. Vui lòng kiểm tra lại mã của bạn.",
-    "resultsFor": "Hiển thị kết quả cho:",
-    "noEvents": "Chưa có sự kiện nào cho vận đơn này."
+    "title": "Trung Tâm Tra Cứu Vận Đơn",
+    "trackingPlaceholder": "Nhập mã vận đơn (AWB) cần tra cứu...",
+    "searchButton": "Kiểm Tra",
+    "loading": "Hệ thống đang truy xuất dữ liệu...",
+    "loadingPage": "Đang kết nối...",
+    "errorTitle": "Lỗi Kết Nối",
+    "errorDescription": "Máy chủ đang bận, xin vui lòng kiểm tra lại sau ít phút.",
+    "notFoundTitle": "Mã Vận Đơn Không Hợp Lệ",
+    "notFoundDescription": "Hệ thống không ghi nhận dữ liệu cho mã: {awbs}. Vui lòng xác minh lại thông tin với người gửi.",
+    "resultsFor": "Trạng thái hiện tại của:",
+    "noEvents": "Lô hàng đang trong quá trình cập nhật trạng thái đầu tiên."
   },
   "Footer": {
-    "companyName": "Công ty TNHH Thương mại Vận tải Phú Anh (Tà Lùng Logistics)",
-    "taxCode": "Mã số thuế: 4800166795",
-    "address": "Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng, Việt Nam",
-    "sitemap": "Sitemap",
-    "legal": "Pháp lý",
-    "terms": "Điều khoản sử dụng",
-    "privacy": "Chính sách bảo mật",
-    "quickContact": "Liên hệ nhanh",
-    "formName": "Họ và tên",
-    "formEmail": "Email của bạn",
-    "formMessage": "Nội dung yêu cầu...",
+    "companyName": "Công ty Cổ phần Tà Lùng Quang Minh",
+    "taxCode": "Mã số doanh nghiệp / MST: 4800166795",
+    "address": "Trụ sở: Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng, Việt Nam",
+    "sitemap": "Sơ đồ trang",
+    "legal": "Thông tin pháp lý",
+    "terms": "Điều khoản dịch vụ",
+    "privacy": "Bảo mật thông tin",
+    "quickContact": "Gửi thông điệp nhanh",
+    "formName": "Họ tên của bạn",
+    "formEmail": "Email liên hệ",
+    "formMessage": "Chúng tôi có thể giúp gì cho bạn?",
     "formPhone": "Số điện thoại",
-    "formServiceId": "Dịch vụ quan tâm (Tùy chọn)",
-    "formSend": "Gửi Yêu Cầu",
-    "formSuccess": "Cảm ơn bạn! Chúng tôi đã nhận được yêu cầu.",
-    "formSubmitting": "Đang gửi...",
-    "formError": "Có lỗi xảy ra, vui lòng thử lại.",
-    "copyright": "© 2025 Tà Lùng Logistics (Công ty TNHH Thương mại Vận tải Phú Anh). Đã đăng ký bản quyền.",
-    "tracking": "Tra cứu vận đơn"
+    "formServiceId": "Mảng dịch vụ quan tâm",
+    "formSend": "Yêu Cầu Hỗ Trợ",
+    "formSuccess": "Yêu cầu đã được gửi thành công. Chuyên viên sẽ gọi lại cho bạn sớm nhất.",
+    "formSubmitting": "Hệ thống đang tiếp nhận...",
+    "formError": "Lỗi đường truyền, vui lòng gửi lại.",
+    "copyright": "© 2026 Tà Lùng Quang Minh. Bảo lưu mọi quyền lợi.",
+    "tracking": "Tra cứu lộ trình"
   },
   "Errors": {
-    "goBackTo": "Quay lại {pageName}",
-    "retry": "Thử lại",
-    "failedToLoad": "Không thể tải dữ liệu."
+    "goBackTo": "Trở về {pageName}",
+    "retry": "Tải lại",
+    "failedToLoad": "Không thể lấy dữ liệu từ máy chủ."
   },
   "NotFound": {
-    "title": "404 - Không Tìm Thấy Trang",
-    "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
-    "goHome": "Quay về Trang Chủ"
+    "title": "404 - Trang Không Tồn Tại",
+    "description": "Địa chỉ URL bạn truy cập có thể đã bị thay đổi hoặc gỡ bỏ.",
+    "goHome": "Quay về Màn Hình Chính"
   },
   "TermsPage": {
-    "title": "Điều Khoản Sử Dụng",
-    "lastUpdated": "Cập nhật lần cuối: 18 tháng 10, 2025",
-    "content": "Chào mừng bạn đến với trang web chính thức của Tà Lùng Logistics (thuộc Công ty TNHH Thương mại Vận tải Phú Anh).\n\nBằng việc truy cập và sử dụng trang web talunglogistics.com, bạn đồng ý tuân thủ các điều khoản và điều kiện được nêu dưới đây.\n\n### 1. QUYỀN VÀ TRÁCH NHIỆM CỦA NGƯỜI DÙNG\n- Người dùng có trách nhiệm cung cấp thông tin chính xác khi sử dụng các form yêu cầu báo giá hoặc liên hệ.\n- Mọi hành vi sử dụng website với mục đích phá hoại, tấn công hoặc cố gắng xâm nhập trái phép vào hệ thống đều bị nghiêm cấm.\n\n### 2. QUYỀN SỞ HỮU TRÍ TUỆ\n- Toàn bộ nội dung, hình ảnh và thương hiệu trên trang web này thuộc quyền sở hữu của Tà Lùng Logistics.\n- Mọi hành vi sao chép, sử dụng khi chưa có sự cho phép bằng văn bản đều là vi phạm.\n\n### 3. MIỄN TRỪ TRÁCH NHIỆM\n- Thông tin trên website được cung cấp với mục đích tham khảo. Chúng tôi không chịu trách nhiệm cho bất kỳ tổn thất nào phát sinh từ việc sử dụng thông tin này.\n\n### 4. THAY ĐỔI ĐIỀU KHOẢN\nTà Lùng Logistics có quyền sửa đổi các điều khoản này vào bất kỳ lúc nào."
+    "title": "Điều Khoản Sử Dụng Dịch Vụ",
+    "lastUpdated": "Bản cập nhật mới nhất: Ngày 15 tháng 03, năm 2026",
+    "content": "Chào mừng quý khách đến với cổng thông tin điện tử của Công ty Cổ phần Tà Lùng Quang Minh.\n\nKhi tiến hành truy cập và tương tác trên website, quý khách được xem là đã thấu hiểu và chấp thuận các quy định dưới đây.\n\n### 1. NGHĨA VỤ CỦA KHÁCH HÀNG\n- Đảm bảo tính trung thực và chính xác của các thông tin được cung cấp qua các biểu mẫu báo giá, ứng tuyển hoặc liên hệ.\n- Tuyệt đối nghiêm cấm các hành vi phát tán mã độc, can thiệp hoặc khai thác trái phép hệ thống cơ sở dữ liệu của chúng tôi.\n\n### 2. BẢN QUYỀN VÀ SỞ HỮU TRÍ TUỆ\n- Toàn bộ nội dung văn bản, nhận diện thương hiệu, hình ảnh và mã nguồn trên website là tài sản trí tuệ thuộc quyền quản lý của Công ty Cổ phần Tà Lùng Quang Minh.\n- Việc sao chép, phân phối hoặc sử dụng cho mục đích thương mại khi chưa có văn bản đồng ý từ công ty đều vi phạm pháp luật.\n\n### 3. CHÍNH SÁCH MIỄN TRỪ\n- Thông tin niêm yết trên website mang tính chất minh họa và giới thiệu năng lực. Tùy theo thời điểm và thực tế hợp đồng, các điều khoản vận hành có thể điều chỉnh. Chúng tôi không chịu trách nhiệm pháp lý cho các quyết định dựa hoàn toàn vào nội dung website mà không qua tư vấn trực tiếp.\n\n### 4. QUYỀN CẬP NHẬT\nCông ty bảo lưu quyền tinh chỉnh, thay đổi hoặc xóa bỏ các điều khoản này tại bất kỳ thời điểm nào mà không cần gửi thông báo trước."
   },
   "PrivacyPage": {
-    "title": "Chính Sách Bảo Mật",
-    "lastUpdated": "Cập nhật lần cuối: 18 tháng 10, 2025",
-    "content": "Tà Lùng Logistics cam kết bảo vệ thông tin cá nhân của bạn.\n\nChính sách này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu của bạn khi bạn truy cập trang web của chúng tôi.\n\n### 1. THU THẬP THÔNG TIN\nChúng tôi thu thập các thông tin bạn cung cấp qua form liên hệ, bao gồm: Họ và tên, email, số điện thoại.\n\n### 2. SỬ DỤNG THÔNG TIN\nThông tin của bạn được sử dụng để liên hệ, trả lời yêu cầu và cải thiện chất lượng dịch vụ.\n\n### 3. BẢO MẬT VÀ CHIA SẺ\nChúng tôi cam kết không chia sẻ thông tin của bạn cho bất kỳ bên thứ ba nào mà không có sự đồng ý của bạn, trừ trường hợp pháp luật yêu cầu.\n\n### 4. QUYỀN CỦA BẠN\nBạn có quyền yêu cầu truy cập, chỉnh sửa hoặc xóa thông tin cá nhân bằng cách liên hệ với chúng tôi qua email: **info@talunglogistics.com**."
+    "title": "Chính Sách Bảo Mật Dữ Liệu",
+    "lastUpdated": "Bản cập nhật mới nhất: Ngày 15 tháng 03, năm 2026",
+    "content": "Công ty Cổ phần Tà Lùng Quang Minh coi trọng và cam kết bảo vệ tuyệt đối an toàn dữ liệu cá nhân cũng như thông tin kinh doanh của đối tác.\n\n### 1. PHẠM VI THU THẬP\nHệ thống chỉ ghi nhận các dữ liệu do người dùng chủ động cung cấp qua biểu mẫu (bao gồm: Họ tên, số điện thoại, email, nội dung yêu cầu) và các dữ liệu truy cập ẩn danh (cookies) nhằm mục đích thống kê.\n\n### 2. MỤC ĐÍCH SỬ DỤNG\nDữ liệu thu thập được dùng duy nhất cho mục đích:\n- Phân tích yêu cầu và liên hệ tư vấn giải pháp, cung cấp báo giá.\n- Hỗ trợ giải quyết các sự cố liên quan đến quy trình vận hành.\n- Cải thiện trải nghiệm giao diện người dùng trên website.\n\n### 3. CAM KẾT BẢO MẬT\nChúng tôi áp dụng các tiêu chuẩn mã hóa dữ liệu tiên tiến nhất. Mọi thông tin của khách hàng được bảo lưu trong hệ thống nội bộ, cam kết KHÔNG bán, trao đổi hay chuyển nhượng cho bất kỳ bên thứ ba nào, ngoại trừ trường hợp có yêu cầu từ Cơ quan chức năng theo quy định của pháp luật.\n\n### 4. QUYỀN LỢI CỦA NGƯỜI DÙNG\nQuý khách có toàn quyền yêu cầu trích xuất, chỉnh sửa hoặc xóa bỏ thông tin cá nhân khỏi hệ thống của chúng tôi bất cứ lúc nào thông qua email hỗ trợ chính thức: **info@talunglogistics.com**."
   },
   "Brand": {
-    "name": "Tà Lùng Logistics"
+    "name": "Công ty Cổ phần Tà Lùng Quang Minh"
   },
   "Metadata": {
-    "defaultTitle": "Tà Lùng Logistics | Công ty TNHH Thương mại Vận tải Phú Anh",
-    "defaultDescription": "Giải pháp Logistics toàn diện Việt - Trung tại Cửa khẩu Quốc tế Tà Lùng: Kho bãi, Xuất nhập khẩu, Vận tải.",
-    "keywords": "logistics việt trung, vận tải biên mậu, cửa khẩu tà lùng, phú anh, kho bãi cao bằng, xuất nhập khẩu trung quốc",
-    "serviceTitle": "{serviceName} - Tà Lùng Logistics",
-    "newsTitle": "{newsTitle} - Tà Lùng Logistics",
-    "careerTitle": "Tuyển dụng: {jobTitle} - Tà Lùng Logistics"
+    "defaultTitle": "Logistics Tà Lùng Quang Minh | Vận Tải Biên Mậu Đỉnh Cao",
+    "defaultDescription": "Công ty Cổ phần Tà Lùng Quang Minh cung cấp giải pháp Logistics toàn diện tại Cửa khẩu Quốc tế Tà Lùng. Đi đầu về kho bãi 25ha, thông quan hải quan nhanh và vận tải đa phương thức.",
+    "keywords": "tà lùng quang minh, logistics tà lùng, cửa khẩu quốc tế tà lùng, vận tải cao bằng, xuất nhập khẩu biên mậu, kho bãi trung việt, thông quan tà lùng",
+    "serviceTitle": "{serviceName} | Logistics Tà Lùng Quang Minh",
+    "newsTitle": "{newsTitle} | Tin Tức Tà Lùng Quang Minh",
+    "careerTitle": "Tuyển Dụng: {jobTitle} | Tà Lùng Quang Minh"
   }
 }
