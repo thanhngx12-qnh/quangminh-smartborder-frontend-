@@ -2,10 +2,34 @@
   "Navigation": {
     "home": "Trang chủ",
     "services": "Dịch Vụ",
+    "servicesSub": {
+      "warehouse": "Dịch vụ kho bãi tại Tà Lùng",
+      "transloading": "Dịch vụ sang tải và lưu đỗ",
+      "transport": "Dịch vụ vận tải",
+      "customs": "Dịch vụ đại lý hải quan",
+      "other": "Dịch vụ khác"
+    },
+    "servicesSlug": {
+      "warehouse": "kho-bai-ta-lung",
+      "transloading": "sang-tai-luu-do",
+      "transport": "van-tai",
+      "customs": "dai-ly-hai-quan",
+      "other": "khac"
+    },
     "manifesto": "Tuyên ngôn",
     "careers": "Tuyển dụng",
     "about": "Giới Thiệu",
     "news": "Tin Tức",
+    "newsSub": {
+      "logistics": "Logistics",
+      "importExport": "Xuất nhập khẩu",
+      "market": "Thị trường"
+    },
+    "newsSlug": {
+      "logistics": "logistics",
+      "importExport": "xuat-nhap-khau",
+      "market": "thi-truong"
+    },
     "contact": "Liên Hệ"
   },
   "HeaderActions": {

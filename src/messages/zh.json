@@ -2,10 +2,34 @@
   "Navigation": {
     "home": "首页",
     "services": "服务项目",
-    "manifesto": "企业宣言",
+    "servicesSub": {
+      "warehouse": "塔隆仓储服务",
+      "transloading": "转运与停车服务",
+      "transport": "运输服务",
+      "customs": "海关代理服务",
+      "other": "其他服务"
+    },
+    "servicesSlug": {
+      "warehouse": "talong-cangchu",
+      "transloading": "zhuanyun-tingche",
+      "transport": "yunshu",
+      "customs": "haiguan-daili",
+      "other": "qita-fuwu"
+    },
+    "manifesto": "公司宣言",
     "careers": "招贤纳士",
     "about": "关于我们",
     "news": "新闻资讯",
+    "newsSub": {
+      "logistics": "物流",
+      "importExport": "进出口",
+      "market": "市场"
+    },
+    "newsSlug": {
+      "logistics": "wuliu",
+      "importExport": "jinchukou",
+      "market": "shichang"
+    },
     "contact": "联系我们"
   },
   "HeaderActions": {

@@ -9,44 +9,29 @@ import {
   RiSearchLine, 
   RiMenu3Line, 
   RiCloseLine, 
-  RiSunLine, 
-  RiMoonLine,
   RiTranslate2,
-  RiBrushLine,
   RiPhoneFill, 
   RiMailFill,
-  RiMapPinFill
+  RiMapPinFill,
+  RiArrowDownSLine // Import icon mũi tên xuống
 } from 'react-icons/ri';
-import { ButtonLink } from '@/components/ui/Button'; // Import ButtonLink đã nâng cấp
-import { useUIStore } from '@/hooks/useUIStore';
+import { ButtonLink } from '@/components/ui/Button'; 
 import LanguageSwitcher from './LanguageSwitcher';
 import SearchModal from './SearchModal';
 
 import {
-  HeaderWrapper,
-  TopBar,
-  TopBarContainer,
-  ContactInfo,
-  Actions,
-  MainNav,
-  Logo,
-  MenuIcon,
-  NavLinks,
-  NavLink,
-  HeaderIcons,
-  TopBarLink,
-  MobileActions,
-  MobileSettingGroup,
-  MobileSettingsWrapper,
-  MobileButton,
-  MobileButtonLink,
-  SearchButtonDesktop
+  HeaderWrapper, TopBar, TopBarContainer, ContactInfo, Actions, MainNav, Logo, MenuIcon, 
+  NavLinks, NavLink, HeaderIcons, TopBarLink, MobileActions, MobileSettingGroup, MobileSettingsWrapper, 
+  MobileButton, MobileButtonLink, SearchButtonDesktop,
+  NavItemWrapper, DropdownMenu, DropdownItem // Import thêm styled components mới
 } from './Header.styles';
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const[isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const { theme, toggleTheme } = useUIStore();
+  
+  // State để quản lý mở/đóng dropdown trên Mobile
+  const[openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
 
   const tNav = useTranslations('Navigation');
   const tActions = useTranslations('HeaderActions');
@@ -55,28 +40,61 @@ export default function Header() {
   const tAddress = useTranslations('Footer');
   const pathname = usePathname();
   
-  const navItems = [
+  // --- NÂNG CẤP DATA MENU ---
+  // --- NÂNG CẤP DATA MENU (TỰ ĐỘNG CHUYỂN SLUG VÀ LABEL THEO NGÔN NGỮ) ---
+  const navItems =[
     { href: '/', label: tNav('home') },
     { href: '/about', label: tNav('about') },
-    { href: '/services', label: tNav('services') },
-    { href: '/news', label: tNav('news') },
+    { 
+      label: tNav('services'), 
+      href: '/services', 
+      subItems:[
+        // Sử dụng tNav('servicesSlug.xxx') để tự động lấy slug chuẩn SEO của ngôn ngữ đó
+        { href: `/services/${tNav('servicesSlug.warehouse')}`, label: tNav('servicesSub.warehouse') },
+        { href: `/services/${tNav('servicesSlug.transloading')}`, label: tNav('servicesSub.transloading') },
+        { href: `/services/${tNav('servicesSlug.transport')}`, label: tNav('servicesSub.transport') },
+        { href: `/services/${tNav('servicesSlug.customs')}`, label: tNav('servicesSub.customs') },
+        { href: `/services/${tNav('servicesSlug.other')}`, label: tNav('servicesSub.other') },
+      ]
+    },
+    { 
+      label: tNav('news'), 
+      href: '/news',
+      subItems:[
+        { href: `/news/${tNav('newsSlug.logistics')}`, label: tNav('newsSub.logistics') },
+        { href: `/news/${tNav('newsSlug.importExport')}`, label: tNav('newsSub.importExport') },
+        { href: `/news/${tNav('newsSlug.market')}`, label: tNav('newsSub.market') },
+      ]
+    },
     { href: '/manifesto', label: tNav('manifesto') },
     { href: '/careers', label: tNav('careers') },
     { href: '/contact', label: tNav('contact') },
   ];
 
-  useEffect(() => { setIsMenuOpen(false); }, [pathname]);
+  // Đóng menu khi đổi trang
+  useEffect(() => { 
+    setIsMenuOpen(false); 
+    setOpenMobileDropdown(null);
+  }, [pathname]);
   
+  // Khóa cuộn trang khi mở menu mobile
   useEffect(() => {
     const isOverlayOpen = isMenuOpen || isSearchOpen;
     document.body.style.overflow = isOverlayOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
-  }, [isMenuOpen, isSearchOpen]);
+  },[isMenuOpen, isSearchOpen]);
+
+  const toggleMobileDropdown = (e: React.MouseEvent, label: string) => {
+    // Chỉ kích hoạt toggle trên mobile (kích thước màn hình < 992px)
+    if (window.innerWidth <= 992) {
+      e.preventDefault(); // Ngăn chuyển trang nếu click vào item có dropdown
+      setOpenMobileDropdown(openMobileDropdown === label ? null : label);
+    }
+  };
 
   return (
     <>
       <HeaderWrapper>
-        {/* TopBar: Màu xanh đậm, chứa thông tin liên hệ */}
         <TopBar>
           <TopBarContainer className="container">
             <ContactInfo>
@@ -86,21 +104,17 @@ export default function Header() {
             </ContactInfo>
             <Actions>
               <LanguageSwitcher variant="full" />
-              {/* <TopBarLink href="/tracking" as="a">{tActions('tracking')}</TopBarLink> */}
             </Actions>
           </TopBarContainer>
         </TopBar>
 
-        {/* MainNav: Logo và Menu */}
         <MainNav className="container">
           <Logo href="/" as="a">
             <div className="logo-container">
-              {/* Bạn nhớ lưu file logo vào public/images/logo.png nhé */}
               <Image 
                 src="/images/logo.png" 
-                alt="Tà Lùng Quang Minh Logistics" 
-                fill
-                priority
+                alt="Tà Lùng Logistics" 
+                fill priority
                 sizes="(max-width: 768px) 150px, 200px"
                 style={{ objectFit: 'contain', objectPosition: 'left' }}
               />
@@ -108,30 +122,48 @@ export default function Header() {
           </Logo>
 
           <NavLinks $isOpen={isMenuOpen} onClick={(e) => e.target === e.currentTarget && setIsMenuOpen(false)}>
-            {/* Mobile Settings */}
             <MobileSettingsWrapper>
                 <MobileSettingGroup>
                     <div className="setting-label"><RiTranslate2 /> <span>{tGeneral('language')}</span></div>
                     <div className="setting-control"><LanguageSwitcher variant="icon" /></div>
                 </MobileSettingGroup>
-                {/* <MobileSettingGroup>
-                    <div className="setting-label"><RiBrushLine /> <span>{tGeneral('theme')}</span></div>
-                    <div className="setting-control">
-                      <button onClick={toggleTheme} aria-label="Toggle theme">
-                        {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
-                      </button>
-                    </div>
-                </MobileSettingGroup> */}
             </MobileSettingsWrapper>
 
-            {/* Menu Items */}
+            {/* NÂNG CẤP RENDER MENU */}
             {navItems.map((item) => (
-              <NavLink key={item.href} href={item.href} as="a" $isActive={pathname === item.href}>
-                {item.label}
-              </NavLink>
+              item.subItems ? (
+                // Menu có Dropdown
+                <NavItemWrapper key={item.label}>
+                  <NavLink 
+                    href={item.href} 
+                    as="a" 
+                    $isActive={pathname.startsWith(item.href)} 
+                    $hasDropdown={true}
+                    onClick={(e) => toggleMobileDropdown(e, item.label)}
+                  >
+                    {item.label} 
+                    <RiArrowDownSLine style={{ 
+                      transform: openMobileDropdown === item.label ? 'rotate(180deg)' : 'none' 
+                    }}/>
+                  </NavLink>
+                  <DropdownMenu $isOpenOnMobile={openMobileDropdown === item.label}>
+                    {item.subItems.map(sub => (
+                      <DropdownItem key={sub.href} href={sub.href} as="a">
+                        {sub.label}
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </NavItemWrapper>
+              ) : (
+                // Menu bình thường
+                <NavItemWrapper key={item.href}>
+                  <NavLink href={item.href} as="a" $isActive={pathname === item.href}>
+                    {item.label}
+                  </NavLink>
+                </NavItemWrapper>
+              )
             ))}
 
-            {/* Mobile Actions */}
             <MobileActions>
               <MobileButtonLink href="/contact" variant="primary" as="a">{tCta('quote')}</MobileButtonLink>
               <MobileButton onClick={() => { setIsSearchOpen(true); setIsMenuOpen(false); }} variant="secondary">
@@ -140,15 +172,10 @@ export default function Header() {
             </MobileActions>
           </NavLinks>
 
-          {/* Desktop Actions */}
           <HeaderIcons>
             <SearchButtonDesktop onClick={() => setIsSearchOpen(true)} aria-label="Search">
               <RiSearchLine />
             </SearchButtonDesktop>
-            {/* <button onClick={toggleTheme} aria-label="Toggle theme" className="theme-toggle">
-              {theme === 'light' ? <RiMoonLine /> : <RiSunLine />}
-            </button> */}
-            {/* Bây giờ size="small" đã hoạt động tốt */}
             <ButtonLink href="/contact" variant="primary" size="small" as="a">
               {tCta('quote')}
             </ButtonLink>

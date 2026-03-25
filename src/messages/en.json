@@ -2,10 +2,34 @@
   "Navigation": {
     "home": "Home",
     "services": "Services",
+    "servicesSub": {
+      "warehouse": "Ta Lung Warehousing Services",
+      "transloading": "Transloading & Parking Services",
+      "transport": "Transportation Services",
+      "customs": "Customs Brokerage Services",
+      "other": "Other Services"
+    },
+    "servicesSlug": {
+      "warehouse": "ta-lung-warehousing",
+      "transloading": "transloading-and-parking",
+      "transport": "transportation",
+      "customs": "customs-brokerage",
+      "other": "other-services"
+    },
     "manifesto": "Manifesto",
     "careers": "Careers",
     "about": "About Us",
     "news": "News",
+    "newsSub": {
+      "logistics": "Logistics",
+      "importExport": "Import - Export",
+      "market": "Market"
+    },
+    "newsSlug": {
+      "logistics": "logistics",
+      "importExport": "import-export",
+      "market": "market"
+    },
     "contact": "Contact"
   },
   "HeaderActions": {
