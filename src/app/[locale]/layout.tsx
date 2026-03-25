@@ -7,24 +7,24 @@ import FloatingButtons from "@/components/shared/FloatingButtons";
 import { Inter, Montserrat } from "next/font/google";
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Script from 'next/script'; // THÊM IMPORT SCRIPT CỦA NEXT.JS
 
-// Cấu hình Font (giữ nguyên)
+// Cấu hình Font 
 const inter = Inter({ subsets: ["latin", "vietnamese"], variable: "--font-inter", display: "swap" });
 const montserrat = Montserrat({
   subsets: ["latin", "vietnamese"],
   variable: "--font-montserrat",
-  weight: ["400", "500", "600", "700", "800"],
+  weight:["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-// Định nghĩa Type cho props, giờ đây params là một Promise
+// Định nghĩa Type cho props
 type Props = {
   params: Promise<{ locale: string }>;
 };
 
-// Hàm generateMetadata (ĐÃ SỬA LỖI)
+// Hàm generateMetadata 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  // SỬA Ở ĐÂY: Dùng `await` để lấy locale từ Promise
   const { locale } = await params;
 
   let messages;
@@ -36,25 +36,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://talunglogistics.com';
   const brandName = messages.Brand?.name || 'Tà Lùng Logistics';
-  const defaultTitle = messages.Metadata?.defaultTitle || 'Tà Lùng Logistics';
-  const defaultDescription = messages.Metadata?.defaultDescription || '';
-  const keywords = messages.Metadata?.keywords || '';
+  const defaultTitle = messages.Metadata?.defaultTitle || 'Tà Lùng Logistics | Giải pháp Logistics biên mậu Việt - Trung';
+  const defaultDescription = messages.Metadata?.defaultDescription || 'Giải pháp Logistics toàn diện Việt - Trung tại Cửa khẩu Quốc tế Tà Lùng: Kho bãi, Xuất nhập khẩu, Vận tải.';
+  const keywords = messages.Metadata?.keywords || 'logistics việt trung, vận tải biên mậu, cửa khẩu tà lùng';
 
   return {
     metadataBase: new URL(baseUrl),
     title: { template: `%s | ${brandName}`, default: defaultTitle },
     description: defaultDescription,
     keywords: keywords,
-    icons: {
-      icon: '/logo.png',  // Hoặc array nếu muốn nhiều kích thước
-      apple: '/apple-touch-icon.png',  // Nếu có riêng cho iOS
+    icons: { icon: '/images/logo.png', apple: '/apple-touch-icon.png' },
+    
+    // THÊM: Xác minh Google Search Console
+    verification: {
+      google: "BM5F0x2whCH1lpfr_LwSI3vUYoFj7FxW9XfPhwuf1YU", // <-- Đổi mã này sau khi tạo GSC
     },
+
     openGraph: {
       title: defaultTitle,
       description: defaultDescription,
       url: baseUrl,
       siteName: brandName,
-      images: [{ url: `${baseUrl}/og-image.jpg`, width: 1200, height: 630 }],
+      images:[{ url: `${baseUrl}/og-image.jpg`, width: 1200, height: 630 }],
       locale: locale,
       type: 'website',
     },
@@ -65,15 +68,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Layout Component (ĐÃ SỬA LỖI)
+// Layout Component
 export default async function LocaleLayout({
   children,
-  params, // Nhận params như một Promise
+  params, 
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>; // Định nghĩa type cho params là Promise
+  params: Promise<{ locale: string }>; 
 }) {
-  // SỬA Ở ĐÂY: Dùng `await` để lấy locale từ Promise
   const { locale } = await params;
   const timeZone = "Asia/Ho_Chi_Minh";
 
@@ -86,7 +88,31 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${inter.variable} ${montserrat.variable}`}>
+      <head>
+        {/* THÊM: Mã Google Tag Manager (Head) */}
+        {/* Tối ưu tốc độ: dùng strategy="afterInteractive" để không làm chậm lúc load trang */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-XXXXXXX'); 
+          `}
+        </Script>
+        {/* LƯU Ý: Đổi GTM-XXXXXXX thành ID của bạn */}
+      </head>
       <body>
+        {/* THÊM: Mã Google Tag Manager (Body - Dành cho trình duyệt không chạy JS) */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" // LƯU Ý: Đổi GTM-XXXXXXX
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+
         <StyledComponentsRegistry>
           <Providers locale={locale} messages={messages} timeZone={timeZone}>
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

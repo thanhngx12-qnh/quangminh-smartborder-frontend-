@@ -1,8 +1,9 @@
-// dir: ~/quangminh-smart-border/frontend/src/components/layout/Header/LanguageSwitcher.tsx
+// dir: frontend/src/components/layout/Header/LanguageSwitcher.tsx
 'use client';
 
 import { useState, useRef } from 'react';
 import { usePathname, useRouter } from '@/navigation';
+import { useParams } from 'next/navigation'; // <-- THÊM IMPORT NÀY
 import { useLocale } from 'next-intl';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,7 +20,6 @@ const SwitcherWrapper = styled.div`
   z-index: 1011; 
 
   @media (max-width: 992px) {
-    // Để LanguageSwitcher trong MobileSettings không có margin/padding thừa
     padding: 0;
     margin: 0;
   }
@@ -39,20 +39,17 @@ const CurrentLangButton = styled.button`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1); // Giữ cho dark mode
+    background-color: rgba(255, 255, 255, 0.1); 
   }
   
-  // Điều chỉnh hover cho light mode
   ${({ theme }) => theme.name === 'light' && `
     &:hover {
       background-color: ${theme.colors.surface};
     }
   `}
 
-
-  // Chỉnh lại kích thước icon khi dùng variant="icon"
   svg {
-    font-size: 24px; // Kích thước icon mặc định cho cả desktop (nếu dùng icon) và mobile
+    font-size: 24px; 
   }
 `;
 
@@ -103,7 +100,7 @@ const DropdownFlag = styled.span`
   font-size: 18px;
 `;
 
-const locales = [
+const locales =[
   { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' },
   { code: 'en', name: 'English', flag: '🇬🇧' },
   { code: 'zh', name: '中文 (Simplified)', flag: '🇨🇳' },
@@ -113,6 +110,7 @@ export default function LanguageSwitcher({ variant = 'full' }: LanguageSwitcherP
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const params = useParams(); // <-- LẤY PARAMS (slug, id...) TỪ URL HIỆN TẠI
   const currentLocale = useLocale();
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -127,8 +125,13 @@ export default function LanguageSwitcher({ variant = 'full' }: LanguageSwitcherP
     }, 200);
   };
 
-  const changeLocale = (locale: string) => {
-    router.push(pathname, { locale });
+  const changeLocale = (nextLocale: string) => {
+    // SỬA LỖI Ở ĐÂY: Dùng object {pathname, params} và router.replace
+    router.replace(
+      // @ts-expect-error: Bỏ qua lỗi TypeScript khi truyền pathname động
+      { pathname, params },
+      { locale: nextLocale }
+    );
     setIsOpen(false);
   };
 
