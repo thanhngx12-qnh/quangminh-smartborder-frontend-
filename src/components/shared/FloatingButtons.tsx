@@ -6,107 +6,16 @@ import styled, { css } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RiPhoneFill, RiMailFill, RiFacebookCircleFill, RiArrowUpSLine } from 'react-icons/ri';
 import { SiZalo } from "react-icons/si";
+import { sendGTMEvent } from '@next/third-parties/google'; // <-- IMPORT HÀM CHÍNH CHỦ
 
-// --- Styled Components ---
-const FabContainer = styled.div`
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 12px;
-  
-  @media (max-width: 576px) {
-    bottom: 20px;
-    right: 20px;
-    gap: 10px;
-  }
-`;
+// --- Styled Components (Giữ nguyên) ---
+const FabContainer = styled.div` position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; @media (max-width: 576px) { bottom: 20px; right: 20px; gap: 10px; } `;
+const FabButton = styled(motion.a)<{ $isPrimary?: boolean }>` display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); transition: all 0.2s ease-out; font-size: 24px; text-decoration: none; ${({ $isPrimary, theme }) => $isPrimary ? css` background-color: ${theme.colors.accent}; color: ${theme.colors.white}; &:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(255, 0, 0, 0.3); } ` : css` background-color: ${theme.colors.surface}; color: ${theme.colors.primary}; &:hover { background-color: ${theme.colors.primary}; color: ${theme.colors.white}; } `} `;
+const ScrollToTopButton = styled(motion.button)` display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid ${({ theme }) => theme.colors.border}; background-color: ${({ theme }) => theme.colors.surface}; color: ${({ theme }) => theme.colors.textSecondary}; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-size: 24px; margin-bottom: 8px; &:hover { background-color: ${({ theme }) => theme.colors.primary}; color: ${({ theme }) => theme.colors.white}; border-color: ${({ theme }) => theme.colors.primary}; } `;
+const ButtonWrapper = styled(motion.div)` position: relative; `;
+const Tooltip = styled(motion.div)` position: absolute; top: 50%; right: calc(100% + 12px); transform: translateY(-50%); background-color: rgba(0,0,0,0.8); color: white; padding: 6px 10px; border-radius: 4px; font-size: 12px; font-weight: 500; white-space: nowrap; pointer-events: none; `;
 
-const FabButton = styled(motion.a)<{ $isPrimary?: boolean }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease-out;
-  font-size: 24px;
-  text-decoration: none;
-
-  ${({ $isPrimary, theme }) => 
-    $isPrimary 
-    ? css`
-      background-color: ${theme.colors.accent};
-      color: ${theme.colors.white};
-      &:hover {
-        transform: scale(1.1);
-        box-shadow: 0 6px 16px rgba(255, 0, 0, 0.3);
-      }
-    `
-    : css`
-      background-color: ${theme.colors.surface};
-      color: ${theme.colors.primary};
-      &:hover {
-        background-color: ${theme.colors.primary};
-        color: ${theme.colors.white};
-      }
-    `}
-`;
-
-const ScrollToTopButton = styled(motion.button)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background-color: ${({ theme }) => theme.colors.surface};
-  color: ${({ theme }) => theme.colors.textSecondary};
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: 24px;
-  margin-bottom: 8px;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.white};
-    border-color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-const ButtonWrapper = styled(motion.div)`
-  position: relative;
-`;
-
-const Tooltip = styled(motion.div)`
-  position: absolute;
-  top: 50%;
-  right: calc(100% + 12px);
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.8);
-  color: white;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-  pointer-events: none;
-`;
-
-// --- Helper GTM Tracking ---
-// Định nghĩa type để TypeScript không báo lỗi khi gọi window.dataLayer
-declare global {
-  interface Window {
-    dataLayer: unknown[];
-  }
-}
+// --- KHÔNG CÒN DECLARE GLOBAL NỮA ---
 
 interface FabActionProps {
   href: string;
@@ -115,21 +24,19 @@ interface FabActionProps {
   delay: number;
   isPrimary?: boolean;
   target?: string;
-  eventName: string; // Tên sự kiện để báo cáo lên GTM
+  eventName: string;
 }
 
 const FabAction = ({ href, icon, label, delay, isPrimary, target, eventName }: FabActionProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Hàm "bắn" sự kiện lên Google Tag Manager khi người dùng click
   const handleTrackingClick = () => {
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        event: 'contact_click', // Tên sự kiện chung cho tất cả các nút liên hệ
-        contact_method: eventName, // Phương thức liên hệ cụ thể (zalo, hotline...)
-        page_location: window.location.href // Ghi nhận khách click từ trang nào
-      });
-    }
+    // SỬ DỤNG HÀM CHUẨN CỦA GOOGLE
+    sendGTMEvent({
+      event: 'contact_click',
+      contact_method: eventName,
+      page_location: typeof window !== 'undefined' ? window.location.href : ''
+    });
   };
 
   return (
@@ -146,7 +53,7 @@ const FabAction = ({ href, icon, label, delay, isPrimary, target, eventName }: F
         $isPrimary={isPrimary}
         target={target || '_self'}
         rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-        onClick={handleTrackingClick} // Gắn hàm tracking vào sự kiện onClick
+        onClick={handleTrackingClick}
       >
         {icon}
       </FabButton>
@@ -161,9 +68,8 @@ const FabAction = ({ href, icon, label, delay, isPrimary, target, eventName }: F
   );
 };
 
-// --- Main Component ---
 export default function FloatingButtons() {
-  const[isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
     if (window.scrollY > 300) setIsVisible(true);
@@ -177,9 +83,8 @@ export default function FloatingButtons() {
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
-  },[]);
+  }, []);
   
-  // Khai báo thêm tên sự kiện (eventName) cho từng nút
   const actions =[
     { href: 'tel:0963320335', icon: <RiPhoneFill />, label: 'Hotline: 0963.320.335', isPrimary: true, eventName: 'hotline_call' },
     { href: 'https://zalo.me/1564601831220674638', icon: <SiZalo />, label: 'Chat Zalo', target: '_blank', eventName: 'zalo_chat' },
@@ -191,19 +96,13 @@ export default function FloatingButtons() {
     <FabContainer>
       <AnimatePresence>
         {isVisible && (
-          <ButtonWrapper
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-          >
+          <ButtonWrapper initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}>
             <ScrollToTopButton onClick={scrollToTop}>
               <RiArrowUpSLine />
             </ScrollToTopButton>
           </ButtonWrapper>
         )}
       </AnimatePresence>
-      
-      {/* Reverse để hiển thị Hotline (Primary) ở dưới cùng cho dễ bấm */}
       {actions.slice().reverse().map((action, index) => (
          <FabAction
             key={action.label}
@@ -213,7 +112,7 @@ export default function FloatingButtons() {
             delay={(actions.length - index) * 0.05}
             isPrimary={action.isPrimary}
             target={action.target}
-            eventName={action.eventName} // Truyền tên sự kiện xuống
+            eventName={action.eventName}
         />
       ))}
     </FabContainer>

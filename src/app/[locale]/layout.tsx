@@ -7,12 +7,13 @@ import FloatingButtons from "@/components/shared/FloatingButtons";
 import { Inter, Montserrat } from "next/font/google";
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
+// THÊM IMPORT CHÍNH CHỦ TỪ GOOGLE
+import { GoogleTagManager } from '@next/third-parties/google'; 
 
 // Cấu hình Font 
 const inter = Inter({ subsets: ["latin", "vietnamese"], variable: "--font-inter", display: "swap" });
 const montserrat = Montserrat({
-  subsets: ["latin", "vietnamese"],
+  subsets:["latin", "vietnamese"],
   variable: "--font-montserrat",
   weight:["400", "500", "600", "700", "800"],
   display: "swap",
@@ -88,29 +89,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${inter.variable} ${montserrat.variable}`}>
-      <head>
-        {/* Google Tag Manager - ĐÃ THÊM MÃ CỦA TÀ LÙNG LOGISTICS */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5BD4XCML');
-          `}
-        </Script>
-      </head>
+      {/* SỬ DỤNG COMPONENT CHÍNH CHỦ VỚI ID CỦA ANH */}
+      <GoogleTagManager gtmId="GTM-5BD4XCML" />
+      
       <body>
-        {/* Google Tag Manager (noscript) - ĐÃ THÊM MÃ CỦA TÀ LÙNG LOGISTICS */}
-        <noscript>
-          <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5BD4XCML"
-            height="0" 
-            width="0" 
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
-
         <StyledComponentsRegistry>
           <Providers locale={locale} messages={messages} timeZone={timeZone}>
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

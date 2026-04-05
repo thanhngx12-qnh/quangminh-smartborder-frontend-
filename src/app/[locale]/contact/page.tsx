@@ -18,15 +18,11 @@ import {
 import Button from '@/components/ui/Button';
 import FaqItem from '@/components/shared/FaqItem';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
+import { sendGTMEvent } from '@next/third-parties/google'; // <-- IMPORT HÀM CHÍNH CHỦ
 
-// --- Khai báo type cho GTM dataLayer ---
-declare global {
-  interface Window {
-    dataLayer: unknown[];
-  }
-}
+// KHÔNG CÒN ĐOẠN DECLARE GLOBAL NỮA
 
-// --- Styled Components (Giữ nguyên hoàn toàn) ---
+// --- Styled Components (Giữ nguyên) ---
 const PageWrapper = styled.div` padding: 80px 20px; background-color: ${({ theme }) => theme.colors.background}; min-height: 100vh; `;
 const Container = styled.div` max-width: 1200px; margin: 0 auto; `;
 const PageHeader = styled.div` text-align: center; max-width: 800px; margin: 0 auto 60px auto; h1 { font-family: ${({ theme }) => theme.fonts.heading}; font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: ${({ theme }) => theme.colors.primary}; margin-bottom: 16px; } p { font-size: 18px; color: ${({ theme }) => theme.colors.textSecondary}; line-height: 1.6; } `;
@@ -45,7 +41,6 @@ const MapContainer = styled.div` height: 400px; border-radius: 16px; overflow: h
 
 type SelectOption = { value: string; label: string };
 
-// --- Main Component ---
 export default function ContactPage() {
   const t = useTranslations('ContactPage');
   const tFooter = useTranslations('Footer'); 
@@ -56,7 +51,7 @@ export default function ContactPage() {
   const { result: servicesResult } = useAllServices(locale, 1, 100);
   const initialServiceId = searchParams.get('serviceId');
 
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const[formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   
   const {
     register, handleSubmit, formState: { errors }, reset, control
@@ -68,22 +63,16 @@ export default function ContactPage() {
   const onSubmit = async (data: ContactFormValues) => {
     setFormStatus('submitting');
     try {
-      // 1. Gửi request lên backend
       await postQuoteRequest(data);
-      
-      // 2. Thành công -> Đổi trạng thái
       setFormStatus('success');
       reset();
 
-      // 3. THÊM GTM TRACKING: Bắn sự kiện "generate_lead" khi submit thành công
-      if (typeof window !== 'undefined' && window.dataLayer) {
-        window.dataLayer.push({
-          event: 'generate_lead', // Tên sự kiện chuẩn của GA4 cho việc lấy lead
-          form_name: 'contact_page_form', // Phân biệt form này với form ở Footer (nếu có)
-          // Có thể truyền thêm data để chạy Ads chính xác hơn (đã ẩn email/phone để bảo mật)
-          lead_service_id: data.serviceId || 'none' 
-        });
-      }
+      // SỬ DỤNG HÀM CHÍNH CHỦ
+      sendGTMEvent({
+        event: 'generate_lead',
+        form_name: 'contact_page_form',
+        lead_service_id: data.serviceId || 'none' 
+      });
 
     } catch (error) {
       console.error("Failed:", error);
@@ -122,7 +111,6 @@ export default function ContactPage() {
         </FadeInWhenVisible>
 
         <ContentGrid>
-          {/* Cột Trái: Thông tin liên hệ */}
           <FadeInWhenVisible>
             <InfoColumn>
               <InfoGroup>
@@ -141,12 +129,8 @@ export default function ContactPage() {
                 <h2><RiPhoneLine /> {t('phone')}</h2>
                 <InfoItem>
                   <strong>HOTLINE:</strong>
-                  {/* Bắn sự kiện khi click gọi Hotline */}
-                  <a href="tel:0963320335" onClick={() => {
-                    if (typeof window !== 'undefined' && window.dataLayer) {
-                      window.dataLayer.push({ event: 'contact_click', contact_method: 'hotline_call' });
-                    }
-                  }}>
+                  {/* SỬ DỤNG HÀM CHÍNH CHỦ TRỰC TIẾP */}
+                  <a href="tel:0963320335" onClick={() => sendGTMEvent({ event: 'contact_click', contact_method: 'hotline_call' })}>
                     0963.320.335
                   </a>
                 </InfoItem>
@@ -156,12 +140,8 @@ export default function ContactPage() {
                 <h2><RiMailLine /> {t('email')}</h2>
                 <InfoItem>
                   <strong>EMAIL:</strong>
-                  {/* Bắn sự kiện khi click gửi Email */}
-                  <a href="mailto:info@talunglogistics.com" onClick={() => {
-                    if (typeof window !== 'undefined' && window.dataLayer) {
-                      window.dataLayer.push({ event: 'contact_click', contact_method: 'email_send' });
-                    }
-                  }}>
+                  {/* SỬ DỤNG HÀM CHÍNH CHỦ TRỰC TIẾP */}
+                  <a href="mailto:info@talunglogistics.com" onClick={() => sendGTMEvent({ event: 'contact_click', contact_method: 'email_send' })}>
                     info@talunglogistics.com
                   </a>
                 </InfoItem>
@@ -169,7 +149,6 @@ export default function ContactPage() {
             </InfoColumn>
           </FadeInWhenVisible>
 
-          {/* Cột Phải: Form Liên hệ */}
           <FadeInWhenVisible delay={0.2}>
             <ContactFormWrapper>
               <h2>{t('formTitle')}</h2>
@@ -181,7 +160,6 @@ export default function ContactPage() {
                 </FormSuccess>
               ) : (
                 <Form onSubmit={handleSubmit(onSubmit)} noValidate>
-                  {/* Họ và tên (Bắt buộc) */}
                   <FormGroup>
                     <label htmlFor="name">{tFooter('formName')} <span className="required">*</span></label>
                     <InputWrapper>
@@ -191,7 +169,6 @@ export default function ContactPage() {
                     {errors.name && <FormError>{errors.name.message}</FormError>}
                   </FormGroup>
                   
-                  {/* Email (Bắt buộc) */}
                   <FormGroup>
                     <label htmlFor="email">{tFooter('formEmail')} <span className="required">*</span></label>
                     <InputWrapper>
@@ -201,7 +178,6 @@ export default function ContactPage() {
                     {errors.email && <FormError>{errors.email.message}</FormError>}
                   </FormGroup>
                   
-                  {/* Số điện thoại (Bắt buộc) */}
                   <FormGroup>
                     <label htmlFor="phone">{tFooter('formPhone')} <span className="required">*</span></label>
                     <InputWrapper>
@@ -211,7 +187,6 @@ export default function ContactPage() {
                     {errors.phone && <FormError>{errors.phone.message}</FormError>}
                   </FormGroup>
 
-                  {/* Dịch vụ */}
                   <FormGroup>
                     <label htmlFor="serviceId">{tFooter('formServiceId')} <span style={{fontWeight: 400, color: theme.colors.textMuted, fontSize: '13px'}}>(Tùy chọn)</span></label>
                     <InputWrapper>
@@ -235,7 +210,6 @@ export default function ContactPage() {
                     </InputWrapper>
                   </FormGroup>
 
-                  {/* Nội dung */}
                   <FormGroup>
                     <label htmlFor="message">{tFooter('formMessage')} <span className="required">*</span></label>
                     <InputWrapper>
@@ -256,7 +230,6 @@ export default function ContactPage() {
           </FadeInWhenVisible>
         </ContentGrid>
 
-        {/* FAQ & Map */}
         <BottomSection>
           <FadeInWhenVisible>
             <div>
