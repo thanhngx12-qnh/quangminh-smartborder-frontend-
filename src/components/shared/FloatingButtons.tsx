@@ -8,7 +8,6 @@ import { RiPhoneFill, RiMailFill, RiFacebookCircleFill, RiArrowUpSLine } from 'r
 import { SiZalo } from "react-icons/si";
 
 // --- Styled Components ---
-
 const FabContainer = styled.div`
   position: fixed;
   bottom: 30px;
@@ -52,22 +51,13 @@ const FabButton = styled(motion.a)<{ $isPrimary?: boolean }>`
     `
     : css`
       background-color: ${theme.colors.surface};
-      color: ${theme.colors.primary}; // Icon màu xanh
+      color: ${theme.colors.primary};
       &:hover {
         background-color: ${theme.colors.primary};
-        color: ${theme.colors.white}; // Hover thành nền xanh chữ trắng
+        color: ${theme.colors.white};
       }
     `}
 `;
-
-// Icon Zalo custom (vì react-icons có thể chưa có logo Zalo mới nhất hoặc muốn dùng SVG chuẩn)
-// const ZaloIcon = () => (
-//   <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-//     <path d="M42 12C42 9.79086 40.2091 8 38 8H10C7.79086 8 6 9.79086 6 12V36C6 38.2091 7.79086 40 10 40H38C40.2091 40 42 38.2091 42 36V12Z" fill="#0068FF"/>
-//     <path d="M34 23H28V17H25V31H28V26H31V31H34V23Z" fill="white"/>
-//     <path d="M14 17H23V20H18L23 27V31H14V27H19L14 20V17Z" fill="white"/>
-//   </svg>
-// );
 
 const ScrollToTopButton = styled(motion.button)`
   display: flex;
@@ -82,7 +72,7 @@ const ScrollToTopButton = styled(motion.button)`
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 24px;
-  margin-bottom: 8px; // Cách nhóm liên hệ một chút
+  margin-bottom: 8px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
@@ -110,6 +100,14 @@ const Tooltip = styled(motion.div)`
   pointer-events: none;
 `;
 
+// --- Helper GTM Tracking ---
+// Định nghĩa type để TypeScript không báo lỗi khi gọi window.dataLayer
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+  }
+}
+
 interface FabActionProps {
   href: string;
   icon: React.ReactNode;
@@ -117,10 +115,23 @@ interface FabActionProps {
   delay: number;
   isPrimary?: boolean;
   target?: string;
+  eventName: string; // Tên sự kiện để báo cáo lên GTM
 }
 
-const FabAction = ({ href, icon, label, delay, isPrimary, target }: FabActionProps) => {
+const FabAction = ({ href, icon, label, delay, isPrimary, target, eventName }: FabActionProps) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Hàm "bắn" sự kiện lên Google Tag Manager khi người dùng click
+  const handleTrackingClick = () => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: 'contact_click', // Tên sự kiện chung cho tất cả các nút liên hệ
+        contact_method: eventName, // Phương thức liên hệ cụ thể (zalo, hotline...)
+        page_location: window.location.href // Ghi nhận khách click từ trang nào
+      });
+    }
+  };
+
   return (
     <ButtonWrapper
       onMouseEnter={() => setIsHovered(true)}
@@ -135,6 +146,7 @@ const FabAction = ({ href, icon, label, delay, isPrimary, target }: FabActionPro
         $isPrimary={isPrimary}
         target={target || '_self'}
         rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+        onClick={handleTrackingClick} // Gắn hàm tracking vào sự kiện onClick
       >
         {icon}
       </FabButton>
@@ -149,8 +161,9 @@ const FabAction = ({ href, icon, label, delay, isPrimary, target }: FabActionPro
   );
 };
 
+// --- Main Component ---
 export default function FloatingButtons() {
-  const [isVisible, setIsVisible] = useState(false);
+  const[isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
     if (window.scrollY > 300) setIsVisible(true);
@@ -164,13 +177,14 @@ export default function FloatingButtons() {
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
+  },[]);
   
-  const actions = [
-    { href: 'tel:0963320335', icon: <RiPhoneFill />, label: 'Hotline: 0963.320.335', isPrimary: true },
-    { href: 'https://zalo.me/1564601831220674638', icon: <SiZalo />, label: 'Chat Zalo', target: '_blank' },
-    { href: 'https://facebook.com/talunglogistics.11', icon: <RiFacebookCircleFill style={{ color: '#1877F2' }} />, label: 'Facebook Fanpage', target: '_blank' },
-    { href: 'mailto:info@talunglogistics.com', icon: <RiMailFill />, label: 'Gửi Email' },
+  // Khai báo thêm tên sự kiện (eventName) cho từng nút
+  const actions =[
+    { href: 'tel:0963320335', icon: <RiPhoneFill />, label: 'Hotline: 0963.320.335', isPrimary: true, eventName: 'hotline_call' },
+    { href: 'https://zalo.me/1564601831220674638', icon: <SiZalo />, label: 'Chat Zalo', target: '_blank', eventName: 'zalo_chat' },
+    { href: 'https://facebook.com/talunglogistics.11', icon: <RiFacebookCircleFill style={{ color: '#1877F2' }} />, label: 'Facebook Fanpage', target: '_blank', eventName: 'facebook_message' },
+    { href: 'mailto:info@talunglogistics.com', icon: <RiMailFill />, label: 'Gửi Email', eventName: 'email_send' },
   ];
 
   return (
@@ -199,6 +213,7 @@ export default function FloatingButtons() {
             delay={(actions.length - index) * 0.05}
             isPrimary={action.isPrimary}
             target={action.target}
+            eventName={action.eventName} // Truyền tên sự kiện xuống
         />
       ))}
     </FabContainer>
