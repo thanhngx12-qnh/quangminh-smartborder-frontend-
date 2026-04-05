@@ -4,6 +4,7 @@
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import FadeInWhenVisible from '../animations/FadeInWhenVisible';
+import Breadcrumbs from './Breadcrumbs'; // Import component Breadcrumbs
 
 // --- Styled Components ---
 
@@ -13,8 +14,8 @@ const PageWrapper = styled.div`
 `;
 
 const PageHeader = styled.header`
-  padding: 80px 20px;
-  background-color: ${({ theme }) => theme.colors.surfaceAlt}; // Nền xám nhẹ
+  padding: 60px 20px 80px;
+  background-color: ${({ theme }) => theme.colors.surfaceAlt}; 
   text-align: center;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 
@@ -35,7 +36,7 @@ const PageHeader = styled.header`
 `;
 
 const ContentContainer = styled.div`
-  max-width: 800px;
+  max-width: 850px; // Nới rộng một chút cho dễ đọc
   margin: 0 auto;
   padding: 60px 20px;
 `;
@@ -63,53 +64,36 @@ const Prose = styled.article`
     margin-bottom: 12px;
   }
 
-  p {
-    margin-bottom: 20px;
-  }
-
-  ul, ol {
-    margin-bottom: 20px;
-    padding-left: 24px;
-  }
-
-  li {
-    margin-bottom: 8px;
-  }
-
-  a {
-    color: ${({ theme }) => theme.colors.accent};
-    text-decoration: underline;
-    &:hover { text-decoration: none; }
-  }
-  
-  strong {
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.primary};
-  }
+  p { margin-bottom: 20px; }
+  ul, ol { margin-bottom: 20px; padding-left: 24px; }
+  li { margin-bottom: 8px; }
+  a { color: ${({ theme }) => theme.colors.accent}; text-decoration: underline; &:hover { text-decoration: none; } }
+  strong { font-weight: 600; color: ${({ theme }) => theme.colors.primary}; }
 `;
 
 interface StaticPageLayoutProps {
   title: string;
-  lastUpdated?: string; // Optional
-  children?: React.ReactNode; // Hỗ trợ custom children
-  content?: string; // Hỗ trợ markdown string
+  lastUpdated?: string;
+  children?: React.ReactNode;
+  content?: string;
 }
 
 export default function StaticPageLayout({ title, lastUpdated, content, children }: StaticPageLayoutProps) {
   return (
     <PageWrapper>
-      <FadeInWhenVisible>
-        <PageHeader>
+      <PageHeader>
+        <FadeInWhenVisible>
+          {/* THÊM BREADCRUMBS TẠI ĐÂY */}
+          <Breadcrumbs items={[{ label: title }]} />
           <h1>{title}</h1>
           {lastUpdated && <time>{lastUpdated}</time>}
-        </PageHeader>
-      </FadeInWhenVisible>
+        </FadeInWhenVisible>
+      </PageHeader>
       
       <ContentContainer>
         <FadeInWhenVisible delay={0.2}>
           <Prose>
             {content ? (
-              // Xử lý markdown: thay thế \n bằng \n\n để xuống dòng đúng
               <ReactMarkdown>{content.replace(/\n/g, '\n\n')}</ReactMarkdown>
             ) : (
               children

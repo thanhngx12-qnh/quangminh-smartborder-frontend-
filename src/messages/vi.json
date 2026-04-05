@@ -45,7 +45,9 @@
     "theme": "Giao diện",
     "viewAll": "Xem tất cả",
     "viewAllServices": "Khám Phá Toàn Bộ Dịch Vụ",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "share": "CHIA SẺ",
+    "back": "Quay lại"
   },
   "Social": {
     "facebook": "Facebook",
@@ -125,7 +127,8 @@
     "seoTitle": "Cập nhật thông tin Logistics biên mậu Việt - Trung",
     "seoContent": "Chào mừng bạn đến với chuyên mục tin tức của <bold>Tà Lùng Logistics</bold>. Tại đây, chúng tôi cung cấp những thông tin mới nhất về tin tức nội bộ, chính sách xuất nhập khẩu, các quy định mới tại <bold>Cửa khẩu Quốc tế Tà Lùng</bold> và xu hướng vận tải quốc tế.\n\nViệc nắm bắt kịp thời các thay đổi về thủ tục hải quan và tình hình thông quan tại biên giới là yếu tố sống còn giúp doanh nghiệp tránh được các rủi ro về chậm trễ hàng hóa. Đội ngũ chuyên gia của Tà Lùng Quang Minh luôn nỗ lực tổng hợp và phân tích thị trường để mang lại những kiến thức giá trị nhất cho khách hàng.",
     "ctaTitle": "Bạn cần tư vấn giải pháp vận chuyển?",
-    "ctaButton": "Gửi yêu cầu hỗ trợ"
+    "ctaButton": "Gửi yêu cầu hỗ trợ",
+    "viewOther": "Xem tin khác"
 },
   "ServicesPage": {
     "title": "Hệ Thống Dịch Vụ Logistics",
@@ -139,7 +142,9 @@
   "ServiceDetail": {
     "ctaTitle": "Bạn cần một phương án logistics tối ưu hơn?",
     "ctaButton": "Liên Hệ Nhận Giải Pháp",
-    "otherServicesTitle": "Dịch Vụ Liên Quan"
+    "otherServicesTitle": "Dịch Vụ Liên Quan",
+    "ctaDesc": "Liên hệ đội ngũ Tà Lùng Logistics để nhận tư vấn và báo giá tối ưu nhất.",
+  "viewOther": "Xem dịch vụ khác"
   },
   "WhyChooseUs": {
     "title": "Bảo Chứng Cho Sự Thành Công",
