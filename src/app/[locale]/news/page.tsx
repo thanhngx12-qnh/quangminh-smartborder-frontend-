@@ -10,8 +10,9 @@ import Pagination from '@/components/ui/Pagination';
 import { Link } from '@/navigation';
 import Image from 'next/image';
 import CardSkeleton from '@/components/ui/CardSkeleton';
-import ErrorState from '@/components/ui/ErrorState'; // Import ErrorState
-import { RiCalendarLine, RiArrowRightLine } from 'react-icons/ri';
+import ErrorState from '@/components/ui/ErrorState';
+import { ButtonLink } from '@/components/ui/Button';
+import { RiCalendarLine, RiArrowRightLine, RiInformationLine } from 'react-icons/ri';
 
 
 // --- Styled Components ---
@@ -21,10 +22,9 @@ const PageWrapper = styled.div`
   min-height: 100vh;
 `;
 
-// 1. Hero Section
 const HeroSection = styled.section`
   background-color: ${({ theme }) => theme.colors.primary};
-  padding: 100px 20px;
+  padding: 120px 20px;
   text-align: center;
   color: ${({ theme }) => theme.colors.white};
   border-bottom: 4px solid ${({ theme }) => theme.colors.accent};
@@ -35,20 +35,21 @@ const HeroSection = styled.section`
     font-weight: 800;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.white};
+    margin: 0;
   }
 `;
 
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 80px 20px;
 `;
 
 const NewsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  align-items: stretch; // Đảm bảo card cao bằng nhau
+  align-items: stretch;
 
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
@@ -65,7 +66,68 @@ const PaginationWrapper = styled.div`
   justify-content: center;
 `;
 
-// 2. News Card (Tái sử dụng style từ LatestNewsSection)
+// --- SEO CONTENT STYLES (Đồng bộ với trang Services) ---
+const SeoContentSection = styled.section`
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+`;
+
+const SeoTextWrapper = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  
+  h2 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: 28px;
+    color: ${({ theme }) => theme.colors.primary};
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    svg { color: ${({ theme }) => theme.colors.accent}; }
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: ${({ theme }) => theme.colors.textSecondary};
+    white-space: pre-line;
+    text-align: justify;
+
+    strong, b {
+      color: ${({ theme }) => theme.colors.primary};
+      font-weight: 600;
+    }
+  }
+`;
+
+const CtaBanner = styled.div`
+  margin-top: 80px;
+  background-color: ${({ theme }) => theme.colors.surfaceAlt};
+  padding: 60px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+
+  h3 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: 28px;
+    color: ${({ theme }) => theme.colors.primary};
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-bottom: 32px;
+    color: ${({ theme }) => theme.colors.textSecondary};
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
+`;
+
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -93,7 +155,6 @@ const MetaInfo = styled.div`
   font-size: 13px;
   color: ${({ theme }) => theme.colors.textMuted};
   margin-bottom: 12px;
-  
   svg { color: ${({ theme }) => theme.colors.accent}; }
 `;
 
@@ -154,25 +215,22 @@ const NewsCard = styled(Link)`
   }
 `;
 
-// Helper format ngày
 const formatDate = (dateString: string, locale: string) => {
   return new Intl.DateTimeFormat(locale, {
     year: 'numeric', month: 'long', day: 'numeric',
   }).format(new Date(dateString));
 };
-// --- Main Component ---
+
 export default function NewsPage() {
   const locale = useLocale();
   const t = useTranslations('LatestNews');
   const tErrors = useTranslations('Errors');
   const searchParams = useSearchParams();
-  const router = useRouter(); // Khởi tạo router
+  const router = useRouter(); 
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-  // Hook gốc (chưa có refetch)
   const { result, isLoading, isError } = usePaginatedNews(locale, currentPage);
 
-  // SỬA LỖI Ở ĐÂY: Dùng window.location.reload() thay cho refetch()
   const handleRetry = () => {
     window.location.reload();
   };
@@ -194,7 +252,7 @@ export default function NewsPage() {
           title={tErrors('failedToLoad')}
           description="Có lỗi xảy ra khi tải tin tức. Vui lòng thử lại."
           actionText={tErrors('retry')}
-          onAction={handleRetry} // Gọi hàm reload trang
+          onAction={handleRetry}
         />
       );
     }
@@ -254,6 +312,31 @@ export default function NewsPage() {
             />
           </PaginationWrapper>
         )}
+
+        {/* THÊM KHỐI SEO CONTENT (MỤC 13 TRONG CHECKLIST) */}
+        <FadeInWhenVisible delay={0.3}>
+          <SeoContentSection>
+            <SeoTextWrapper>
+              <h2><RiInformationLine /> {t('seoTitle')}</h2>
+              <p>
+                {t.rich('seoContent', {
+                  bold: (chunks) => <strong>{chunks}</strong>
+                })}
+              </p>
+            </SeoTextWrapper>
+          </SeoContentSection>
+        </FadeInWhenVisible>
+
+        {/* THÊM CTA BANNER CUỐI TRANG */}
+        <FadeInWhenVisible delay={0.4}>
+          <CtaBanner>
+            <h3>{t('ctaTitle')}</h3>
+            <p>Liên hệ ngay để nhận được sự tư vấn chuyên nghiệp từ đội ngũ Tà Lùng Logistics.</p>
+            <ButtonLink href="/contact" variant="primary" size="large" as="a">
+              {t('ctaButton')} <RiArrowRightLine style={{marginLeft: 8}} />
+            </ButtonLink>
+          </CtaBanner>
+        </FadeInWhenVisible>
       </>
     );
   };

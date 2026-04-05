@@ -6,16 +6,12 @@ import styled from 'styled-components';
 import { RiBuilding2Line, RiTruckLine, RiFileList3Line } from 'react-icons/ri';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 
-// --- Styled Components ---
-
+// --- Styled Components (Giữ nguyên) ---
 const SectionWrapper = styled.section`
-  // Sử dụng màu Primary (Xanh đậm) làm nền để nổi bật Text trắng
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 80px 20px;
   position: relative;
   overflow: hidden;
-
-  // Thêm họa tiết trang trí mờ (optional)
   &::before {
     content: '';
     position: absolute;
@@ -34,16 +30,12 @@ const KpiGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  
-  // Đường kẻ phân cách giữa các cột trên Desktop
   & > div:not(:last-child) {
     border-right: 1px solid rgba(255, 255, 255, 0.15);
   }
-
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     gap: 60px;
-    
     & > div:not(:last-child) {
       border-right: none;
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
@@ -60,7 +52,6 @@ const KpiItem = styled.div`
   color: ${({ theme }) => theme.colors.white};
   padding: 0 20px;
   transition: transform 0.3s ease;
-
   &:hover {
     transform: translateY(-5px);
   }
@@ -68,9 +59,8 @@ const KpiItem = styled.div`
 
 const IconWrapper = styled.div`
   font-size: 56px;
-  color: ${({ theme }) => theme.colors.accent}; // Icon màu Đỏ nổi bật trên nền Xanh
+  color: ${({ theme }) => theme.colors.accent};
   margin-bottom: 20px;
-  
   svg {
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
   }
@@ -85,7 +75,6 @@ const Value = styled.div`
   background: linear-gradient(to right, #ffffff, #e0e0e0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   @media (max-width: 768px) {
     font-size: 40px;
   }
@@ -103,7 +92,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   font-size: 15px;
-  color: ${({ theme }) => theme.colors.footer.textSecondary}; // Màu xám nhạt dễ đọc
+  color: ${({ theme }) => theme.colors.footer.textSecondary};
   max-width: 250px;
 `;
 
@@ -115,21 +104,22 @@ export default function KpiSection() {
     {
       key: 'storage',
       icon: <RiBuilding2Line />,
-      value: t('storageValue'),
+      // SỬA Ở ĐÂY: Dùng t.raw cho 'value' để tránh lỗi ký tự đặc biệt như <
+      value: t.raw('storageValue'), 
       title: t('storageTitle'),
       description: t('storageDesc'),
     },
     {
       key: 'container',
       icon: <RiTruckLine />,
-      value: t('containerValue'),
+      value: t.raw('containerValue'),
       title: t('containerTitle'),
       description: t('containerDesc'),
     },
     {
       key: 'customs',
       icon: <RiFileList3Line />,
-      value: t('customsValue'),
+      value: t.raw('customsValue'), // Sửa lỗi <2 Giờ
       title: t('customsTitle'),
       description: t('customsDesc'),
     },
@@ -140,7 +130,6 @@ export default function KpiSection() {
       <Container>
         <KpiGrid>
           {kpiItems.map((item, index) => (
-            // Sửa lỗi: dùng prop delay trực tiếp thay vì transition object
             <FadeInWhenVisible key={index} delay={index * 0.2}>
               <KpiItem>
                 <IconWrapper>{item.icon}</IconWrapper>

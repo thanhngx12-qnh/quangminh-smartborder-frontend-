@@ -62,9 +62,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: locale,
       type: 'website',
     },
+    
+    // ĐÃ SỬA LỖI TỬ HUYỆT SEO Ở ĐÂY: Xóa bỏ dòng canonical tĩnh gây lỗi index
     alternates: {
-      canonical: `/${locale}`,
-      languages: { 'vi-VN': '/vi', 'en-US': '/en', 'zh-CN': '/zh', 'x-default': '/vi' },
+      languages: { 
+        'vi-VN': '/vi', 
+        'en-US': '/en', 
+        'zh-CN': '/zh', 
+        'x-default': '/vi' 
+      },
     },
   };
 }

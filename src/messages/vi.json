@@ -68,7 +68,7 @@
     "containerValue": "100+",
     "containerDesc": "Container thông quan mỗi ngày",
     "customsTitle": "Tốc Độ Thông Quan",
-    "customsValue": "<2 Giờ",
+    "customsValue": "Dưới 2 Giờ",
     "customsDesc": "Thời gian hoàn thiện thủ tục"
   },
   "AboutPage": {
@@ -76,14 +76,14 @@
     "heroSubtitle": "Hơn một thập kỷ kiến tạo chuỗi cung ứng thông suốt tại Cửa khẩu Quốc tế Tà Lùng",
     "intro": {
       "title": "TỔNG QUAN DOANH NGHIỆP",
-      "content": "Được thành lập từ năm 2008 với tiền thân là Công ty TNHH Thương mại Vận tải Phú Anh, Công ty Cổ phần Tà Lùng Quang Minh đã nhanh chóng vươn mình trở thành thế lực hàng đầu trong ngành logistics vùng biên. Nắm bắt dòng chảy thương mại Việt - Trung qua Cửa khẩu Quốc tế Tà Lùng, chúng tôi đã đầu tư mạnh mẽ vào hệ thống kho bãi và địa điểm tập kết hàng hóa đạt chuẩn quốc tế.\n\nHệ sinh thái dịch vụ của chúng tôi bao trùm toàn diện: Kho bãi, Bến xe, Đại lý Hải quan, và Vận tải hàng hóa quốc tế đa phương thức"
+      "content": "Được thành lập từ năm 2008 với tiền thân là Công ty TNHH Thương mại Vận tải Tà Lùng Quang Minh, Công ty Cổ phần Tà Lùng Quang Minh đã nhanh chóng vươn mình trở thành thế lực hàng đầu trong ngành logistics vùng biên. Nắm bắt dòng chảy thương mại Việt - Trung qua Cửa khẩu Quốc tế Tà Lùng, chúng tôi đã đầu tư mạnh mẽ vào hệ thống kho bãi và địa điểm tập kết hàng hóa đạt chuẩn quốc tế.\n\nHệ sinh thái dịch vụ của chúng tôi bao trùm toàn diện: Kho bãi, Bến xe, Đại lý Hải quan, và Vận tải hàng hóa quốc tế đa phương thức"
     },
     "missionTitle": "Sứ Mệnh & Tầm Nhìn",
     "missionText": "Sứ mệnh của chúng tôi là xóa bỏ mọi rào cản thông quan, tối ưu hóa chuỗi cung ứng bằng sự minh bạch và tốc độ. Tầm nhìn chiến lược vươn lên trở thành mắt xích quan trọng nhất trên tuyến hành lang kinh tế Việt - Trung.",
     "timelineTitle": "DẤU ẤN PHÁT TRIỂN",
     "timeline": {
       "stage1_year": "2008",
-      "stage1_text": "Thành lập Công ty TNHH Thương mại Vận tải Phú Anh, đặt những viên gạch đầu tiên cho dịch vụ vận tải biên mậu.",
+      "stage1_text": "Thành lập Công ty TNHH Thương mại Vận tải Tà Lùng Quang Minh, đặt những viên gạch đầu tiên cho dịch vụ vận tải biên mậu.",
       "stage2_year": "Đổi Mới",
       "stage2_text": "Chuyển đổi thành Công ty Cổ phần Tà Lùng Quang Minh, mở rộng đầu tư hạ tầng lên đến 25 ha, thiết lập tiêu chuẩn thông quan mới.",
       "stage3_year": "Tương Lai",
@@ -91,7 +91,7 @@
     },
     "facilities": {
       "warehouseTitle": "HẠ TẦNG KHO BÃI QUY MÔ",
-      "warehouseContent": "Sở hữu 3 cụm bãi chiến lược: Phú Anh, Vũ Thành và Sơn Cảng với tổng diện tích lên tới 25 ha. Cơ sở hạ tầng được thiết kế khép kín, đáp ứng hoàn hảo các tiêu chuẩn khắt khe nhất về lưu trữ và sang tải hàng hóa tải trọng lớn.",
+      "warehouseContent": "Sở hữu 3 cụm bãi chiến lược: Tà Lùng Quang Minh, Vũ Thành và Sơn Cảng với tổng diện tích lên tới 25 ha. Cơ sở hạ tầng được thiết kế khép kín, đáp ứng hoàn hảo các tiêu chuẩn khắt khe nhất về lưu trữ và sang tải hàng hóa tải trọng lớn.",
       "transportTitle": "NĂNG LỰC VẬN TẢI ĐA DẠNG",
       "transportContent": "Vận hành đội xe hùng hậu với đủ loại tải trọng, sẵn sàng đáp ứng mọi bài toán vận chuyển đa phương thức của doanh nghiệp một cách linh hoạt và an toàn tuyệt đối."
     },
@@ -120,13 +120,21 @@
     "description": "Cung cấp chuỗi dịch vụ khép kín, thiết kế may đo nhằm giải quyết triệt để các bài toán vận hành và thông quan của doanh nghiệp."
   },
   "LatestNews": {
-    "title": "Điểm Tin Giao Thương",
-    "viewAll": "Đọc tất cả tin tức"
-  },
+    "title": "Tin Tức & Sự Kiện",
+    "viewAll": "Xem tất cả tin tức",
+    "seoTitle": "Cập nhật thông tin Logistics biên mậu Việt - Trung",
+    "seoContent": "Chào mừng bạn đến với chuyên mục tin tức của <bold>Tà Lùng Logistics</bold>. Tại đây, chúng tôi cung cấp những thông tin mới nhất về tin tức nội bộ, chính sách xuất nhập khẩu, các quy định mới tại <bold>Cửa khẩu Quốc tế Tà Lùng</bold> và xu hướng vận tải quốc tế.\n\nViệc nắm bắt kịp thời các thay đổi về thủ tục hải quan và tình hình thông quan tại biên giới là yếu tố sống còn giúp doanh nghiệp tránh được các rủi ro về chậm trễ hàng hóa. Đội ngũ chuyên gia của Tà Lùng Quang Minh luôn nỗ lực tổng hợp và phân tích thị trường để mang lại những kiến thức giá trị nhất cho khách hàng.",
+    "ctaTitle": "Bạn cần tư vấn giải pháp vận chuyển?",
+    "ctaButton": "Gửi yêu cầu hỗ trợ"
+},
   "ServicesPage": {
-    "title": "Hệ Sinh Thái Dịch Vụ",
-    "description": "Từ kho bãi, hải quan đến vận tải quốc tế, khám phá các tiện ích dịch vụ đẳng cấp được vận hành bởi đội ngũ Tà Lùng Quang Minh.",
-    "noServices": "Dữ liệu dịch vụ đang được cập nhật."
+    "title": "Hệ Thống Dịch Vụ Logistics",
+    "description": "Giải pháp chuỗi cung ứng toàn diện tại Cửa khẩu Quốc tế Tà Lùng, kết nối giao thương Việt Nam - Trung Quốc.",
+    "noServices": "Hiện tại không có dịch vụ nào để hiển thị.",
+    "seoTitle": "Năng lực cung ứng dịch vụ tại Tà Lùng Logistics",
+    "seoContent": "Tà Lùng Logistics (Tà Lùng Quang Minh) tự hào là đơn vị tiên phong với hơn 15 năm kinh nghiệm vận hành tại <bold>Cửa khẩu Quốc tế Tà Lùng</bold>. Chúng tôi không chỉ cung cấp các dịch vụ đơn lẻ mà mang đến giải pháp trọn gói từ <bold>kho bãi bến xe</bold>, <bold>đại lý hải quan</bold> cho đến <bold>vận tải đa phương thức</bold>.\n\nVới hệ thống 3 bãi trung chuyển có tổng diện tích 25 ha, chúng tôi có đủ khả năng tiếp nhận và xử lý các lô hàng siêu trường siêu trọng, hàng nông sản cần bảo quản và hàng tiêu dùng số lượng lớn. Đội ngũ chuyên gia am hiểu chính sách biên mậu sẽ giúp doanh nghiệp tối ưu chi phí và thời gian thông quan nhanh nhất.",
+    "ctaTitle": "Sẵn sàng tối ưu chuỗi cung ứng của bạn?",
+    "ctaButton": "Liên hệ báo giá ngay"
   },
   "ServiceDetail": {
     "ctaTitle": "Bạn cần một phương án logistics tối ưu hơn?",
