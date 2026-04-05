@@ -60,11 +60,11 @@ export default function Header() {
     { 
       label: tNav('news'), 
       href: '/news',
-      subItems:[
-        { href: `/news/${tNav('newsSlug.logistics')}`, label: tNav('newsSub.logistics') },
-        { href: `/news/${tNav('newsSlug.importExport')}`, label: tNav('newsSub.importExport') },
-        { href: `/news/${tNav('newsSlug.market')}`, label: tNav('newsSub.market') },
-      ]
+      // subItems:[
+      //   { href: `/news/${tNav('newsSlug.logistics')}`, label: tNav('newsSub.logistics') },
+      //   { href: `/news/${tNav('newsSlug.importExport')}`, label: tNav('newsSub.importExport') },
+      //   { href: `/news/${tNav('newsSlug.market')}`, label: tNav('newsSub.market') },
+      // ]
     },
     { href: '/manifesto', label: tNav('manifesto') },
     { href: '/careers', label: tNav('careers') },
