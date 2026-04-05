@@ -7,7 +7,7 @@ import FloatingButtons from "@/components/shared/FloatingButtons";
 import { Inter, Montserrat } from "next/font/google";
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Script from 'next/script'; // THÊM IMPORT SCRIPT CỦA NEXT.JS
+import Script from 'next/script';
 
 // Cấu hình Font 
 const inter = Inter({ subsets: ["latin", "vietnamese"], variable: "--font-inter", display: "swap" });
@@ -45,11 +45,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { template: `%s | ${brandName}`, default: defaultTitle },
     description: defaultDescription,
     keywords: keywords,
-    icons: { icon: '/images/logo.png', apple: '/apple-touch-icon.png' },
+    icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
     
-    // THÊM: Xác minh Google Search Console
+    // Xác minh Google Search Console
     verification: {
-      google: "BM5F0x2whCH1lpfr_LwSI3vUYoFj7FxW9XfPhwuf1YU", // <-- Đổi mã này sau khi tạo GSC
+      google: "BM5F0x2whCH1lpfr_LwSI3vUYoFj7FxW9XfPhwuf1YU", 
     },
 
     openGraph: {
@@ -89,24 +89,22 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${montserrat.variable}`}>
       <head>
-        {/* THÊM: Mã Google Tag Manager (Head) */}
-        {/* Tối ưu tốc độ: dùng strategy="afterInteractive" để không làm chậm lúc load trang */}
+        {/* Google Tag Manager - ĐÃ THÊM MÃ CỦA TÀ LÙNG LOGISTICS */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-XXXXXXX'); 
+            })(window,document,'script','dataLayer','GTM-5BD4XCML');
           `}
         </Script>
-        {/* LƯU Ý: Đổi GTM-XXXXXXX thành ID của bạn */}
       </head>
       <body>
-        {/* THÊM: Mã Google Tag Manager (Body - Dành cho trình duyệt không chạy JS) */}
+        {/* Google Tag Manager (noscript) - ĐÃ THÊM MÃ CỦA TÀ LÙNG LOGISTICS */}
         <noscript>
           <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" // LƯU Ý: Đổi GTM-XXXXXXX
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5BD4XCML"
             height="0" 
             width="0" 
             style={{ display: 'none', visibility: 'hidden' }}
