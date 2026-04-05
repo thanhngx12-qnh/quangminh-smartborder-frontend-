@@ -2,7 +2,10 @@
 import { createNavigation } from 'next-intl/navigation';
 
 export const locales = ['vi', 'en', 'zh'] as const;
-export const localePrefix = 'always';
+
+// SỬA Ở ĐÂY: Đổi từ 'always' sang 'as-needed'
+// Điều này giúp tiếng Việt (defaultLocale) biến mất khỏi thanh địa chỉ
+export const localePrefix = 'as-needed';
 
 // Khai báo bản đồ URL (URL alias) cho từng ngôn ngữ
 export const pathnames = {
@@ -20,7 +23,6 @@ export const pathnames = {
     zh: '/fuwu'
   },
   
-  // URL động cho chi tiết dịch vụ: /services/[slug] -> /dich-vu/[slug]
   '/services/[slug]': {
     vi: '/dich-vu/[slug]',
     en: '/services/[slug]',
@@ -33,7 +35,6 @@ export const pathnames = {
     zh: '/xinwen'
   },
   
-  // URL động cho chi tiết tin tức
   '/news/[slug]': {
     vi: '/tin-tuc/[slug]',
     en: '/news/[slug]',
@@ -46,7 +47,6 @@ export const pathnames = {
     zh: '/zhaopin'
   },
   
-  // URL động cho chi tiết tuyển dụng
   '/careers/[id]': {
     vi: '/tuyen-dung/[id]',
     en: '/careers/[id]',

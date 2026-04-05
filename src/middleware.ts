@@ -1,12 +1,19 @@
 // dir: frontend/middleware.ts
 import createMiddleware from 'next-intl/middleware';
-import { locales, pathnames, localePrefix } from './navigation'; // Đường dẫn import có thể thay đổi tùy vị trí thư mục của bạn
+import { locales, pathnames, localePrefix } from './navigation'; 
  
 export default createMiddleware({
   locales,
+  pathnames,
+  // Đảm bảo mặc định là tiếng Việt
   defaultLocale: 'vi',
-  localePrefix,
-  pathnames // QUAN TRỌNG: Truyền pathnames vào middleware để nó biết cách chuyển hướng URL
+  
+  // SỬA Ở ĐÂY 1: Phải khớp với cấu hình trong navigation.ts
+  localePrefix: 'as-needed',
+  
+  // SỬA Ở ĐÂY 2: Quan trọng nhất để không bị nhảy sang /en
+  // Tắt tính năng tự động phát hiện ngôn ngữ trình duyệt
+  localeDetection: false 
 });
  
 export const config = {
