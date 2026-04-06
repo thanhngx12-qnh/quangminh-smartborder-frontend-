@@ -10,11 +10,11 @@
       "other": "其他服务"
     },
     "servicesSlug": {
-      "warehouse": "cangchu",
-      "transloading": "zhongzhuan-cunchu",
+      "warehouse": "cangchu-ta-ling",
+      "transloading": "zhongzhuan-duizun",
       "transport": "yunshu",
-      "customs": "baoguan",
-      "other": "qita"
+      "customs": "baoguan-daili",
+      "other": ""
     },
     "manifesto": "企业宣言",
     "careers": "招聘",
@@ -26,9 +26,9 @@
       "market": "市场"
     },
     "newsSlug": {
-      "logistics": "logistics",
-      "importExport": "import-export",
-      "market": "market"
+      "logistics": "wuliu",
+      "importExport": "jinchukou",
+      "market": "shichang"
     },
     "contact": "联系我们"
   },
@@ -58,7 +58,7 @@
   "Hero": {
     "label": "塔岭国际口岸战略物流合作伙伴",
     "title": "连接边境\n走向全球",
-    "subtitle": "自2008年以来，塔岭光明致力于提供安全、高效、成本优化的报关、仓储及多式联运解决方案。",
+    "subtitle": "自2008年以来，塔岭光明始终致力于提供安全、高效、成本优化的报关、仓储及多式联运解决方案。",
     "ctaServices": "探索服务",
     "ctaContact": "获取专业咨询"
   },
@@ -75,41 +75,41 @@
   },
   "AboutPage": {
     "heroTitle": "关于塔岭光明",
-    "heroSubtitle": "十余年打造塔岭国际口岸高效供应链",
+    "heroSubtitle": "十余年打造塔岭国际口岸高效畅通的供应链体系",
     "intro": {
       "title": "企业概况",
-      "content": "公司成立于2008年，前身为塔岭光明运输贸易有限公司，现已发展成为边境物流领域的领先企业。依托塔岭国际口岸的中越贸易流通优势，公司大力投资建设符合国际标准的仓储及集散体系。\n\n公司服务涵盖仓储、车场、报关代理及国际多式联运等完整物流体系。"
+      "content": "公司成立于2008年，前身为塔岭光明运输贸易有限公司，如今已发展成为边境物流领域的领先企业。依托塔岭国际口岸的中越贸易流通优势，公司持续投入建设符合国际标准的仓储与货物集散体系。\n\n公司的服务生态覆盖全面：仓储、车场、报关代理以及国际多式联运。"
     },
     "missionTitle": "使命与愿景",
-    "missionText": "我们的使命是通过透明与高效，消除一切通关障碍并优化供应链。愿景是成为中越经济走廊最关键的一环。",
+    "missionText": "我们的使命是消除一切通关障碍，通过透明与高效优化供应链。我们的战略愿景是成为中越经济走廊上最重要的一环。",
     "timelineTitle": "发展里程碑",
     "timeline": {
       "stage1_year": "2008",
-      "stage1_text": "成立运输贸易公司，奠定边境运输服务基础。",
+      "stage1_text": "成立塔岭光明运输贸易有限公司，奠定边境运输服务基础。",
       "stage2_year": "转型升级",
-      "stage2_text": "转型为股份公司，基础设施扩展至25公顷，建立新通关标准。",
+      "stage2_text": "转型为塔岭光明股份公司，基础设施扩展至25公顷，建立全新通关标准。",
       "stage3_year": "未来",
-      "stage3_text": "整合塔岭-芝麻口岸体系，打造边境物流服务链。"
+      "stage3_text": "整合塔岭—芝麻口岸体系，打造贯穿边境线的物流服务链。"
     },
     "facilities": {
       "warehouseTitle": "大规模仓储基础设施",
-      "warehouseContent": "拥有塔岭光明、武城、山港三大场站，总面积达25公顷，采用封闭式设计，满足各类重型货物存储与中转需求。",
+      "warehouseContent": "拥有塔岭光明、武城、山港三大核心场站，总面积达25公顷。基础设施采用封闭式设计，充分满足大型货物存储与中转的严格要求。",
       "transportTitle": "多元运输能力",
-      "transportContent": "配备多种吨位运输车队，灵活满足企业多式联运需求，保障运输安全。"
+      "transportContent": "配备多种吨位运输车队，可灵活满足企业多式联运需求，保障运输过程安全可靠。"
     },
     "process": {
       "title": "专业运营流程",
       "steps": {
-        "1": { "title": "接收与评估", "desc": "接收计划与单证并提供最优方案" },
-        "2": { "title": "报关申报", "desc": "快速完成报关手续" },
-        "3": { "title": "车辆调度", "desc": "合理分流车辆进入作业区" },
-        "4": { "title": "安全中转", "desc": "专业设备完成货物转运" },
-        "5": { "title": "完成交付", "desc": "完成出场并跟踪后续运输" }
+        "1": { "title": "接收与评估", "desc": "接收计划与单证，并提供最优方案建议" },
+        "2": { "title": "报关申报", "desc": "快速完成报关手续与通关申报" },
+        "3": { "title": "车辆调度", "desc": "合理分流车辆进入专用作业区" },
+        "4": { "title": "安全中转", "desc": "依托专业设备完成货物转运" },
+        "5": { "title": "完成交付", "desc": "完成出场手续并跟踪后续运输" }
       }
     },
     "vision": {
       "title": "未来方向",
-      "content": "公司正加速数字化转型并升级物流基础设施。\n\n长期目标是连接塔岭与芝麻口岸，打造完整的边境物流走廊，成为中越贸易关键枢纽。"
+      "content": "公司正加速数字化转型，并持续升级物流基础设施。\n\n我们的长期目标是将塔岭与芝麻口岸进行联动，打造完整的边境物流走廊，成为中越贸易的重要枢纽。"
     },
     "offices": {
       "title": "分支网络",
@@ -119,61 +119,180 @@
   },
   "FeaturedServices": {
     "title": "综合物流解决方案",
-    "description": "提供一体化服务链，全面解决企业运营与通关问题。"
+    "description": "提供一体化服务链，量身定制，全面解决企业运营与通关难题。"
   },
   "LatestNews": {
     "title": "新闻与动态",
     "viewAll": "查看全部新闻",
     "seoTitle": "中越边境物流资讯",
-    "seoContent": "欢迎来到塔岭物流新闻中心，我们提供最新政策、市场动态及口岸信息。",
+    "seoContent": "欢迎来到塔岭物流新闻栏目。我们在这里提供最新的内部资讯、进出口政策、塔岭国际口岸最新规定以及国际运输趋势。\n\n及时掌握报关流程变化与边境通关情况，是企业避免货物延误的重要前提。塔岭光明的专业团队将持续整理并分析市场信息，为客户提供最有价值的内容。",
     "ctaTitle": "需要运输方案咨询？",
-    "ctaButton": "提交请求",
-    "viewOther": "查看更多"
+    "ctaButton": "提交支持请求",
+    "viewOther": "查看更多新闻"
   },
   "ServicesPage": {
     "title": "物流服务体系",
-    "description": "塔岭国际口岸一体化供应链解决方案",
-    "noServices": "暂无服务可显示。",
-    "seoTitle": "服务能力介绍",
-    "seoContent": "塔岭物流拥有15年以上经验，提供仓储、报关及多式联运服务。",
+    "description": "塔岭国际口岸的全方位供应链解决方案，连接越南与中国贸易往来。",
+    "noServices": "当前暂无可显示的服务。",
+    "seoTitle": "塔岭物流服务能力",
+    "seoContent": "塔岭物流（塔岭光明）凭借在塔岭国际口岸超过15年的运营经验，始终走在行业前列。我们不仅提供单项服务，更提供从仓储车场、报关代理到多式联运的一体化解决方案。\n\n依托总面积25公顷的3个中转场站，我们具备接收和处理超长超重货物、需保鲜农产品及大批量消费品的能力。熟悉边贸政策的专业团队，将帮助企业更快优化成本并缩短通关时间。",
     "ctaTitle": "准备优化您的供应链？",
     "ctaButton": "立即联系报价"
   },
   "ServiceDetail": {
-    "ctaTitle": "需要更优物流方案？",
-    "ctaButton": "联系我们",
+    "ctaTitle": "您需要更优的物流方案吗？",
+    "ctaButton": "联系我们获取方案",
     "otherServicesTitle": "相关服务",
-    "ctaDesc": "联系我们获取最佳方案与报价。",
-    "viewOther": "查看更多服务"
+    "ctaDesc": "联系塔岭物流团队，获取最合适的咨询与报价。",
+    "viewOther": "查看其他服务"
   },
   "WhyChooseUs": {
     "title": "成功保障",
-    "point1Title": "规模与基础设施",
-    "point1Text": "25公顷场地及现代设备",
-    "point2Title": "丰富经验",
-    "point2Text": "专业团队全天候支持",
-    "point3Title": "高效透明",
-    "point3Text": "流程清晰，成本透明"
+    "point1Title": "规模化与基础设施",
+    "point1Text": "拥有25公顷场地及最现代化的装卸设备，位于贸易核心区域。",
+    "point2Title": "丰富实战经验",
+    "point2Text": "专业团队深谙边贸政策，全天候灵活处理各类通关情况。",
+    "point3Title": "高效与透明",
+    "point3Text": "流程清晰、费用透明，最大限度缩短仓储与通关时间。"
   },
   "Partners": {
     "title": "服务众多进出口企业的合作伙伴"
   },
   "ContactPage": {
-    "title": "联系我们",
-    "description": "我们随时为您提供供应链解决方案。",
+    "title": "与我们取得联系",
+    "description": "塔岭光明团队随时准备倾听并解决您的供应链难题。请立即联系我们。",
     "infoTitle": "总部与联系方式",
     "address": "地址",
     "phone": "热线",
-    "email": "邮箱"
+    "email": "支持邮箱",
+    "salesDept": "营销销售部",
+    "opsDept": "进出口运营中心",
+    "hrDept": "人力资源—招聘",
+    "formTitle": "提交专业需求",
+    "faqTitle": "常见问题解答",
+    "faq": {
+      "q1": "公司平均通关处理时间是多久？",
+      "a1": "在资料齐全并提前准备的情况下，塔岭光明场站的海关手续平均可在2个工作小时内完成。",
+      "q2": "公司是否支持特殊货物中转？",
+      "a2": "完全支持。依托多样化设备与25公顷场地，我们具备安全处理和中转各类货物的能力，从农产品、矿产到超长超重机械均可应对。",
+      "q3": "可以申请水运或铁路运输吗？",
+      "a3": "可以。塔岭光明提供多式联运解决方案，可灵活组合公路、水路与铁路，以优化您的运输成本。"
+    }
+  },
+  "CareersPage": {
+    "title": "职业发展",
+    "subtitle": "成为引领边境物流生态体系的一员。",
+    "noOpenings": "当前暂无合适的职位空缺。",
+    "noOpeningsDesc": "不过我们始终欢迎优秀人才。您可以主动将简历发送至人力资源部，以免错过未来机会。",
+    "errorTitle": "系统维护中",
+    "errorDesc": "当前无法加载招聘列表，请稍后再试。",
+    "retry": "重新加载页面"
+  },
+  "CareerDetailPage": {
+    "jobDescription": "岗位详情",
+    "requirements": "候选人画像",
+    "applyTitle": "加入我们",
+    "applySuccess": "您的申请已提交！招聘团队会尽快与您联系。",
+    "applyError": "提交申请时出现问题，请重新检查。",
+    "form": {
+      "nameLabel": "姓名",
+      "emailLabel": "电子邮箱",
+      "phoneLabel": "联系电话",
+      "cvLabel": "上传简历（.pdf、.doc、.docx，大小小于5MB）",
+      "submitButton": "提交申请",
+      "submittingButton": "处理中..."
+    },
+    "validation": {
+      "nameRequired": "请输入姓名。",
+      "emailInvalid": "邮箱格式不正确。",
+      "phoneInvalid": "电话号码无效。",
+      "cvRequired": "请上传您的简历（CV）。",
+      "cvMaxSize": "文件大小超过5MB限制。",
+      "cvFormat": "不支持的文件格式。"
+    },
+    "notFound": "该职位已过期或不存在。"
+  },
+  "ManifestoPage": {
+    "title": "价值宣言",
+    "subtitle": "连接边境 - 走向全球",
+    "value1Title": "准确与透明",
+    "value1Text": "从报价到通关的每一个流程都经过标准化，客户可以清晰掌握全部费用与货物流向。",
+    "value2Title": "速度与灵活",
+    "value2Text": "时间就是客户的利润。我们迅速响应，及时解决运营中的每一个瓶颈。",
+    "value3Title": "与客户共同成长",
+    "value3Text": "合作伙伴的成功就是我们的能力体现。塔岭光明致力于建立长期战略合作关系。",
+    "value4Title": "社会责任",
+    "value4Text": "企业运营必须兼顾环境保护，并为边境经济繁荣作出贡献。"
+  },
+  "Search": {
+    "placeholder": "输入关键词进行搜索...",
+    "noResults": "没有找到与您搜索词匹配的结果。",
+    "services": "服务",
+    "news": "新闻"
+  },
+  "TrackingPage": {
+    "title": "运单查询中心",
+    "trackingPlaceholder": "请输入需要查询的运单号（AWB）...",
+    "searchButton": "查询",
+    "loading": "系统正在检索数据...",
+    "loadingPage": "正在连接...",
+    "errorTitle": "连接错误",
+    "errorDescription": "服务器繁忙，请稍后再试。",
+    "notFoundTitle": "无效运单号",
+    "notFoundDescription": "系统未找到编号为：{awbs} 的数据。请与发货方核对信息。",
+    "resultsFor": "当前状态：",
+    "noEvents": "该货物仍在更新首条状态中。"
   },
   "Footer": {
     "companyName": "塔岭光明股份公司",
-    "taxCode": "税号: 4800166795",
+    "taxCode": "企业税号：4800166795",
     "address": "总部：越南高平省塔岭国际口岸",
     "sitemap": "网站地图",
     "legal": "法律信息",
     "terms": "服务条款",
     "privacy": "隐私政策",
-    "copyright": "© 2026 塔岭光明 版权所有"
+    "quickContact": "快速留言",
+    "formName": "您的姓名",
+    "formEmail": "联系邮箱",
+    "formMessage": "我们能为您做什么？",
+    "formPhone": "电话号码",
+    "formServiceId": "感兴趣的服务板块",
+    "formSend": "发送请求",
+    "formSuccess": "您的请求已成功提交。专员会尽快与您联系。",
+    "formSubmitting": "系统正在接收中...",
+    "formError": "网络错误，请重新发送。",
+    "copyright": "© 2026 塔岭光明。保留所有权利。",
+    "tracking": "查询运输进度"
+  },
+  "Errors": {
+    "goBackTo": "返回 {pageName}",
+    "retry": "重试",
+    "failedToLoad": "无法从服务器获取数据。"
+  },
+  "NotFound": {
+    "title": "404 - 页面不存在",
+    "description": "您访问的 URL 可能已被修改或移除。",
+    "goHome": "返回首页"
+  },
+  "TermsPage": {
+    "title": "服务使用条款",
+    "lastUpdated": "最新更新：2026年3月15日",
+    "content": "欢迎访问塔岭光明股份公司的官方网站。\n\n当您访问并使用本网站时，即视为您已理解并同意以下条款。\n\n### 1. 客户义务\n- 确保通过报价、应聘或联系表单提交的信息真实且准确。\n- 严禁传播恶意软件、篡改或非法访问我们的数据库系统。\n\n### 2. 版权与知识产权\n- 网站上的全部文字内容、品牌标识、图片及源代码均为塔岭光明股份公司管理下的知识产权。\n- 未经公司书面同意，复制、分发或用于商业用途均属违法行为。\n\n### 3. 免责声明\n- 网站展示的信息仅用于说明和介绍公司能力。根据时间和实际合同情况，运营条款可能会有所调整。若仅依据网站内容而未经过直接咨询所作出的决定，本公司不承担法律责任。\n\n### 4. 更新权利\n公司保留随时修改、更改或删除这些条款的权利，且无需提前通知。"
+  },
+  "PrivacyPage": {
+    "title": "数据隐私政策",
+    "lastUpdated": "最新更新：2026年3月15日",
+    "content": "塔岭光明股份公司高度重视并承诺绝对保护合作伙伴的个人数据与商业信息安全。\n\n### 1. 收集范围\n系统仅记录用户通过表单主动提供的数据（包括：姓名、电话号码、电子邮箱、需求内容）以及用于统计目的的匿名访问数据（cookies）。\n\n### 2. 使用目的\n所收集的数据仅用于以下目的：\n- 分析需求并联系用户提供咨询与报价。\n- 协助处理与运营流程相关的问题。\n- 改善网站的用户体验界面。\n\n### 3. 安全承诺\n我们采用最先进的数据加密标准。所有客户信息均保留在公司内部系统中，并承诺不会向任何第三方出售、交换或转让，除非根据法律规定由主管机关要求提供。\n\n### 4. 用户权利\n您有权随时通过官方支持邮箱 **info@talunglogistics.com** 请求导出、更正或删除您在系统中的个人信息。"
+  },
+  "Brand": {
+    "name": "塔岭光明股份公司"
+  },
+  "Metadata": {
+    "defaultTitle": "塔岭光明股份公司 - 塔岭国际口岸综合解决方案",
+    "defaultDescription": "塔岭光明股份公司在塔岭国际口岸提供全面的物流解决方案，领先于25公顷仓储、快速海关通关和多式联运服务。",
+    "keywords": "塔岭光明, 塔岭物流, 塔岭国际口岸, 高平运输, 边贸进出口, 中越仓储, 塔岭通关",
+    "serviceTitle": "{serviceName} | 塔岭光明物流",
+    "newsTitle": "{newsTitle} | 塔岭光明新闻",
+    "careerTitle": "招聘：{jobTitle} | 塔岭光明"
   }
 }
