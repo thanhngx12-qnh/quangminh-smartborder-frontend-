@@ -8,6 +8,7 @@ const baseUrl = 'https://talunglogistics.com';
 const locales = ['vi', 'en', 'zh'] as const;
 type Locale = typeof locales[number];
 
+// Bản đồ URL alias để khớp với middleware và navigation.ts
 const pathnames: Record<string, Record<Locale, string>> = {
   '/': { vi: '/', en: '/', zh: '/' },
   '/about': { vi: '/gioi-thieu', en: '/about-us', zh: '/guanyu' },
@@ -18,40 +19,34 @@ const pathnames: Record<string, Record<Locale, string>> = {
   '/manifesto': { vi: '/tuyen-ngon', en: '/manifesto', zh: '/xuanyan' }
 };
 
-// Helper để tạo URL chuẩn theo quy tắc: vi không có prefix, en/zh có prefix
 const getFullUrl = (locale: Locale, path: string) => {
   const prefix = locale === 'vi' ? '' : `/${locale}`;
-  // Xử lý trang chủ (path là '/') tránh bị trùng dấu gạch chéo
   const cleanPath = path === '/' ? '' : path;
   return `${baseUrl}${prefix}${cleanPath}`;
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
-  // 1. Tạo URL cho các trang tĩnh
+  // 1. URL TRANG TĨNH
   const staticRoutes = Object.keys(pathnames).flatMap((route) => {
     return locales.map((locale) => {
-      const path = pathnames[route][locale];
-      
       const alternates: Record<string, string> = {};
-      locales.forEach((l) => {
-        alternates[l] = getFullUrl(l, pathnames[route][l]);
-      });
+      locales.forEach((l) => { alternates[l] = getFullUrl(l, pathnames[route][l]); });
 
       return {
-        url: getFullUrl(locale, path),
+        url: getFullUrl(locale, pathnames[route][locale]),
         lastModified: new Date(),
         alternates: { languages: alternates }
       };
     });
   });
 
-  // 2. Tạo URL cho các trang dịch vụ động
+  // 2. URL DỊCH VỤ ĐỘNG
   const services = await getAllServicesForSitemap();
   const serviceRoutes = services.flatMap((service) => {
-    const alternates: Record<string, string> = {};
+    if (!service.translations) return [];
     
-    // Tạo danh sách link thay thế chuẩn cho bot Google
+    const alternates: Record<string, string> = {};
     service.translations.forEach((tr) => {
       const locale = tr.locale as Locale;
       const basePath = pathnames['/services'][locale];
@@ -69,11 +64,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   });
 
-  // 3. Tạo URL cho các trang tin tức động
+  // 3. URL TIN TỨC ĐỘNG
   const news = await getAllNewsForSitemap();
   const newsRoutes = news.flatMap((article) => {
+    if (!article.translations) return [];
+
     const alternates: Record<string, string> = {};
-    
     article.translations.forEach((tr) => {
       const locale = tr.locale as Locale;
       const basePath = pathnames['/news'][locale];

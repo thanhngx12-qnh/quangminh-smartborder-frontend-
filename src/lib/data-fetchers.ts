@@ -34,34 +34,38 @@ export async function getNewsBySlug(slug: string, locale: string): Promise<News 
     }
 }
 
-
-// Hàm fetch TẤT CẢ dịch vụ (cho sitemap)
 export async function getAllServicesForSitemap(): Promise<Service[]> {
   try {
-    // Giả định endpoint này trả về tất cả dịch vụ và bản dịch của chúng
-    const res = await fetch(`${API_BASE_URL}/services/all`, {
-      next: { revalidate: 86400 } // Cache 1 ngày
+    // Gọi endpoint danh sách với limit lớn để lấy toàn bộ slug
+    const res = await fetch(`${API_BASE_URL}/services?limit=100`, {
+      next: { revalidate: 86400 } 
     });
     if (!res.ok) return [];
     const json = await res.json();
-    return json.data || [];
+    
+    // Kiểm tra: Nếu API trả về cấu trúc phân trang { data: { data: [...] } }
+    // Hoặc trả về thẳng { data: [...] }
+    const services = json.data?.data || json.data || [];
+    return Array.isArray(services) ? services : [];
   } catch (error) {
-    console.error('Failed to fetch all services for sitemap:', error);
+    console.error('Sitemap Fetch Services Error:', error);
     return [];
   }
 }
 
-// Hàm fetch TẤT CẢ tin tức (cho sitemap)
+// Hàm fetch TẤT CẢ tin tức (Nâng cấp để quét sạch bài viết)
 export async function getAllNewsForSitemap(): Promise<News[]> {
   try {
-    const res = await fetch(`${API_BASE_URL}/news/all`, {
-      next: { revalidate: 86400 } // Cache 1 ngày
+    const res = await fetch(`${API_BASE_URL}/news?limit=200`, {
+      next: { revalidate: 86400 }
     });
     if (!res.ok) return [];
     const json = await res.json();
-    return json.data || [];
+    
+    const news = json.data?.data || json.data || [];
+    return Array.isArray(news) ? news : [];
   } catch (error) {
-    console.error('Failed to fetch all news for sitemap:', error);
+    console.error('Sitemap Fetch News Error:', error);
     return [];
   }
 }
