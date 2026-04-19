@@ -2,16 +2,18 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation'; 
+import { useSearchParams, useRouter } from 'next/navigation'; 
 import styled from 'styled-components';
 import { useAllServices } from '@/hooks/useServices';
+import { useCategories } from '@/hooks/useCategories'; // Import hook danh mục
 import ServiceCard from '@/components/shared/ServiceCard';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import CardSkeleton from '@/components/ui/CardSkeleton';
 import Pagination from '@/components/ui/Pagination';
 import ErrorState from '@/components/ui/ErrorState';
 import { ButtonLink } from '@/components/ui/Button';
-import { RiArrowRightLine, RiInformationLine } from 'react-icons/ri';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
+import { RiArrowRightLine, RiInformationLine, RiHashtag } from 'react-icons/ri';
 
 // --- Styled Components ---
 const PageWrapper = styled.div`
@@ -21,31 +23,39 @@ const PageWrapper = styled.div`
 
 const HeroSection = styled.section`
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary} 0%, ${({ theme }) => theme.colors.primaryDark} 100%);
-  padding: 120px 20px;
+  padding: 100px 20px;
   text-align: center;
   color: ${({ theme }) => theme.colors.white};
+  border-bottom: 4px solid ${({ theme }) => theme.colors.accent};
 
   h1 {
     font-family: ${({ theme }) => theme.fonts.heading};
-    font-size: clamp(32px, 5vw, 48px);
+    font-size: clamp(28px, 5vw, 48px);
     font-weight: 800;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin: 0;
     color: ${({ theme }) => theme.colors.white};
   }
 
-  p {
-    font-size: clamp(16px, 2vw, 20px);
-    max-width: 800px;
-    margin: 0 auto;
-    opacity: 0.9;
+  .category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: ${({ theme }) => theme.colors.accent};
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 20px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 `;
 
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 40px 20px 80px;
 `;
 
 const ServicesGrid = styled.div`
@@ -69,7 +79,6 @@ const PaginationWrapper = styled.div`
   justify-content: center;
 `;
 
-// --- NEW SEO CONTENT STYLES ---
 const SeoContentSection = styled.section`
   margin-top: 80px;
   padding-top: 60px;
@@ -135,15 +144,28 @@ const CtaBanner = styled.div`
 export default function ServicesPage() {
   const locale = useLocale();
   const t = useTranslations('ServicesPage');
+  const tNav = useTranslations('Navigation');
   const tErrors = useTranslations('Errors');
+  const tGeneral = useTranslations('General');
   const searchParams = useSearchParams();
+  const router = useRouter(); 
+
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
+  const categoryId = searchParams.get('categoryId') || undefined;
 
+  // 1. Fetch toàn bộ dịch vụ (Vì hook hiện tại chỉ nhận locale và page)
   const { result, isLoading, isError } = useAllServices(locale, currentPage);
+  
+  // 2. Fetch danh mục để lấy tên hiển thị
+  const { categories } = useCategories('SERVICE');
+  const currentCategory = categories.find(c => c.id.toString() === categoryId);
 
-  const handleRetry = () => {
-    window.location.reload();
-  };
+  // 3. Logic lọc dữ liệu tại Client
+  const displayServices = categoryId && result?.data 
+    ? result.data.filter(item => item.categoryId?.toString() === categoryId)
+    : result?.data;
+
+  const handleRetry = () => window.location.reload();
 
   const renderContent = () => {
     if (isLoading) {
@@ -160,22 +182,20 @@ export default function ServicesPage() {
       return (
         <ErrorState 
           title={tErrors('failedToLoad')}
-          description="Có lỗi xảy ra khi tải danh sách dịch vụ. Vui lòng thử lại."
+          description="Error loading services list."
           actionText={tErrors('retry')}
           onAction={handleRetry}
         />
       );
     }
 
-    const servicesWithTranslation = result?.data.filter(service => 
-      service.translations.some(translation => translation.locale === locale)
-    ) || [];
-
-    if (!servicesWithTranslation || servicesWithTranslation.length === 0) {
+    if (!displayServices || displayServices.length === 0) {
       return (
         <ErrorState 
           title={t('noServices')}
-          description="Chúng tôi đang cập nhật thông tin dịch vụ. Vui lòng quay lại sau."
+          description="Dịch vụ trong chuyên mục này đang được cập nhật."
+          actionText={tGeneral('viewAll')}
+          onAction={() => router.push('/services' as never)}
         />
       );
     }
@@ -183,7 +203,7 @@ export default function ServicesPage() {
     return (
       <>
         <ServicesGrid>
-          {servicesWithTranslation.map((service, index) => (
+          {displayServices.map((service, index) => (
             <FadeInWhenVisible key={service.id} delay={index * 0.1}>
               <ServiceCard service={service} />
             </FadeInWhenVisible>
@@ -200,42 +220,56 @@ export default function ServicesPage() {
           </PaginationWrapper>
         )}
 
-        {/* THÊM KHỐI SEO CONTENT (MỤC 13 TRONG CHECKLIST) */}
-        <FadeInWhenVisible delay={0.3}>
-          <SeoContentSection>
-            <SeoTextWrapper>
-              <h2><RiInformationLine /> {t('seoTitle')}</h2>
-              <p>
-                {t.rich('seoContent', {
-                  bold: (chunks) => <strong>{chunks}</strong>
-                })}
-              </p>
-            </SeoTextWrapper>
-          </SeoContentSection>
-        </FadeInWhenVisible>
+        {/* SEO CONTENT & CTA CHỈ HIỂN THỊ Ở TRANG CHỦ DỊCH VỤ (Tránh duplicate SEO) */}
+        {!categoryId && (
+          <>
+            <FadeInWhenVisible delay={0.3}>
+              <SeoContentSection>
+                <SeoTextWrapper>
+                  <h2><RiInformationLine /> {t('seoTitle')}</h2>
+                  <p>
+                    {t.rich('seoContent', {
+                      bold: (chunks) => <strong>{chunks}</strong>
+                    })}
+                  </p>
+                </SeoTextWrapper>
+              </SeoContentSection>
+            </FadeInWhenVisible>
 
-        {/* THÊM CTA BANNER CUỐI TRANG */}
-        <FadeInWhenVisible delay={0.4}>
-          <CtaBanner>
-            <h3>{t('ctaTitle')}</h3>
-            <p>Nhận tư vấn giải pháp Logistics và báo giá cạnh tranh nhất ngay hôm nay.</p>
-            <ButtonLink href="/contact" variant="primary" size="large" as="a">
-              {t('ctaButton')} <RiArrowRightLine style={{marginLeft: 8}} />
-            </ButtonLink>
-          </CtaBanner>
-        </FadeInWhenVisible>
+            <FadeInWhenVisible delay={0.4}>
+              <CtaBanner>
+                <h3>{t('ctaTitle')}</h3>
+                <p>Nhận tư vấn giải pháp Logistics và báo giá cạnh tranh nhất ngay hôm nay.</p>
+                <ButtonLink href="/contact" variant="primary" size="large" as="a">
+                  {t('ctaButton')} <RiArrowRightLine style={{marginLeft: 8}} />
+                </ButtonLink>
+              </CtaBanner>
+            </FadeInWhenVisible>
+          </>
+        )}
       </>
     );
   };
 
   return (
     <PageWrapper>
-      <FadeInWhenVisible>
-        <HeroSection>
-          <h1>{t('title')}</h1>
-          <p>{t('description')}</p>
-        </HeroSection>
-      </FadeInWhenVisible>
+      <HeroSection>
+        <FadeInWhenVisible>
+          {/* BREADCRUMBS ĐA CẤP */}
+          <Breadcrumbs 
+            items={[
+              { label: tNav('services'), href: categoryId ? '/services' : undefined },
+              ...(currentCategory ? [{ label: currentCategory.name }] : [])
+            ]} 
+          />
+          <h1>{currentCategory ? currentCategory.name : t('title')}</h1>
+          {currentCategory && (
+            <div className="category-badge">
+              <RiHashtag /> {tNav('services')}
+            </div>
+          )}
+        </FadeInWhenVisible>
+      </HeroSection>
       
       <ContentContainer>
         {renderContent()}

@@ -1,34 +1,74 @@
 // dir: ~/quangminh-smart-border/frontend/src/types/index.ts
+// dir: frontend/src/types/index.ts
 
+/**
+ * Interface cho Danh mục (Mới)
+ */
+export interface Category {
+  id: number;
+  name: string;
+  slug: string;
+  type: 'NEWS' | 'SERVICE';
+}
+
+/**
+ * Interface cho Bản dịch Dịch vụ (Cập nhật SEO)
+ */
 export interface ServiceTranslation {
   locale: 'vi' | 'en' | 'zh';
   title: string;
   slug: string;
   shortDesc: string;
-  content?: string; // <-- SỬA LỖI Ở ĐÂY: Thêm 'content' (có thể là optional)
+  content?: string;
+  // --- CÁC TRƯỜNG SEO MỚI ---
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
+  ogImage?: string;
 }
 
+/**
+ * Interface cho Dịch vụ (Cập nhật Category)
+ */
 export interface Service {
   id: number;
   code: string;
+  categoryId?: number; // Liên kết danh mục
+  category?: Category; // Dữ liệu danh mục đính kèm
   coverImage?: string;
+  featured?: boolean;
   translations: ServiceTranslation[];
 }
 
+/**
+ * Interface cho Bản dịch Tin tức (Cập nhật SEO)
+ */
 export interface NewsTranslation {
   locale: 'vi' | 'en' | 'zh';
   title: string;
   slug: string;
   excerpt: string;
-  content?: string; // <-- Thêm 'content' cho News luôn cho nhất quán
+  content?: string;
+  // --- CÁC TRƯỜNG SEO MỚI ---
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
+  ogImage?: string;
 }
 
+/**
+ * Interface cho Tin tức (Cập nhật Category)
+ */
 export interface News {
   id: number;
+  categoryId?: number; // Liên kết danh mục
+  category?: Category; // Dữ liệu danh mục đính kèm
   coverImage?: string;
   publishedAt?: string;
   translations: NewsTranslation[];
 }
+
+// --- Các Interface khác giữ nguyên ---
 
 export interface TrackingEvent {
   id: number;

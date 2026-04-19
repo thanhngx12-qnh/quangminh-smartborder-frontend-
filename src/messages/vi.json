@@ -128,7 +128,12 @@
     "seoContent": "Chào mừng bạn đến với chuyên mục tin tức của <bold>Tà Lùng Logistics</bold>. Tại đây, chúng tôi cung cấp những thông tin mới nhất về tin tức nội bộ, chính sách xuất nhập khẩu, các quy định mới tại <bold>Cửa khẩu Quốc tế Tà Lùng</bold> và xu hướng vận tải quốc tế.\n\nViệc nắm bắt kịp thời các thay đổi về thủ tục hải quan và tình hình thông quan tại biên giới là yếu tố sống còn giúp doanh nghiệp tránh được các rủi ro về chậm trễ hàng hóa. Đội ngũ chuyên gia của Tà Lùng Quang Minh luôn nỗ lực tổng hợp và phân tích thị trường để mang lại những kiến thức giá trị nhất cho khách hàng.",
     "ctaTitle": "Bạn cần tư vấn giải pháp vận chuyển?",
     "ctaButton": "Gửi yêu cầu hỗ trợ",
-    "viewOther": "Xem tin khác"
+    "viewOther": "Xem tin khác",
+    "readMore": "Đọc tiếp",
+    "allCategories": "Tất cả tin tức",
+    "categoryPrefix": "Chuyên mục",
+    "noNewsInCategory": "Hiện tại chưa có bài viết nào trong chuyên mục này.",
+    "ctaDescription": "Liên hệ ngay để nhận được sự tư vấn chuyên nghiệp từ đội ngũ Tà Lùng Logistics."
 },
   "ServicesPage": {
     "title": "Hệ Thống Dịch Vụ Logistics",
@@ -245,7 +250,7 @@
   },
   "Footer": {
     "companyName": "Công ty Cổ phần Tà Lùng Quang Minh",
-    "taxCode": "Mã số doanh nghiệp / MST: 4800166795",
+    "taxCode": "Mã số doanh nghiệp / MST: 4800155257",
     "address": "Trụ sở: Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng, Việt Nam",
     "sitemap": "Sơ đồ trang",
     "legal": "Thông tin pháp lý",

@@ -9,8 +9,8 @@ type Props = {
 };
 
 /**
- * PHẦN QUAN TRỌNG NHẤT: XỬ LÝ SEO VÀ SHARE ẢNH ĐẸP
- * Hàm này chạy trên Server, Bot Facebook/Zalo sẽ đọc được ngay.
+ * NÂNG CẤP V2.0: XỬ LÝ SEO THEO CƠ CHẾ FALLBACK
+ * Chạy hoàn toàn trên Server giúp Bot MXH lấy được thông tin ngay lập tức.
  */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -18,32 +18,48 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!news) return {};
 
-  const translation = news.translations.find((t) => t.locale === locale) || news.translations[0];
+  // Tìm bản dịch hiện tại
+  const t = news.translations.find((tr) => tr.locale === locale) || news.translations[0];
   const baseUrl = 'https://talunglogistics.com';
-  
-  // Tự động lấy Title bài viết làm SEO Title
-  const seoTitle = `${translation.title} | Tà Lùng Logistics`;
-  
-  // Tự động lấy Excerpt làm Meta Description
-  const seoDescription = translation.excerpt || "Tin tức logistics biên mậu Việt - Trung mới nhất tại Cửa khẩu Quốc tế Tà Lùng.";
-  
-  // Tự động lấy CoverImage làm ảnh Share (Zalo/FB)
-  const ogImage = news.coverImage || `${baseUrl}/og-image.jpg`;
+
+  // --- LOGIC LẤY DỮ LIỆU SEO THEO THỨ TỰ ƯU TIÊN (FALLBACK) ---
+  const title = t.metaTitle || t.title;
+  const description = t.metaDescription || t.excerpt || "";
+  const keywords = t.metaKeywords || "";
+  const image = t.ogImage || news.coverImage || `${baseUrl}/og-image.jpg`;
+
+  // --- CẤU HÌNH HREFLANG (SEO ĐA NGÔN NGỮ) ---
+  const languages: Record<string, string> = {};
+  news.translations.forEach((tr) => {
+    // Map chuẩn: vi -> vi-VN, en -> en-US, zh -> zh-CN
+    const langCode = tr.locale === 'vi' ? 'vi-VN' : tr.locale === 'en' ? 'en-US' : 'zh-CN';
+    const prefix = tr.locale === 'vi' ? '' : `/${tr.locale}`;
+    languages[langCode] = `${prefix}/news/${tr.slug}`;
+  });
+
+  // URL hiện tại (xử lý bỏ /vi nếu là tiếng Việt)
+  const currentPathPrefix = locale === 'vi' ? '' : `/${locale}`;
+  const currentUrl = `${baseUrl}${currentPathPrefix}/news/${t.slug}`;
 
   return {
-    title: seoTitle,
-    description: seoDescription,
+    title: `${title} | Tà Lùng Logistics`,
+    description: description,
+    keywords: keywords,
+    alternates: {
+      canonical: currentUrl,
+      languages: languages,
+    },
     openGraph: {
-      title: seoTitle,
-      description: seoDescription,
-      url: `${baseUrl}/${locale}/news/${translation.slug}`,
+      title: title,
+      description: description,
+      url: currentUrl,
       siteName: 'Tà Lùng Logistics',
       images: [
         {
-          url: ogImage,
+          url: image,
           width: 1200,
           height: 630,
-          alt: translation.title,
+          alt: title,
         },
       ],
       type: 'article',
@@ -51,9 +67,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: seoTitle,
-      description: seoDescription,
-      images: [ogImage],
+      title: title,
+      description: description,
+      images: [image],
     },
   };
 }
@@ -63,12 +79,44 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  */
 export default async function Page({ params }: Props) {
   const { locale, slug } = await params;
-  const news = await getNewsBySlug(slug, locale);
+  
+  let news = await getNewsBySlug(slug, locale);
 
+  // Cơ chế dò tìm thông minh (giữ nguyên)
   if (!news) {
-    notFound();
+    const otherLocales = ['vi', 'en', 'zh'].filter(l => l !== locale);
+    for (const l of otherLocales) {
+      news = await getNewsBySlug(slug, l);
+      if (news) break;
+    }
   }
 
-  // Truyền toàn bộ cục dữ liệu news xuống cho Client Component xử lý giao diện
-  return <NewsDetailClient newsData={news} locale={locale} slug={slug} />;
+  if (!news) notFound();
+
+  const t = news.translations.find((tr) => tr.locale === locale) || news.translations[0];
+
+  // --- THÊM SCHEMA NEWSARTICLE (MỤC 1) ---
+  const newsSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": t.title,
+    "image": [news.coverImage || 'https://talunglogistics.com/og-image.jpg'],
+    "datePublished": news.publishedAt,
+    "dateModified": news.publishedAt, // Có thể thay bằng updatedAt nếu backend có
+    "author": [{
+        "@type": "Organization",
+        "name": "Tà Lùng Logistics",
+        "url": "https://talunglogistics.com"
+      }]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(newsSchema) }}
+      />
+      <NewsDetailClient newsData={news} locale={locale} slug={slug} />
+    </>
+  );
 }

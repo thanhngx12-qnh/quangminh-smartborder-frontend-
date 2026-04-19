@@ -13,81 +13,77 @@ import {
   RiPhoneFill, 
   RiMailFill,
   RiMapPinFill,
-  RiArrowDownSLine // Import icon mũi tên xuống
+  RiArrowDownSLine,
+  RiServiceLine,
+  RiNewspaperLine
 } from 'react-icons/ri';
 import { ButtonLink } from '@/components/ui/Button'; 
 import LanguageSwitcher from './LanguageSwitcher';
 import SearchModal from './SearchModal';
+import { useCategories } from '@/hooks/useCategories'; // Import hook mới
 
 import {
   HeaderWrapper, TopBar, TopBarContainer, ContactInfo, Actions, MainNav, Logo, MenuIcon, 
-  NavLinks, NavLink, HeaderIcons, TopBarLink, MobileActions, MobileSettingGroup, MobileSettingsWrapper, 
+  NavLinks, NavLink, HeaderIcons, MobileActions, MobileSettingGroup, MobileSettingsWrapper, 
   MobileButton, MobileButtonLink, SearchButtonDesktop,
-  NavItemWrapper, DropdownMenu, DropdownItem // Import thêm styled components mới
+  NavItemWrapper, DropdownMenu, DropdownItem 
 } from './Header.styles';
 
 export default function Header() {
-  const[isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  
-  // State để quản lý mở/đóng dropdown trên Mobile
-  const[openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
 
   const tNav = useTranslations('Navigation');
-  const tActions = useTranslations('HeaderActions');
-  const tCta = useTranslations('CtaButton');
   const tGeneral = useTranslations('General');
   const tAddress = useTranslations('Footer');
+  const tCta = useTranslations('CtaButton');
   const pathname = usePathname();
-  
-  // --- NÂNG CẤP DATA MENU ---
-  // --- NÂNG CẤP DATA MENU (TỰ ĐỘNG CHUYỂN SLUG VÀ LABEL THEO NGÔN NGỮ) ---
-  const navItems =[
+
+  // --- LẤY DANH MỤC ĐỘNG TỪ DATABASE ---
+  const { categories: serviceCats } = useCategories('SERVICE');
+  const { categories: newsCats } = useCategories('NEWS');
+
+  // --- CẤU TRÚC MENU ĐỘNG ---
+  const navItems = [
     { href: '/', label: tNav('home') },
     { href: '/about', label: tNav('about') },
     { 
       label: tNav('services'), 
       href: '/services', 
-      subItems:[
-        // Sử dụng tNav('servicesSlug.xxx') để tự động lấy slug chuẩn SEO của ngôn ngữ đó
-        { href: `/services/${tNav('servicesSlug.warehouse')}`, label: tNav('servicesSub.warehouse') },
-        { href: `/services/${tNav('servicesSlug.transloading')}`, label: tNav('servicesSub.transloading') },
-        { href: `/services/${tNav('servicesSlug.transport')}`, label: tNav('servicesSub.transport') },
-        { href: `/services/${tNav('servicesSlug.customs')}`, label: tNav('servicesSub.customs') },
-        { href: `/services/${tNav('servicesSlug.other')}`, label: tNav('servicesSub.other') },
-      ]
+      subItems: serviceCats.map(cat => ({
+        // Khi click sẽ lọc theo categoryId
+        href: `/services?categoryId=${cat.id}`, 
+        label: cat.name 
+      }))
     },
     { 
       label: tNav('news'), 
       href: '/news',
-      // subItems:[
-      //   { href: `/news/${tNav('newsSlug.logistics')}`, label: tNav('newsSub.logistics') },
-      //   { href: `/news/${tNav('newsSlug.importExport')}`, label: tNav('newsSub.importExport') },
-      //   { href: `/news/${tNav('newsSlug.market')}`, label: tNav('newsSub.market') },
-      // ]
+      subItems: newsCats.map(cat => ({
+        href: `/news?categoryId=${cat.id}`, 
+        label: cat.name 
+      }))
     },
     { href: '/manifesto', label: tNav('manifesto') },
     { href: '/careers', label: tNav('careers') },
     { href: '/contact', label: tNav('contact') },
   ];
 
-  // Đóng menu khi đổi trang
   useEffect(() => { 
     setIsMenuOpen(false); 
     setOpenMobileDropdown(null);
   }, [pathname]);
   
-  // Khóa cuộn trang khi mở menu mobile
   useEffect(() => {
     const isOverlayOpen = isMenuOpen || isSearchOpen;
     document.body.style.overflow = isOverlayOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
-  },[isMenuOpen, isSearchOpen]);
+  }, [isMenuOpen, isSearchOpen]);
 
   const toggleMobileDropdown = (e: React.MouseEvent, label: string) => {
-    // Chỉ kích hoạt toggle trên mobile (kích thước màn hình < 992px)
     if (window.innerWidth <= 992) {
-      e.preventDefault(); // Ngăn chuyển trang nếu click vào item có dropdown
+      e.preventDefault();
       setOpenMobileDropdown(openMobileDropdown === label ? null : label);
     }
   };
@@ -129,10 +125,8 @@ export default function Header() {
                 </MobileSettingGroup>
             </MobileSettingsWrapper>
 
-            {/* NÂNG CẤP RENDER MENU */}
             {navItems.map((item) => (
-              item.subItems ? (
-                // Menu có Dropdown
+              item.subItems && item.subItems.length > 0 ? (
                 <NavItemWrapper key={item.label}>
                   <NavLink 
                     href={item.href} 
@@ -148,16 +142,16 @@ export default function Header() {
                   </NavLink>
                   <DropdownMenu $isOpenOnMobile={openMobileDropdown === item.label}>
                     {item.subItems.map(sub => (
-                      <DropdownItem key={sub.href} href={sub.href} as="a">
+                      <DropdownItem key={sub.href} href={sub.href as unknown as string} as="a">
+                        {item.label === tNav('services') ? <RiServiceLine /> : <RiNewspaperLine />}
                         {sub.label}
                       </DropdownItem>
                     ))}
                   </DropdownMenu>
                 </NavItemWrapper>
               ) : (
-                // Menu bình thường
-                <NavItemWrapper key={item.href}>
-                  <NavLink href={item.href} as="a" $isActive={pathname === item.href}>
+                <NavItemWrapper key={item.label}>
+                  <NavLink href={item.href as unknown as string} as="a" $isActive={pathname === item.href}>
                     {item.label}
                   </NavLink>
                 </NavItemWrapper>

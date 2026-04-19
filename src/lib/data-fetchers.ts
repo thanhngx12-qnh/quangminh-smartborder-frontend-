@@ -1,6 +1,6 @@
 // dir: ~/quangminh-smart-border/frontend/src/lib/data-fetchers.ts
 import 'server-only'; // Đảm bảo file này chỉ được dùng trên server
-import { Service, News } from '@/types';
+import { Service, News, Category } from '@/types';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -66,6 +66,24 @@ export async function getAllNewsForSitemap(): Promise<News[]> {
     return Array.isArray(news) ? news : [];
   } catch (error) {
     console.error('Sitemap Fetch News Error:', error);
+    return [];
+  }
+}
+
+/**
+ * Hàm fetch danh sách Danh mục
+ * @param type 'NEWS' hoặc 'SERVICE'
+ */
+export async function getCategories(type: 'NEWS' | 'SERVICE'): Promise<Category[]> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/categories?type=${type}`, {
+      next: { revalidate: 3600 } // Cache 1 giờ
+    });
+    if (!res.ok) return [];
+    const json = await res.json();
+    return json.data || [];
+  } catch (error) {
+    console.error(`Failed to fetch categories for ${type}:`, error);
     return [];
   }
 }
