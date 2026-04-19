@@ -208,7 +208,6 @@ export default function NewsDetailClient({ newsData, locale, slug }: NewsDetailC
           />
         </TopControl>
 
-        <FadeInWhenVisible>
           <ArticleCard>
             <ImageContainer>
               <Image 
@@ -306,7 +305,6 @@ export default function NewsDetailClient({ newsData, locale, slug }: NewsDetailC
             </div>
           </div>
         )}
-        </FadeInWhenVisible>
       </Container>
     </PageWrapper>
   );

@@ -160,7 +160,6 @@ export default function NewsPage() {
                   {t('ctaButton')} <RiArrowRightLine style={{marginLeft: 8}} />
                 </ButtonLink>
               </CtaBanner>
-            </FadeInWhenVisible>
           </>
         )}
       </ContentContainer>
