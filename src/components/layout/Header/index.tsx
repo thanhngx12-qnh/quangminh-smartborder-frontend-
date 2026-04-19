@@ -1,30 +1,23 @@
 // dir: frontend/src/components/layout/Header/index.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react'; // Thêm useMemo
 import Image from 'next/image'; 
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/navigation';
 import { 
-  RiSearchLine, 
-  RiMenu3Line, 
-  RiCloseLine, 
-  RiTranslate2,
-  RiPhoneFill, 
-  RiMailFill,
-  RiMapPinFill,
-  RiArrowDownSLine,
-  RiServiceLine,
-  RiNewspaperLine
+  RiSearchLine, RiMenu3Line, RiCloseLine, RiTranslate2,
+  RiPhoneFill, RiMailFill, RiMapPinFill, RiArrowDownSLine,
+  RiServiceLine, RiNewspaperLine
 } from 'react-icons/ri';
 import { ButtonLink } from '@/components/ui/Button'; 
 import LanguageSwitcher from './LanguageSwitcher';
 import SearchModal from './SearchModal';
-import { useCategories } from '@/hooks/useCategories'; // Import hook mới
+import { useCategories } from '@/hooks/useCategories';
 
 import {
   HeaderWrapper, TopBar, TopBarContainer, ContactInfo, Actions, MainNav, Logo, MenuIcon, 
-  NavLinks, NavLink, HeaderIcons, MobileActions, MobileSettingGroup, MobileSettingsWrapper, 
+  NavLinks, NavLink, HeaderIcons, TopBarLink, MobileActions, MobileSettingGroup, MobileSettingsWrapper, 
   MobileButton, MobileButtonLink, SearchButtonDesktop,
   NavItemWrapper, DropdownMenu, DropdownItem 
 } from './Header.styles';
@@ -40,35 +33,40 @@ export default function Header() {
   const tCta = useTranslations('CtaButton');
   const pathname = usePathname();
 
-  // --- LẤY DANH MỤC ĐỘNG TỪ DATABASE ---
+  // 1. Lấy danh mục từ API
   const { categories: serviceCats } = useCategories('SERVICE');
   const { categories: newsCats } = useCategories('NEWS');
 
-  // --- CẤU TRÚC MENU ĐỘNG ---
-  const navItems = [
-    { href: '/', label: tNav('home') },
-    { href: '/about', label: tNav('about') },
-    { 
-      label: tNav('services'), 
-      href: '/services', 
-      subItems: serviceCats.map(cat => ({
-        // Khi click sẽ lọc theo categoryId
-        href: `/services?categoryId=${cat.id}`, 
-        label: cat.name 
-      }))
-    },
-    { 
-      label: tNav('news'), 
-      href: '/news',
-      subItems: newsCats.map(cat => ({
-        href: `/news?categoryId=${cat.id}`, 
-        label: cat.name 
-      }))
-    },
-    { href: '/manifesto', label: tNav('manifesto') },
-    { href: '/careers', label: tNav('careers') },
-    { href: '/contact', label: tNav('contact') },
-  ];
+  // 2. Dùng useMemo để tính toán Menu, đảm bảo an toàn dữ liệu (Fix lỗi .map)
+  const navItems = useMemo(() => {
+    // Đảm bảo cats luôn là mảng, nếu chưa load xong hoặc lỗi thì là mảng rỗng []
+    const sCats = Array.isArray(serviceCats) ? serviceCats : [];
+    const nCats = Array.isArray(newsCats) ? newsCats : [];
+
+    return [
+      { href: '/', label: tNav('home') },
+      { href: '/about', label: tNav('about') },
+      { 
+        label: tNav('services'), 
+        href: '/services', 
+        subItems: sCats.map(cat => ({
+          href: `/services?categoryId=${cat.id}`, 
+          label: cat.name 
+        }))
+      },
+      { 
+        label: tNav('news'), 
+        href: '/news',
+        subItems: nCats.map(cat => ({
+          href: `/news?categoryId=${cat.id}`, 
+          label: cat.name 
+        }))
+      },
+      { href: '/manifesto', label: tNav('manifesto') },
+      { href: '/careers', label: tNav('careers') },
+      { href: '/contact', label: tNav('contact') },
+    ];
+  }, [serviceCats, newsCats, tNav]); // Re-run khi dữ liệu tải xong
 
   useEffect(() => { 
     setIsMenuOpen(false); 
@@ -129,7 +127,7 @@ export default function Header() {
               item.subItems && item.subItems.length > 0 ? (
                 <NavItemWrapper key={item.label}>
                   <NavLink 
-                    href={item.href} 
+                    href={item.href as unknown as string} 
                     as="a" 
                     $isActive={pathname.startsWith(item.href)} 
                     $hasDropdown={true}
