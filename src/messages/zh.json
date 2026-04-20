@@ -23,7 +23,8 @@
     "newsSub": {
       "logistics": "物流",
       "importExport": "进出口",
-      "market": "市场"
+      "market": "市场",
+      "other": "其他"
     },
     "newsSlug": {
       "logistics": "logistics",

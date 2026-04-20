@@ -23,7 +23,8 @@
     "newsSub": {
       "logistics": "Logistics",
       "importExport": "Import & Export",
-      "market": "Market"
+      "market": "Market",
+      "other": "Other"
     },
     "newsSlug": {
       "logistics": "logistics",

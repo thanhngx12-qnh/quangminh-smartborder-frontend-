@@ -158,7 +158,9 @@ export default function ServicesPage() {
   
   // 2. Fetch danh mục để lấy tên hiển thị
   const { categories } = useCategories('SERVICE');
-  const currentCategory = categories.find(c => c.id.toString() === categoryId);
+  const currentCategory = Array.isArray(categories) 
+    ? categories.find(c => c.id.toString() === categoryId) 
+    : undefined;
 
   // 3. Logic lọc dữ liệu tại Client
   const displayServices = categoryId && result?.data 

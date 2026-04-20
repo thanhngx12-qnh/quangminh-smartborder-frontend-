@@ -1,6 +1,7 @@
 // dir: ~/quangminh-smart-border/frontend/src/hook/useNews.ts
 import useSWR from 'swr';
-import { News } from '@/types';
+import { News, Service } from '@/types';
+import { PaginatedResult } from '@/types';
 
 // 1. Định nghĩa cấu trúc phản hồi từ Server (Lớp vỏ ngoài cùng)
 interface ApiResponse<T> {
@@ -37,21 +38,40 @@ export function useLatestNews(locale: string) {
     isError: error,
   };
 }
+/**
+ * Hook lấy danh sách tin tức có phân trang và lọc theo danh mục
+ * @param locale Ngôn ngữ hiện tại
+ * @param page Số trang
+ * @param categoryId ID của danh mục (tùy chọn)
+ */
+export function usePaginatedNews(locale: string, page: number, categoryId?: string | number) {
+  // 1. Khởi tạo các tham số mặc định
+  const queryParams = new URLSearchParams({
+    locale,
+    status: 'PUBLISHED',
+    page: page.toString(),
+    limit: '9', // Mỗi trang 9 bài để chia lưới 3 cột đều đẹp
+  });
 
-export function usePaginatedNews(locale: string, page: number) {
-  // Thay đổi URL query param cho đúng chuẩn fetch
-  const queryString = `/news?locale=${locale}&status=PUBLISHED&page=${page}&limit=9`;
+  // 2. Nếu có categoryId thì mới thêm vào query string
+  if (categoryId) {
+    queryParams.append('categoryId', categoryId.toString());
+  }
 
-  const { data, error, isLoading } = useSWR<ApiResponse<PaginatedNewsResult>>(
+  // 3. Tạo URL hoàn chỉnh
+  const queryString = `/news?${queryParams.toString()}`;
+
+  const { data, error, isLoading, mutate } = useSWR<ApiResponse<PaginatedResult<News>>>(
     queryString,
     fetcher
   );
 
   return {
-    // QUAN TRỌNG: Lấy data.data để trả về đúng object PaginatedNewsResult
+    // Trả về đúng object PaginatedResult chứa { data, total, page, lastPage }
     result: data?.data, 
     isLoading,
     isError: error,
+    mutate, // Trả về thêm hàm refresh dữ liệu
   };
 }
 
@@ -83,5 +103,17 @@ export function useFeaturedNews(locale: string) {
     news: data?.data?.data || [], 
     isLoading,
     isError: error,
+  };
+}
+
+export function useFeaturedServices(locale: string) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  // Gọi API lấy danh sách dịch vụ, lọc theo featured=true
+  const { data, error, isLoading } = useSWR(`${API_URL}/services?featured=true&locale=${locale}`, fetcher);
+
+  return {
+    services: (data?.data?.data as Service[]) || (data?.data as Service[]) || [],
+    isLoading,
+    isError: error
   };
 }

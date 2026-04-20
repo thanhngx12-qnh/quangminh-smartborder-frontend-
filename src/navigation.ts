@@ -3,11 +3,12 @@ import { createNavigation } from 'next-intl/navigation';
 
 export const locales = ['vi', 'en', 'zh'] as const;
 
-// SỬA Ở ĐÂY: Đổi từ 'always' sang 'as-needed'
-// Điều này giúp tiếng Việt (defaultLocale) biến mất khỏi thanh địa chỉ
+// THÊM DÒNG NÀY ĐỂ ĐỊNH NGHĨA NGÔN NGỮ MẶC ĐỊNH
+export const defaultLocale = 'vi'; 
+
 export const localePrefix = 'as-needed';
 
-// Khai báo bản đồ URL (URL alias) cho từng ngôn ngữ
+// Khai báo bản đồ URL (Giữ nguyên cấu trúc của anh)
 export const pathnames = {
   '/': '/',
   
@@ -84,10 +85,11 @@ export const pathnames = {
   }
 } as const;
 
-// Tạo navigation helpers với pathnames đã cấu hình
+// Tạo navigation helpers với đầy đủ cấu hình
 export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation({
     locales,
     pathnames,
-    localePrefix
+    localePrefix,
+    defaultLocale // <-- SỬA LỖI TẠI ĐÂY: Thêm tham số này vào
   });

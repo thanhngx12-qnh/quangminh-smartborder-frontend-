@@ -1,23 +1,24 @@
 // dir: frontend/src/components/layout/Header/index.tsx
 'use client';
 
-import { useState, useEffect, useMemo } from 'react'; // Thêm useMemo
+import { useState, useEffect, useMemo } from 'react'; // ĐÃ THÊM useMemo VÀO ĐÂY
 import Image from 'next/image'; 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl'; 
 import { usePathname } from '@/navigation';
 import { 
   RiSearchLine, RiMenu3Line, RiCloseLine, RiTranslate2,
   RiPhoneFill, RiMailFill, RiMapPinFill, RiArrowDownSLine,
-  RiServiceLine, RiNewspaperLine
+  RiNewspaperLine, RiFireLine
 } from 'react-icons/ri';
 import { ButtonLink } from '@/components/ui/Button'; 
 import LanguageSwitcher from './LanguageSwitcher';
 import SearchModal from './SearchModal';
 import { useCategories } from '@/hooks/useCategories';
+import { useFeaturedServices } from '@/hooks/useServices'; 
 
 import {
   HeaderWrapper, TopBar, TopBarContainer, ContactInfo, Actions, MainNav, Logo, MenuIcon, 
-  NavLinks, NavLink, HeaderIcons, TopBarLink, MobileActions, MobileSettingGroup, MobileSettingsWrapper, 
+  NavLinks, NavLink, HeaderIcons, MobileActions, MobileSettingGroup, MobileSettingsWrapper, 
   MobileButton, MobileButtonLink, SearchButtonDesktop,
   NavItemWrapper, DropdownMenu, DropdownItem 
 } from './Header.styles';
@@ -32,15 +33,13 @@ export default function Header() {
   const tAddress = useTranslations('Footer');
   const tCta = useTranslations('CtaButton');
   const pathname = usePathname();
+  const locale = useLocale();
 
-  // 1. Lấy danh mục từ API
-  const { categories: serviceCats } = useCategories('SERVICE');
+  const { services: featuredServices } = useFeaturedServices(locale);
   const { categories: newsCats } = useCategories('NEWS');
 
-  // 2. Dùng useMemo để tính toán Menu, đảm bảo an toàn dữ liệu (Fix lỗi .map)
   const navItems = useMemo(() => {
-    // Đảm bảo cats luôn là mảng, nếu chưa load xong hoặc lỗi thì là mảng rỗng []
-    const sCats = Array.isArray(serviceCats) ? serviceCats : [];
+    const fServices = Array.isArray(featuredServices) ? featuredServices : [];
     const nCats = Array.isArray(newsCats) ? newsCats : [];
 
     return [
@@ -49,24 +48,36 @@ export default function Header() {
       { 
         label: tNav('services'), 
         href: '/services', 
-        subItems: sCats.map(cat => ({
-          href: `/services?categoryId=${cat.id}`, 
-          label: cat.name 
-        }))
+        subItems: fServices.map(service => {
+          const trans = service.translations?.find(t => t.locale === locale) || service.translations?.[0];
+          return {
+            href: `/services/${trans?.slug}`, 
+            label: trans?.title || 'Service',
+            icon: <RiFireLine style={{ color: '#FF0000', fontSize: '12px', marginRight: '8px' }} />
+          };
+        })
       },
       { 
         label: tNav('news'), 
         href: '/news',
-        subItems: nCats.map(cat => ({
-          href: `/news?categoryId=${cat.id}`, 
-          label: cat.name 
-        }))
+        subItems: [
+          ...nCats.map(cat => ({
+            href: `/news?categoryId=${cat.id}`, 
+            label: cat.name,
+            icon: <RiNewspaperLine style={{ color: '#003366', fontSize: '12px', marginRight: '8px' }} />
+          })),
+          {
+            href: `/news?categoryId=none`,
+            label: tNav('newsSub.other'),
+            icon: <RiNewspaperLine style={{ color: '#003366', fontSize: '12px', marginRight: '8px' }} />
+          }
+        ]
       },
       { href: '/manifesto', label: tNav('manifesto') },
       { href: '/careers', label: tNav('careers') },
       { href: '/contact', label: tNav('contact') },
     ];
-  }, [serviceCats, newsCats, tNav]); // Re-run khi dữ liệu tải xong
+  }, [featuredServices, newsCats, tNav, locale]);
 
   useEffect(() => { 
     setIsMenuOpen(false); 
@@ -105,13 +116,7 @@ export default function Header() {
         <MainNav className="container">
           <Logo href="/" as="a">
             <div className="logo-container">
-              <Image 
-                src="/images/logo.png" 
-                alt="Tà Lùng Logistics" 
-                fill priority
-                sizes="(max-width: 768px) 150px, 200px"
-                style={{ objectFit: 'contain', objectPosition: 'left' }}
-              />
+              <Image src="/images/logo.png" alt="Tà Lùng Logistics" fill priority sizes="200px" style={{ objectFit: 'contain', objectPosition: 'left' }} />
             </div>
           </Logo>
 
@@ -127,21 +132,18 @@ export default function Header() {
               item.subItems && item.subItems.length > 0 ? (
                 <NavItemWrapper key={item.label}>
                   <NavLink 
-                    href={item.href as unknown as string} 
+                    href={item.href as never} 
                     as="a" 
                     $isActive={pathname.startsWith(item.href)} 
                     $hasDropdown={true}
                     onClick={(e) => toggleMobileDropdown(e, item.label)}
                   >
-                    {item.label} 
-                    <RiArrowDownSLine style={{ 
-                      transform: openMobileDropdown === item.label ? 'rotate(180deg)' : 'none' 
-                    }}/>
+                    {item.label} <RiArrowDownSLine style={{ transform: openMobileDropdown === item.label ? 'rotate(180deg)' : 'none' }}/>
                   </NavLink>
                   <DropdownMenu $isOpenOnMobile={openMobileDropdown === item.label}>
                     {item.subItems.map(sub => (
-                      <DropdownItem key={sub.href} href={sub.href as unknown as string} as="a">
-                        {item.label === tNav('services') ? <RiServiceLine /> : <RiNewspaperLine />}
+                      <DropdownItem key={sub.href} href={sub.href as never} as="a">
+                        {sub.icon}
                         {sub.label}
                       </DropdownItem>
                     ))}
@@ -149,7 +151,7 @@ export default function Header() {
                 </NavItemWrapper>
               ) : (
                 <NavItemWrapper key={item.label}>
-                  <NavLink href={item.href as unknown as string} as="a" $isActive={pathname === item.href}>
+                  <NavLink href={item.href as never} as="a" $isActive={pathname === item.href}>
                     {item.label}
                   </NavLink>
                 </NavItemWrapper>
@@ -165,12 +167,8 @@ export default function Header() {
           </NavLinks>
 
           <HeaderIcons>
-            <SearchButtonDesktop onClick={() => setIsSearchOpen(true)} aria-label="Search">
-              <RiSearchLine />
-            </SearchButtonDesktop>
-            <ButtonLink href="/contact" variant="primary" size="small" as="a">
-              {tCta('quote')}
-            </ButtonLink>
+            <SearchButtonDesktop onClick={() => setIsSearchOpen(true)} aria-label="Search"><RiSearchLine /></SearchButtonDesktop>
+            <ButtonLink href="/contact" variant="primary" size="small" as="a">{tCta('quote')}</ButtonLink>
           </HeaderIcons>
           
           <MenuIcon $isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>

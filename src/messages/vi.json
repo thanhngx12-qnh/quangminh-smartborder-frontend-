@@ -23,7 +23,8 @@
     "newsSub": {
       "logistics": "Logistics",
       "importExport": "Xuất nhập khẩu",
-      "market": "Thị trường"
+      "market": "Thị trường",
+      "other": "Khác"
     },
     "newsSlug": {
       "logistics": "logistics",

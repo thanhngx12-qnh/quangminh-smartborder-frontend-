@@ -14,7 +14,7 @@ import CardSkeleton from '@/components/ui/CardSkeleton';
 import ErrorState from '@/components/ui/ErrorState';
 import { ButtonLink } from '@/components/ui/Button';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
-import { RiCalendarLine, RiArrowRightLine, RiInformationLine, RiHashtag } from 'react-icons/ri';
+import { RiCalendarLine, RiArrowRightLine, RiInformationLine } from 'react-icons/ri';
 
 // --- Styled Components (Giữ nguyên giao diện cao cấp) ---
 const PageWrapper = styled.div` background-color: ${({ theme }) => theme.colors.background}; min-height: 100vh; `;
@@ -28,7 +28,6 @@ const CtaBanner = styled.div` margin-top: 80px; background-color: ${({ theme }) 
 const NewsCard = styled(Link)` display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background-color: ${({ theme }) => theme.colors.surface}; box-shadow: ${({ theme }) => theme.shadows.card}; transition: all 0.3s ease; height: 100%; text-decoration: none; border-bottom: 3px solid transparent; &:hover { transform: translateY(-8px); box-shadow: ${({ theme }) => theme.shadows.hover}; border-bottom-color: ${({ theme }) => theme.colors.accent}; .card-title { color: ${({ theme }) => theme.colors.accent}; } .card-image img { transform: scale(1.1); } } `;
 const ImageWrapper = styled.div` position: relative; width: 100%; padding-top: 60%; overflow: hidden; background-color: ${({ theme }) => theme.colors.border}; img { object-fit: cover; transition: transform 0.5s ease; } `;
 const CardContent = styled.div` padding: 24px; display: flex; flex-direction: column; flex-grow: 1; `;
-const MetaInfo = styled.div` display: flex; align-items: center; gap: 6px; font-size: 13px; color: ${({ theme }) => theme.colors.textMuted}; margin-bottom: 12px; svg { color: ${({ theme }) => theme.colors.accent}; } `;
 
 // --- Main Component ---
 export default function NewsPage() {
@@ -38,22 +37,21 @@ export default function NewsPage() {
   const tErrors = useTranslations('Errors');
   const tGeneral = useTranslations('General');
   const tNotFound = useTranslations('NotFound');
+  
   const searchParams = useSearchParams();
   const router = useRouter(); 
 
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
   const categoryId = searchParams.get('categoryId') || undefined;
 
-  // 1. SỬA LỖI TS2554: Gọi hook đúng số lượng tham số quy định (2 args)
-  const { result, isLoading, isError } = usePaginatedNews(locale, currentPage);
+  // 1. Fetch tin tức trực tiếp từ Server theo categoryId
+  const { result, isLoading, isError } = usePaginatedNews(locale, currentPage, categoryId);
   
+  // 2. Lấy tên danh mục để hiển thị lên Header
   const { categories } = useCategories('NEWS');
-  const currentCategory = categories.find(c => c.id.toString() === categoryId);
-
-  // --- LOGIC LỌC DỮ LIỆU TẠI FRONTEND (Vì không sửa được Hook) ---
-  const displayData = categoryId && result?.data 
-    ? result.data.filter(item => item.categoryId?.toString() === categoryId)
-    : result?.data;
+  const currentCategory = Array.isArray(categories) 
+    ? categories.find(c => c.id.toString() === categoryId) 
+    : undefined;
 
   const handleRetry = () => window.location.reload();
 
@@ -75,37 +73,57 @@ export default function NewsPage() {
     } 
     
     if (isError) {
-      return <ErrorState title={tErrors('failedToLoad')} description="Error fetching news" actionText={tErrors('retry')} onAction={handleRetry} />;
+      return (
+        <ErrorState 
+          title={tErrors('failedToLoad')} 
+          description={tErrors('failedToLoad')} 
+          actionText={tErrors('retry')} 
+          onAction={handleRetry} 
+        />
+      );
     }
     
-    if (!displayData || displayData.length === 0) {
-      // SỬA LỖI ESLINT: đổi as any thành as never
-      return <ErrorState title={t('noNewsInCategory')} description={tNotFound('description')} actionText={tGeneral('viewAll')} onAction={() => router.push('/news' as never)} />;
+    if (!result || !result.data || result.data.length === 0) {
+      return (
+        <ErrorState 
+          title={t('noNewsInCategory')} 
+          description={tNotFound('description')} 
+          actionText={tGeneral('viewAll')} 
+          onAction={() => router.push('/news' as never)} 
+        />
+      );
     }
 
     return (
       <>
         <NewsGrid>
-          {displayData.map((article, index) => {
+          {result.data.map((article, index) => {
             const translation = article.translations?.find(t => t.locale === locale) || article.translations?.[0];
             if (!translation) return null;
 
             return (
-              <FadeInWhenVisible key={article.id} delay={index * 0.1}>
+              <FadeInWhenVisible key={article.id} delay={index * 0.05}>
                 <NewsCard href={`/news/${translation.slug}`} as="a">
                   <ImageWrapper className="card-image">
-                    <Image src={article.coverImage || '/images/placeholder.jpg'} alt={translation.title} fill sizes="(max-width: 768px) 100vw, 33vw" />
+                    <Image 
+                      src={article.coverImage || '/images/placeholder.jpg'} 
+                      alt={translation.title} 
+                      fill 
+                      sizes="(max-width: 768px) 100vw, 33vw" 
+                    />
                   </ImageWrapper>
                   <CardContent>
-                    <MetaInfo>
-                      <RiCalendarLine />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#999', marginBottom: '12px' }}>
+                      <RiCalendarLine style={{ color: '#FF0000' }} />
                       <time>{article.publishedAt ? formatDate(article.publishedAt) : ''}</time>
-                    </MetaInfo>
-                    <h3 className="card-title" style={{ fontSize: 18, fontWeight: 700, marginBottom: 12, transition: 'color 0.2s' }}>
+                    </div>
+                    <h3 className="card-title" style={{ fontSize: '18px', fontWeight: 700, color: '#003366', marginBottom: '12px', transition: 'color 0.2s', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                       {translation.title}
                     </h3>
-                    <p style={{ fontSize: 15, color: '#666', lineHeight: 1.6, marginBottom: 20 }}>{translation.excerpt}</p>
-                    <div style={{ marginTop: 'auto', fontWeight: 600, fontSize: 14, color: '#003366', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <p style={{ fontSize: '15px', color: '#666', lineHeight: 1.6, marginBottom: '20px', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                      {translation.excerpt}
+                    </p>
+                    <div style={{ marginTop: 'auto', fontWeight: 600, fontSize: '14px', color: '#FF0000', display: 'flex', alignItems: 'center', gap: '6px' }}>
                       {t('readMore')} <RiArrowRightLine />
                     </div>
                   </CardContent>
@@ -115,7 +133,7 @@ export default function NewsPage() {
           })}
         </NewsGrid>
         
-        {result && result.lastPage > 1 && (
+        {result.lastPage > 1 && (
           <PaginationWrapper>
             <Pagination currentPage={result.page} totalPages={result.lastPage} basePath="/news" />
           </PaginationWrapper>
@@ -128,31 +146,38 @@ export default function NewsPage() {
     <PageWrapper>
       <HeroSection>
         <FadeInWhenVisible>
-          <Breadcrumbs items={[{ label: tNav('news'), href: categoryId ? '/news' : undefined }, ...(currentCategory ? [{ label: currentCategory.name }] : [])]} />
-          <h1>{currentCategory ? currentCategory.name : t('title')}</h1>
-          {currentCategory && (
-            <div className="category-badge">
-              <RiHashtag /> {t('categoryPrefix')}
-            </div>
-          )}
+          <div className="container">
+            <Breadcrumbs 
+              items={[
+                { label: tNav('news'), href: categoryId ? '/news' : undefined }, 
+                ...(currentCategory ? [{ label: currentCategory.name }] : [])
+              ]} 
+            />
+            <h1>{currentCategory ? currentCategory.name : t('title')}</h1>
+          </div>
         </FadeInWhenVisible>
       </HeroSection>
 
       <ContentContainer>
         {renderContent()}
 
-        {!categoryId && (
+        {/* Khối SEO chỉ hiện ở trang News chính */}
+        {!categoryId && !isLoading && !isError && result?.data && result.data.length > 0 && (
           <>
-            <FadeInWhenVisible delay={0.3}>
+            <FadeInWhenVisible delay={0.2}>
               <SeoContentSection>
                 <SeoTextWrapper>
                   <h2><RiInformationLine /> {t('seoTitle')}</h2>
-                  <p>{t.rich('seoContent', { bold: (c) => <strong>{c}</strong> })}</p>
+                  <p>
+                    {t.rich('seoContent', {
+                      bold: (chunks) => <strong>{chunks}</strong>
+                    })}
+                  </p>
                 </SeoTextWrapper>
               </SeoContentSection>
             </FadeInWhenVisible>
 
-            <FadeInWhenVisible delay={0.4}>
+            <FadeInWhenVisible delay={0.3}>
               <CtaBanner>
                 <h3>{t('ctaTitle')}</h3>
                 <p>{t('ctaDescription')}</p>
@@ -160,6 +185,7 @@ export default function NewsPage() {
                   {t('ctaButton')} <RiArrowRightLine style={{marginLeft: 8}} />
                 </ButtonLink>
               </CtaBanner>
+            </FadeInWhenVisible>
           </>
         )}
       </ContentContainer>
