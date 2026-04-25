@@ -9,18 +9,18 @@ type Props = {
 };
 
 /**
- * NÂNG CẤP V2.0: XỬ LÝ SEO THEO CƠ CHẾ FALLBACK
+ * NÂNG CẤP V3.0: XỬ LÝ SEO THEO CƠ CHẾ FALLBACK
  * Chạy hoàn toàn trên Server giúp Bot MXH lấy được thông tin ngay lập tức.
  */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const news = await getNewsBySlug(slug, locale);
 
-  if (!news) return {};
+  if (!news) return { title: 'Tin tức - Tà Lùng Logistics' };
 
   // Tìm bản dịch hiện tại
   const t = news.translations.find((tr) => tr.locale === locale) || news.translations[0];
-  const baseUrl = 'https://talunglogistics.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://talunglogistics.com';
 
   // --- LOGIC LẤY DỮ LIỆU SEO THEO THỨ TỰ ƯU TIÊN (FALLBACK) ---
   const title = t.metaTitle || t.title;
@@ -31,7 +31,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // --- CẤU HÌNH HREFLANG (SEO ĐA NGÔN NGỮ) ---
   const languages: Record<string, string> = {};
   news.translations.forEach((tr) => {
-    // Map chuẩn: vi -> vi-VN, en -> en-US, zh -> zh-CN
     const langCode = tr.locale === 'vi' ? 'vi-VN' : tr.locale === 'en' ? 'en-US' : 'zh-CN';
     const prefix = tr.locale === 'vi' ? '' : `/${tr.locale}`;
     languages[langCode] = `${prefix}/news/${tr.slug}`;
@@ -42,6 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const currentUrl = `${baseUrl}${currentPathPrefix}/news/${t.slug}`;
 
   return {
+    metadataBase: new URL(baseUrl),
     title: `${title} | Tà Lùng Logistics`,
     description: description,
     keywords: keywords,
@@ -80,29 +80,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   const { locale, slug } = await params;
   
+  // Dò tìm slug thông minh giữa các ngôn ngữ (Phòng lỗi 404 khi Bot quét nhầm)
   let news = await getNewsBySlug(slug, locale);
 
-  // Cơ chế dò tìm thông minh (giữ nguyên)
   if (!news) {
-    const otherLocales = ['vi', 'en', 'zh'].filter(l => l !== locale);
+    const otherLocales = (['vi', 'en', 'zh'] as const).filter(l => l !== locale);
     for (const l of otherLocales) {
       news = await getNewsBySlug(slug, l);
       if (news) break;
     }
   }
 
-  if (!news) notFound();
+  if (!news) {
+    notFound();
+  }
 
   const t = news.translations.find((tr) => tr.locale === locale) || news.translations[0];
 
-  // --- THÊM SCHEMA NEWSARTICLE (MỤC 1) ---
+  // --- THÊM SCHEMA NEWSARTICLE CHO GOOGLE BOT ---
   const newsSchema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     "headline": t.title,
     "image": [news.coverImage || 'https://talunglogistics.com/og-image.jpg'],
     "datePublished": news.publishedAt,
-    "dateModified": news.publishedAt, // Có thể thay bằng updatedAt nếu backend có
     "author": [{
         "@type": "Organization",
         "name": "Tà Lùng Logistics",
@@ -116,7 +117,8 @@ export default async function Page({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(newsSchema) }}
       />
-      <NewsDetailClient newsData={news} locale={locale} slug={slug} />
+      {/* ĐÃ FIX LỖI: Chỉ truyền newsData và locale, không truyền slug dư thừa */}
+      <NewsDetailClient newsData={news} locale={locale} />
     </>
   );
 }

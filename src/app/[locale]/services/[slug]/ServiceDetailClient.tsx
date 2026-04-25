@@ -224,7 +224,7 @@ export default function ServiceDetailClient({ serviceData, locale, slug }: Servi
                 {serviceData.category && (
                   <div className="meta-tags">
                     <span className="category-tag">
-                      <RiPriceTag3Line /> {serviceData.category.name}
+                      <RiPriceTag3Line /> {serviceData.category.translations.find(ct => ct.locale === locale)?.name || serviceData.category.translations[0].name}
                     </span>
                   </div>
                 )}
