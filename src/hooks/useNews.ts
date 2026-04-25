@@ -44,34 +44,33 @@ export function useLatestNews(locale: string) {
  * @param page Số trang
  * @param categoryId ID của danh mục (tùy chọn)
  */
-export function usePaginatedNews(locale: string, page: number, categoryId?: string | number) {
-  // 1. Khởi tạo các tham số mặc định
+
+export function usePaginatedNews(locale: string, page: number, categoryId?: string) {
+  // SỬA LỖI: Không cộng thêm API_URL ở đây nữa vì fetcher đã có base URL
   const queryParams = new URLSearchParams({
-    locale,
+    locale, 
     status: 'PUBLISHED',
     page: page.toString(),
-    limit: '9', // Mỗi trang 9 bài để chia lưới 3 cột đều đẹp
+    limit: '9'
   });
 
-  // 2. Nếu có categoryId thì mới thêm vào query string
-  if (categoryId) {
-    queryParams.append('categoryId', categoryId.toString());
+  if (categoryId && categoryId !== 'none') {
+    queryParams.append('categoryId', categoryId);
   }
 
-  // 3. Tạo URL hoàn chỉnh
+  // Chỉ trả về đường dẫn tương đối (Relative Path)
   const queryString = `/news?${queryParams.toString()}`;
-
+  
   const { data, error, isLoading, mutate } = useSWR<ApiResponse<PaginatedResult<News>>>(
-    queryString,
+    queryString, 
     fetcher
   );
 
   return {
-    // Trả về đúng object PaginatedResult chứa { data, total, page, lastPage }
-    result: data?.data, 
+    result: data?.data,
     isLoading,
     isError: error,
-    mutate, // Trả về thêm hàm refresh dữ liệu
+    mutate
   };
 }
 

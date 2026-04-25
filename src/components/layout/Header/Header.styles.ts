@@ -21,9 +21,9 @@ export const HeaderWrapper = styled.header`
 
 export const TopBar = styled.div`
   background-color: ${({ theme }) => theme.colors.primary}; 
-  color: ${({ theme }) => theme.colors.white};
+  color: #FFFFFF; /* Dùng màu trắng tuyệt đối để đạt tương phản cao nhất */
   font-size: 13px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 
   @media (max-width: 992px) {
     display: none;
@@ -44,13 +44,13 @@ export const ContactInfo = styled(FlexCenter)`
     display: flex;
     align-items: center;
     gap: 6px;
-    color: ${({ theme }) => theme.colors.white};
-    opacity: 0.9;
-    transition: opacity 0.2s;
-    font-weight: 500;
+    color: #FFFFFF; /* SỬA: Bỏ opacity để chữ rõ nét */
+    font-weight: 600; /* Tăng nhẹ độ đậm */
     text-decoration: none;
 
-    &:hover { opacity: 1; }
+    &:hover { 
+      color: ${({ theme }) => theme.colors.secondary};
+    }
     
     svg { color: ${({ theme }) => theme.colors.accent}; }
   }
@@ -65,13 +65,11 @@ export const Actions = styled(FlexCenter)`
 `;
 
 export const TopBarLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.white};
-  opacity: 0.9;
+  color: #FFFFFF; /* SỬA: Bỏ opacity */
   transition: all 0.2s ease;
-  font-weight: 500;
+  font-weight: 600;
 
   &:hover {
-    opacity: 1;
     color: ${({ theme }) => theme.colors.accent};
   }
 `;
@@ -123,13 +121,13 @@ export const NavLinks = styled.nav<{ $isOpen: boolean }>`
     top: 0;
     left: 0; 
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: ${({ theme }) => theme.colors.background};
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 0;
-    padding: 100px 20px 20px; 
+    padding: 100px 20px 20px 20px; 
     z-index: 1010;
     transform: ${({ $isOpen }) => $isOpen ? 'translateX(0)' : 'translateX(-100%)'}; 
     transition: transform 0.3s ease-in-out;
@@ -137,13 +135,11 @@ export const NavLinks = styled.nav<{ $isOpen: boolean }>`
   }
 `;
 
-// --- NÂNG CẤP DROPDOWN MENU ---
-
 export const NavItemWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  height: 80px; // Chiếm full chiều cao header để dễ hover
+  height: 80px;
 
   @media (max-width: 992px) {
     flex-direction: column;
@@ -155,23 +151,20 @@ export const NavItemWrapper = styled.div`
 
 export const DropdownMenu = styled.div<{ $isOpenOnMobile?: boolean }>`
   position: absolute;
-  top: 100%; // Nằm ngay dưới thẻ cha
-  left: -20px; // Căn chỉnh một chút
+  top: 100%;
+  left: -20px;
   min-width: 280px;
   background-color: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.shadows.lg};
   padding: 12px 0;
-  
-  // Hiệu ứng ẩn/hiện mượt mà trên Desktop
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
   transition: all 0.2s ease;
   z-index: 100;
 
-  // Desktop Hover
   ${NavItemWrapper}:hover & {
     opacity: 1;
     visibility: visible;
@@ -183,12 +176,9 @@ export const DropdownMenu = styled.div<{ $isOpenOnMobile?: boolean }>`
     box-shadow: none;
     border: none;
     border-left: 2px solid ${({ theme }) => theme.colors.border};
-    border-radius: 0;
     padding: 0;
     margin-left: 16px;
     margin-bottom: ${({ $isOpenOnMobile }) => ($isOpenOnMobile ? '8px' : '0')};
-    
-    // Xử lý ẩn/hiện trên Mobile bằng JS prop
     display: ${({ $isOpenOnMobile }) => ($isOpenOnMobile ? 'flex' : 'none')};
     flex-direction: column;
     opacity: 1;
@@ -203,23 +193,13 @@ export const DropdownItem = styled(Link)`
   padding: 12px 24px;
   color: ${({ theme }) => theme.colors.text};
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600; /* Tăng độ đậm để dễ đọc */
   text-decoration: none;
   transition: all 0.2s ease;
 
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
     background-color: ${({ theme }) => theme.colors.surfaceAlt};
-    padding-left: 30px; // Hiệu ứng trượt nhẹ sang phải khi hover
-  }
-
-  @media (max-width: 992px) {
-    padding: 12px 16px;
-    font-size: 15px;
-    
-    &:hover {
-      padding-left: 20px;
-    }
   }
 `;
 
@@ -228,7 +208,8 @@ export const NavLink = styled(Link)<{ $isActive: boolean; $hasDropdown?: boolean
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  color: ${({ theme, $isActive }) => $isActive ? theme.colors.accent : theme.colors.text};
+  /* SỬA: Dùng màu đậm #1A1A1A thay vì #text có thể bị mờ */
+  color: ${({ theme, $isActive }) => $isActive ? theme.colors.accent : '#1A1A1A'}; 
   position: relative;
   padding: 8px 0;
   transition: color 0.2s ease;
@@ -237,34 +218,16 @@ export const NavLink = styled(Link)<{ $isActive: boolean; $hasDropdown?: boolean
   gap: 4px;
   cursor: pointer;
 
-  svg {
-    font-size: 18px;
-    transition: transform 0.2s ease;
-  }
-
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 3px; /* Tăng nhẹ độ dày gạch chân */
     background-color: ${({ theme }) => theme.colors.accent};
     transform: ${({ $isActive }) => ($isActive ? 'scaleX(1)' : 'scaleX(0)')};
-    transform-origin: right;
     transition: transform 0.3s ease;
-  }
-
-  ${NavItemWrapper}:hover & {
-    color: ${({ theme }) => theme.colors.accent};
-    &::after { transform: scaleX(1); transform-origin: left; }
-    svg { transform: rotate(180deg); } // Xoay mũi tên khi hover (Desktop)
-  }
-
-  // Hover bình thường nếu không có Dropdown
-  &:hover {
-    color: ${({ theme }) => theme.colors.accent};
-    &::after { transform: scaleX(1); transform-origin: left; }
   }
 
   @media (max-width: 992px) {
@@ -272,19 +235,9 @@ export const NavLink = styled(Link)<{ $isActive: boolean; $hasDropdown?: boolean
     font-size: 16px;
     padding: 16px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-    text-transform: none;
-    justify-content: space-between; // Đẩy mũi tên sang phải
-    
-    &:hover { background-color: ${({ theme }) => theme.colors.surfaceAlt}; }
-    &::after { display: none; }
-    
-    ${NavItemWrapper}:hover & {
-      svg { transform: none; } // Tắt tự xoay hover trên mobile
-    }
+    color: ${({ theme, $isActive }) => $isActive ? theme.colors.accent : '#1A1A1A'};
   }
 `;
-
-// --- Các component còn lại ---
 
 export const HeaderIcons = styled(FlexCenter)`
   gap: 20px;
@@ -294,11 +247,10 @@ export const HeaderIcons = styled(FlexCenter)`
 export const SearchButtonDesktop = styled.button`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: #1A1A1A; /* Màu tối đậm */
   cursor: pointer;
   font-size: 22px;
   display: flex;
-  transition: color 0.2s ease;
   &:hover { color: ${({ theme }) => theme.colors.accent}; }
 `;
 
@@ -333,16 +285,18 @@ export const MobileSettingGroup = styled.div`
   padding: 8px 16px;
   background-color: ${({ theme }) => theme.colors.surfaceAlt};
   border-radius: 6px;
-  .setting-label { display: flex; align-items: center; gap: 10px; font-weight: 500; }
-  .setting-control button { background: none; border: none; font-size: 20px; }
+  .setting-label { display: flex; align-items: center; gap: 10px; font-weight: 600; color: #1A1A1A; }
+  .setting-control button { background: none; border: none; font-size: 20px; color: #1A1A1A; }
 `;
 
 export const MobileButtonLink = styled(ButtonLink)`
   width: 100%;
   justify-content: center;
+  font-weight: 700;
 `;
 
 export const MobileButton = styled(Button)`
   width: 100%;
   justify-content: center;
+  font-weight: 700;
 `;

@@ -12,9 +12,8 @@ const shadows = {
   sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
   md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
   lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-  // THÊM VÀO ĐÂY:
-  card: '0 6px 16px rgba(0,0,0,0.08)', // Shadow cho Card nhẹ nhàng
-  hover: '0 12px 24px rgba(0,0,0,0.12)', // Shadow lớn hơn khi hover
+  card: '0 6px 16px rgba(0,0,0,0.08)',
+  hover: '0 12px 24px rgba(0,0,0,0.12)',
 };
 
 const spacing = {
@@ -34,8 +33,8 @@ export const lightTheme: DefaultTheme = {
     surfaceAlt: '#F8F9FA',
     
     text: '#1A1A1A',
-    textSecondary: '#4B5563',
-    textMuted: '#9CA3AF',
+    textSecondary: '#404040', // Đậm hơn (từ #4B5563) để đạt chuẩn tương phản
+    textMuted: '#636363',     // Đậm hơn (từ #9CA3AF) để khách hàng dễ đọc
     textInverse: '#FFFFFF',
 
     primary: '#003366',
@@ -44,29 +43,30 @@ export const lightTheme: DefaultTheme = {
     
     secondary: '#E6F0FA',
     
-    accent: '#FF0000',
-    accentHover: '#CC0000',
+    // SỬA: Đỏ đậm hơn một chút (#E60000) để đạt chuẩn Accessibility 4.5:1
+    accent: '#E60000',
+    accentHover: '#B30000',
 
-    success: '#10B981',
-    warning: '#F59E0B',
+    success: '#0D9488', // Teal đậm hơn cho A11y
+    warning: '#D97706', // Cam đậm hơn
     error: '#DC2626',
-    info: '#3B82F6',
+    info: '#2563EB',
 
     white: '#FFFFFF',
     black: '#000000',
 
-    border: '#E5E7EB',
+    border: '#D1D5DB', // Đậm hơn một chút để phân tách khối rõ ràng
     divider: '#E5E7EB',
 
     header: {
       bg: '#FFFFFF',
       text: '#003366',
-      borderBottom: '#E5E7EB',
+      borderBottom: '#D1D5DB',
     },
     footer: {
       bg: '#003366',
       text: '#FFFFFF',
-      textSecondary: '#CBD5E1',
+      textSecondary: '#E5E7EB',
     },
   },
   fonts: {
@@ -75,7 +75,7 @@ export const lightTheme: DefaultTheme = {
   },
   spacing,
   breakpoints,
-  shadows, // Đảm bảo shadows được export
+  shadows,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -87,7 +87,7 @@ export const darkTheme: DefaultTheme = {
     
     text: '#F9FAFB',
     textSecondary: '#D1D5DB',
-    textMuted: '#6B7280',
+    textMuted: '#9CA3AF',
     textInverse: '#111827',
 
     primary: '#3B82F6',
@@ -96,7 +96,7 @@ export const darkTheme: DefaultTheme = {
     
     secondary: '#1E293B',
     
-    accent: '#FF4545',
+    accent: '#FF4D4D', // Đỏ sáng hơn cho nền tối
     accentHover: '#FF0000',
 
     success: '#34D399',
@@ -127,5 +127,5 @@ export const darkTheme: DefaultTheme = {
   },
   spacing,
   breakpoints,
-  shadows, // Đảm bảo shadows được export
+  shadows,
 };

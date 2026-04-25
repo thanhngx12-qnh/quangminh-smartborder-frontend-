@@ -134,16 +134,18 @@
     "allCategories": "Tất cả tin tức",
     "categoryPrefix": "Chuyên mục",
     "noNewsInCategory": "Hiện tại chưa có bài viết nào trong chuyên mục này.",
-    "ctaDescription": "Liên hệ ngay để nhận được sự tư vấn chuyên nghiệp từ đội ngũ Tà Lùng Logistics."
-},
+    "ctaDescription": "Liên hệ ngay để nhận được sự tư vấn chuyên nghiệp từ đội ngũ Tà Lùng Logistics.",
+    "share": "Chia sẻ bài viết này"
+  },
   "ServicesPage": {
-    "title": "Hệ Thống Dịch Vụ Logistics",
-    "description": "Giải pháp chuỗi cung ứng toàn diện tại Cửa khẩu Quốc tế Tà Lùng, kết nối giao thương Việt Nam - Trung Quốc.",
-    "noServices": "Hiện tại không có dịch vụ nào để hiển thị.",
-    "seoTitle": "Năng lực cung ứng dịch vụ tại Tà Lùng Logistics",
-    "seoContent": "Tà Lùng Logistics (Tà Lùng Quang Minh) tự hào là đơn vị tiên phong với hơn 15 năm kinh nghiệm vận hành tại <bold>Cửa khẩu Quốc tế Tà Lùng</bold>. Chúng tôi không chỉ cung cấp các dịch vụ đơn lẻ mà mang đến giải pháp trọn gói từ <bold>kho bãi bến xe</bold>, <bold>đại lý hải quan</bold> cho đến <bold>vận tải đa phương thức</bold>.\n\nVới hệ thống 3 bãi trung chuyển có tổng diện tích 25 ha, chúng tôi có đủ khả năng tiếp nhận và xử lý các lô hàng siêu trường siêu trọng, hàng nông sản cần bảo quản và hàng tiêu dùng số lượng lớn. Đội ngũ chuyên gia am hiểu chính sách biên mậu sẽ giúp doanh nghiệp tối ưu chi phí và thời gian thông quan nhanh nhất.",
-    "ctaTitle": "Sẵn sàng tối ưu chuỗi cung ứng của bạn?",
-    "ctaButton": "Liên hệ báo giá ngay"
+  "title": "Dịch vụ Logistics",
+  "description": "Giải pháp chuỗi cung ứng toàn diện tại Cửa khẩu Quốc tế Tà Lùng.",
+  "noServices": "Hiện tại chưa có dịch vụ nào trong mục này.",
+  "seoTitle": "Năng lực cung ứng dịch vụ tại Tà Lùng Logistics",
+  "seoContent": "Tà Lùng Logistics tự hào là đơn vị tiên phong tại <bold>Cửa khẩu Quốc tế Tà Lùng</bold>. Chúng tôi cung cấp giải pháp trọn gói từ kho bãi, đại lý hải quan đến vận tải đa phương thức.",
+  "ctaTitle": "Sẵn sàng tối ưu chuỗi cung ứng của bạn?",
+  "ctaButton": "Liên hệ báo giá ngay",
+  "categoryPrefix": "Chuyên mục"
   },
   "ServiceDetail": {
     "ctaTitle": "Bạn cần một phương án logistics tối ưu hơn?",

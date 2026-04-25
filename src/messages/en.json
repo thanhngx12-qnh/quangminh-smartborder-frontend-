@@ -137,13 +137,14 @@
     "ctaDescription": "Contact us now for professional consultation from Ta Lung Logistics."
   },
   "ServicesPage": {
-    "title": "Logistics Services System",
-    "description": "Comprehensive supply chain solutions at Ta Lung International Border Gate, connecting Vietnam and China trade.",
-    "noServices": "No services available at the moment.",
-    "seoTitle": "Service capabilities at Ta Lung Logistics",
-    "seoContent": "Ta Lung Logistics (Ta Lung Quang Minh) is proud to be a pioneer with over 15 years of experience at <bold>Ta Lung International Border Gate</bold>. We provide not only standalone services but also complete solutions from <bold>warehousing</bold>, <bold>customs brokerage</bold> to <bold>multimodal transport</bold>.\n\nWith 3 transshipment yards totaling 25 hectares, we are capable of handling oversized cargo, perishable goods, and large-scale shipments. Our expert team ensures cost and time optimization for businesses.",
-    "ctaTitle": "Ready to optimize your supply chain?",
-    "ctaButton": "Contact for a quote"
+  "title": "Logistics Services",
+  "description": "Comprehensive supply chain solutions at Ta Lung International Border Gate.",
+  "noServices": "There are currently no services in this category.",
+  "seoTitle": "Service Capacity at Ta Lung Logistics",
+  "seoContent": "Ta Lung Logistics is a pioneer at the <bold>Ta Lung International Border Gate</bold>. We provide package solutions from warehousing, customs brokerage to multimodal transport.",
+  "ctaTitle": "Ready to optimize your supply chain?",
+  "ctaButton": "Contact for Quote",
+  "categoryPrefix": "Category"
   },
   "ServiceDetail": {
     "ctaTitle": "Need a better logistics solution?",

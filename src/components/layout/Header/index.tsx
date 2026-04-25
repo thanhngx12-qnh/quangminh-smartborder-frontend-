@@ -1,7 +1,7 @@
 // dir: frontend/src/components/layout/Header/index.tsx
 'use client';
 
-import { useState, useEffect, useMemo } from 'react'; // ĐÃ THÊM useMemo VÀO ĐÂY
+import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image'; 
 import { useTranslations, useLocale } from 'next-intl'; 
 import { usePathname } from '@/navigation';
@@ -38,6 +38,7 @@ export default function Header() {
   const { services: featuredServices } = useFeaturedServices(locale);
   const { categories: newsCats } = useCategories('NEWS');
 
+  // --- NÂNG CẤP LOGIC V3.0 VỚI PHÒNG THỦ LỖI TRÙNG KEY ---
   const navItems = useMemo(() => {
     const fServices = Array.isArray(featuredServices) ? featuredServices : [];
     const nCats = Array.isArray(newsCats) ? newsCats : [];
@@ -48,25 +49,38 @@ export default function Header() {
       { 
         label: tNav('services'), 
         href: '/services', 
-        subItems: fServices.map(service => {
-          const trans = service.translations?.find(t => t.locale === locale) || service.translations?.[0];
-          return {
-            href: `/services/${trans?.slug}`, 
-            label: trans?.title || 'Service',
-            icon: <RiFireLine style={{ color: '#FF0000', fontSize: '12px', marginRight: '8px' }} />
-          };
-        })
+        subItems: fServices
+          .map(service => {
+            const trans = service.translations?.find(t => t.locale === locale) || service.translations?.[0];
+            // Nếu không có slug, trả về null để lát nữa lọc bỏ
+            if (!trans?.slug) return null; 
+            return {
+              key: `service-${service.id}`, // Key duy nhất theo ID
+              href: `/services/${trans.slug}`, 
+              label: trans.title || 'Service',
+              icon: <RiFireLine style={{ color: '#FF0000', fontSize: '12px', marginRight: '8px' }} />
+            };
+          })
+          .filter((item): item is NonNullable<typeof item> => item !== null) // Lọc bỏ bài lỗi
       },
       { 
         label: tNav('news'), 
         href: '/news',
         subItems: [
-          ...nCats.map(cat => ({
-            href: `/news?categoryId=${cat.id}`, 
-            label: cat.name,
-            icon: <RiNewspaperLine style={{ color: '#003366', fontSize: '12px', marginRight: '8px' }} />
-          })),
+          ...nCats
+            .map(cat => {
+              const catTrans = cat.translations?.find(t => t.locale === locale) || cat.translations?.[0];
+              if (!cat.id) return null;
+              return {
+                key: `cat-${cat.id}`,
+                href: `/news?categoryId=${cat.id}`, 
+                label: catTrans?.name || 'Category',
+                icon: <RiNewspaperLine style={{ color: '#003366', fontSize: '12px', marginRight: '8px' }} />
+              };
+            })
+            .filter((item): item is NonNullable<typeof item> => item !== null),
           {
+            key: 'news-other',
             href: `/news?categoryId=none`,
             label: tNav('newsSub.other'),
             icon: <RiNewspaperLine style={{ color: '#003366', fontSize: '12px', marginRight: '8px' }} />
@@ -142,7 +156,7 @@ export default function Header() {
                   </NavLink>
                   <DropdownMenu $isOpenOnMobile={openMobileDropdown === item.label}>
                     {item.subItems.map(sub => (
-                      <DropdownItem key={sub.href} href={sub.href as never} as="a">
+                      <DropdownItem key={sub.key} href={sub.href as never} as="a">
                         {sub.icon}
                         {sub.label}
                       </DropdownItem>

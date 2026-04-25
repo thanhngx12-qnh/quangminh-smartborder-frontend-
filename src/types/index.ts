@@ -1,18 +1,27 @@
-// dir: ~/quangminh-smart-border/frontend/src/types/index.ts
 // dir: frontend/src/types/index.ts
 
 /**
- * Interface cho Danh mục (Mới)
+ * Interface cho Bản dịch Danh mục (V3.0)
  */
-export interface Category {
-  id: number;
+export interface CategoryTranslation {
+  locale: string;
   name: string;
   slug: string;
-  type: 'NEWS' | 'SERVICE';
+  description?: string;
 }
 
 /**
- * Interface cho Bản dịch Dịch vụ (Cập nhật SEO)
+ * Interface cho Danh mục (V3.0 - Đa ngôn ngữ)
+ */
+export interface Category {
+  id: number;
+  type: 'NEWS' | 'SERVICE';
+  parentId?: number | null;
+  translations: CategoryTranslation[]; // name và slug đã nằm trong này
+}
+
+/**
+ * Interface cho Bản dịch Dịch vụ (SEO Fallback)
  */
 export interface ServiceTranslation {
   locale: 'vi' | 'en' | 'zh';
@@ -20,7 +29,6 @@ export interface ServiceTranslation {
   slug: string;
   shortDesc: string;
   content?: string;
-  // --- CÁC TRƯỜNG SEO MỚI ---
   metaTitle?: string;
   metaDescription?: string;
   metaKeywords?: string;
@@ -28,20 +36,20 @@ export interface ServiceTranslation {
 }
 
 /**
- * Interface cho Dịch vụ (Cập nhật Category)
+ * Interface cho Dịch vụ
  */
 export interface Service {
   id: number;
   code: string;
-  categoryId?: number; // Liên kết danh mục
-  category?: Category; // Dữ liệu danh mục đính kèm
+  categoryId?: number;
+  category?: Category; // Liên kết tới interface Category mới ở trên
   coverImage?: string;
   featured?: boolean;
   translations: ServiceTranslation[];
 }
 
 /**
- * Interface cho Bản dịch Tin tức (Cập nhật SEO)
+ * Interface cho Bản dịch Tin tức (SEO Fallback)
  */
 export interface NewsTranslation {
   locale: 'vi' | 'en' | 'zh';
@@ -49,7 +57,6 @@ export interface NewsTranslation {
   slug: string;
   excerpt: string;
   content?: string;
-  // --- CÁC TRƯỜNG SEO MỚI ---
   metaTitle?: string;
   metaDescription?: string;
   metaKeywords?: string;
@@ -57,18 +64,18 @@ export interface NewsTranslation {
 }
 
 /**
- * Interface cho Tin tức (Cập nhật Category)
+ * Interface cho Tin tức
  */
 export interface News {
   id: number;
-  categoryId?: number; // Liên kết danh mục
-  category?: Category; // Dữ liệu danh mục đính kèm
+  categoryId?: number;
+  category?: Category; // Liên kết tới interface Category mới ở trên
   coverImage?: string;
   publishedAt?: string;
   translations: NewsTranslation[];
 }
 
-// --- Các Interface khác giữ nguyên ---
+// --- Các Interface Tracking & Tuyển dụng (Giữ nguyên) ---
 
 export interface TrackingEvent {
   id: number;
