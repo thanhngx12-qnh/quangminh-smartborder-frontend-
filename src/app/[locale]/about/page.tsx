@@ -571,14 +571,14 @@ export default function AboutPage() {
             <OfficeCard>
               <RiBuilding4Line />
               <div>
-                <strong>VĂN PHÒNG CAO BẰNG</strong>
+                <strong>{t('offices.addressCB')}</strong>
                 <p>{t('offices.caobang')}</p>
               </div>
             </OfficeCard>
             <OfficeCard>
               <RiMapPin2Line />
               <div>
-                <strong>VĂN PHÒNG HẠ LONG</strong>
+                <strong>{t('offices.addressHL')}</strong>
                 <p>{t('offices.halong')}</p>
               </div>
             </OfficeCard>

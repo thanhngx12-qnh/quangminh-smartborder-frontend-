@@ -116,7 +116,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service }: ServiceCardProps) {
   const locale = useLocale();
-  // const t = useTranslations('Common'); // Giả sử có key 'readMore' trong Common, nếu chưa có thì dùng text cứng tạm
+  const t = useTranslations('General'); // Giả sử có key 'readMore' trong Common, nếu chưa có thì dùng text cứng tạm
   
   const translation = service.translations?.find(t => t.locale === locale) || service.translations?.[0];
 
@@ -139,7 +139,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         <Description>{translation.shortDesc}</Description>
         <ReadMore>
           {/* Fallback text nếu chưa có i18n key */}
-          <span>Xem chi tiết</span> 
+          <span>{t('viewAll')}</span> 
           <RiArrowRightLine />
         </ReadMore>
       </ContentBox>

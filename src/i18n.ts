@@ -1,18 +1,14 @@
-// dir: ~/quangminh-smart-border/frontend/src/i18n.ts
+// dir: frontend/src/i18n.ts
 import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
- 
-export const locales = ['vi', 'en', 'zh'];
+import {locales} from './navigation';
  
 export default getRequestConfig(async ({locale}) => {
-  if (!locale) notFound();
-  const baseLocale = new Intl.Locale(locale).baseName;
-  if (!locales.includes(baseLocale)) notFound();
+  // Kiểm tra locale có nằm trong danh sách hỗ trợ không
+  if (!locales.includes(locale as any)) notFound();
  
   return {
-    locale: baseLocale,
-    messages: (await import(`./messages/${baseLocale}.json`)).default,
-    // THÊM CẤU HÌNH TIMEZONE Ở ĐÂY
+    messages: (await import(`./messages/${locale}.json`)).default,
     timeZone: 'Asia/Ho_Chi_Minh'
   };
 });

@@ -227,7 +227,7 @@ export default function CareersPage() {
                     
                     <ActionArea>
                       <Button variant="outline" size="small" as="span">
-                        Xem chi tiết <RiArrowRightLine style={{ marginLeft: 6 }} />
+                        {t('viewDetails')} <RiArrowRightLine style={{ marginLeft: 6 }} />
                       </Button>
                     </ActionArea>
                   </JobCard>

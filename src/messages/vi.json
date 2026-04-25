@@ -1,4 +1,9 @@
 {
+  "Common": {
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+    "readMore": "Xem chi tiết"
+  },
   "Navigation": {
     "home": "Trang chủ",
     "services": "Dịch Vụ",
@@ -48,7 +53,9 @@
     "viewAllServices": "Khám Phá Toàn Bộ Dịch Vụ",
     "contact": "Liên hệ",
     "share": "CHIA SẺ",
-    "back": "Quay lại"
+    "back": "Quay lại",
+    "exploreMore": "Khám phá thêm các giải pháp khác",
+    "viewDetails": "Xem chi tiết"
   },
   "Social": {
     "facebook": "Facebook",
@@ -115,7 +122,9 @@
     "offices": {
       "title": "HỆ THỐNG CHI NHÁNH",
       "halong": "Số 29 Lê Duẩn, phường Bãi Cháy, TP. Hạ Long, Quảng Ninh",
-      "caobang": "Khu vực Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng"
+      "caobang": "Khu vực Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng",
+      "addressCB": "Văn phòng tại Cao Bằng",
+      "addressQN": "Văn phòng tại Quảng Ninh"
     }
   },
   "FeaturedServices": {
@@ -194,7 +203,8 @@
     "noOpeningsDesc": "Tuy nhiên, chúng tôi luôn chào đón nhân tài. Hãy chủ động gửi CV về phòng Nhân sự để không bỏ lỡ cơ hội trong tương lai.",
     "errorTitle": "Hệ thống đang bảo trì",
     "errorDesc": "Không thể tải danh sách tuyển dụng lúc này, vui lòng thử lại sau.",
-    "retry": "Tải lại trang"
+    "retry": "Tải lại trang",
+    "viewDetails": "Xem chi tiết công việc"
   },
   "CareerDetailPage": {
     "jobDescription": "Chi Tiết Công Việc",
