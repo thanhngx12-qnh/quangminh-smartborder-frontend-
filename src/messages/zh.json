@@ -154,7 +154,8 @@
     "seoContent": "提供仓储、报关及多式联运服务。",
     "ctaTitle": "准备优化供应链？",
     "ctaButton": "立即联系",
-    "categoryPrefix": "分类"
+    "categoryPrefix": "分类",
+    "ctaDescription": "联系我们获取专业建议。"
   },
   "ServiceDetail": {
     "ctaTitle": "需要更优物流方案？",
@@ -194,6 +195,16 @@
       "a2": "支持各类货物安全换装。",
       "q3": "是否支持多式联运？",
       "a3": "支持公路、水路及铁路运输。"
+    },
+    "formSuccessTitle": "提交成功！",
+    "formSuccessDesc": "您的请求已提交，我们将尽快回复您。",
+    "formReset": "提交另一个请求",
+    "selectPlaceholder": "选择感兴趣的服务...",
+    "noOptions": "暂无服务可选",
+    "mapTitle": "仓储地图",
+    "offices": {
+      "caobang": "高平省茶岭国际口岸区域",
+      "halong": "广宁省下龙市白斋坊黎笋街29号"
     }
   },
   "CareersPage": {

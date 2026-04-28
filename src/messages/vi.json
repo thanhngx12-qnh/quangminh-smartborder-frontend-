@@ -147,14 +147,15 @@
     "share": "Chia sẻ bài viết này"
   },
   "ServicesPage": {
-  "title": "Dịch vụ Logistics",
-  "description": "Giải pháp chuỗi cung ứng toàn diện tại Cửa khẩu Quốc tế Tà Lùng.",
-  "noServices": "Hiện tại chưa có dịch vụ nào trong mục này.",
-  "seoTitle": "Năng lực cung ứng dịch vụ tại Tà Lùng Logistics",
-  "seoContent": "Tà Lùng Logistics tự hào là đơn vị tiên phong tại <bold>Cửa khẩu Quốc tế Tà Lùng</bold>. Chúng tôi cung cấp giải pháp trọn gói từ kho bãi, đại lý hải quan đến vận tải đa phương thức.",
-  "ctaTitle": "Sẵn sàng tối ưu chuỗi cung ứng của bạn?",
-  "ctaButton": "Liên hệ báo giá ngay",
-  "categoryPrefix": "Chuyên mục"
+    "title": "Dịch vụ Logistics",
+    "description": "Giải pháp chuỗi cung ứng toàn diện tại Cửa khẩu Quốc tế Tà Lùng.",
+    "noServices": "Hiện tại chưa có dịch vụ nào trong mục này.",
+    "seoTitle": "Năng lực cung ứng dịch vụ tại Tà Lùng Logistics",
+    "seoContent": "Tà Lùng Logistics tự hào là đơn vị tiên phong tại <bold>Cửa khẩu Quốc tế Tà Lùng</bold>. Chúng tôi cung cấp giải pháp trọn gói từ kho bãi, đại lý hải quan đến vận tải đa phương thức.",
+    "ctaTitle": "Sẵn sàng tối ưu chuỗi cung ứng của bạn?",
+    "ctaButton": "Liên hệ báo giá ngay",
+    "categoryPrefix": "Chuyên mục",
+    "ctaDescription": "Đội ngũ chuyên gia của Tà Lùng Logistics luôn sẵn sàng tư vấn và thiết kế giải pháp phù hợp nhất với nhu cầu kinh doanh của bạn."
   },
   "ServiceDetail": {
     "ctaTitle": "Bạn cần một phương án logistics tối ưu hơn?",
@@ -194,6 +195,16 @@
       "a2": "Hoàn toàn có. Với hệ thống thiết bị đa dạng và 25ha mặt bằng, chúng tôi có năng lực xử lý, sang tải an toàn mọi loại hàng hóa từ nông sản, khoáng sản đến máy móc siêu trường siêu trọng.",
       "q3": "Có thể yêu cầu vận tải đường thủy hoặc đường sắt không?",
       "a3": "Có. Tà Lùng Quang Minh tự hào cung cấp giải pháp vận tải đa phương thức, kết hợp linh hoạt đường bộ, đường thủy và đường sắt để tối ưu cước phí theo nhu cầu của bạn."
+    },
+    "formSuccessTitle": "Gửi thành công!",
+    "formSuccessDesc": "Yêu cầu của bạn đã được gửi. Chúng tôi sẽ phản hồi sớm nhất.",
+    "formReset": "Gửi yêu cầu khác",
+    "selectPlaceholder": "Chọn dịch vụ quan tâm...",
+    "noOptions": "Không tìm thấy dịch vụ",
+    "mapTitle": "Bản đồ kho bãi",
+    "offices": {
+      "caobang": "Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng",
+      "halong": "Số 29 Lê Duẩn, Bãi Cháy, Quảng Ninh"
     }
   },
   "CareersPage": {

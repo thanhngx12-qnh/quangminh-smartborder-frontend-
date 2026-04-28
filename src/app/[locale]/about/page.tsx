@@ -578,7 +578,7 @@ export default function AboutPage() {
             <OfficeCard>
               <RiMapPin2Line />
               <div>
-                <strong>{t('offices.addressHL')}</strong>
+                <strong>{t('offices.addressQN')}</strong>
                 <p>{t('offices.halong')}</p>
               </div>
             </OfficeCard>

@@ -154,7 +154,8 @@
     "seoContent": "Ta Lung Logistics is a leading provider at <bold>Ta Lung International Border Gate</bold>, offering end-to-end solutions from warehousing to customs and multimodal transport.",
     "ctaTitle": "Ready to optimize your supply chain?",
     "ctaButton": "Request a quote now",
-    "categoryPrefix": "Category"
+    "categoryPrefix": "Category",
+    "ctaDescription": "Our team of experts at Ta Lung Logistics is ready to provide consultation and design the most suitable solution for your business needs."
   },
   "ServiceDetail": {
     "ctaTitle": "Looking for a better logistics solution?",
@@ -194,6 +195,16 @@
       "a2": "Yes. With diverse equipment and 25 hectares of space, we handle everything from agriculture to oversized machinery.",
       "q3": "Do you support waterway or rail transport?",
       "a3": "Yes. We provide flexible multimodal transport solutions combining road, water, and rail."
+    },
+    "formSuccessTitle": "Request Submitted!",
+    "formSuccessDesc": "Your request has been submitted. We will respond as soon as possible.",
+    "formReset": "Submit Another Request",
+    "selectPlaceholder": "Select a service of interest...",
+    "noOptions": "No services found",
+    "mapTitle": "Warehouse Map",
+    "offices": {
+      "caobang": "Ta Lung International Border Gate, Phuc Hoa Commune, Cao Bang Province",
+      "halong": "No. 29 Le Duan, Bai Chay Ward, Quang Ninh"
     }
   },
   "CareersPage": {

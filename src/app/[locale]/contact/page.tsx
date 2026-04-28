@@ -1,7 +1,7 @@
 // dir: frontend/src/app/[locale]/contact/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import styled, { useTheme } from 'styled-components';
@@ -18,18 +18,16 @@ import {
 import Button from '@/components/ui/Button';
 import FaqItem from '@/components/shared/FaqItem';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
-import { sendGTMEvent } from '@next/third-parties/google'; // <-- IMPORT HÀM CHÍNH CHỦ
+import { sendGTMEvent } from '@next/third-parties/google';
 
-// KHÔNG CÒN ĐOẠN DECLARE GLOBAL NỮA
-
-// --- Styled Components (Giữ nguyên) ---
+// --- Styled Components ---
 const PageWrapper = styled.div` padding: 80px 20px; background-color: ${({ theme }) => theme.colors.background}; min-height: 100vh; `;
 const Container = styled.div` max-width: 1200px; margin: 0 auto; `;
 const PageHeader = styled.div` text-align: center; max-width: 800px; margin: 0 auto 60px auto; h1 { font-family: ${({ theme }) => theme.fonts.heading}; font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: ${({ theme }) => theme.colors.primary}; margin-bottom: 16px; } p { font-size: 18px; color: ${({ theme }) => theme.colors.textSecondary}; line-height: 1.6; } `;
 const ContentGrid = styled.div` display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; @media (max-width: 992px) { grid-template-columns: 1fr; gap: 40px; } `;
 const InfoColumn = styled.div` display: flex; flex-direction: column; gap: 40px; `;
 const InfoGroup = styled.div` h2 { font-family: ${({ theme }) => theme.fonts.heading}; font-size: 20px; font-weight: 700; color: ${({ theme }) => theme.colors.text}; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; svg { color: ${({ theme }) => theme.colors.accent}; font-size: 24px; } } `;
-const InfoItem = styled.div` margin-bottom: 16px; padding-left: 34px; strong { display: block; color: ${({ theme }) => theme.colors.primary}; font-weight: 600; margin-bottom: 4px; } p, a { font-size: 16px; color: ${({ theme }) => theme.colors.textSecondary}; line-height: 1.6; text-decoration: none; } a:hover { color: ${({ theme }) => theme.colors.accent}; text-decoration: underline; } `;
+const InfoItem = styled.div` margin-bottom: 16px; padding-left: 34px; strong { display: block; color: ${({ theme }) => theme.colors.primary}; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; } p, a { font-size: 16px; color: ${({ theme }) => theme.colors.textSecondary}; line-height: 1.6; text-decoration: none; } a:hover { color: ${({ theme }) => theme.colors.accent}; text-decoration: underline; } `;
 const ContactFormWrapper = styled.div` background-color: ${({ theme }) => theme.colors.surface}; padding: 40px; border-radius: 16px; border: 1px solid ${({ theme }) => theme.colors.border}; box-shadow: ${({ theme }) => theme.shadows.card}; h2 { font-family: ${({ theme }) => theme.fonts.heading}; font-size: 24px; font-weight: 700; color: ${({ theme }) => theme.colors.primary}; margin-bottom: 24px; text-align: center; text-transform: uppercase; } `;
 const Form = styled.form` display: flex; flex-direction: column; gap: 20px; `;
 const FormGroup = styled.div` display: flex; flex-direction: column; gap: 8px; label { font-weight: 600; font-size: 14px; color: ${({ theme }) => theme.colors.text}; .required { color: ${({ theme }) => theme.colors.error}; margin-left: 4px; } } `;
@@ -51,7 +49,7 @@ export default function ContactPage() {
   const { result: servicesResult } = useAllServices(locale, 1, 100);
   const initialServiceId = searchParams.get('serviceId');
 
-  const[formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   
   const {
     register, handleSubmit, formState: { errors }, reset, control
@@ -66,24 +64,20 @@ export default function ContactPage() {
       await postQuoteRequest(data);
       setFormStatus('success');
       reset();
-
-      // SỬ DỤNG HÀM CHÍNH CHỦ
-      sendGTMEvent({
-        event: 'generate_lead',
-        form_name: 'contact_page_form',
-        lead_service_id: data.serviceId || 'none' 
-      });
-
+      sendGTMEvent({ event: 'generate_lead', form_name: 'contact_page_form', lead_service_id: data.serviceId || 'none' });
     } catch (error) {
       console.error("Failed:", error);
       setFormStatus('error');
     }
   };
 
-  const serviceOptions = servicesResult?.data.map(service => ({
-    value: service.id.toString(),
-    label: service.translations[0]?.title || 'Service',
-  })) ||[];
+  // NÂNG CẤP V3.0: Lấy nhãn dịch vụ chuẩn ngôn ngữ
+  const serviceOptions = useMemo(() => {
+    return servicesResult?.data.map(service => {
+      const trans = service.translations?.find(t => t.locale === locale) || service.translations?.[0];
+      return { value: service.id.toString(), label: trans?.title || 'Service' };
+    }) || [];
+  }, [servicesResult, locale]);
 
   const customSelectStyles: StylesConfig<SelectOption, false> = {
     control: (provided, state) => ({ ...provided, backgroundColor: theme.colors.background, borderColor: state.isFocused ? theme.colors.accent : theme.colors.border, boxShadow: state.isFocused ? `0 0 0 3px rgba(255, 0, 0, 0.1)` : 'none', '&:hover': { borderColor: theme.colors.accent }, padding: '4px 4px 4px 44px', borderRadius: '8px', minHeight: '48px', }),
@@ -94,7 +88,7 @@ export default function ContactPage() {
     option: (provided, state) => ({ ...provided, backgroundColor: state.isSelected ? theme.colors.accent : (state.isFocused ? theme.colors.surfaceAlt : 'transparent'), color: state.isSelected ? theme.colors.white : theme.colors.text, cursor: 'pointer', }),
   };
 
-  const faqItems =[
+  const faqItems = [
     { q: t('faq.q1'), a: t('faq.a1') },
     { q: t('faq.q2'), a: t('faq.a2') },
     { q: t('faq.q3'), a: t('faq.a3') },
@@ -116,12 +110,12 @@ export default function ContactPage() {
               <InfoGroup>
                 <h2><RiMapPin2Line /> {t('address')}</h2>
                 <InfoItem>
-                  <strong>VP CAO BẰNG (TRỤ SỞ):</strong>
-                  <p>Cửa khẩu quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng</p>
+                  <strong>{t('offices.caobang.name', { defaultMessage: 'VP CAO BẰNG (TRỤ SỞ)' })}</strong>
+                  <p>{t('offices.caobang', { defaultMessage: 'Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng' })}</p>
                 </InfoItem>
                 <InfoItem>
-                  <strong>VP HẠ LONG:</strong>
-                  <p>Số 29 Lê Duẩn, Bãi Cháy, Quảng Ninh</p>
+                  <strong>{t('offices.halong.name', { defaultMessage: 'VP HẠ LONG' })}</strong>
+                  <p>{t('offices.halong', { defaultMessage: 'Số 29 Lê Duẩn, Bãi Cháy, Quảng Ninh' })}</p>
                 </InfoItem>
               </InfoGroup>
 
@@ -129,10 +123,7 @@ export default function ContactPage() {
                 <h2><RiPhoneLine /> {t('phone')}</h2>
                 <InfoItem>
                   <strong>HOTLINE:</strong>
-                  {/* SỬ DỤNG HÀM CHÍNH CHỦ TRỰC TIẾP */}
-                  <a href="tel:0963320335" onClick={() => sendGTMEvent({ event: 'contact_click', contact_method: 'hotline_call' })}>
-                    0963.320.335
-                  </a>
+                  <a href="tel:0963320335" onClick={() => sendGTMEvent({ event: 'contact_click', contact_method: 'hotline_call' })}>0963.320.335</a>
                 </InfoItem>
               </InfoGroup>
 
@@ -140,10 +131,7 @@ export default function ContactPage() {
                 <h2><RiMailLine /> {t('email')}</h2>
                 <InfoItem>
                   <strong>EMAIL:</strong>
-                  {/* SỬ DỤNG HÀM CHÍNH CHỦ TRỰC TIẾP */}
-                  <a href="mailto:info@talunglogistics.com" onClick={() => sendGTMEvent({ event: 'contact_click', contact_method: 'email_send' })}>
-                    info@talunglogistics.com
-                  </a>
+                  <a href="mailto:info@talunglogistics.com" onClick={() => sendGTMEvent({ event: 'contact_click', contact_method: 'email_send' })}>info@talunglogistics.com</a>
                 </InfoItem>
               </InfoGroup>
             </InfoColumn>
@@ -154,9 +142,9 @@ export default function ContactPage() {
               <h2>{t('formTitle')}</h2>
               {formStatus === 'success' ? (
                 <FormSuccess>
-                  <h3>Gửi thành công!</h3>
-                  <p>Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi sớm nhất.</p>
-                  <Button onClick={() => setFormStatus('idle')} variant="outline" size="small" style={{marginTop: 16}}>Gửi yêu cầu khác</Button>
+                  <h3>{t('formSuccessTitle')}</h3>
+                  <p>{t('formSuccessDesc')}</p>
+                  <Button onClick={() => setFormStatus('idle')} variant="outline" size="small" style={{marginTop: 16}}>{t('formReset')}</Button>
                 </FormSuccess>
               ) : (
                 <Form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -188,7 +176,7 @@ export default function ContactPage() {
                   </FormGroup>
 
                   <FormGroup>
-                    <label htmlFor="serviceId">{tFooter('formServiceId')} <span style={{fontWeight: 400, color: theme.colors.textMuted, fontSize: '13px'}}>(Tùy chọn)</span></label>
+                    <label htmlFor="serviceId">{tFooter('formServiceId')}</label>
                     <InputWrapper>
                       <RiServiceLine className="input-icon" style={{ zIndex: 2 }} />
                       <Controller
@@ -199,7 +187,8 @@ export default function ContactPage() {
                             {...field}
                             instanceId="service-select"
                             options={serviceOptions}
-                            placeholder="Chọn dịch vụ quan tâm..."
+                            placeholder={t('selectPlaceholder')}
+                            noOptionsMessage={() => t('noOptions')}
                             isClearable
                             styles={customSelectStyles}
                             value={serviceOptions.find(c => c.value === field.value) || null}
@@ -214,16 +203,14 @@ export default function ContactPage() {
                     <label htmlFor="message">{tFooter('formMessage')} <span className="required">*</span></label>
                     <InputWrapper>
                       <RiMessage2Line className="input-icon" style={{ top: '22px', transform: 'none' }} />
-                      <textarea id="message" {...register('message')} placeholder="Nội dung chi tiết..." aria-invalid={!!errors.message} />
+                      <textarea id="message" {...register('message')} placeholder="..." aria-invalid={!!errors.message} />
                     </InputWrapper>
                     {errors.message && <FormError>{errors.message.message}</FormError>}
                   </FormGroup>
                   
                   <Button type="submit" variant="primary" size="large" disabled={formStatus === 'submitting'} $fullWidth>
-                    {formStatus === 'submitting' ? 'Đang gửi...' : tFooter('formSend')}
+                    {formStatus === 'submitting' ? '...' : tFooter('formSend')}
                   </Button>
-                  
-                  {formStatus === 'error' && <FormError style={{textAlign: 'center'}}>Có lỗi xảy ra. Vui lòng thử lại.</FormError>}
                 </Form>
               )}
             </ContactFormWrapper>
@@ -245,15 +232,10 @@ export default function ContactPage() {
           <FadeInWhenVisible delay={0.2}>
             <div>
               <h2 style={{ fontSize: 24, fontWeight: 700, color: theme.colors.primary, marginBottom: 20, display: 'flex', alignItems: 'center', gap: 10 }}>
-                <RiMapPin2Line /> Bản đồ kho bãi
+                <RiMapPin2Line /> {t('mapTitle')}
               </h2>
               <MapContainer>
-                <iframe
-                  src="https://maps.google.com/maps?q=22.477244,106.582163&t=k&z=16&ie=UTF8&iwloc=&output=embed"
-                  loading="lazy"
-                  title="Vị trí kho bãi Tà Lùng"
-                  allowFullScreen
-                ></iframe>
+                <iframe src="https://maps.google.com/maps?q=22.477244,106.582163&t=k&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Map" allowFullScreen></iframe>
               </MapContainer>
             </div>
           </FadeInWhenVisible>

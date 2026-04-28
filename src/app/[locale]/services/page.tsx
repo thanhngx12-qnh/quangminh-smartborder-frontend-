@@ -242,7 +242,7 @@ export default function ServicesPage() {
             <FadeInWhenVisible delay={0.3}>
               <CtaBanner>
                 <h3>{t('ctaTitle')}</h3>
-                <p>Nhận tư vấn giải pháp Logistics và báo giá cạnh tranh nhất ngay hôm nay.</p>
+                <p>{t('ctaDescription')}</p>
                 <ButtonLink href="/contact" variant="primary" size="large" as="a">
                   {t('ctaButton')} <RiArrowRightLine style={{marginLeft: 8}} />
                 </ButtonLink>
