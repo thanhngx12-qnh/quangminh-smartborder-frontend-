@@ -21,7 +21,7 @@ import 'swiper/css/navigation';
 // --- Styled Components ---
 
 const SectionWrapper = styled.section`
-  padding: 100px 0;
+  padding: 20px 0;
   background-color: ${({ theme }) => theme.colors.background};
 `;
 

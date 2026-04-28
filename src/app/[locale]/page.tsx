@@ -10,6 +10,7 @@ import WhyChooseUsSection from '@/components/sections/HomePage/WhyChooseUsSectio
 import PartnersSection from '@/components/sections/HomePage/PartnersSection';
 import FadeInWhenVisible from '@/components/animations/FadeInWhenVisible';
 import { useFeaturedServices } from '@/hooks/useServices';
+import TeamSection from '@/components/sections/HomePage/TeamSection';
 
 export default function Home() {
   const locale = useLocale();
@@ -61,6 +62,8 @@ export default function Home() {
       <FadeInWhenVisible>
         <FeaturedServicesSection services={services ||[]} />
       </FadeInWhenVisible>
+
+      {/* <TeamSection />  */}
 
       {/* 5. LATEST NEWS */}
       <LatestNewsSection />

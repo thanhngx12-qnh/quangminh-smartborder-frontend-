@@ -110,12 +110,12 @@ export default function ContactPage() {
               <InfoGroup>
                 <h2><RiMapPin2Line /> {t('address')}</h2>
                 <InfoItem>
-                  <strong>{t('offices.caobang.name', { defaultMessage: 'VP CAO BẰNG (TRỤ SỞ)' })}</strong>
+                  <strong>{t('offices.addressCB', { defaultMessage: 'VP CAO BẰNG (TRỤ SỞ)' })}</strong>
                   <p>{t('offices.caobang', { defaultMessage: 'Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng' })}</p>
                 </InfoItem>
                 <InfoItem>
-                  <strong>{t('offices.halong.name', { defaultMessage: 'VP HẠ LONG' })}</strong>
-                  <p>{t('offices.halong', { defaultMessage: 'Số 29 Lê Duẩn, Bãi Cháy, Quảng Ninh' })}</p>
+                  <strong>{t('offices.addressQN', { defaultMessage: 'VP HẠ LONG' })}</strong>
+                  <p>{t('offices.halong', { defaultMessage: 'Số 29 Lê Duẩn, phường Bãi Cháy, tỉnh Quảng Ninh' })}</p>
                 </InfoItem>
               </InfoGroup>
 
@@ -152,7 +152,7 @@ export default function ContactPage() {
                     <label htmlFor="name">{tFooter('formName')} <span className="required">*</span></label>
                     <InputWrapper>
                       <RiUser3Line className="input-icon" />
-                      <input id="name" type="text" {...register('name')} placeholder="Nguyễn Văn A" aria-invalid={!!errors.name} />
+                      <input id="name" type="text" {...register('name')} placeholder={t('formNamePlaceholder')} aria-invalid={!!errors.name} />
                     </InputWrapper>
                     {errors.name && <FormError>{errors.name.message}</FormError>}
                   </FormGroup>
@@ -161,7 +161,7 @@ export default function ContactPage() {
                     <label htmlFor="email">{tFooter('formEmail')} <span className="required">*</span></label>
                     <InputWrapper>
                       <RiMailLine className="input-icon" />
-                      <input id="email" type="email" {...register('email')} placeholder="email@example.com" aria-invalid={!!errors.email} />
+                      <input id="email" type="email" {...register('email')} placeholder={t('formEmailPlaceholder')} aria-invalid={!!errors.email} />
                     </InputWrapper>
                     {errors.email && <FormError>{errors.email.message}</FormError>}
                   </FormGroup>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                     <label htmlFor="phone">{tFooter('formPhone')} <span className="required">*</span></label>
                     <InputWrapper>
                       <RiSmartphoneLine className="input-icon" />
-                      <input id="phone" type="tel" {...register('phone')} placeholder="09xxxxxxxxx" aria-invalid={!!errors.phone} />
+                      <input id="phone" type="tel" {...register('phone')} placeholder={t('formPhonePlaceholder')} aria-invalid={!!errors.phone} />
                     </InputWrapper>
                     {errors.phone && <FormError>{errors.phone.message}</FormError>}
                   </FormGroup>
@@ -203,7 +203,7 @@ export default function ContactPage() {
                     <label htmlFor="message">{tFooter('formMessage')} <span className="required">*</span></label>
                     <InputWrapper>
                       <RiMessage2Line className="input-icon" style={{ top: '22px', transform: 'none' }} />
-                      <textarea id="message" {...register('message')} placeholder="..." aria-invalid={!!errors.message} />
+                      <textarea id="message" {...register('message')} placeholder={t('formMessagePlaceholder')} aria-invalid={!!errors.message} />
                     </InputWrapper>
                     {errors.message && <FormError>{errors.message.message}</FormError>}
                   </FormGroup>

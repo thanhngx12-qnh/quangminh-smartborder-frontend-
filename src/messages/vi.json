@@ -200,11 +200,17 @@
     "formSuccessDesc": "Yêu cầu của bạn đã được gửi. Chúng tôi sẽ phản hồi sớm nhất.",
     "formReset": "Gửi yêu cầu khác",
     "selectPlaceholder": "Chọn dịch vụ quan tâm...",
+    "formNamePlaceholder": "Nguyễn Văn A",
+    "formEmailPlaceholder": "email@example.com",
+    "formPhonePlaceholder": "09xxxxxxxxx",
+    "formMessagePlaceholder": "Tôi cần thông tin về dịch vụ...",
     "noOptions": "Không tìm thấy dịch vụ",
     "mapTitle": "Bản đồ kho bãi",
     "offices": {
+      "addressCB": "Văn phòng tại Cao Bằng",
       "caobang": "Cửa khẩu Quốc tế Tà Lùng, xã Phục Hoà, tỉnh Cao Bằng",
-      "halong": "Số 29 Lê Duẩn, Bãi Cháy, Quảng Ninh"
+      "addressQN": "Văn phòng tại Quảng Ninh",
+      "halong": "Số 29 Lê Duẩn, phường Bãi Cháy, tỉnh Quảng Ninh"
     }
   },
   "CareersPage": {
@@ -323,5 +329,28 @@
     "serviceTitle": "{serviceName} | Logistics Tà Lùng Quang Minh",
     "newsTitle": "{newsTitle} | Tin Tức Tà Lùng Quang Minh",
     "careerTitle": "Tuyển Dụng: {jobTitle} | Tà Lùng Quang Minh"
+  },
+  "Organization": {
+    "title": "Đội ngũ Tà Lùng Logistics",
+    "subtitle": "Hội tụ những chuyên gia am hiểu thị trường biên mậu Việt - Trung",
+    "groups": {
+      "bod": "Hội đồng quản trị",
+      "management": "Ban Tổng Giám đốc",
+      "ops": "Phòng Vận hành",
+      "sales": "Phòng Kinh doanh"
+    },
+    "roles": {
+      "chairman": "Chủ tịch HĐQT",
+      "member": "Thành viên HĐQT",
+      "ceo": "Tổng Giám đốc",
+      "deputy_ceo": "Phó Tổng Giám đốc",
+      "ops_manager": "Trưởng phòng Vận hành",
+      "ops_deputy": "Phó phòng Vận hành",
+      "market_dev": "Phó phòng Phát triển thị trường",
+      "marketing_cskh": "Phó phòng Quản lý Marketing & CSKH",
+      "im_ex_head": "Trưởng bộ phận Xuất nhập khẩu",
+      "domestic_sales_head": "Trưởng bộ phận Kinh doanh nội địa"
+    },
+    "contactNow": "Kết nối ngay"
   }
 }
